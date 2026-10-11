@@ -10,6 +10,8 @@ Rotated out of `memory/MEMORY.md` Recent Digests when the table passed the ~10-1
 
 | Date | Type | Key Topics |
 |------|------|------------|
+| 2026-08-27 | tweet-digest | Bundesliga season sim launch; "simulation credibility" claim tweet |
+| 2026-08-26 | tweet-digest | Champions League match sims (2 tweets); CMC listing tease |
 | 2026-08-18 | tweet-digest | forecasting calibration research; unprompted external press pickup (Medium, @Amrit_Mirch) of the "market vs simulation" thesis |
 | 2026-08-09 | tweet-digest | x402 launch on agentic.market |
 | 2026-08-06 | tweet-digest | x402 agentic market listing |
