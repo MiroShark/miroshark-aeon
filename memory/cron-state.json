@@ -136,8 +136,8 @@
     "last_failed": "2026-06-24T15:24:55Z"
   },
   "memory-flush": {
-    "last_dispatch": "2026-10-04T18:02:24Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-11T18:07:25Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-04T18:07:55Z",
     "total_runs": 18,
     "total_successes": 18,
