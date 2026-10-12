@@ -1,0 +1,126 @@
+{
+  "root": "changelog_card",
+  "state": {},
+  "elements": {
+    "changelog_card": {
+      "type": "Card",
+      "props": {
+        "title": "Changelog (push-to)",
+        "description": "2026-10-12"
+      },
+      "children": [
+        "main_stack"
+      ]
+    },
+    "main_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "repos_section",
+        "separator1",
+        "content_section"
+      ]
+    },
+    "repos_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "source_link",
+        "arrow",
+        "dest_link"
+      ]
+    },
+    "source_link": {
+      "type": "Link",
+      "props": {
+        "label": "MiroShark/MiroShark",
+        "href": "https://github.com/MiroShark/MiroShark"
+      }
+    },
+    "arrow": {
+      "type": "Text",
+      "props": {
+        "text": "→",
+        "variant": "body"
+      }
+    },
+    "dest_link": {
+      "type": "Link",
+      "props": {
+        "label": "aaronjmars/miroshark-website",
+        "href": "https://github.com/aaronjmars/miroshark-website"
+      }
+    },
+    "separator1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "content_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "pr_count",
+        "changelog_entry",
+        "separator2",
+        "pr_link_section"
+      ]
+    },
+    "pr_count": {
+      "type": "Stat",
+      "props": {
+        "label": "New PRs",
+        "value": "9"
+      }
+    },
+    "changelog_entry": {
+      "type": "Text",
+      "props": {
+        "text": "\"Simulation resume and report-lookup fixes, security patch\"",
+        "variant": "lead"
+      }
+    },
+    "separator2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "pr_link_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "pr_link",
+        "draft_badge"
+      ]
+    },
+    "pr_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "PR #391",
+        "href": "https://github.com/aaronjmars/miroshark-website/pull/391",
+        "source": "miroshark-website"
+      }
+    },
+    "draft_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "draft",
+        "variant": "outline"
+      }
+    }
+  }
+}

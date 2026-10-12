@@ -1,4 +1,4 @@
-*Changelog (push-to) — 2026-10-05*
+*Changelog (push-to) — 2026-10-12*
 MiroShark/MiroShark → aaronjmars/miroshark-website
-4 new PRs → changelog entry "x402aff ecosystem listing and dependency bumps"
-PR: https://github.com/aaronjmars/miroshark-website/pull/369 (draft)
+9 new PRs → changelog entry "Simulation resume and report-lookup fixes, security patch"
+PR: https://github.com/aaronjmars/miroshark-website/pull/391 (draft)
