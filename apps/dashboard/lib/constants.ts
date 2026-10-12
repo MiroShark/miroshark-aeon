@@ -6,11 +6,12 @@ import type { Harness } from './types'
 // harness-switch snap uses (modelsForHarness(...)[0] in app/page.tsx). Keep it in
 // sync with the config default in lib/config.ts and aeon.yml `model:`.
 // Just the current three. A repo or per-skill pin that still names an older id
-// (claude-sonnet-5, claude-opus-4-8) keeps a visible entry via pickerOptions.
+// (claude-sonnet-5, claude-opus-4-8, claude-haiku-4-5-20251001) keeps a visible
+// entry via pickerOptions.
 export const MODELS = [
   { id: 'claude-sonnet-5-5', label: 'Sonnet 5.5' },
   { id: 'claude-opus-5-5', label: 'Opus 5.5' },
-  { id: 'claude-haiku-4-5-20251001', label: 'Haiku 4.5' },
+  { id: 'claude-haiku-5-5', label: 'Haiku 5.5' },
 ]
 
 // Models offered when the Grok (`grok`) harness is selected: the ids the
@@ -137,6 +138,7 @@ export const HARNESSES = [
 const RETIRED_MODEL_LABELS: Record<string, string> = {
   'claude-sonnet-5': 'Sonnet 5',
   'claude-opus-4-8': 'Opus 4.8',
+  'claude-haiku-4-5-20251001': 'Haiku 4.5',
   'openai/gpt-5.1-codex-mini': 'GPT-5.1 Codex Mini',
   'openai/gpt-5-mini': 'GPT-5 Mini',
   'openai/gpt-5.3-codex': 'GPT-5.3 Codex',
@@ -163,9 +165,10 @@ const RETIRED_MODEL_LABELS: Record<string, string> = {
 // not among its options silently shows the first one, so a configured model
 // that is not offered (an older pin) is appended, marked as configured.
 export function pickerOptions(list: readonly { id: string; label: string }[], current?: string | null) {
-  if (!current || list.some((m) => m.id === current)) return list
+  if (!current || list.some(m => m.id === current)) return list
   const known = [MODELS, GROK_MODELS, CODEX_MODELS, VIBE_MODELS, PI_MODELS, KIMI_MODELS, CURSOR_MODELS, HERMES_MODELS]
-    .flat().find((m) => m.id === current)
+    .flat()
+    .find(m => m.id === current)
   const label = known?.label ?? RETIRED_MODEL_LABELS[current] ?? current
   return [...list, { id: current, label: `${label} (configured)` }]
 }
@@ -229,9 +232,14 @@ export function keyProvidedByHarness(key: string, harness: string): boolean {
 }
 
 export const DAYS = [
-  { label: 'All', value: -1 }, { label: 'Mon', value: 1 }, { label: 'Tue', value: 2 },
-  { label: 'Wed', value: 3 }, { label: 'Thu', value: 4 }, { label: 'Fri', value: 5 },
-  { label: 'Sat', value: 6 }, { label: 'Sun', value: 0 },
+  { label: 'All', value: -1 },
+  { label: 'Mon', value: 1 },
+  { label: 'Tue', value: 2 },
+  { label: 'Wed', value: 3 },
+  { label: 'Thu', value: 4 },
+  { label: 'Fri', value: 5 },
+  { label: 'Sat', value: 6 },
+  { label: 'Sun', value: 0 },
 ]
 
 // The skill vocabulary. A skill's `category` IS its pack — one grouping, no
@@ -240,12 +248,12 @@ export const DAYS = [
 // field baked into skills.json. `lab` (category `other`) is the catch-all and
 // isn't author-selectable, so it's absent here.
 export const CATEGORIES: { key: string; label: string; short: string; color: string }[] = [
-  { key: 'core',             label: 'Core',               short: 'Core',         color: '#E5484D' },
-  { key: 'evolution',        label: 'Evolution',          short: 'Evolution',    color: '#A855F7' },
-  { key: 'basics',           label: 'Basics',             short: 'Basics',       color: '#30A46C' },
-  { key: 'dev',              label: 'Dev & Code',         short: 'Dev',          color: '#3B82F6' },
-  { key: 'crypto',           label: 'Crypto & Markets',   short: 'Crypto',       color: '#FF6B1A' },
-  { key: 'productivity',     label: 'Productivity',       short: 'Productivity', color: '#06B6D4' },
+  { key: 'core', label: 'Core', short: 'Core', color: '#E5484D' },
+  { key: 'evolution', label: 'Evolution', short: 'Evolution', color: '#A855F7' },
+  { key: 'basics', label: 'Basics', short: 'Basics', color: '#30A46C' },
+  { key: 'dev', label: 'Dev & Code', short: 'Dev', color: '#3B82F6' },
+  { key: 'crypto', label: 'Crypto & Markets', short: 'Crypto', color: '#FF6B1A' },
+  { key: 'productivity', label: 'Productivity', short: 'Productivity', color: '#06B6D4' },
 ]
 
 // First-party packs — the organizing unit across the dashboard (sidebar groups,
@@ -256,8 +264,9 @@ export const CATEGORIES: { key: string; label: string; short: string; color: str
 // dashboard's non-default pack order (Core, Evolution + Basics render first via DEFAULT_VISIBLE_PACKS).
 const PACKS = CATEGORIES
 
-export const PACK_BY_KEY: Record<string, { label: string; color: string }> =
-  Object.fromEntries(PACKS.map(p => [p.key, { label: p.label, color: p.color }]))
+export const PACK_BY_KEY: Record<string, { label: string; color: string }> = Object.fromEntries(
+  PACKS.map(p => [p.key, { label: p.label, color: p.color }]),
+)
 
 // The fixed set of first-party pack keys. Any pack key NOT in here is a
 // community pack (installed from another repo — see generate-packs-json's
@@ -275,7 +284,13 @@ export const DEFAULT_VISIBLE_PACKS = new Set(['core', 'evolution', 'basics'])
 
 const COMMUNITY_COLOR = '#A1A1AA'
 
-export interface PackGroup { key: string; label: string; short: string; color: string; community: boolean }
+export interface PackGroup {
+  key: string
+  label: string
+  short: string
+  color: string
+  community: boolean
+}
 
 // Build the ordered roster/HQ group list from whatever packs the given skills
 // actually belong to — driven by data, not a hardcoded list, so a skill in a
@@ -286,8 +301,13 @@ export interface PackGroup { key: string; label: string; short: string; color: s
 // key). Only packs that actually contain skills appear.
 export function packGroups(skills: { pack?: string; packName?: string }[]): PackGroup[] {
   const present = new Set(skills.map(s => s.pack || 'lab'))
-  const firstParty = PACKS.filter(p => present.has(p.key))
-    .map(p => ({ key: p.key, label: p.label, short: p.short, color: p.color, community: false }))
+  const firstParty = PACKS.filter(p => present.has(p.key)).map(p => ({
+    key: p.key,
+    label: p.label,
+    short: p.short,
+    color: p.color,
+    community: false,
+  }))
   const defaultVisible = firstParty.filter(g => DEFAULT_VISIBLE_PACKS.has(g.key))
   const restFirstParty = firstParty.filter(g => !DEFAULT_VISIBLE_PACKS.has(g.key))
   const community = [...present]
