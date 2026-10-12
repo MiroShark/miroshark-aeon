@@ -1,0 +1,526 @@
+{
+  "root": "card_root",
+  "state": {},
+  "elements": {
+    "card_root": {
+      "type": "Card",
+      "props": {
+        "title": "✅ Repo Pulse"
+      },
+      "children": [
+        "date_status",
+        "sep_1",
+        "repo_header",
+        "sep_2",
+        "stats_row",
+        "sep_3",
+        "notable_section",
+        "sep_4",
+        "other_section",
+        "sep_5",
+        "forks_section",
+        "sep_6",
+        "source"
+      ]
+    },
+    "date_status": {
+      "type": "Text",
+      "props": {
+        "text": "2026-10-12 — [SURGE]",
+        "variant": "lead"
+      }
+    },
+    "sep_1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "repo_header": {
+      "type": "StoryLink",
+      "props": {
+        "title": "aaronjmars/MiroShark",
+        "href": "https://github.com/aaronjmars/MiroShark"
+      }
+    },
+    "sep_2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "stats_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "stat_stars",
+        "stat_forks",
+        "stat_releases"
+      ]
+    },
+    "stat_stars": {
+      "type": "Stat",
+      "props": {
+        "label": "Stars",
+        "value": "1467",
+        "delta": "+10",
+        "trend": "up"
+      }
+    },
+    "stat_forks": {
+      "type": "Stat",
+      "props": {
+        "label": "Forks",
+        "value": "304",
+        "delta": "+2",
+        "trend": "up"
+      }
+    },
+    "stat_releases": {
+      "type": "Stat",
+      "props": {
+        "label": "Releases",
+        "value": "0",
+        "delta": "+0",
+        "trend": "neutral"
+      }
+    },
+    "sep_3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "notable_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "notable_heading",
+        "notable_users"
+      ]
+    },
+    "notable_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Notable new stargazers",
+        "level": "h3"
+      }
+    },
+    "notable_users": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "user_straffern",
+        "user_awab",
+        "user_francis",
+        "user_yizrael1"
+      ]
+    },
+    "user_straffern": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "straffern_link",
+        "straffern_meta"
+      ]
+    },
+    "straffern_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Straffern",
+        "href": "https://github.com/Straffern"
+      }
+    },
+    "straffern_meta": {
+      "type": "Text",
+      "props": {
+        "text": "📍 Denmark · 24 repos · 13 followers",
+        "variant": "caption"
+      }
+    },
+    "user_awab": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "awab_link",
+        "awab_meta",
+        "awab_bio",
+        "awab_links"
+      ]
+    },
+    "awab_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Awab Syed",
+        "href": "https://github.com/awabsyed1"
+      }
+    },
+    "awab_meta": {
+      "type": "Text",
+      "props": {
+        "text": "📍 San Francisco · 🏢 University of Sheffield · 34 repos · 22 followers",
+        "variant": "caption"
+      }
+    },
+    "awab_bio": {
+      "type": "Text",
+      "props": {
+        "text": "Roboticists | Control and System",
+        "variant": "body"
+      }
+    },
+    "awab_links": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "awab_website",
+        "awab_twitter"
+      ]
+    },
+    "awab_website": {
+      "type": "Link",
+      "props": {
+        "label": "Website",
+        "href": "https://awabsyed1.github.io/index.html"
+      }
+    },
+    "awab_twitter": {
+      "type": "Link",
+      "props": {
+        "label": "@AwabCyberSpace",
+        "href": "https://x.com/AwabCyberSpace"
+      }
+    },
+    "user_francis": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "francis_link",
+        "francis_meta",
+        "francis_bio"
+      ]
+    },
+    "francis_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Francis Miyoba",
+        "href": "https://github.com/heromiyo"
+      }
+    },
+    "francis_meta": {
+      "type": "Text",
+      "props": {
+        "text": "📍 Nanjing, China · 32 repos · 27 followers",
+        "variant": "caption"
+      }
+    },
+    "francis_bio": {
+      "type": "Text",
+      "props": {
+        "text": "Computer Science Student at Nanjing University of information Science and Technology, China.",
+        "variant": "body"
+      }
+    },
+    "user_yizrael1": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "yizrael1_link",
+        "yizrael1_meta"
+      ]
+    },
+    "yizrael1_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Yizrael",
+        "href": "https://github.com/Yizrael"
+      }
+    },
+    "yizrael1_meta": {
+      "type": "Text",
+      "props": {
+        "text": "508 repos",
+        "variant": "caption"
+      }
+    },
+    "sep_4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "other_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "other_heading",
+        "other_links"
+      ]
+    },
+    "other_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Other new stargazers",
+        "level": "h3"
+      }
+    },
+    "other_links": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "other_1",
+        "other_2",
+        "other_3",
+        "other_4",
+        "other_5",
+        "other_6",
+        "other_7"
+      ]
+    },
+    "other_1": {
+      "type": "Link",
+      "props": {
+        "label": "TNATALI",
+        "href": "https://github.com/TNATALI"
+      }
+    },
+    "other_2": {
+      "type": "Link",
+      "props": {
+        "label": "peterbaksa",
+        "href": "https://github.com/peterbaksa"
+      }
+    },
+    "other_3": {
+      "type": "Link",
+      "props": {
+        "label": "aconcepcion",
+        "href": "https://github.com/aconcepcion"
+      }
+    },
+    "other_4": {
+      "type": "Link",
+      "props": {
+        "label": "jsingh-sketch",
+        "href": "https://github.com/jsingh-sketch"
+      }
+    },
+    "other_5": {
+      "type": "Link",
+      "props": {
+        "label": "lafinak",
+        "href": "https://github.com/lafinak"
+      }
+    },
+    "other_6": {
+      "type": "Link",
+      "props": {
+        "label": "xuhaoyu002-prog",
+        "href": "https://github.com/xuhaoyu002-prog"
+      }
+    },
+    "other_7": {
+      "type": "Link",
+      "props": {
+        "label": "bitmoral",
+        "href": "https://github.com/bitmoral"
+      }
+    },
+    "sep_5": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "forks_section": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "forks_heading",
+        "forks_list"
+      ]
+    },
+    "forks_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "New forks",
+        "level": "h3"
+      }
+    },
+    "forks_list": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "fork_aigov",
+        "fork_opm",
+        "fork_yiz"
+      ]
+    },
+    "fork_aigov": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "aigov_link",
+        "aigov_meta",
+        "aigov_bio",
+        "aigov_links"
+      ]
+    },
+    "aigov_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Aigov-consulting/MiroShark",
+        "href": "https://github.com/Aigov-consulting/MiroShark"
+      }
+    },
+    "aigov_meta": {
+      "type": "Text",
+      "props": {
+        "text": "Aigov.consulting · 📍 Estonia · 39 repos",
+        "variant": "caption"
+      }
+    },
+    "aigov_bio": {
+      "type": "Text",
+      "props": {
+        "text": "Artificial Intelligence: The Driving Force of Government Efficiency",
+        "variant": "body"
+      }
+    },
+    "aigov_links": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "aigov_website",
+        "aigov_twitter"
+      ]
+    },
+    "aigov_website": {
+      "type": "Link",
+      "props": {
+        "label": "Website",
+        "href": "https://aigov.consulting/"
+      }
+    },
+    "aigov_twitter": {
+      "type": "Link",
+      "props": {
+        "label": "@AIgovconsulting",
+        "href": "https://x.com/AIgovconsulting"
+      }
+    },
+    "fork_opm": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "opm_link",
+        "opm_meta",
+        "opm_linkedin"
+      ]
+    },
+    "opm_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "OpmRain/MiroShark",
+        "href": "https://github.com/OpmRain/MiroShark"
+      }
+    },
+    "opm_meta": {
+      "type": "Text",
+      "props": {
+        "text": "Edward OPM · 288 repos",
+        "variant": "caption"
+      }
+    },
+    "opm_linkedin": {
+      "type": "Link",
+      "props": {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/edwardopm/"
+      }
+    },
+    "fork_yiz": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "yiz_link",
+        "yiz_meta"
+      ]
+    },
+    "yiz_link": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Yizrael/MiroShark",
+        "href": "https://github.com/Yizrael/MiroShark"
+      }
+    },
+    "yiz_meta": {
+      "type": "Text",
+      "props": {
+        "text": "508 repos",
+        "variant": "caption"
+      }
+    },
+    "sep_6": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "source": {
+      "type": "Text",
+      "props": {
+        "text": "Source: events",
+        "variant": "muted"
+      }
+    }
+  }
+}
