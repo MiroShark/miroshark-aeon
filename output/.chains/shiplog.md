@@ -1,14 +1,22 @@
-ℹ️ Miroshark Shiplog — Oct 1→5
+✅ Miroshark Shiplog — Oct 5 → 12
 
-miroshark shiplog 🦈 oct 1 → oct 5
+miroshark shiplog 🦈 oct 5 → oct 12
 
-quietest window yet. the bytes:
+shipped 18 PRs + 18 commits across the miroshark lane this window. the bytes:
 
-- zero commits to the public engine repo, zero to x402aff, zero to the private companion repo. nothing moved anywhere in the product this week
-- miroshark-website got 2 small fixes: an analytics CSP fix + posthog funnel tracking. that's it
-- the vertical-video tiktok post was a repromo of a feature that shipped 2 weeks ago, not new
-- 1,457 ⭐ (-3) — first star decline we've logged. not claiming causation, just not hiding it either
+- resume actually works now: sims resume on an existing DB and keep progress on failure instead of dying mid-run. @MiroShark
+- report lookup fixed: a finished sim returns its newest report, not a stale one. @MiroShark
+- patched 4 open dependabot alerts (1 critical) on the engine repo same week. @MiroShark
+- x402aff now reports builder-code resolution via a new header (X-Builder-Code-Status) — the affiliate layer gets receipts. @MiroShark / x402aff
+
+first real engine-code window in 6+ — public repo had been dependabot-only since mid-august.
+
+traction:
+- miroshark 1,467 ⭐ (+10 this window — reverses last window's first-ever decline)
+- forks 304 (+2)
+
+no post about any of this went out yet. the fixes shipped quieter than they should have.
 
 🦈
 
-https://github.com/aaronjmars/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-05.md
+https://github.com/aaronjmars/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-12.md

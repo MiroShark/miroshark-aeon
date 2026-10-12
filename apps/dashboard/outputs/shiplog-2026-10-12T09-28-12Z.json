@@ -1,0 +1,154 @@
+{
+  "root": "card-shiplog",
+  "state": {},
+  "elements": {
+    "card-shiplog": {
+      "type": "Card",
+      "props": {
+        "title": "Miroshark Shiplog — Oct 5 → 12"
+      },
+      "children": [
+        "heading-intro",
+        "text-shipped-intro",
+        "stack-items",
+        "text-note1",
+        "separator-1",
+        "heading-traction",
+        "stack-metrics",
+        "separator-2",
+        "text-note2",
+        "text-sign",
+        "link-article"
+      ]
+    },
+    "heading-intro": {
+      "type": "Heading",
+      "props": {
+        "text": "miroshark shiplog 🦈 oct 5 → oct 12",
+        "level": "h2"
+      }
+    },
+    "text-shipped-intro": {
+      "type": "Text",
+      "props": {
+        "text": "shipped 18 PRs + 18 commits across the miroshark lane this window. the bytes:"
+      }
+    },
+    "stack-items": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "item-1",
+        "item-2",
+        "item-3",
+        "item-4"
+      ]
+    },
+    "item-1": {
+      "type": "Text",
+      "props": {
+        "text": "resume actually works now: sims resume on an existing DB and keep progress on failure instead of dying mid-run. @MiroShark"
+      }
+    },
+    "item-2": {
+      "type": "Text",
+      "props": {
+        "text": "report lookup fixed: a finished sim returns its newest report, not a stale one. @MiroShark"
+      }
+    },
+    "item-3": {
+      "type": "Text",
+      "props": {
+        "text": "patched 4 open dependabot alerts (1 critical) on the engine repo same week. @MiroShark"
+      }
+    },
+    "item-4": {
+      "type": "Text",
+      "props": {
+        "text": "x402aff now reports builder-code resolution via a new header (X-Builder-Code-Status) — the affiliate layer gets receipts. @MiroShark / x402aff"
+      }
+    },
+    "text-note1": {
+      "type": "Text",
+      "props": {
+        "text": "first real engine-code window in 6+ — public repo had been dependabot-only since mid-august.",
+        "variant": "muted"
+      }
+    },
+    "separator-1": {
+      "type": "Separator",
+      "props": {}
+    },
+    "heading-traction": {
+      "type": "Heading",
+      "props": {
+        "text": "traction",
+        "level": "h2"
+      }
+    },
+    "stack-metrics": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "stat-stars",
+        "text-context-stars",
+        "stat-forks"
+      ]
+    },
+    "stat-stars": {
+      "type": "Stat",
+      "props": {
+        "label": "miroshark ⭐",
+        "value": "1,467",
+        "delta": "+10 this window",
+        "trend": "up"
+      }
+    },
+    "text-context-stars": {
+      "type": "Text",
+      "props": {
+        "text": "(reverses last window's first-ever decline)",
+        "variant": "caption"
+      }
+    },
+    "stat-forks": {
+      "type": "Stat",
+      "props": {
+        "label": "forks",
+        "value": "304",
+        "delta": "+2",
+        "trend": "up"
+      }
+    },
+    "separator-2": {
+      "type": "Separator",
+      "props": {}
+    },
+    "text-note2": {
+      "type": "Text",
+      "props": {
+        "text": "no post about any of this went out yet. the fixes shipped quieter than they should have.",
+        "variant": "muted"
+      }
+    },
+    "text-sign": {
+      "type": "Text",
+      "props": {
+        "text": "🦈"
+      }
+    },
+    "link-article": {
+      "type": "Link",
+      "props": {
+        "label": "Read full shiplog",
+        "href": "https://github.com/aaronjmars/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-12.md"
+      }
+    }
+  }
+}
