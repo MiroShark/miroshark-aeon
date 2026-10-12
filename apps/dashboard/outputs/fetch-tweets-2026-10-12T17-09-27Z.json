@@ -1,0 +1,72 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "ℹ️ Tweet Digest"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "date",
+        "theme",
+        "sep",
+        "tweet",
+        "profile",
+        "status"
+      ]
+    },
+    "date": {
+      "type": "Heading",
+      "props": {
+        "text": "Tweet Digest — 2026-10-12",
+        "level": "h2"
+      }
+    },
+    "theme": {
+      "type": "Badge",
+      "props": {
+        "text": "Theme: Ecosystem integration",
+        "variant": "secondary"
+      }
+    },
+    "sep": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "tweet": {
+      "type": "TweetCard",
+      "props": {
+        "author": "miroshark_",
+        "handle": "miroshark_",
+        "text": "api now listed on monad's API hub — another distribution channel after the PayAI listing on Oct 1"
+      }
+    },
+    "profile": {
+      "type": "Link",
+      "props": {
+        "label": "x.com/miroshark_",
+        "href": "https://x.com/miroshark_"
+      }
+    },
+    "status": {
+      "type": "Link",
+      "props": {
+        "label": "View tweet",
+        "href": "https://x.com/miroshark_/status/2109642951454302325"
+      }
+    }
+  }
+}
