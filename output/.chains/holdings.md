@@ -1,6 +1,4 @@
-ℹ️ Holdings
-
 *Holdings — MiroShark*
 
-12.25B · 12.25% of supply
-7d +38.92M (+0.32%) · 30d +300.04M (+2.51%)
+12.32B · 12.32% of supply
+7d +73.0M (+0.6%) · 30d +287.8M (+2.4%)
