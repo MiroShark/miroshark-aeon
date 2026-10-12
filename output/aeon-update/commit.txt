@@ -1,0 +1,5 @@
+aeon-update: sync upstream 1a7f07e..df013db
+
+27 upstream commits from aeonfun/aeon. 183 files applied cleanly, 22 need manual review. Baseline advanced to df013db.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>

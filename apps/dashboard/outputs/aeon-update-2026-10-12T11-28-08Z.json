@@ -1,0 +1,243 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update: PR #204",
+        "description": "synced 27 upstream commits from aeonfun/aeon"
+      },
+      "children": [
+        "meta",
+        "file_stats",
+        "sep1",
+        "applied_stack",
+        "sep2",
+        "manual_stack",
+        "sep3",
+        "pr"
+      ]
+    },
+    "meta": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "date_text",
+        "commit_range",
+        "baseline_text"
+      ]
+    },
+    "date_text": {
+      "type": "Text",
+      "props": {
+        "text": "aeon-update — 2026-10-12"
+      }
+    },
+    "commit_range": {
+      "type": "Text",
+      "props": {
+        "text": "`aeonfun/aeon` `1a7f07e..df013db`"
+      }
+    },
+    "baseline_text": {
+      "type": "Text",
+      "props": {
+        "text": "Baseline → `df013db` (advances on merge)"
+      }
+    },
+    "file_stats": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "stat_clean",
+        "stat_manual"
+      ]
+    },
+    "stat_clean": {
+      "type": "Stat",
+      "props": {
+        "label": "Files applied clean",
+        "value": "183"
+      }
+    },
+    "stat_manual": {
+      "type": "Stat",
+      "props": {
+        "label": "Held for manual review",
+        "value": "22"
+      }
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "applied_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "applied_heading",
+        "applied_items",
+        "merges_text",
+        "ci_text"
+      ]
+    },
+    "applied_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Applied",
+        "level": "h3"
+      }
+    },
+    "applied_items": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "item_biome",
+        "item_haiku",
+        "item_mcp",
+        "item_packs"
+      ]
+    },
+    "item_biome": {
+      "type": "Text",
+      "props": {
+        "text": "Biome across all apps + new `biome.json`"
+      }
+    },
+    "item_haiku": {
+      "type": "Text",
+      "props": {
+        "text": "haiku tier → `claude-haiku-5-5`"
+      }
+    },
+    "item_mcp": {
+      "type": "Text",
+      "props": {
+        "text": "mcp-server resolved-model / 1800s / hosted-MCP pointers"
+      }
+    },
+    "item_packs": {
+      "type": "Text",
+      "props": {
+        "text": "Epoch + bon travail packs"
+      }
+    },
+    "merges_text": {
+      "type": "Text",
+      "props": {
+        "text": "3 clean 3-way merges: `ci-apps.yml`, `docs/aeon-setup.md` (kept fork's 82 count), `scripts/llm-gateway.sh`"
+      }
+    },
+    "ci_text": {
+      "type": "Text",
+      "props": {
+        "text": "CI pre-checks green: skill-packs, readme-catalog (82), config",
+        "variant": "muted"
+      }
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "manual_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "manual_heading",
+        "manual_items"
+      ]
+    },
+    "manual_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Manual (22)",
+        "level": "h3"
+      }
+    },
+    "manual_items": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "manual_item1",
+        "manual_item2",
+        "manual_item3",
+        "manual_item4",
+        "manual_item5",
+        "manual_item6"
+      ]
+    },
+    "manual_item1": {
+      "type": "Text",
+      "props": {
+        "text": "skill-count cluster (fork 82 vs upstream 85 — README / examples / llms.txt)"
+      }
+    },
+    "manual_item2": {
+      "type": "Text",
+      "props": {
+        "text": "fork workflows (`aeon.yml` / `ci-tests.yml`)"
+      }
+    },
+    "manual_item3": {
+      "type": "Text",
+      "props": {
+        "text": "dashboard + webhook dep bumps (held with their locks)"
+      }
+    },
+    "manual_item4": {
+      "type": "Text",
+      "props": {
+        "text": "3 fork-deleted eslint configs"
+      }
+    },
+    "manual_item5": {
+      "type": "Text",
+      "props": {
+        "text": "`fetch-tweets` / `shiplog` edits"
+      }
+    },
+    "manual_item6": {
+      "type": "Text",
+      "props": {
+        "text": "not-adopted `feedback-builder` / `compute-resell`"
+      }
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "pr": {
+      "type": "StoryLink",
+      "props": {
+        "title": "PR #204",
+        "href": "https://github.com/aaronjmars/miroshark-aeon/pull/204",
+        "source": "GitHub"
+      }
+    }
+  }
+}
