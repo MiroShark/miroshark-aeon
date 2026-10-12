@@ -140,6 +140,8 @@ Turn it off per repo with the variable **`SKILL_DRYRUN=0`** (default on), so a f
 
 Let skills **call** MCP servers (GitHub, a database, a paid API, your own) while they run in GitHub Actions. Opt-in and safe - with no `.mcp.json` at the repo root, runs are byte-identical to before.
 
+This is about skills calling *other* MCP servers. To drive Aeon itself from ChatGPT, Claude or Cursor, use the hosted server at [www.aeon.fun/connect/mcp](https://www.aeon.fun/connect/mcp) or the local one ([hosted or local?](../apps/mcp-server/README.md#hosted-or-local)).
+
 ```bash
 cp docs/examples/mcp/.mcp.json.example .mcp.json   # then edit, commit, push
 ```
@@ -297,11 +299,11 @@ The default model for all skills is set in `aeon.yml` (or from the dashboard hea
 model: claude-sonnet-5-5
 ```
 
-Options: `claude-sonnet-5-5` (default), `claude-opus-5-5`, `claude-haiku-4-5-20251001` (the older `claude-sonnet-5` and `claude-opus-4-8` are still accepted). Per-run overrides are available via workflow dispatch, and individual skills can override to optimize cost:
+Options: `claude-sonnet-5-5` (default), `claude-opus-5-5`, `claude-haiku-5-5` (the older `claude-sonnet-5`, `claude-opus-4-8` and `claude-haiku-4-5-20251001` are still accepted). Per-run overrides are available via workflow dispatch, and individual skills can override to optimize cost:
 
 ```yaml
 skills:
-  token-movers: { enabled: true, schedule: "30 12 * * *", model: "claude-haiku-4-5-20251001" }
+  token-movers: { enabled: true, schedule: "30 12 * * *", model: "claude-haiku-5-5" }
 ```
 
 > Model ids are for the **claude** harness; each other [harness](harnesses.md) carries its own list, which the dashboard picker swaps in when you select it.

@@ -31,7 +31,7 @@ describe("sanitizeModel", () => {
   it("keeps dotted versions and colon variant suffixes", () => {
     assert.equal(sanitizeModel("grok-4.5"), "grok-4.5");
     assert.equal(sanitizeModel("vendor/model:free"), "vendor/model:free");
-    assert.equal(sanitizeModel("claude-haiku-4-5-20251001"), "claude-haiku-4-5-20251001");
+    assert.equal(sanitizeModel("claude-haiku-5-5"), "claude-haiku-5-5");
   });
 
   it("strips characters outside the id charset", () => {
@@ -42,7 +42,20 @@ describe("sanitizeModel", () => {
   });
 
   it("rejects values that do not look like an id", () => {
-    for (const bad of ["", "/", "/etc/passwd", "../x", "a/../b", "a//b", "openai/", "model:", "-x", ".x", ":x", "(config default)"]) {
+    for (const bad of [
+      "",
+      "/",
+      "/etc/passwd",
+      "../x",
+      "a/../b",
+      "a//b",
+      "openai/",
+      "model:",
+      "-x",
+      ".x",
+      ":x",
+      "(config default)",
+    ]) {
       assert.equal(sanitizeModel(bad), "", `${JSON.stringify(bad)} should be rejected`);
     }
   });
@@ -63,7 +76,10 @@ describe("dispatch argv keeps slashed model ids", () => {
 
   it("buildSkillRunArgs omits an unusable model", () => {
     const args = buildSkillRunArgs("digest", { model: "../.." });
-    assert.equal(args.some(a => a.startsWith("model=")), false);
+    assert.equal(
+      args.some(a => a.startsWith("model=")),
+      false,
+    );
   });
 
   it("buildStrategy and buildSoul (dashboard + aeon strategy/soul)", () => {

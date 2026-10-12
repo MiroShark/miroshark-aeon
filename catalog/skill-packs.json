@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "description": "Machine-readable registry of community skill packs installable via bin/install-skill-pack. Mirrors the human-readable table in README.md.",
   "packs": [
     {
@@ -147,6 +147,52 @@
       "secrets_required": [],
       "capabilities": [
         "read_only",
+        "sends_notifications"
+      ]
+    },
+    {
+      "repo": "Svector-anu/epoch",
+      "name": "Epoch Pack",
+      "description": "Your unattended software engineer, running inside your Aeon instance: spec, build, review, prove and a merge-ready verdict, each pinned to one commit. Opens pull requests; you merge.",
+      "author": "Svector-anu",
+      "license": "MIT",
+      "homepage": "https://github.com/Svector-anu/epoch",
+      "category": "dev",
+      "trust_level": "community",
+      "skills": [
+        "epoch-spec",
+        "epoch-build",
+        "epoch-review",
+        "epoch-watch"
+      ],
+      "secrets_required": [
+        "GH_GLOBAL"
+      ],
+      "capabilities": [
+        "read_only",
+        "external_api",
+        "writes_external_host"
+      ]
+    },
+    {
+      "repo": "Svector-anu/bon-travail",
+      "path": "aeon",
+      "name": "bon travail Pack",
+      "description": "Agents find broken code and pay humans to fix it. Sweep a bon travail deployment every ten minutes (watch CI, verify fixes, pay, refund) and investigate repeated CI failures: reproduce, bisect, and propose how a fix should be judged. Agents describe; engineers decide; the repo's own tests judge.",
+      "author": "Svector-anu",
+      "license": "MIT",
+      "homepage": "https://bontravail.xyz/introducing",
+      "category": "dev",
+      "trust_level": "community",
+      "skills": [
+        "proofwork-loop",
+        "proofwork-investigate"
+      ],
+      "secrets_required": [
+        "PROOFWORK_AGENT_TOKEN"
+      ],
+      "capabilities": [
+        "external_api",
         "sends_notifications"
       ]
     }

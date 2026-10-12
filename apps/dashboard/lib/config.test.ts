@@ -172,7 +172,7 @@ describe("updateSkillInConfig", () => {
     const updated = updateSkillInConfig(yaml, "chain-step", { enabled: false });
     // The whole value stays on one physical line (no fold).
     assert.ok(
-      updated.split("\n").some((line) => line.includes(longVar)),
+      updated.split("\n").some(line => line.includes(longVar)),
       "long var value was folded across lines",
     );
     // And it still round-trips intact.
@@ -190,9 +190,9 @@ describe("updateModelInConfig", () => {
   });
 
   it("replaces an existing model", () => {
-    const updated = updateModelInConfig(FULL_YAML, "claude-haiku-4-5-20251001");
+    const updated = updateModelInConfig(FULL_YAML, "claude-haiku-5-5");
     const config = parseConfig(updated);
-    assert.equal(config.model, "claude-haiku-4-5-20251001");
+    assert.equal(config.model, "claude-haiku-5-5");
   });
 });
 
@@ -388,10 +388,7 @@ describe("upsertSkillInConfig", () => {
   it("creates and enables an entry that does not exist yet", () => {
     // The regression: updateSkillInConfig no-ops here, so `aeon skills enable`
     // silently did nothing for a freshly created SKILL.md.
-    assert.equal(
-      updateSkillInConfig(MINIMAL_YAML, "brand-new", { enabled: true }),
-      MINIMAL_YAML,
-    );
+    assert.equal(updateSkillInConfig(MINIMAL_YAML, "brand-new", { enabled: true }), MINIMAL_YAML);
 
     const yaml = upsertSkillInConfig(MINIMAL_YAML, "brand-new", { enabled: true });
     assert.equal(parseConfig(yaml).skills["brand-new"].enabled, true);
@@ -470,7 +467,9 @@ describe("generated entries are readable by the scheduler", () => {
   it("updateSkillInConfig double-quotes new var/model/harness keys", () => {
     const line = scheduleLine(
       updateSkillInConfig(MINIMAL_YAML, "heartbeat", {
-        var: "brief", model: "claude-opus-5-5", harness: "grok",
+        var: "brief",
+        model: "claude-opus-5-5",
+        harness: "grok",
       }),
       "heartbeat",
     );

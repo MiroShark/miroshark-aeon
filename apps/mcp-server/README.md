@@ -1,10 +1,37 @@
-# Aeon MCP Server
+# Aeon MCP Server (local)
 
-Expose every Aeon skill as a [Model Context Protocol](https://modelcontextprotocol.io) tool, so you can run any skill straight from **Claude Desktop** or **Claude Code** — no GitHub Actions, no cron, no separate UI. Each skill shows up as an `aeon-<slug>` tool; ask Claude to use it and it runs the exact same `SKILL.md` prompt the scheduled runner uses.
+Expose every Aeon skill as a [Model Context Protocol](https://modelcontextprotocol.io) tool, so you can run any skill straight from **Claude Desktop** or **Claude Code** on your own machine. Each skill shows up as an `aeon-<slug>` tool; ask Claude to use it and it runs the exact same `SKILL.md` prompt the scheduled runner uses. Using ChatGPT or Cursor, or want nothing to install? Use the hosted server at [www.aeon.fun/connect/mcp](https://www.aeon.fun/connect/mcp) instead (see below).
+
+## Hosted or local?
+
+There are two Aeon MCP servers. Pick the one that fits:
+
+| | Hosted (Aeon Connect) | Local (this app) |
+|---|---|---|
+| **Add it with** | `https://www.aeon.fun/connect/mcp` as a connector | `bin/add-mcp` |
+| **Transport** | Streamable HTTP, OAuth 2.1 with GitHub sign-in | stdio |
+| **Works in** | ChatGPT, Claude, Claude Code, Cursor, any remote MCP client | Claude Code, Claude Desktop |
+| **Runs skills on** | your repo's own GitHub Actions | your machine, through `harness-adapter/run-harness` |
+| **Tools** | about 20: list and run skills, read runs, output and memory, edit skills, strategy and soul, check setup, install packs, switch between your Aeon repos | one `aeon-<slug>` tool per skill |
+| **Needs** | an Aeon repo with the Aeon Connect GitHub App installed | a clone of your repo, Node 20+, a harness CLI signed in, and the keys your skills use |
+
+**Hosted how-to.** Add `https://www.aeon.fun/connect/mcp` as a custom connector (custom MCP server) in ChatGPT, Claude or Cursor. In Claude Code:
+
+```bash
+claude mcp add --transport http aeon https://www.aeon.fun/connect/mcp
+```
+
+Sign in with GitHub when asked, then pick which agent repo the client can reach on the consent screen. Secret values are never readable or writable over it; `setup_status` only shows key names.
+
+**Using both?** `bin/add-mcp` registers the local server under the name `aeon` and first runs `claude mcp remove aeon`, which would delete a hosted entry with the same name (the script warns you when it sees one). To keep both, add the hosted one under another name:
+
+```bash
+claude mcp add --transport http aeon-cloud https://www.aeon.fun/connect/mcp
+```
 
 ## What it is
 
-The server reads `catalog/skills.json` and advertises each skill as an MCP tool over stdio. When Claude calls a tool, it runs the matching `skills/<slug>/SKILL.md` through `harness-adapter/run-harness` on the configured harness (Claude Code by default), waits for the run to finish (same ~10-minute budget as Actions), and hands the skill's output back as the tool result. It's the bridge that turns "Aeon runs on a schedule in CI" into "Aeon is a set of tools inside my Claude session."
+The server reads `catalog/skills.json` and advertises each skill as an MCP tool over stdio. When Claude calls a tool, it runs the matching `skills/<slug>/SKILL.md` through `harness-adapter/run-harness` on the configured harness (Claude Code by default), waits for the run to finish (up to 30 minutes, the same per-run budget a scheduled run passes to `run-harness`), and hands the skill's output back as the tool result. It's the bridge that turns "Aeon runs on a schedule in CI" into "Aeon is a set of tools inside my Claude session."
 
 It's the local, push-button way to run any skill from a Claude client. It spawns the same skill prompt the GitHub Actions runner uses, so behaviour is identical across entry points (cron and Claude).
 
@@ -34,6 +61,7 @@ node dist/index.js           # stdio server; normally launched by the MCP client
 
 - **Node.js >= 18** and npm (build + runtime).
 - The CLI for the harness the skill resolves to on `PATH` (`AEON_HARNESS` env, else the skill's `harness:` in `aeon.yml`, else the global `harness:`, else `claude`). For the default, install the **`claude` CLI** with `npm install -g @anthropic-ai/claude-code`.
+- Optional `AEON_MODEL` env to pick the model for every run, like the workflow's `model` dispatch input. Otherwise the model is resolved the same way a scheduled run does it: the skill's `model:` in `aeon.yml`, else the global `model:`, else `claude-sonnet-5-5`. claude gets that id as `--model`; grok gets it only if it is a `grok-*` id (a claude id becomes `grok-4.7`); the other harnesses get whatever `scripts/resolve-harness.sh` maps it to for their provider, or no `--model` so their own default applies.
 - Whatever each skill needs at runtime — `ANTHROPIC_API_KEY` (or a configured gateway), `GITHUB_TOKEN` for repo skills, and any per-skill API keys. The spawned skill process inherits the MCP server's environment, so export these in your shell (or the `env` block of the client's MCP config) before launching it. Nothing reads a `.env` file.
 
 ## Tools
@@ -43,7 +71,7 @@ Every entry in `catalog/skills.json` becomes one tool:
 | | |
 |---|---|
 | **Name** | `aeon-<slug>` — e.g. `aeon-digest`, `aeon-pr-review`, `aeon-token-movers`. |
-| **Description** | `[Aeon · <Category>] <skill description> (cron: <schedule>)` or `(on-demand)`, generated from the manifest so Claude can pick the right tool. |
+| **Description** | `[Aeon · <Category>] <skill description> (cron: <schedule>)`, `(on-demand)` or `(reactive)`, built from the manifest so Claude can pick the right tool. The schedule is read from the skill's entry in `aeon.yml` (the catalog does not carry schedules); a skill with no entry there gets no suffix. |
 | **Input** | A single optional `var` (string) — the skill's `${var}` input. Its description is the skill's own `var` contract, or a sensible category default. Leave it empty to use the skill's default behaviour. |
 
 Examples of what `var` means per skill: a topic for research skills (`var="AI agent frameworks 2026"`), an `owner/repo` for dev skills, a token symbol for crypto skills. When in doubt, the skill's `SKILL.md` documents its `var` contract.
@@ -89,7 +117,7 @@ You should see the full `aeon-*` tool list followed by a real skill output. If t
 
 - **Transport:** stdio (`StdioServerTransport`) using the official `@modelcontextprotocol/sdk`. The MCP client launches `node dist/index.js` as a subprocess and speaks JSON-RPC over stdin/stdout — diagnostics go to stderr (`[aeon-mcp] …`) so they never corrupt the protocol stream.
 - **Skill discovery:** `loadSkills()` parses `catalog/skills.json` (resolved relative to the compiled file, three levels up from `dist/`). If the manifest is missing the server starts with zero tools rather than crashing.
-- **Execution:** each call spawns `harness-adapter/run-harness <harness> --mode <tier> --allowed-tools <list>` (tier and tools from `scripts/skill_mode.sh`, like a scheduled run) with `cwd` set to the repo root and a 600 000 ms (10-minute) timeout — the same budget GitHub Actions gives a skill. The JSON envelope is unwrapped to return `result`; raw output is returned as a fallback.
+- **Execution:** each call spawns `harness-adapter/run-harness <harness> --model <model> --mode <tier> --allowed-tools <list> --append-system-prompt <tier notes> --timeout 1800` (model as described under Requirements; tier, tools and tier notes from `scripts/skill_mode.sh`, the same values `.github/workflows/aeon.yml` passes on a scheduled run) with `cwd` set to the repo root. The 1800-second (30-minute) timeout matches the `--timeout` the workflow gives `run-harness`; the workflow job itself has a longer outer limit. The JSON envelope is unwrapped to return `result`; raw output is returned as a fallback.
 - **Errors are returned, not thrown:** a missing skill, a missing `run-harness` (`ENOENT`), or a non-zero exit (including a missing harness CLI) all come back as readable tool text so Claude can react instead of the connection dropping.
 
 ## Sandbox / deployment note

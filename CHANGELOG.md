@@ -11,6 +11,17 @@ from or pin to; the template keeps serving the latest `main` to new forks.
 
 ### Added
 
+- **Hosted MCP server: drive your agent from ChatGPT, Claude or Cursor.** Aeon Connect now serves
+  a remote MCP server at [www.aeon.fun/connect/mcp](https://www.aeon.fun/connect/mcp) (Streamable
+  HTTP, OAuth 2.1 with dynamic client registration and PKCE, GitHub sign-in). The consent screen
+  picks which agent repo a client can reach, and `switch_instance` moves between your Aeon repos
+  after a fresh GitHub check. About 20 tools list and run skills (runs dispatch on the repo's own
+  GitHub Actions), read runs, output and memory, edit skills, strategy and soul, show setup status
+  (key names only) and install packs. Secret values are never readable or writable over it. Claude
+  Code: `claude mcp add --transport http aeon https://www.aeon.fun/connect/mcp`. The README, setup
+  skill, `apps/mcp-server` README, security policy, `llms.txt` and docs now point to it, and
+  `bin/add-mcp` warns before its `claude mcp remove aeon` would delete a hosted `aeon` entry.
+  (aeon-connect #66, #68)
 - **Aeon Connect: start an agent from the browser.** [www.aeon.fun/connect](https://www.aeon.fun/connect)
   is the hosted, multi-tenant version of the dashboard (aaronjmars/aeon-connect). Sign in with GitHub,
   **Create your aeon**: the repo is created first (public = a real fork of aeonfun/aeon that can pull
@@ -175,6 +186,22 @@ from or pin to; the template keeps serving the latest `main` to new forks.
   sync window but is numbered below that watermark, so it is reconciled here. (#1039)
 
 ### Changed
+
+- **Haiku tier moves to Claude Haiku 5.5.** `claude-haiku-5-5` replaces `claude-haiku-4-5-20251001`
+  in the dashboard picker, the workflow_dispatch choices, the quality scorer's default, the
+  json-render notifier and the docs; `claude-haiku-4-5-20251001` stays a valid dispatch choice and
+  shows as "Haiku 4.5 (configured)". The OpenRouter haiku slot defaults to
+  `anthropic/claude-haiku-5.5`; Surplus does not serve it yet, so its haiku tier stays on
+  `claude-haiku-4.5`. Fleet scorecard prices Haiku 5.5 at $0.10 in / $0.50 out per 1M tokens.
+
+- **Operator-console plugin fills its Claude directory listing.** `plugin/.claude-plugin/plugin.json`
+  now sets `displayName`, author email, `icon` and the docs, support, privacy and terms links that
+  Anthropic's plugin directory reads for the listing, and a shorter `description` that fits the
+  listing's short-description slot.
+
+- **Operator-console plugin drops the MiniMax and agent-plugins manifests.** `plugin/.minimax-plugin/`
+  and the root `plugin/plugin.json` (agent-plugins.org format, for Kiro Powers) are gone; the plugin
+  now ships for Claude Code and Codex only. `plugin/icon.png` stays (the Codex manifest uses it).
 
 - **Model pickers show only the latest models.** pi: `deepseek/deepseek-v4.1-flash` (new default)
   and `deepseek/deepseek-v4-pro`; vibe: `mistralai/mistral-medium-3-5` and
