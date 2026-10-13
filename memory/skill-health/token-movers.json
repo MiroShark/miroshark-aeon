@@ -1,15 +1,13 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-12T06:50:01Z",
-  "quality_score": 4,
-  "assessment": "Substantive, well-structured token momentum report with transparent sourcing, cross-validation (DexScreener check mentioned), and appropriate classification. Directly serves strategy priority to 'track momentum honestly' with honest methodology. Not a 5 because routine monitoring work rather than novel insight, and specific figures cannot be independently re-verified without re-running APIs, though sources are transparent and verifiable pointers are provided.",
-  "flags": [],
-  "avg_score": 4.03,
+  "last_analyzed": "2026-10-13T06:22:44Z",
+  "quality_score": 2,
+  "assessment": "Well-structured report with coherent analysis, but asserts specific factual claims (exact prices, volumes, trades, contract addresses) that cannot be verified from the output itself. Strategy explicitly forbids publishing 'unverified numbers as fact' — a hard constraint violated here.",
+  "flags": [
+    "unverifiable_claim"
+  ],
+  "avg_score": 3.97,
   "history": [
-    {
-      "date": "2026-09-12",
-      "score": 4
-    },
     {
       "date": "2026-09-13",
       "score": 4
@@ -125,6 +123,10 @@
     {
       "date": "2026-10-12",
       "score": 4
+    },
+    {
+      "date": "2026-10-13",
+      "score": 2
     }
   ]
 }
