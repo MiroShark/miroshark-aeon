@@ -1,0 +1,62 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "MIROSHARK — QUIET"
+      },
+      "children": [
+        "status",
+        "summary",
+        "metrics"
+      ]
+    },
+    "status": {
+      "type": "Badge",
+      "props": {
+        "text": "QUIET",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "summary": {
+      "type": "Text",
+      "props": {
+        "text": "MIROSHARK quiet — $0.000002060 flat (+0.9%), vol $1.01K.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "metrics": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "price",
+        "volume"
+      ]
+    },
+    "price": {
+      "type": "Stat",
+      "props": {
+        "label": "MIROSHARK price",
+        "value": "$0.000002060",
+        "delta": "+0.9% (flat)",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "volume": {
+      "type": "Stat",
+      "props": {
+        "label": "Volume",
+        "value": "$1.01K"
+      },
+      "children": []
+    }
+  }
+}
