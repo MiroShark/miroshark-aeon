@@ -890,6 +890,9 @@ jobs:
           CLAUDE_OK=0
           RH=$(bash scripts/harness-adapter-snapshot.sh)
           RH_ARGS=(--mode "$SKILL_MODE" --allowed-tools "$ALLOWED" --timeout 1800)
+          # Tier notes (skill_mode.sh run-notes): notify, shell shape, keys set.
+          RUN_NOTES=$(bash scripts/skill_mode.sh run-notes "$SKILL_MODE" "$SKILL_NAME")
+          if [ -n "$RUN_NOTES" ]; then RH_ARGS+=(--append-system-prompt "$RUN_NOTES"); fi
           # Pass --mcp-config only when the MCP preflight actually ENABLED MCP (every
           # required ${VAR} resolved) — MCP_FLAGS is set to the flags in that case and
           # left empty otherwise, so it doubles as the "MCP on" gate. run-harness does
@@ -1340,7 +1343,7 @@ jobs:
           if [ "$HARNESS" = "claude" ]; then
             GATEWAY="${{ steps.run.outputs.GATEWAY }}"
             source "${GITHUB_WORKSPACE}/scripts/llm-gateway.sh"
-            AEON_OTEL_COMPONENT=scorer source "${GITHUB_WORKSPACE}/scripts/langfuse-otel.sh"
+            SKILL_NAME="$SKILL" AEON_OTEL_COMPONENT=scorer source "${GITHUB_WORKSPACE}/scripts/langfuse-otel.sh"
           fi
 
           # Read skill output for analysis. Sample head + tail so the judge sees the
@@ -1395,7 +1398,7 @@ jobs:
 
           JSON format: {\"score\": N, \"assessment\": \"one line\", \"flags\": []}"
 
-          SCORE_MODEL="${ANTHROPIC_DEFAULT_HAIKU_MODEL:-claude-haiku-4-5-20251001}"
+          SCORE_MODEL="${ANTHROPIC_DEFAULT_HAIKU_MODEL:-claude-haiku-5-5}"
           # Score through the SAME harness the skill ran on, ALWAYS via the
           # harness-adapter — no native `claude -p` / `run-grok.sh` path remains.
           # A repo authed for only one harness has no Claude creds, so a direct
@@ -1487,6 +1490,8 @@ jobs:
 
           echo "QUALITY_SCORE=$SCORE" >> "$GITHUB_OUTPUT"
           echo "FLAGS=$FLAGS" >> "$GITHUB_OUTPUT"   # consumed by the votable-health step (§7)
+          # Same score to Langfuse, on the skill run's trace (no-op without LANGFUSE_* keys).
+          bash scripts/langfuse-score.sh "$SKILL" "$SCORE" "$ASSESSMENT" "$FLAGS" "$HARNESS" "${SCORE_MODEL:-}" || true
 
           # Write skill health file with rolling history
           mkdir -p memory/skill-health
