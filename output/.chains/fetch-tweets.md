@@ -1,23 +1,21 @@
-Ran the `fetch-tweets` skill with `var=account:` (empty arg → all tracked accounts mode).
+Good — `output/scratch/` is gitignored as expected, and only the log file was modified. This is a `write`-mode skill, so I'll leave that log entry committed as part of the run's normal memory writes (no PR needed — just a data/log update, not a code change).
 
-## Result
+## fetch-tweets — account (all tracked accounts)
 
-**Mode:** account (all tracked accounts) — 1 account tracked: `miroshark_` (per `memory/topics/tracked-accounts.yml`)
+**Status: `TWEET_DIGEST_OK` — no notable tweets, nothing sent.**
 
-**Fetch:** twitterapi.io primary, HTTP 200, direct timeline pull — no fallback needed.
+- **Account tracked:** `miroshark_` (sole entry in `memory/topics/tracked-accounts.yml`)
+- **Source:** twitterapi.io direct timeline fetch, `http=200` — no fallback needed
+- **Window:** last 3 days (2026-10-12 → 2026-10-15)
+- **Candidates:** 2 raw tweets in window
+  - `RT @miroball_` — Champions League cross-promo (10-13) → dropped (retweet of another account)
+  - "Glad to share that our API is available on the @monad API hub 🦈" (10-12) → dropped (already reported 10-12, confirmed duplicate on 10-13 and 10-14 runs too)
+- **Originals surviving:** 0 — account has posted nothing new since the Monad API hub listing on 10-12. Three consecutive quiet runs now (10-13, 10-14, 10-15).
 
-**Window:** last 3 days (2026-10-11 → 2026-10-14)
-
-**Candidates found:** 2
-1. `RT @miroball_: The @ChampionsLeague is back on @miroball_!` (2026-10-13) — dropped, retweet of another account.
-2. "Glad to share that our API is available on the @monad API hub 🦈" (2026-10-12, https://x.com/miroshark_/status/2109642951454302325) — dropped, already reported in the 2026-10-12 log entry.
-
-**Survivors:** 0 — nothing new or notable this run.
-
-**Status:** `TWEET_DIGEST_OK` (clean, no new content). Per the skill's rule ("notify only on signal"), no `./notify` was sent — a legitimately empty/all-duplicate run stays silent.
+No notification sent per skill rule (legitimately empty / all-duplicate run → log only, no filler).
 
 ## Summary
-- Executed `fetch-tweets` skill, branch `account` (all-tracked-accounts sub-mode), with `var=account:` override.
-- Fetched `miroshark_`'s timeline via twitterapi.io; found 2 candidates, both filtered out (1 retweet of another account, 1 duplicate of a tweet already logged 2026-10-12).
-- Appended a `### fetch-tweets` log entry to `memory/logs/2026-10-14.md` (status `TWEET_DIGEST_OK`, 0 originals survive).
-- No notification sent (no new signal). No follow-up action needed.
+- Executed `fetch-tweets` with `var=account:` (empty arg → all-tracked-accounts branch).
+- Fetched `miroshark_`'s timeline via twitterapi.io, found 2 candidates, both dropped (1 retweet, 1 already-seen).
+- Appended `### fetch-tweets` entry to `memory/logs/2026-10-15.md` (status `TWEET_DIGEST_OK`).
+- No follow-up action needed — operator account has been quiet since 10-12; worth noting if this persists into future heartbeat/digest runs.
