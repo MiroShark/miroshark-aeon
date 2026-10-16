@@ -537,3 +537,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-10-15,token-movers,claude-sonnet-5,72,15470,4001194,126280
 2026-10-15,fetch-tweets,claude-sonnet-5,34,8511,1156481,63280
 2026-10-15,heartbeat,claude-sonnet-5-5,14,3737,287447,43106
+2026-10-16,token-movers,claude-sonnet-5-5,16,3872,336948,41081

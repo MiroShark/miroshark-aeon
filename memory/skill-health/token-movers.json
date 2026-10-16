@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-15T06:15:20Z",
-  "quality_score": 4,
-  "assessment": "Substantive token report with proper sourcing, transparent methodology, actionable verdict, and alignment with strategy (honest tracking, no hype). Assumes real API data per stated methodology.",
+  "last_analyzed": "2026-10-16T06:10:49Z",
+  "quality_score": 3,
+  "assessment": "Substantive token-movers report with a clear verdict, a metrics table, and disclosed data gaps and cross-checks, but the headline calls the price 'flat' while the table shows +2.6%, the 24h change is ambiguous across two baselines, and the 7d/30d figures are admitted to be approximate.",
   "flags": [],
-  "avg_score": 3.97,
+  "avg_score": 3.93,
   "history": [
-    {
-      "date": "2026-09-15",
-      "score": 4
-    },
     {
       "date": "2026-09-16",
       "score": 4
@@ -125,6 +121,10 @@
     {
       "date": "2026-10-15",
       "score": 4
+    },
+    {
+      "date": "2026-10-16",
+      "score": 3
     }
   ]
 }
