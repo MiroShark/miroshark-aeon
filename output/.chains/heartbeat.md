@@ -1,11 +1,11 @@
-HEARTBEAT_OK · STATUS_PAGE=OK. Nothing needs attention, so I sent no notification.
+HEARTBEAT_OK · STATUS_PAGE=OK. The fleet is healthy, so I sent no notification.
 
-- **Skills:** All 9 enabled skills last succeeded, with no stuck runs and no consecutive failures. The lowest success rate is aeon-update at 69%, unchanged from yesterday. Heartbeat's own last success was 2026-10-14 19:07 UTC.
-- **PRs and issues:** One PR is open, #206 (langfuse). It was opened under an hour ago, so it isn't stalled. Four unlabeled health issues (#182, #184, #195, #196) are still open. They are known and stay open because `skill-repair` is disabled. None is labeled urgent.
-- **Memory and schedule:** I found no new flagged memory items and no skills missing their schedule window.
-- **Token:** $MIROSHARK is at $0.0000019172 (−6.9% over 24h), with liquidity of $124.6K and 24h volume of $1.4K. The token report verdict is QUIET. That is not a heartbeat finding, so it appears only in the status page's Token pulse section.
+- **Skills:** None are failed or stuck, and none have 3 or more consecutive failures. The 9 enabled skills all last succeeded on schedule. The 4 weekly skills last ran 10-12 and memory-flush ran 10-11, so none are overdue.
+- **PRs and issues:** There are no open PRs, no urgent issues, and no open health issues.
+- **Memory:** I found nothing in `memory/MEMORY.md` that needs a follow-up now.
+- **Token:** The 10-16 report shows $MIROSHARK at $0.0000019219, up 2.6% on the day and down 15.6% over 7 days. It has the verdict CONSOLIDATING.
 
 ## Summary
-- Regenerated `docs/status.md` with Overall 🟢 OK, the Token pulse from `token-report-2026-10-15.md`, and the skill health table. Next scheduled run is token-movers at 06:00 UTC on 2026-10-16.
-- Appended the `### heartbeat` entry (mode: ambient) to `memory/logs/2026-10-15.md`.
+- Regenerated `docs/status.md` with the overall status 🟢 OK.
+- Appended a `### heartbeat` entry (mode: ambient) to `memory/logs/2026-10-16.md`.
 - No follow-up needed.
