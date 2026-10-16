@@ -88,10 +88,13 @@ The helper (Python stdlib only, sandbox-safe) prints JSON:
   `amount` (or `error` if a fetch failed).
 - `per_symbol` — totals per token: `amount`, `total_supply`, `pct_supply` (% of
   supply held).
+- `growth` - per token, the change vs prior snapshots for `last` (newest prior
+  snapshot), `7d` and `30d`: each `{date, gap_days, amount_then, amount_delta,
+  amount_delta_pct}` or `null` when no snapshot falls in the window (see step 2).
 
 `pct_supply` may be `null` if GeckoTerminal lacked supply for that token — render
-`—`, do not abort. The helper reports the current snapshot only; 7d/30d growth is
-computed in step 2 from prior snapshots. No dollar value is produced.
+`n/a`, do not abort. The helper reads the prior snapshots itself (`HOLDINGS_STATE:`
+lines in `memory/logs`). No dollar value is produced.
 
 If `${var}` is set, check that one wallet against this instance's own tokens (read
 from `memory/holdings.json`) — only the wallet is overridden, the token list stays
@@ -107,37 +110,41 @@ cfg=json.load(open("memory/holdings.json"))
 json.dump({"wallets":[{"address":addr,"label":"var","chain":chain}],
            "tokens":[t for t in cfg["tokens"] if t["chain"]==chain]},sys.stdout)
 PY
-python3 skills/holdings/holdings.py /tmp/holdings-var.json
+python3 skills/holdings/holdings.py /tmp/holdings-var.json --no-history
 ```
+
+A single `${var}` wallet has no snapshot series, so `--no-history` drops `growth`;
+leave the 7d/30d columns out of that report.
 
 If a row has `"error"`, retry `holdings.py` once. If it still errors on the RPC
 (sandbox block / 403 / timeout), note `rpc=fetch_fail` in the footer for that wallet
 and continue — a partial report still beats nothing. If `pct_supply` is `null`
-(GeckoTerminal supply miss), report the raw amount and mark `% Supply` as `—`, do not
+(GeckoTerminal supply miss), report the raw amount and mark `% Supply` as `n/a`, do not
 abort.
 
-### 2. Compute holdings growth from prior snapshots
+### 2. Read holdings growth from the helper
 
-Read the last ~35 days of `memory/logs/*.md` for `HOLDINGS_STATE:` lines (written in
-step 4), each carrying `<symbol>_amount` per tracked token with a date. Reconstruct a
-per-token amount series, then pick:
+`holdings.py` already picked the windows from the `HOLDINGS_STATE:` lines (written in
+step 4) in `memory/logs` and `memory/logs/archive`. Do not recompute them; render
+`growth.<symbol>`:
 
-- **24h** — the most recent prior snapshot (yesterday's run).
-- **7d** — the snapshot closest to 7 days ago (accept ±2 days; note the actual gap).
-- **30d** — the snapshot closest to 30 days ago (accept ±4 days).
+- **7d** - the snapshot closest to 7 days ago, within +/-2 days.
+- **30d** - the snapshot closest to 30 days ago, within +/-4 days.
+- **last** - the newest prior snapshot at any age (used by the step 5 skip rule).
 
-For each window compute the **amount** change:
+Each window carries `amount_delta` (tokens; + = accumulated, - = sold),
+`amount_delta_pct` and `date` / `gap_days` of the snapshot it compares against.
+Report growth as tokens and percent, e.g. `7d +1.20B (+10.3%)` or `30d +0` (flat).
+This is holdings movement only, it does not move with price.
 
-- `amount_delta` — `amount_now − amount_then` (in tokens; + = accumulated, − = sold).
-- `amount_delta_pct` — `amount_delta ÷ amount_then × 100`.
+A `null` window (no snapshot in range, e.g. early runs or an off-schedule run) renders
+as `building`: never print `+0` for "no data", and never fall back to a snapshot
+outside the range. `+0` is reserved for a window that HAS a snapshot and the amount
+genuinely did not change. `growth.<symbol>.partial = true` means a wallet fetch
+failed, so the total is partial: show the windows as `n/a` for that token.
 
-Report growth as tokens and percent, e.g. `7d +1.20B (+10.3%)` or `30d −0` (flat).
-This is holdings movement only — it does not move with price.
-
-If a window has no snapshot yet (early runs), OMIT that window — do not print `+0`
-for "no data". `+0` is reserved for a window that HAS a prior snapshot and the amount
-genuinely did not change. USD value is still shown for the current snapshot; only the
-growth columns wait on history.
+If `growth` is missing (the helper failed before it), leave the growth columns blank
+and say so in the footer. Never do the window math by hand.
 
 ### 3. Compile the report
 
@@ -195,13 +202,18 @@ nearest-snapshot search window).
 
 12.82B · 12.82% of supply
 7d +1.20B (+10.3%) · 30d +2.10B (+19.6%)
+_Balances: public RPC. Supply: GeckoTerminal. Growth: own snapshots (7d vs 2026-10-05). ${today}_
 ```
 
 The title names the tracked token. The growth line shows token-amount change over
 the window; render `building` for a window with no snapshot yet, `+0` for a real
 no-change. With more than one tracked token, repeat the two-line block per token.
+End with the one-line sources footer (where each number came from, the snapshot
+date the 7d figure compares against, the run date); drop the 7d date when 7d is
+`building`.
 
-**Skip rule:** if no token's amount changed since the last run, send a single line
+**Skip rule:** if no token's amount changed since the last run
+(`growth.<symbol>.last.amount_delta` is 0 for every token), send a single line
 `aeon holdings flat — 12.82B (12.82% of supply).` instead of the full block. On a
 total RPC failure (every wallet `fetch_fail`), log only — no notification.
 

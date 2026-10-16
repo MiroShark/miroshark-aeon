@@ -19,9 +19,19 @@ Config (memory/holdings.json):
 A token is checked against every wallet on the SAME chain. Output is JSON on
 stdout: per-holding rows plus totals, so the skill can format the notification
 and the STATE log line deterministically.
+
+Growth (7d/30d token-amount change) is computed here too, from the skill's own
+`HOLDINGS_STATE:` snapshot lines in memory/logs (and logs/archive), so the
+window pick is code, not arithmetic the model does in its head. Flags:
+  --logs DIR        where the snapshot lines live (default memory/logs)
+  --today YYYY-MM-DD  the run date (default: today, UTC)
+  --no-history      skip growth (a one-off ${var} wallet has no series)
 """
+import datetime
+import glob
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
@@ -179,8 +189,7 @@ def check(config):
                 row["error"] = str(e)[:120]
             rows.append(row)
     # Totals per symbol + % of supply held. No dollar value is reported. 7d/30d
-    # growth is measured in token amount and computed by the skill from prior
-    # snapshots (memory/logs) — not here.
+    # growth is measured in token amount, from prior snapshots (see growth()).
     per_symbol = {}
     for r in rows:
         if "amount" not in r:
@@ -197,11 +206,100 @@ def check(config):
     return {"rows": rows, "per_symbol": per_symbol}
 
 
+# (window, target days back, tolerance in days). "last" is the newest prior
+# snapshot at any age; the skill uses it for the "flat since the last run" rule.
+WINDOWS = (("7d", 7, 2), ("30d", 30, 4))
+STATE_RE = re.compile(r"HOLDINGS_STATE:\s*(.*)")
+
+
+def load_snapshots(logs_dir):
+    """symbol -> {date: amount} from every HOLDINGS_STATE line under logs_dir
+    (daily logs and the monthly archive). A later line for the same date wins."""
+    series = {}
+    files = sorted(glob.glob(os.path.join(logs_dir, "*.md"))) + \
+        sorted(glob.glob(os.path.join(logs_dir, "archive", "*.md")))
+    for path in files:
+        try:
+            with open(path, encoding="utf-8", errors="replace") as f:
+                lines = f.readlines()
+        except OSError:
+            continue
+        for line in lines:
+            m = STATE_RE.search(line)
+            if not m:
+                continue
+            kv = dict(p.split("=", 1) for p in m.group(1).split() if "=" in p)
+            try:
+                day = datetime.date.fromisoformat(kv.get("date", ""))
+            except ValueError:
+                continue
+            for k, v in kv.items():
+                if not k.endswith("_amount"):
+                    continue
+                try:
+                    series.setdefault(k[:-len("_amount")].lower(), {})[day] = float(v)
+                except ValueError:
+                    pass
+    return series
+
+
+def _change(now, day, then, today):
+    delta = now - then
+    return {"date": day.isoformat(), "gap_days": (today - day).days,
+            "amount_then": then, "amount_delta": delta,
+            "amount_delta_pct": (delta / then * 100.0) if then else None}
+
+
+def growth(per_symbol, partial, series, today):
+    """Per symbol: last / 7d / 30d change vs the nearest prior snapshot inside
+    each window's tolerance, or null when there is none (render "building",
+    never +0). A symbol with a failed wallet fetch gets no growth (its total is
+    partial, so a delta would be fake)."""
+    out = {}
+    for sym, s in per_symbol.items():
+        g = {"last": None, **{w: None for w, _, _ in WINDOWS}}
+        if sym in partial:
+            g["partial"] = True
+            out[sym] = g
+            continue
+        snaps = {d: a for d, a in series.get(sym.lower(), {}).items() if d <= today}
+        now = s["amount"]
+        if snaps:
+            day = max(snaps)
+            g["last"] = _change(now, day, snaps[day], today)
+        for name, back, tol in WINDOWS:
+            target = today - datetime.timedelta(days=back)
+            near = [d for d in snaps if abs((d - target).days) <= tol]
+            if near:
+                # Closest to the target; on a tie, the older one (fuller window).
+                day = min(near, key=lambda d: (abs((d - target).days), d))
+                g[name] = _change(now, day, snaps[day], today)
+        out[sym] = g
+    return out
+
+
 def main():
-    path = sys.argv[1] if len(sys.argv) > 1 else "memory/holdings.json"
+    args = sys.argv[1:]
+    logs_dir, today, history = "memory/logs", datetime.datetime.now(datetime.timezone.utc).date(), True
+    pos = []
+    while args:
+        a = args.pop(0)
+        if a == "--logs" and args:
+            logs_dir = args.pop(0)
+        elif a == "--today" and args:
+            today = datetime.date.fromisoformat(args.pop(0))
+        elif a == "--no-history":
+            history = False
+        else:
+            pos.append(a)
+    path = pos[0] if pos else "memory/holdings.json"
     with open(path) as f:
         config = json.load(f)
-    print(json.dumps(check(config), indent=2))
+    result = check(config)
+    if history:
+        partial = {r["symbol"] for r in result["rows"] if "error" in r}
+        result["growth"] = growth(result["per_symbol"], partial, load_snapshots(logs_dir), today)
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == "__main__":
