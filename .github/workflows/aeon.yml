@@ -59,6 +59,10 @@ on:
         description: 'Path to file with prior chain step outputs (set by chain runner)'
         required: false
         type: string
+      trigger:
+        description: 'What started the run: cron (Scheduler) or chain (chain-runner); empty = manual'
+        required: false
+        type: string
   workflow_call:
     inputs:
       skill:
@@ -81,6 +85,10 @@ on:
         description: 'Chain context file path'
         required: false
         type: string
+      trigger:
+        description: 'What started the run: cron (Scheduler) or chain (chain-runner); empty = manual'
+        required: false
+        type: string
   issues:
     types: [labeled]
 
@@ -100,6 +108,10 @@ env:
   # actually see them. (Step-level env is NOT available in step `if:` clauses.)
   FLEET_ENDPOINT: ${{ secrets.FLEET_ENDPOINT }}
   FLEET_TOKEN:    ${{ secrets.FLEET_TOKEN }}
+  # Langfuse trigger label (scripts/langfuse-otel.sh): the Scheduler passes
+  # trigger=cron and chain-runner trigger=chain, so a cron run, a chain step and
+  # a manual Run now no longer all read workflow_dispatch.
+  AEON_DISPATCH_TRIGGER: ${{ inputs.trigger }}
 
 concurrency:
   group: aeon-${{ inputs.skill || github.event.action || github.run_id }}${{ inputs.var && format('-{0}', inputs.var) || '' }}
@@ -1607,7 +1619,10 @@ jobs:
         # !cancelled() (NOT a bare `mode != ''`, which GitHub implies success() onto
         # and would skip on a failed skill): a FAILED skill still delivers what it
         # queued (#912 R1). Cancellation is excluded so a killed job doesn't half-send.
-        if: ${{ !cancelled() && steps.work.outputs.mode != '' }}
+        # Default branch only, like the health-issue step: a test dispatch on a
+        # verify/* branch must not send real messages. Set the repo variable
+        # NOTIFY_ON_BRANCH=1 to see a test card; skipped payloads are dropped.
+        if: ${{ !cancelled() && steps.work.outputs.mode != '' && (github.ref_name == github.event.repository.default_branch || vars.NOTIFY_ON_BRANCH == '1') }}
         env:
           # #912 Phase 2: THIS step owns the channel tokens. ./notify (the queue-writer)
           # no longer reads them in the skill run env; notify-deliver.sh consumes them
