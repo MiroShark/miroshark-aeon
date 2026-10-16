@@ -16,7 +16,7 @@ type: Index
 `token-report` reads this table; update it here to retarget.
 
 ## Watched Repos
-See `memory/watched-repos.md` — `MiroShark/MiroShark` (renamed from `aaronjmars/MiroShark` 08-17), `aaronjmars/miroshark-aeon`.
+See `memory/watched-repos.md` — `MiroShark/MiroShark` (renamed from `aaronjmars/MiroShark` 08-17), `MiroShark/miroshark-aeon`.
 
 ## Recent Articles
 | Date | Title | Topic |
