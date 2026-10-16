@@ -8,8 +8,8 @@ repo's merged PRs become the changelog, and which marketing-site repo to open th
 PR against. (Post-migration: the old `docs-sync` skill is folded into `changelog`
 `var: push-to:…`; this file's keys are unchanged.)
 
-- product_repo: aaronjmars/miroshark
-- website_repo: aaronjmars/miroshark-website
+- product_repo: MiroShark/MiroShark
+- website_repo: MiroShark/miroshark-website
 - min_prs: 1
 - lookback_days: 7
 - draft: true

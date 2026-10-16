@@ -53,14 +53,14 @@ Builder based in Toronto. Building Aeon (x.com/aeonframework) — the most auton
 Open source projects Aaron has built:
 
 - **[Aeon](https://github.com/aaronjmars/aeon)** — The most autonomous agent framework. No approval loops. No babysitting. Configure once, forget forever. 197 skills, runs unattended on GitHub Actions, self-repairs. ⭐
-- **[MiroShark](https://github.com/aaronjmars/MiroShark)** — Simulate anything, for $1 & less than 10 min — Universal Swarm Intelligence Engine. Hundreds of grounded agents react across Twitter + Reddit + a prediction market. 🦈
+- **[MiroShark](https://github.com/MiroShark/MiroShark)** — Simulate anything, for $1 & less than 10 min — Universal Swarm Intelligence Engine. Hundreds of grounded agents react across Twitter + Reddit + a prediction market. 🦈
 - **[soul.md](https://github.com/aaronjmars/soul.md)** — The best way to build a personality for your agent. Let Claude Code / OpenClaw ingest your data & build your AI soul. (the framework this very file is built on.)
 - **[agent-credit](https://github.com/aaronjmars/agent-credit)** — The first credit line for agents. Let your agent borrow & repay credit in ~30s, using Aave, on any chain.
 - **[minitor](https://github.com/aaronjmars/minitor)** — Monitor the current thing. Your dashboard for the internet — undercuts X Pro's $40/mo. An Aeon product.
 - **[openroutercli](https://github.com/aaronjmars/openroutercli)** — Every OpenRouter endpoint, on the command line — for humans and LLM agents. Non-interactive, ships a SKILLS.md.
 - **[iterative-code-evolution](https://github.com/aaronjmars/iterative-code-evolution)** — A structured methodology for improving code through disciplined cycles instead of ad-hoc try-and-fix. Adapted from the ALMA research framework.
-- **[aeon-agent](https://github.com/aaronjmars/aeon-agent)** — Public agent automation of Aeon — verifiable runs on a public repo.
-- **[miroshark-aeon](https://github.com/aaronjmars/miroshark-aeon)** — Public agent automation of Miroshark.
+- **[aeon-agent](https://github.com/aeonfun/aeon-agent)** — Public agent automation of Aeon — verifiable runs on a public repo.
+- **[miroshark-aeon](https://github.com/MiroShark/miroshark-aeon)** — Public agent automation of Miroshark.
 - **[OpenDia](https://github.com/aaronjmars/opendia)** — Connect your browser to AI models. Works on Chrome, Arc, Firefox.
 - **[Tweazy](https://github.com/aaronjmars/tweazy)** — Monetize AI applications & MCP using x402, CDP Smart Wallets & Paymaster.
 - **[Contx.eth](https://github.com/aaronjmars/contxdoteth)** — Transform your X profile into an AI-aware .contx.eth identity in 30 seconds.
