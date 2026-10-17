@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-16T06:10:49Z",
+  "last_analyzed": "2026-10-17T09:05:08Z",
   "quality_score": 3,
-  "assessment": "Substantive token-movers report with a clear verdict, a metrics table, and disclosed data gaps and cross-checks, but the headline calls the price 'flat' while the table shows +2.6%, the 24h change is ambiguous across two baselines, and the 7d/30d figures are admitted to be approximate.",
+  "assessment": "Competent, honest price-movement report with internally consistent numbers and disclosed gaps (skipped sentiment check, approximate trend), but the 'RALLYING' headline overstates a thin, mostly negative move, and I can't verify the figures from the transcript.",
   "flags": [],
-  "avg_score": 3.93,
+  "avg_score": 3.9,
   "history": [
-    {
-      "date": "2026-09-16",
-      "score": 4
-    },
     {
       "date": "2026-09-17",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-16",
+      "score": 3
+    },
+    {
+      "date": "2026-10-17",
       "score": 3
     }
   ]
