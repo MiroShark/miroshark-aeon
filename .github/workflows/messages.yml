@@ -769,6 +769,13 @@ jobs:
 
           echo "::notice::Token usage — input: $INPUT_TOKENS, output: $OUTPUT_TOKENS, cache_read: $CACHE_READ, cache_creation: $CACHE_CREATION, total: $TOTAL_TOKENS"
 
+      # Drop executable config planted by the run and restore only trusted auth.
+      - name: Lock git config
+        if: always() && steps.msg.outputs.source != ''
+        env:
+          AEON_GIT_TOKEN: ${{ secrets.GH_GLOBAL || secrets.GITHUB_TOKEN }}
+        run: git show "$GITHUB_SHA:scripts/git-config-guard.sh" | bash
+
       # Sidecar gateway logs die with the VM — surface them in the job log on
       # failure (set the CCR_LOG=true repo variable for request-level detail).
       # The ccr config.json is deliberately NOT printed (it embeds the provider key).
@@ -837,29 +844,8 @@ jobs:
           JITTER=$((RANDOM % 10))
           echo "Waiting ${JITTER}s jitter before push..."
           sleep "$JITTER"
-          for i in 1 2 3 4 5; do
-            if git pull --rebase origin main; then
-              git push -u origin HEAD && exit 0
-            else
-              echo "Rebase conflict on attempt $i, auto-resolving..."
-              for f in $(git diff --name-only --diff-filter=U); do
-                if [[ "$f" == memory/logs/* ]] || [[ "$f" == memory/topics/* ]] || [[ "$f" == memory/MEMORY.md ]]; then
-                  sed -i '/^<<<<<<< /d; /^=======/d; /^>>>>>>> /d' "$f"
-                  git add "$f"
-                else
-                  git checkout --theirs "$f"
-                  git add "$f"
-                fi
-              done
-              if git diff --cached --quiet; then
-                git rebase --skip
-              else
-                GIT_EDITOR=true git rebase --continue
-              fi
-            fi
-            BACKOFF=$(( (2 ** i) + RANDOM % 5 ))
-            echo "Push attempt $i failed, retrying in ${BACKOFF}s..."
-            sleep "$BACKOFF"
-          done
-          echo "Failed to push after 5 attempts"
-          exit 1
+          # Run trusted helpers from the starting commit, not agent-edited files.
+          HELPERS=$(mktemp -d "$RUNNER_TEMP/push-helpers.XXXXXX")
+          git show "$GITHUB_SHA:scripts/git-push-retry.sh" > "$HELPERS/git-push-retry.sh"
+          git show "$GITHUB_SHA:scripts/audit.sh" > "$HELPERS/audit.sh"
+          AEON_AUDIT_SCRIPT="$HELPERS/audit.sh" bash "$HELPERS/git-push-retry.sh"

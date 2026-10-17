@@ -91,3 +91,9 @@ jobs:
         run: bash scripts/tests/test_breaker.sh
       - name: skill-scan calibration (fires on sinks, not benign syntax)
         run: bash scripts/tests/test_skill_scan_calibration.sh
+      - name: git-push-retry conflict and push failure tests
+        run: bash scripts/tests/test_git_push_retry.sh
+      - name: git-config-guard tests
+        run: bash scripts/tests/test_git_config_guard.sh
+      - name: git-config-guard authenticated HTTP push
+        run: python3 scripts/tests/test_git_config_auth.py
