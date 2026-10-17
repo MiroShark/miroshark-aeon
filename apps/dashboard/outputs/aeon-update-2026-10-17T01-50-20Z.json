@@ -1,0 +1,217 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update — 2026-10-17"
+      },
+      "children": [
+        "sync_line",
+        "stats",
+        "sep_1",
+        "applied_heading",
+        "applied_intro",
+        "applied_stack",
+        "sep_2",
+        "manual_heading",
+        "manual_intro",
+        "manual_stack",
+        "sep_3",
+        "pr_link"
+      ]
+    },
+    "sync_line": {
+      "type": "Text",
+      "props": {
+        "text": "Synced 42 upstream commits → PR #216",
+        "variant": "lead"
+      }
+    },
+    "stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_commits",
+        "stat_files"
+      ]
+    },
+    "stat_commits": {
+      "type": "Stat",
+      "props": {
+        "label": "Upstream commits synced",
+        "value": "42"
+      }
+    },
+    "stat_files": {
+      "type": "Stat",
+      "props": {
+        "label": "Files applied cleanly",
+        "value": "~86"
+      }
+    },
+    "sep_1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "applied_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Applied cleanly",
+        "level": "h3"
+      }
+    },
+    "applied_intro": {
+      "type": "Text",
+      "props": {
+        "text": "~86 files applied cleanly:",
+        "variant": "body"
+      }
+    },
+    "applied_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6"
+      ]
+    },
+    "a1": {
+      "type": "Text",
+      "props": {
+        "text": "secretcurl now substitutes only declared secrets",
+        "variant": "body"
+      }
+    },
+    "a2": {
+      "type": "Text",
+      "props": {
+        "text": "push-helper hardening",
+        "variant": "body"
+      }
+    },
+    "a3": {
+      "type": "Text",
+      "props": {
+        "text": "scheduler warnings",
+        "variant": "body"
+      }
+    },
+    "a4": {
+      "type": "Text",
+      "props": {
+        "text": "cron-due fix",
+        "variant": "body"
+      }
+    },
+    "a5": {
+      "type": "Text",
+      "props": {
+        "text": "OpenRouter attribution",
+        "variant": "body"
+      }
+    },
+    "a6": {
+      "type": "Text",
+      "props": {
+        "text": "memory-flush/pr-triage/vuln-scanner updates",
+        "variant": "body"
+      }
+    },
+    "sep_2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "manual_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Manual",
+        "level": "h3"
+      }
+    },
+    "manual_intro": {
+      "type": "Text",
+      "props": {
+        "text": "Needed manual handling:",
+        "variant": "body"
+      }
+    },
+    "manual_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ]
+    },
+    "m1": {
+      "type": "Text",
+      "props": {
+        "text": "15 workflows (Blacksmith/bubblewrap overlap)",
+        "variant": "body"
+      }
+    },
+    "m2": {
+      "type": "Text",
+      "props": {
+        "text": "langfuse cluster",
+        "variant": "body"
+      }
+    },
+    "m3": {
+      "type": "Text",
+      "props": {
+        "text": "harnesses.json",
+        "variant": "body"
+      }
+    },
+    "m4": {
+      "type": "Text",
+      "props": {
+        "text": "docs",
+        "variant": "body"
+      }
+    },
+    "m5": {
+      "type": "Text",
+      "props": {
+        "text": "new skill anatomy (not adopted)",
+        "variant": "body"
+      }
+    },
+    "sep_3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "pr_link": {
+      "type": "Link",
+      "props": {
+        "label": "PR #216",
+        "href": "https://github.com/MiroShark/miroshark-aeon/pull/216"
+      }
+    }
+  }
+}

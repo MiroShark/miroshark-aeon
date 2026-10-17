@@ -138,7 +138,7 @@ resolve_mode() {
   # `mode:` frontmatter scalar via the shared _fm reader (strips inline comment,
   # quotes, and surrounding ws); absent file/field -> "" -> the write default.
   local m
-  m=$(_fm "$skill" mode)
+  m=$(_fm "$skill" mode | tr '[:upper:]' '[:lower:]')
   case "$m" in
     read-only|readonly|read_only) echo "read-only" ;;
     write|"")                     echo "write" ;;
@@ -149,8 +149,14 @@ resolve_mode() {
 is_shadow_selector() {
   local skill="$1" var="${2:-}"
   [ "$skill" = "vuln-scanner" ] || return 1
+  # Fail closed on padding: trim surrounding whitespace (space, tab, CR, LF)
+  # first, and treat a selector word followed by whitespace as that selector.
+  # A model still reads " shadow", "shadow\r\n" or "shadow x" as a shadow run,
+  # so those must get the read-only tier too, not fall through to write.
+  var="${var#"${var%%[![:space:]]*}"}"
+  var="${var%"${var##*[![:space:]]}"}"
   case "$var" in
-    shadow|shadow:*|compare|compare:*) return 0 ;;
+    shadow|shadow:*|shadow[[:space:]]*|compare|compare:*|compare[[:space:]]*) return 0 ;;
     *) return 1 ;;
   esac
 }
@@ -253,9 +259,10 @@ _fm() {
   local skill="$1" key="$2" f="skills/$1/SKILL.md"
   [ -f "$f" ] || return 0
   awk -v k="$key" '
+    { sub(/\r$/,"") }
     /^---$/{n++; next}
     n!=1{next}
-    /^[^ \t]/{inmeta=0}
+    /^[^ \t#]/{inmeta=0}
     /^metadata:/{inmeta=1}
     # legacy top-level scalar, or the Agent Skills spec form nested under metadata:
     $0 ~ "^"k":" || (inmeta && $0 ~ "^[ \t]+"k":") {

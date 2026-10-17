@@ -18,14 +18,22 @@ memory/MEMORY.md "*Last consolidated: <date>*" line is kept as a human mirror.
 
 Subcommands:
   window   pre-pass: rotate old logs, then print the scan window + the exact
-           list of in-window log files to stdout for the model to read.
-  stamp    post-pass: write today's date to the watermark file and mirror it
-           into the MEMORY.md prose line.
+           list of in-window log files to stdout for the model to read, and
+           MEMORY.md's size against its byte / line-length budget.
+  stamp    post-pass: write today's date to the watermark file, record a
+           fingerprint of every recent log, and mirror the date into the
+           MEMORY.md prose line.
+  idle     pre-run gate (run by the workflow before the model starts): exit 0
+           when no log changed since the last flush, so the run can be skipped;
+           exit 1 otherwise. Fails open: any doubt means "not idle".
+  source   print the log section a `[source: logs/<date>#<skill>]` tag points
+           at, from memory/logs/ or the monthly archive.
 
 The date planners are kept pure (no clock, no I/O) so they are unit-testable;
 the today's-date reads and file writes live in the thin I/O wrappers.
 """
 import datetime
+import hashlib
 import json
 import os
 import re
@@ -40,9 +48,18 @@ MEMORY_MD = "memory/MEMORY.md"
 ROTATE_THRESHOLD = 45   # only rotate once logs/ grows past this many dailies
 SCAN_CLAMP_DAYS = 14    # a gap longer than this clamps the scan window
 DEFAULT_LOOKBACK_DAYS = 3  # no watermark at all -> read the last 3 days
+MAX_IDLE_DAYS = 7       # never skip a flush when the last one is this old (pruning still matters)
+# MEMORY.md loads into every skill run, so its budget is bytes, not only lines:
+# a ~50-line index of 2 KB bullets still costs ~7k tokens on every run.
+MEMORY_MAX_BYTES = 8192
+MEMORY_MAX_LINE = 300   # chars; a longer line is detail that belongs in a topic file
+SKILL = "memory-flush"
 
 _DAILY_RE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})\.md$")
 _CONSOLIDATED_RE = re.compile(r"^\*Last consolidated:.*\*\s*$", re.IGNORECASE | re.MULTILINE)
+_HEADING_RE = re.compile(r"^#{1,6}\s+(.*?)\s*$")
+_ARCHIVE_MARK_RE = re.compile(r"^<!-- (\d{4}-\d{2}-\d{2}\.md) -->\s*$")
+_SOURCE_RE = re.compile(r"^(?:memory/)?logs/(\d{4}-\d{2}-\d{2})(?:\.md)?#([A-Za-z0-9_-]+)$")
 
 
 # ---------------------------------------------------------------------------
@@ -148,6 +165,26 @@ def rotatable_months(filenames, today, threshold=ROTATE_THRESHOLD):
     return out
 
 
+def memory_size_report(text):
+    """Lines for the window output: MEMORY.md bytes / lines against the budget and
+    the over-long lines by number, so the model trims by measurement, not by eye."""
+    if text is None:
+        return ["MEMORY.md: missing."]
+    size = len(text.encode("utf-8"))
+    lines = text.splitlines()
+    long_lines = [(n, len(l)) for n, l in enumerate(lines, 1) if len(l) > MEMORY_MAX_LINE]
+    over = size > MEMORY_MAX_BYTES
+    out = ["MEMORY.md size: %d bytes, %d lines (budget %d bytes, ~50 lines, no line over %d chars)%s" % (
+        size, len(lines), MEMORY_MAX_BYTES, MEMORY_MAX_LINE,
+        ": OVER BUDGET by %d bytes, overflow per step 3d." % (size - MEMORY_MAX_BYTES) if over else ": within budget.")]
+    if long_lines:
+        worst = sorted(long_lines, key=lambda x: -x[1])[:10]
+        out.append("Lines over %d chars (line: chars), longest first: %s%s" % (
+            MEMORY_MAX_LINE, ", ".join("%d: %d" % w for w in worst),
+            " (+%d more)" % (len(long_lines) - len(worst)) if len(long_lines) > len(worst) else ""))
+    return out
+
+
 def stamp_memory_md(text, today):
     """
     Return MEMORY.md text with the '*Last consolidated: <date>*' line set to
@@ -164,6 +201,115 @@ def stamp_memory_md(text, today):
             return "\n".join(lines)
     # no title -> prepend
     return line + "\n\n" + text
+
+
+def split_sections(text):
+    """
+    [(title_or_None, text)] - a log split at every markdown heading. The text
+    before the first heading has title None.
+    """
+    out = []
+    title, buf = None, []
+    for ln in text.split("\n"):
+        m = _HEADING_RE.match(ln)
+        if m:
+            if buf or title is not None:
+                out.append((title, "\n".join(buf)))
+            title, buf = m.group(1), [ln]
+        else:
+            buf.append(ln)
+    if buf or title is not None:
+        out.append((title, "\n".join(buf)))
+    return out
+
+
+def _is_own_or_trace(title):
+    """memory-flush's own entries and the workflow's tool-action footers carry no new facts."""
+    if title is None:
+        return False
+    words = title.split()
+    return (bool(words) and words[0] == SKILL) or title.lower().endswith("under the hood")
+
+
+def log_fingerprint(text):
+    """
+    sha256 of a daily log minus memory-flush's own sections and the "under the
+    hood" footers, or "" when nothing else is left. Those sections are written
+    by the flush run itself (before and after `stamp`), so counting them would
+    make every flush look like new input for the next one.
+    """
+    kept = [body.strip() for title, body in split_sections(text or "")
+            if not _is_own_or_trace(title) and body.strip()]
+    if not kept:
+        return ""
+    return hashlib.sha256("\n\n".join(kept).encode("utf-8")).hexdigest()
+
+
+def idle_decision(state_json, fingerprints, today):
+    """
+    (idle_bool, reason). `fingerprints` maps every daily log filename currently
+    in memory/logs/ to log_fingerprint() of its content. Idle only when the
+    structured watermark is under MAX_IDLE_DAYS old and every in-window log
+    with real content matches what the last `stamp` recorded. Anything missing
+    or odd -> not idle, so a doubt costs one run, never a lost entry.
+    """
+    try:
+        state = json.loads(state_json) if state_json else None
+    except ValueError:
+        state = None
+    if not isinstance(state, dict):
+        return False, "no watermark state"
+    last = parse_date(state.get("last_consolidated"))
+    seen = state.get("seen_logs")
+    if last is None or not isinstance(seen, dict):
+        return False, "watermark has no log fingerprints yet"
+    age = (today - last).days
+    if age < 0 or age >= MAX_IDLE_DAYS:
+        return False, "last flush %s is %d day(s) old (cap %d)" % (last.isoformat(), age, MAX_IDLE_DAYS)
+    for f in select_logs(list(fingerprints), last, today):
+        fp = fingerprints[f]
+        if fp and seen.get(f) != fp:
+            return False, "%s/%s has entries the last flush did not see" % (LOGS_DIR, f)
+    return True, "no new log entries since the flush on %s" % last.isoformat()
+
+
+def recent_fingerprints(fingerprints, today):
+    """{filename: fp} for non-empty logs inside the 14-day scan floor (what `stamp` records)."""
+    start = today - datetime.timedelta(days=SCAN_CLAMP_DAYS)
+    return {f: fingerprints[f] for f in select_logs(list(fingerprints), start, today) if fingerprints[f]}
+
+
+def parse_source(ref):
+    """'logs/2026-10-13#token-report' -> ('2026-10-13.md', 'token-report'), else None."""
+    m = _SOURCE_RE.match((ref or "").strip())
+    if not m:
+        return None
+    return m.group(1) + ".md", m.group(2)
+
+
+def extract_source(text, skill):
+    """Every section of one day's log whose heading names `skill` (a skill can log more than once a day)."""
+    hits = []
+    for title, body in split_sections(text or ""):
+        if title is None or title.lower().endswith("under the hood"):
+            continue
+        words = title.split()
+        if words and words[0] == skill:
+            hits.append(body.strip())
+    return hits
+
+
+def archived_day(text, fname):
+    """One day's log out of a monthly archive file (days are marked `<!-- YYYY-MM-DD.md -->`)."""
+    out, inside = [], False
+    for ln in (text or "").split("\n"):
+        m = _ARCHIVE_MARK_RE.match(ln)
+        if m:
+            inside = m.group(1) == fname
+            continue
+        if inside:
+            out.append(ln)
+    return "\n".join(out) if out else None
 
 
 # ---------------------------------------------------------------------------
@@ -232,21 +378,35 @@ def do_window(root, today):
     remaining = len([e for e in entries if parse_daily(e) is not None])
     out.append("Log rotation: archived %d month(s); %d daily file(s) remain (threshold %d)." % (
         archived_months, remaining, ROTATE_THRESHOLD))
+    out.extend(memory_size_report(memory_md))
     out.append("Do NOT recompute the window or rotate logs yourself. Run "
                "`python3 scripts/memory_prep.py stamp` as your final step.")
     print("\n".join(out))
     return 0
 
 
+def _log_fingerprints(root):
+    """{daily filename: log_fingerprint} for every daily log in memory/logs/."""
+    logs_dir = os.path.join(root, LOGS_DIR)
+    try:
+        entries = os.listdir(logs_dir)
+    except FileNotFoundError:
+        return {}
+    return {f: log_fingerprint(_read(os.path.join(logs_dir, f)))
+            for f in entries if parse_daily(f) is not None}
+
+
 def do_stamp(root, today):
-    # structured watermark = source of truth
+    # structured watermark = source of truth; seen_logs lets the next tick's
+    # `idle` gate tell whether anything new was logged since this flush
     state_path = os.path.join(root, STATE_FILE)
     with open(state_path, "w", encoding="utf-8") as fh:
         json.dump({
             "last_consolidated": today.isoformat(),
             "updated_at": datetime.datetime.now(datetime.timezone.utc)
                 .strftime("%Y-%m-%dT%H:%M:%SZ"),
-        }, fh, indent=2)
+            "seen_logs": recent_fingerprints(_log_fingerprints(root), today),
+        }, fh, indent=2, sort_keys=True)
         fh.write("\n")
 
     # mirror into the human-readable MEMORY.md line
@@ -260,17 +420,50 @@ def do_stamp(root, today):
     return 0
 
 
+def do_idle(root, today):
+    idle, reason = idle_decision(_read(os.path.join(root, STATE_FILE)), _log_fingerprints(root), today)
+    print(("IDLE: " if idle else "NOT IDLE: ") + reason)
+    return 0 if idle else 1
+
+
+def do_source(root, ref):
+    parsed = parse_source(ref)
+    if not parsed:
+        print("unrecognized source ref: %s (expected logs/YYYY-MM-DD#<skill>)" % ref)
+        return 2
+    fname, skill = parsed
+    text = _read(os.path.join(root, LOGS_DIR, fname))
+    where = "%s/%s" % (LOGS_DIR, fname)
+    if text is None:
+        # rotated into the monthly archive by `window`
+        where = "%s/%s.md" % (ARCHIVE_DIR, fname[:7])
+        text = archived_day(_read(os.path.join(root, where)), fname)
+    hits = extract_source(text, skill) if text is not None else []
+    if not hits:
+        print("source not found: %s (no '### %s' section in %s)" % (ref, skill, where))
+        return 1
+    print("# %s (from %s)\n" % (ref, where))
+    print("\n\n".join(hits)[:8000])
+    return 0
+
+
 def main(argv):
     root = os.environ.get("AEON_REPO_ROOT", ".")
     if "--root" in argv:
-        root = argv[argv.index("--root") + 1]
+        i = argv.index("--root")
+        root = argv[i + 1]
+        argv = argv[:i] + argv[i + 2:]
     today = datetime.date.today()
     cmd = argv[0] if argv else ""
     if cmd == "window":
         return do_window(root, today)
     if cmd == "stamp":
         return do_stamp(root, today)
-    sys.stderr.write("usage: memory_prep.py {window|stamp} [--root DIR]\n")
+    if cmd == "idle":
+        return do_idle(root, today)
+    if cmd == "source" and len(argv) > 1:
+        return do_source(root, argv[1])
+    sys.stderr.write("usage: memory_prep.py {window|stamp|idle|source <ref>} [--root DIR]\n")
     return 2
 
 

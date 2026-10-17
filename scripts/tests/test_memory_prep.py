@@ -143,6 +143,28 @@ class TestStampIO(unittest.TestCase):
             self.assertNotIn("never", md)
 
 
+class TestMemorySize(unittest.TestCase):
+    def test_within_budget(self):
+        out = mp.memory_size_report("# M\n\n- short line\n")
+        self.assertEqual(len(out), 1)
+        self.assertIn("within budget", out[0])
+
+    def test_over_budget_names_long_lines(self):
+        text = "# M\n" + "\n".join("- " + "x" * 400 for _ in range(25)) + "\n"
+        out = mp.memory_size_report(text)
+        self.assertIn("OVER BUDGET by %d bytes" % (len(text.encode()) - mp.MEMORY_MAX_BYTES), out[0])
+        self.assertIn("Lines over 300 chars", out[1])
+        self.assertIn("2: 402", out[1])
+        self.assertIn("(+15 more)", out[1])
+
+    def test_counts_bytes_not_chars(self):
+        text = "\u00e9" * (mp.MEMORY_MAX_BYTES // 2 + 1)  # 2 bytes each in UTF-8
+        self.assertIn("OVER BUDGET", mp.memory_size_report(text)[0])
+
+    def test_missing(self):
+        self.assertEqual(mp.memory_size_report(None), ["MEMORY.md: missing."])
+
+
 class TestWindowIO(unittest.TestCase):
     def test_window_rotates_and_selects_in_git_repo(self):
         with tempfile.TemporaryDirectory() as root:
@@ -173,6 +195,119 @@ class TestWindowIO(unittest.TestCase):
             with open(os.path.join(root, mp.ARCHIVE_DIR, "2026-01.md")) as fh:
                 arch = fh.read()
             self.assertIn("log 2026-01-01", arch)
+
+
+LOG = """### token-report
+- AEON up 4%
+
+### token-report -- under the hood
+- 12 tool calls
+
+### memory-flush
+- promoted 2 entries
+"""
+
+
+class TestFingerprint(unittest.TestCase):
+    def test_ignores_own_and_trace_sections(self):
+        base = mp.log_fingerprint("### token-report\n- AEON up 4%\n")
+        self.assertEqual(mp.log_fingerprint(LOG), base)
+        self.assertNotEqual(base, "")
+
+    def test_only_own_sections_is_empty(self):
+        self.assertEqual(mp.log_fingerprint("### memory-flush\n- MEMORY_FLUSH_OK\n"), "")
+        self.assertEqual(mp.log_fingerprint(""), "")
+
+    def test_new_entry_changes_fingerprint(self):
+        self.assertNotEqual(mp.log_fingerprint(LOG),
+                            mp.log_fingerprint(LOG + "\n### heartbeat\n- all green\n"))
+
+
+class TestIdle(unittest.TestCase):
+    def _state(self, last, seen):
+        return json.dumps({"last_consolidated": last, "seen_logs": seen})
+
+    def test_idle_when_nothing_changed(self):
+        fps = {"2026-10-12.md": "a", "2026-10-13.md": "b"}
+        idle, _ = mp.idle_decision(self._state("2026-10-12", fps), fps, D(2026, 10, 13))
+        self.assertTrue(idle)
+
+    def test_new_log_is_not_idle(self):
+        seen = {"2026-10-12.md": "a"}
+        idle, reason = mp.idle_decision(self._state("2026-10-12", seen),
+                                        {"2026-10-12.md": "a", "2026-10-13.md": "b"}, D(2026, 10, 13))
+        self.assertFalse(idle)
+        self.assertIn("2026-10-13.md", reason)
+
+    def test_changed_log_is_not_idle(self):
+        idle, _ = mp.idle_decision(self._state("2026-10-12", {"2026-10-12.md": "a"}),
+                                   {"2026-10-12.md": "z"}, D(2026, 10, 13))
+        self.assertFalse(idle)
+
+    def test_empty_log_and_old_logs_ignored(self):
+        # a log holding only flush entries (fp "") and a log before the watermark never count
+        idle, _ = mp.idle_decision(self._state("2026-10-12", {}),
+                                   {"2026-10-13.md": "", "2026-10-01.md": "x"}, D(2026, 10, 13))
+        self.assertTrue(idle)
+
+    def test_cap_forces_a_run(self):
+        fps = {"2026-10-01.md": "a"}
+        idle, _ = mp.idle_decision(self._state("2026-10-06", fps), fps, D(2026, 10, 13))
+        self.assertFalse(idle)
+
+    def test_missing_or_legacy_state_is_not_idle(self):
+        self.assertFalse(mp.idle_decision(None, {}, D(2026, 10, 13))[0])
+        self.assertFalse(mp.idle_decision("{bad", {}, D(2026, 10, 13))[0])
+        legacy = json.dumps({"last_consolidated": "2026-10-12"})
+        self.assertFalse(mp.idle_decision(legacy, {}, D(2026, 10, 13))[0])
+
+    def test_stamp_then_idle_roundtrip(self):
+        with tempfile.TemporaryDirectory() as root:
+            logs = os.path.join(root, mp.LOGS_DIR)
+            os.makedirs(logs)
+            with open(os.path.join(root, mp.MEMORY_MD), "w") as fh:
+                fh.write("# M\n")
+            path = os.path.join(logs, "2026-10-13.md")
+            with open(path, "w") as fh:
+                fh.write(LOG)
+            mp.do_stamp(root, D(2026, 10, 13))
+            # the workflow appends the flush's own footer after stamp: still idle
+            with open(path, "a") as fh:
+                fh.write("\n### memory-flush -- under the hood\n- 30 tool calls\n")
+            self.assertEqual(mp.do_idle(root, D(2026, 10, 14)), 0)
+            # another skill logs something: the next flush must run
+            with open(os.path.join(logs, "2026-10-14.md"), "w") as fh:
+                fh.write("### heartbeat\n- 1 stuck skill\n")
+            self.assertEqual(mp.do_idle(root, D(2026, 10, 14)), 1)
+
+
+class TestSource(unittest.TestCase):
+    def test_parse_source(self):
+        self.assertEqual(mp.parse_source("logs/2026-10-13#token-report"), ("2026-10-13.md", "token-report"))
+        self.assertEqual(mp.parse_source("memory/logs/2026-10-13.md#heartbeat"), ("2026-10-13.md", "heartbeat"))
+        self.assertIsNone(mp.parse_source("thread/ab12"))
+        self.assertIsNone(mp.parse_source("logs/2026-10-13"))
+
+    def test_extract_skips_trace_and_other_skills(self):
+        hits = mp.extract_source(LOG + "\n### token-report\n- second run\n", "token-report")
+        self.assertEqual(len(hits), 2)
+        self.assertIn("AEON up 4%", hits[0])
+        self.assertNotIn("tool calls", "".join(hits))
+
+    def test_source_from_log_and_archive(self):
+        with tempfile.TemporaryDirectory() as root:
+            os.makedirs(os.path.join(root, mp.ARCHIVE_DIR))
+            with open(os.path.join(root, mp.LOGS_DIR, "2026-10-13.md"), "w") as fh:
+                fh.write(LOG)
+            with open(os.path.join(root, mp.ARCHIVE_DIR, "2026-01.md"), "w") as fh:
+                fh.write("<!-- 2026-01-04.md -->\n### heartbeat\n- old fact\n\n"
+                         "<!-- 2026-01-05.md -->\n### heartbeat\n- newer fact\n")
+            self.assertEqual(mp.do_source(root, "logs/2026-10-13#token-report"), 0)
+            self.assertEqual(mp.do_source(root, "logs/2026-01-04#heartbeat"), 0)
+            self.assertEqual(mp.archived_day(open(os.path.join(root, mp.ARCHIVE_DIR, "2026-01.md")).read(),
+                                             "2026-01-04.md").strip(), "### heartbeat\n- old fact")
+            self.assertEqual(mp.do_source(root, "logs/2026-10-13#nope"), 1)
+            self.assertEqual(mp.do_source(root, "garbage"), 2)
 
 
 if __name__ == "__main__":
