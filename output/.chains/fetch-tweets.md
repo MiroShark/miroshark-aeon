@@ -1,9 +1,11 @@
-No tweet digest sent this run: there was nothing notable to report. `var=account:` has no handle, so I ran the all-tracked-accounts mode. `memory/topics/tracked-accounts.yml` lists one account, `miroshark_`.
+No new tweets from the tracked account (`miroshark_`) in the last 3 days, so I sent no notification.
 
-I pulled its timeline from twitterapi.io and got HTTP 200. Inside the 3-day window (since 2026-10-13) there is one tweet, an Oct 13 retweet of `@miroball_`. The skill drops retweets of other accounts, so no original posts remain. The latest original post is the Oct 12 Monad API hub announcement, which is just outside the window. Because the Oct 12 post was never reported, a wider window would pick it up next time.
+- **Fetch:** the twitterapi.io timeline call returned HTTP 200 with 20 tweets.
+- **Watchlist:** `memory/topics/tracked-accounts.yml` lists only `miroshark_`.
+- **Newest tweet:** 2026-10-12 13:50 UTC, the post about the API going live on the Monad API hub. That is outside the 3-day window, and `miroshark_` has posted nothing since.
+- **Dedup:** the Oct 15–17 logs contain no x.com URLs, so nothing was filtered out as already reported.
 
 ## Summary
-- Ran `fetch-tweets` in all-tracked-accounts mode. Status is `TWEET_DIGEST_OK`, a clean run with no notification.
-- Modified `memory/logs/2026-10-16.md` to add the `### fetch-tweets` entry.
-- `output/tw-acct1.json` is a leftover raw fetch from this run; I left it in place.
-- Follow-up: none required.
+- **Status:** `TWEET_DIGEST_OK`, a clean run with nothing to send.
+- **Files modified:** `memory/logs/2026-10-17.md`, with a `### fetch-tweets` entry added.
+- **Follow-up:** none. The account has been quiet for 5 days, so the next run will only have something to report if it posts again.
