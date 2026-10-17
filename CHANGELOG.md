@@ -338,6 +338,10 @@ from or pin to; the template keeps serving the latest `main` to new forks.
 
 ### Fixed
 
+- **Post-run Git pushes retain trusted checkout authentication.** Scheduled and message runs
+  rebuild host-scoped HTTP auth from secrets after removing executable Git config. Shared push
+  retries report redacted errors and retry only concurrent ref updates, not auth or server
+  failures. Regression coverage includes an authenticated local HTTP push.
 - **Stale Claude Code npm cache no longer blocks pin bumps.** `restore-keys` restored an old cache
   whose packument did not list the new version, so every run failed at "Install Claude Code"; an
   exact-key miss now downloads fresh. (#1169)

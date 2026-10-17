@@ -1032,6 +1032,13 @@ jobs:
 
           echo "::notice::Token usage — input: $INPUT_TOKENS, output: $OUTPUT_TOKENS, cache_read: $CACHE_READ, cache_creation: $CACHE_CREATION, total: $TOTAL_TOKENS"
 
+      # Drop executable config planted by the run and restore only trusted auth.
+      - name: Lock git config
+        if: always() && steps.work.outputs.mode != ''
+        env:
+          AEON_GIT_TOKEN: ${{ secrets.GH_GLOBAL || secrets.GITHUB_TOKEN }}
+        run: git show "$GITHUB_SHA:scripts/git-config-guard.sh" | bash
+
       # Egress hardening P2: publish the warn-mode audit log. always() so it lands
       # even if the run failed; the host list is the allowlist oracle P3 builds from.
       - name: Upload egress audit log
@@ -1755,39 +1762,11 @@ jobs:
           else
             git commit -m "chore($LABEL): auto-commit $(date +%Y-%m-%d)"
           fi
-          for i in 1 2 3 4 5 6 7 8 9 10; do
-            # Pull and rebase onto latest remote
-            if ! git pull --rebase origin main 2>/dev/null; then
-              echo "Rebase conflict on attempt $i, auto-resolving..."
-              while true; do
-                CONFLICTED=$(git diff --name-only --diff-filter=U) || true
-                [ -z "$CONFLICTED" ] && break
-                for f in $CONFLICTED; do
-                  if [[ "$f" == memory/logs/* ]] || [[ "$f" == memory/topics/* ]] || [[ "$f" == memory/MEMORY.md ]] || [[ "$f" == memory/skill-health/* ]] || [[ "$f" == apps/dashboard/outputs/* ]] || [[ "$f" == output/* ]]; then
-                    sed -i '/^<<<<<<< /d; /^=======/d; /^>>>>>>> /d' "$f"
-                    git add "$f"
-                  else
-                    git checkout --theirs "$f"
-                    git add "$f"
-                  fi
-                done
-                if git diff --cached --quiet; then
-                  git rebase --skip || true
-                else
-                  GIT_EDITOR=true git rebase --continue || true
-                fi
-              done
-            fi
-            # Try to push — if it fails, another job beat us, loop and re-pull
-            if git push -u origin HEAD 2>/dev/null; then
-              echo "Pushed successfully on attempt $i"
-              exit 0
-            fi
-            echo "Push attempt $i failed (ref moved), retrying in ${i}s..."
-            sleep "$(( (RANDOM % 4) + i ))"  # jittered backoff - a deterministic sleep re-collides lockstep writers under push contention
-          done
-          echo "Failed to push after 5 attempts"
-          exit 1
+          # Run trusted helpers from the starting commit, not agent-edited files.
+          HELPERS=$(mktemp -d "$RUNNER_TEMP/push-helpers.XXXXXX")
+          git show "$GITHUB_SHA:scripts/git-push-retry.sh" > "$HELPERS/git-push-retry.sh"
+          git show "$GITHUB_SHA:scripts/audit.sh" > "$HELPERS/audit.sh"
+          AEON_AUDIT_SCRIPT="$HELPERS/audit.sh" bash "$HELPERS/git-push-retry.sh"
 
       - name: Update cron state
         if: always() && steps.skill.outputs.name != ''
