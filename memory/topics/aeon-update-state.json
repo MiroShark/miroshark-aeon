@@ -1,12 +1,12 @@
 {
-  "baseline_sha": "df013dbe0be81e63771b7b013ec055380c766986",
+  "baseline_sha": "3a747cd035152c4556944d5ce60be0a3198670fb",
   "upstream": "aeonfun/aeon",
-  "last_run": "2026-10-12",
+  "last_run": "2026-10-17",
   "last_pr": "https://github.com/aaronjmars/miroshark-aeon/pull/204",
   "applied": {
-    "added": 1,
-    "updated": 180,
-    "deleted": 2
+    "added": 6,
+    "updated": 80,
+    "deleted": 0
   },
   "pending_conflicts": [
     {
@@ -54,7 +54,7 @@
     },
     {
       "path": "apps/dashboard/eslint.config.mjs",
-      "reason": "modify/delete \u2014 fork deleted the dashboard eslint config; upstream modified it. Held (keeps fork's deletion)",
+      "reason": "modify/delete — fork deleted the dashboard eslint config; upstream modified it. Held (keeps fork's deletion)",
       "upstream_commits": [
         "4b0ea879"
       ]
@@ -96,14 +96,14 @@
     },
     {
       "path": "docs/assets/hero-animated.svg",
-      "reason": "DEFERRED \u2014 hero alt-text carries upstream's skill-count (85); held with the README skill-count cluster",
+      "reason": "DEFERRED — hero alt-text carries upstream's skill-count (85); held with the README skill-count cluster",
       "upstream_commits": [
         "5030e5d"
       ]
     },
     {
       "path": "docs/assets/proof-aeon.jpg",
-      "reason": "binary asset \u2014 fork image vs upstream refresh; cannot 3-way merge",
+      "reason": "binary asset — fork image vs upstream refresh; cannot 3-way merge",
       "upstream_commits": [
         "5030e5d"
       ]
@@ -131,7 +131,7 @@
     },
     {
       "path": "skills/compute-resell/SKILL.md",
-      "reason": "modify/delete \u2014 fork previously removed compute-resell; upstream modified it. Held (respects the operator's removal). Re-adopt manually if wanted (new-skill catalog/eyebrow reconcile needed)",
+      "reason": "modify/delete — fork previously removed compute-resell; upstream modified it. Held (respects the operator's removal). Re-adopt manually if wanted (new-skill catalog/eyebrow reconcile needed)",
       "upstream_commits": [
         "3f3509c"
       ]
@@ -162,6 +162,190 @@
       "reason": "operator-customized (fork) vs upstream xai/coingecko prose update; 3-way content overlap",
       "upstream_commits": [
         "9cb0b6a9"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-aeon-skill-sync.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-agents-md.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-apps.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-capabilities-parity.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-gate.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-harnesses-json.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-packs-json.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-readme-catalog.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skill-category.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skill-integrity.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skills-json.yml",
+      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
+      "upstream_commits": [
+        "95d7f7d",
+        "ca26beb"
+      ]
+    },
+    {
+      "path": "docs/langfuse.md",
+      "reason": "langfuse span/score changes (#1221-#1233) overlap fork-local edits; 3-way conflict. Held as a unit with the langfuse cluster",
+      "upstream_commits": [
+        "7fd335d",
+        "c47b155",
+        "88ec745",
+        "d01bae9",
+        "3dc55bb",
+        "7686a1d"
+      ]
+    },
+    {
+      "path": "harness-adapter/lib/otel-span.sh",
+      "reason": "langfuse span/score changes (#1221-#1233) overlap fork-local edits; 3-way conflict. Held as a unit with the langfuse cluster",
+      "upstream_commits": [
+        "7fd335d",
+        "c47b155",
+        "88ec745",
+        "d01bae9",
+        "3dc55bb",
+        "7686a1d"
+      ]
+    },
+    {
+      "path": "scripts/langfuse-otel.sh",
+      "reason": "langfuse span/score changes (#1221-#1233) overlap fork-local edits; 3-way conflict. Held as a unit with the langfuse cluster",
+      "upstream_commits": [
+        "7fd335d",
+        "c47b155",
+        "88ec745",
+        "d01bae9",
+        "3dc55bb",
+        "7686a1d"
+      ]
+    },
+    {
+      "path": "scripts/tests/test_langfuse_otel.sh",
+      "reason": "langfuse span/score changes (#1221-#1233) overlap fork-local edits; 3-way conflict. Held as a unit with the langfuse cluster",
+      "upstream_commits": [
+        "7fd335d",
+        "c47b155",
+        "88ec745",
+        "d01bae9",
+        "3dc55bb",
+        "7686a1d"
+      ]
+    },
+    {
+      "path": "scripts/tests/test_otel_span.sh",
+      "reason": "langfuse span/score changes (#1221-#1233) overlap fork-local edits; 3-way conflict. Held as a unit with the langfuse cluster",
+      "upstream_commits": [
+        "7fd335d",
+        "c47b155",
+        "88ec745",
+        "d01bae9",
+        "3dc55bb",
+        "7686a1d"
+      ]
+    },
+    {
+      "path": "scripts/tests/test_skill_mode.sh",
+      "reason": "fork-edited test vs upstream CRLF/frontmatter fix (#1203); 3-way overlap. scripts/skill_mode.sh itself applied",
+      "upstream_commits": [
+        "ac3045a"
+      ]
+    },
+    {
+      "path": "harness-adapter/harnesses.json",
+      "reason": "fork-edited vs upstream OpenRouter attribution (#1235); 3-way overlap",
+      "upstream_commits": [
+        "8aba912"
+      ]
+    },
+    {
+      "path": "apps/dashboard/lib/skill-icons.data.ts",
+      "reason": "derived from catalog; conflicts on anatomy icon. Regenerate with bin/generate-skill-icons if anatomy adopted",
+      "upstream_commits": [
+        "a588d72"
+      ]
+    },
+    {
+      "path": "docs/aeon-setup.md",
+      "reason": "fork-edited vs upstream docs sync; 3-way overlap",
+      "upstream_commits": [
+        "2cd951a"
+      ]
+    },
+    {
+      "path": "skills/anatomy",
+      "reason": "new upstream skill (#1197). NOT adopted: changes skill count/pack membership against held README tables; also needs eyebrow scan. Related held: scripts/tests/test_anatomy_integration.sh, ci-lanes.txt, run_ci_lane.sh, .github/scripts/ci-tests-lanes.py (coupled with held ci-tests.yml)",
+      "upstream_commits": [
+        "a588d72",
+        "f9ec0bf"
       ]
     }
   ]

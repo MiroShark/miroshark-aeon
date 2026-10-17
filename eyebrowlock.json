@@ -117,7 +117,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "6bf1b980351f5c1cb9f214d952bd9c0777e259c58ad850faf8c13a69a1d51639"
+          "hash": "f774d8bd3dfd7c8b508bd9c24dcb5876cad8e2653bc8d4456d8232191ccce3b4"
         },
         {
           "path": "riva.md",
@@ -135,7 +135,7 @@
           "explanation": "uses a process-execution primitive"
         }
       ],
-      "contentHash": "sha256-9822ac93e614c960bc858ef47f89e9e3a138b8cb20e333b15e4470043580255b",
+      "contentHash": "sha256-d813614e795d3221f7838a01807012dfcc4a062667edee9b988178cbdea2236c",
       "discoveredFrom": "skills/vuln-scanner/SKILL.md"
     },
     {
@@ -1090,10 +1090,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "edf8d971ecdb0f1f7d1ca8c058f93edae543ee5fbb92f5c672bbbc5d02f1dc3b"
+          "hash": "03d8f0348ff53f247f75c7ada1a54877f2bba97cd509798001f9439584065708"
         }
       ],
-      "contentHash": "sha256-225492cee5ceed4d72a2e4a38f562a1279098e0e46303bff87196e8397861744",
+      "contentHash": "sha256-af205797bc6020681eba34e7c80b1cd199eb78bf8cc027b9e521e676008275bd",
       "discoveredFrom": "skills/pr-triage/SKILL.md"
     },
     {
@@ -1378,10 +1378,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "ec0d057c56aa6a4287a9a1d11c7f5a75c93b6f9957b3e9f7b74d2168fc79a3ee"
+          "hash": "e996e8110cfc4e50a80e9d822cd3eedd737a928e8f9959ffe8038c25d562fd49"
         }
       ],
-      "contentHash": "sha256-63bf0471b8baa037a092a9cf967549bfe45ababd900978550b07ba2be237a770",
+      "contentHash": "sha256-e8825e3e893eb52f6808e61c5f24dfe6e0052fdfbf1c52bc95a1bbdbb30e04d3",
       "discoveredFrom": "skills/memory-flush/SKILL.md"
     },
     {
