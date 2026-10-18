@@ -1,13 +1,11 @@
-HEARTBEAT_OK · STATUS_PAGE=OK. Nothing needs attention, so I sent no notification.
+HEARTBEAT_OK · STATUS_PAGE=OK. The fleet is healthy, so I sent no notification.
 
-- **Skills:** No skill is failed or stuck, and every `consecutive_failures` is 0. The old zero-token failures from 10-05 and 10-06 have all recovered.
-- **PRs and issues:** There are no open PRs, no urgent issues and no open health issues.
-- **Schedule:** The skills that run on a schedule are all within their expected intervals.
-- **Token:** MIROSHARK is at $0.000001985 (+3.3% in 24h), with $128.9K liquidity and a RALLYING verdict from today's token report.
-
-I rewrote `docs/status.md` with the current skill table and token figures. I also added the heartbeat entry to `memory/logs/2026-10-17.md`.
+- **Skills:** all 9 enabled skills last succeeded, none has consecutive failures, and none is stuck or overdue. Success rates range from 71% (aeon-update) to 100% (memory-flush).
+- **Repo and issues:** no open PRs, no urgent issues, and no open health issues in `memory/issues/INDEX.md`.
+- **Token pulse:** the 2026-10-18 report gives MIROSHARK a QUIET verdict. Price is $0.000002012 (−0.5% in 24h), liquidity $128.0K, 24h volume $77.
+- **Memory:** nothing flagged in `memory/MEMORY.md` needs follow-up from this check.
 
 ## Summary
-- Ran the ambient fleet check and found no flags.
-- Files changed: `docs/status.md` and `memory/logs/2026-10-17.md`.
-- Follow-up: none.
+- Rewrote `docs/status.md` (Overall 🟢 OK, updated 2026-10-18 19:05 UTC).
+- Appended the `### heartbeat` entry (`mode: ambient`) to `memory/logs/2026-10-18.md`.
+- No follow-up needed.
