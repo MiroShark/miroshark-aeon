@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-17T18:28:35Z",
+  "last_analyzed": "2026-10-18T19:09:29Z",
   "quality_score": 3,
-  "assessment": "Clean no-change run that completed the task. It reports the fetch result, the watchlist, the newest tweet date, and the dedup check, all internally consistent with a 3-day window. It is thin on substance and can't be verified from the output alone.",
+  "assessment": "Completed the no-op check adequately: it reports a fetch with http=200, a 3-day window, and no new tweets, so no notification was correct. Its specifics (engagement counts, post dates) can't be checked from this output, and the output is mostly run-log rather than substance.",
   "flags": [],
-  "avg_score": 3.53,
+  "avg_score": 3.5,
   "history": [
-    {
-      "date": "2026-09-16",
-      "score": 4
-    },
     {
       "date": "2026-09-17",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-17",
+      "score": 3
+    },
+    {
+      "date": "2026-10-18",
       "score": 3
     }
   ]
