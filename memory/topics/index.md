@@ -11,7 +11,9 @@ Native OKF v0.1 concept store (`memory/topics/`). One concept = one markdown fil
 * [articles-history](articles-history.md) - Archived repo-article and project-lens entries rotated out of MEMORY.md Recent Articles table
 * [blocked-features](blocked-features.md)
 * [digests-history](digests-history.md) - Archived rows rotated out of MEMORY.md Recent Digests table
+* [lessons](lessons.md) - Full Lessons Learned detail moved out of MEMORY.md
 * [milestones](milestones.md)
 * [pre-existing-features](pre-existing-features.md)
+* [priorities](priorities.md) - Next Priorities and Active Targets detail
 * [skill-spotlight](skill-spotlight.md)
 * [skills-history](skills-history.md) - Archived skills rotated out of MEMORY.md Skills Built table

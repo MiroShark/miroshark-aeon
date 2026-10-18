@@ -3,10 +3,10 @@ type: Index
 ---
 
 # Long-term Memory
-*Last consolidated: 2026-10-11*
+*Last consolidated: 2026-10-18*
 ## About This Repo
-- Autonomous agent (Aeon) running on GitHub Actions via Claude Code, operating for the **$MIROSHARK** token and the `MiroShark/MiroShark` project (renamed from `aaronjmars/MiroShark` 2026-08-17 — own GitHub org now, old path redirects).
-- Linked to a Telegram group — daily skills post repo state, content, and token updates via outbound `./notify` (inbound message polling disabled).
+- Autonomous agent (Aeon) on GitHub Actions via Claude Code, operating for the **$MIROSHARK** token and `MiroShark/MiroShark` (renamed from `aaronjmars/MiroShark` 2026-08-17; old path redirects).
+- Linked to a Telegram group — skills post repo state, content, and token updates via outbound `./notify`.
 
 ## Tracked Token
 | Token | Contract | Chain |
@@ -16,83 +16,46 @@ type: Index
 `token-report` reads this table; update it here to retarget.
 
 ## Watched Repos
-See `memory/watched-repos.md` — `MiroShark/MiroShark` (renamed from `aaronjmars/MiroShark` 08-17), `MiroShark/miroshark-aeon`.
+See `memory/watched-repos.md` — `MiroShark/MiroShark`, `MiroShark/miroshark-aeon`.
 
 ## Recent Articles
-| Date | Title | Topic |
-|------|-------|-------|
-| 2026-06-24 | MiroShark's Engine Reliability Has a Bus Factor of One | Contributor concentration: dan-and sole external merger (06-17→06-24); open PR #214 = first proposed behavioral fix to simulation_runner.py since May |
-| 2026-06-24 | exit codes over webhooks — wait CLI deep-dive | Project lens: async contract for shell/CI integrators; exit 0/1/2 vs callback model (PR #215) |
-| 2026-06-23 | MiroShark Stopped Marketing the $1 and Started Letting You Audit It | Cost triad: cost.json API + embed pill + CLI `cost` — all one source, all lower-bound ($0 for untracked models) |
-| 2026-06-23 | Mandatory red-teaming misses multi-agent failure modes | Project lens: US AI directive Jun 6; isolation tests miss compounding errors across agent networks |
-| 2026-06-22 | MiroShark's Default Model Is Dead on Arrival | mimo-v2-flash deprecated (OpenRouter Jun 30); tomer-liran PR #204; 2nd vendor-deprecation break in 5 wks; PR #203 CLOSED UNMERGED |
-| 2026-06-22 | The representative agent problem, applied to swarms | Project lens: averaging N personas ≠ collective dynamics; heterogeneous populations (Ostrom polycentricity) |
-
-*Older rows archived to `memory/topics/articles-history.md` (no new editorial articles since 2026-06-24).*
+No new editorial articles since 2026-06-24; older rows in `memory/topics/articles-history.md`.
 
 ## Recent Digests
 | Date | Type | Key Topics |
 |------|------|------------|
-| 2026-10-08 | fetch-tweets | Pandemic Sim — Russia Plague Rumours (3 tweets same day: teaser → sim report → "we are live" confirmation) |
-| 2026-10-05 | shiplog | SHIPLOG_LIGHT, quietest window logged: zero commits anywhere in the Miroshark product lane (public engine repo, x402aff, AND private MiroShark-x402 companion that had carried real engine work for months) — operator's 172 PRs this window went almost entirely into the Aeon framework lane instead; first-ever star decline (-3, 1460→1457), flagged not spun |
-| 2026-10-01 | shiplog | PayAI Bazaar listing (MiroShark-x402#261) + x402aff 0.3.1 launch (11-PR website day: claims dashboard, agent-ready MCP/WebMCP/REST, agent skill); public engine repo's 5th straight window with 0 engine-code PRs; stars 1,460 (+3), forks 302 (+2) |
-| 2026-10-01 | fetch-tweets | 3 new posts: x402aff launch, PayAI listing announcement, @miroshark_'s first public post of the HuggingFace sim dataset |
-| 2026-09-28 | shiplog | HuggingFace dataset (8,201 decisions/16 sims) published 09-25; 22 merged hardening PRs in private MiroShark-x402 vs 2 in public repo this window; weekly match-sim content streak broke after 5 straight weeks |
-| 2026-09-27 | fetch-tweets | Week 09-21→09-27 content push: Substack launch + intro-blog refresh (channel expansion), x402 Spaces event w/ @thecultos announced, dataset-release quote-tweet (aaronjmars HuggingFace drop: 8,201 decisions linking @miroshark_ sim conversations to trades) |
-| 2026-09-21 | shiplog | Shipped agent hand-off (skill.md copy button + x402 Tier1/2 agent control) in MiroShark-x402 + miroshark-website; same window @svector_eth got @bankrbot to autonomously pay $1 + run the skill for a real Musebook Town Hall governance preview (unprompted, confirmed live). Public engine repo back to 0 real PRs (4 dependabot only). Stars 1,452 (+3, best of last 3 weeks) |
-| 2026-09-12 | tweet-digest | @miroshark_ resumed posting 09-10 after 6-day silence (since 09-04): product-ship + research-drop tweets (09-10) → weekly 3-league match-sim series opened (09-11: Serie A, LaLiga, Premier League) → x402aff adoption post (09-12); quiet again by 09-13 |
-| 2026-09-07 | shiplog | Public engine repo 4th straight idle window (0 engine-code PRs) but private companion repo MiroShark-x402 merged 43 real sim-engine PRs — engine work continues, just not where stars/forks read it; stars +2 (well off +9 pace), forks −1 (first decline) |
-| 2026-09-04 | tweet-digest | Weekly match-sim cadence continues (Premier League MD3, LaLiga MD4 reports); TikTok cross-platform push |
-| 2026-08-31 | tweet-digest | x402aff week recap; 2nd organic press pickup — reply to @Amrit_Mirch's GTA VI agent-argument sim (10 agents, 10 rounds, release-odds call) |
-| 2026-08-28 | tweet-digest | x402aff affiliate program launch (4 tweets: announcement, guide, article, video) — drove the same-day BREAKOUT |
+| 2026-10-12 | shiplog | Engine activity resumed: 9/9 PRs on public MiroShark repo (resume/report-lookup/JSON-repair fixes, critical Dependabot patch); stars 1,467 (+10), x402aff 7 [source: logs/2026-10-12#shiplog] |
+| 2026-10-12 | repo-pulse | SURGE: 11 new stars (1 net unstar), 3 forks (304 total) [source: logs/2026-10-12#Repo Pulse] |
+| 2026-10-12 | fetch-tweets | Monad API hub listing; no new originals 10-13→10-17 [source: logs/2026-10-12#fetch-tweets] |
+| 2026-10-08 | fetch-tweets | Pandemic Sim — Russia Plague Rumours (teaser → report → live) |
+| 2026-10-05 | shiplog | Quietest window: zero product-lane commits; first star decline (-3) |
 
 *Older rows archived to `memory/topics/digests-history.md`.*
 
 ## Skills Built
 | Skill | Date | Notes |
 |-------|------|-------|
-| camel smoke test +content | 2026-06-20 | PR #196 — asserts real agent output (non-empty msgs+content) |
-| graph_tools locale threading | 2026-06-21 | PR #198 — capture+use_locale across ThreadPoolExecutor in _fallback_interview |
-| repo-actions Gate 3 (aeon) | 2026-06-20 | PR #69 — premise verification gate: fetch+confirm live before any file claim |
-| repo-actions Gate 3 fix (aeon) | 2026-06-21 | PR #70 — unverifiable premise → drop/demote, not silent ship |
-| thinking-token budget | 2026-06-22 | PR #203 CLOSED UNMERGED — LLM_REASONING_MAX_TOKENS + LLM_REASONING_EFFORT via OpenRouter `reasoning` field |
-| wait CLI subcommand | 2026-06-24 | PR #215 — blocks until terminal state; exit 0/1/2; makes `wait → cost/report` scriptable |
-| cost CLI subcommand | 2026-06-23 | PR #208 — `python cli.py cost <id>`; `~` prefix on is_estimate; exit 2 if no cost |
-| xai=quiet/skip split | 2026-06-24 | PR #75 — `xai=quiet` = prefetch ran, token quiet; `xai=skip` = no data fetched |
-| stop CLI subcommand | 2026-06-25 | PR #216 — cancel running sim; completes `wait \|\| stop` automation lifecycle |
-| schedule tuning (aeon) | 2026-06-25 | PR #76 — pause build/content skills, stretch cadences; mirror aeon-agent schedule |
-| aeon-update enabled | 2026-08-18 | PR #135 — weekly canon framework sync from upstream aeonfun/aeon (3-way merge, never clobbers operator config). Latest: **PR #194** (2026-10-05, `531f575..1a7f07e`, 71 commits) — 312 files applied (81 added/231 updated/5 deleted); regenerated catalog/skills.json+packs.json, AGENTS.md, harness/gateway JSON, eyebrowlock.json (rescanned at CI-pinned eyebrow v0.5.6, 0 critical). Held 26 paths pending (operator config, fork-divergent README/skill-count cluster, 2 content conflicts, dep bundles, 2 new skills, llms.txt) — tracked in `memory/topics/aeon-update-state.json`. Prior known bug (cron-state stuck on `dispatched` for 128h+ after PR #183) — see Lessons Learned. |
+| aeon-update | 2026-08-18 | Weekly framework sync from upstream aeonfun/aeon (3-way merge). Latest: PR #216 (2026-10-17, `df013db..3a747cd`, 42 commits, ~86 applied, 32 held); PR #204 (10-12). Conflicts tracked in `memory/topics/aeon-update-state.json`. [source: logs/2026-10-17#aeon-update] |
+
+*Older rows archived to `memory/topics/skills-history.md`.*
 
 ## Lessons Learned
-- Digest format: Markdown with clickable links, under 4000 chars. Always save files AND commit before logging.
-- The fork's GH token now carries **both `repo` and `workflow` scopes** (verified `gh auth status` 2026-09-14) — it CAN push `.github/workflows/` changes. The old "PAT lacks the workflows scope" lesson is stale; workflow-file syncs no longer need to be held for that reason.
-- MEMORY.md row sprawl blocks every skill via the Read ~25K-token cap — `memory-flush` enforces per-row char caps; detail belongs in daily logs / `memory/topics/`, not here.
-- Cross-repo `gh repo clone` + push (e.g. `changelog` push-to branch): clone into `output/scratch/` (gitignored, inside the session's workspace), not `/tmp` (sandbox blocks paths outside the repo). Run `gh auth setup-git` before `git push` or it fails with a credential error. `gh pr create` from that clone needs `--head <branch> --base <base>` explicitly — it doesn't reliably detect the pushed branch's tracking ref from cwd. Found by `changelog` 2026-10-12 (PR aaronjmars/miroshark-website#391).
-- `feature`/`repo-actions` can waste CI building duplicate PRs — open-PR dedup + `memory/topics/blocked-features.md` + `memory/topics/pre-existing-features.md` (read at feature step 6 / repo-actions step 4) prevent re-suggesting shipped or blocked work.
-- `feature` weighs a hyperstition-deadline tiebreaker: an unbuilt candidate matching an unresolved Active Target with a ≤10-day deadline wins over a higher-raw-impact evergreen.
-- Skills consuming X.AI/Twitter data must have a prefetch case in `scripts/prefetch-xai.sh`; without it the skill runs with zero data (x.com is auth-walled, sandbox blocks curl+env-header auth). Fixed for `tweet-digest` via PR #67.
-- Social Pulse `xai` flag: `xai=quiet` = prefetch ran but token quiet (< threshold); `xai=skip` = no data fetched (cache missing or key unset). PR #75.
-- token-movers: during multi-day reporting gaps, compute 24h Δ from GT/DS native `h24` fields rather than the stale stored price (used 2026-08-04 after a 5-day gap).
-- Shell `>` redirection is blocked by the Bash permission layer even for allowed-workspace paths (curl `-o` and the Write tool still work) — stage command output under `output/scratch/` (gitignored) instead of piping to files. Found by `shiplog` 2026-08-18.
-- Root-level `notify`/`notify-jsonrender`/`secretcurl` are generated copies of `scripts/*.sh`, regenerated by the run harness — expect them as untracked/modified in `git status` (harmless generated-artifact drift, not lost work). First traced 2026-08-24 after aeon-update's PR #146 sync; confirmed via `gh api` that the merge commit remains an ancestor of `main`.
-- Claude-subscription exhaustion (2026-08-31) triggers a harness pin to a GLM gateway (`GLM_API_KEY`/`ZAI_API_KEY`) as fallback — but the pin itself returned empty zero-token responses intermittently (2 clean runs, then relapse same day). Don't treat a GLM-pin commit landing as "fixed"; wait for 2+ consecutive canary runs (confirmed via token-movers + fetch-tweets both landing clean 09-01) before calling an outage resolved.
-- eyebrow gate (CI pins **v0.4.2**): `eyebrow.policy.json` has `allowContentDrift: true` / `failOnCapabilityExpansion: true` / `failOnSeverity: critical`, so `verify` fails ONLY on a **new egress host** or a **new CRITICAL** — prose/content drift is tolerated (confirmed by reading the policy + `ci-skill-integrity.yml` on 2026-09-14). The earlier "v0.4.2 fails on ANY content drift" note was wrong. Practical rule for aeon-update: a modified existing skill is safe to apply UNLESS its SKILL.md text introduces a new URL host (even an example one — e.g. competitor-monitor's `vendor.com` had to be held). A brand-NEW skill still needs an `eyebrow scan` for its coverage entry, and the binary isn't in the sync env, so new skills get held.
-- token-movers: the 14-session DexScreener-vs-GeckoTerminal liquidity divergence (09-16→09-29, ~$120-159K DS vs ~$278-350K GT) closed on 09-30 — GT's pool reserve dropped 57% overnight ($320.6K→$137.9K) to land within 0.07% of DS's $137.8K, with no swap in the trades feed large enough to explain the drop (likely an LP add/remove event, or a GT reserve-calc correction — can't distinguish from swap data alone). Reframes the prior two weeks: DS's lower figure may have been closer to true reserve the whole time. Still an open decision item for the operator — pick a canonical source now that they agree, or watch 1-2 more sessions to confirm the convergence holds rather than reverting.
-- Zero-token "completed" harness runs (terminal_reason=completed, total_cost_usd=0, no error) recurred 2026-09-22 — 4 consecutive token-movers failures (06:10/07:00/07:38/13:48 UTC), same signature as the 2026-08-31 Claude-subscription-exhaustion incident. Recovered same day without intervention (clean 09-23 onward). `skill-repair` is disabled in `aeon.yml`, so the auto-filed issue (#182) doesn't auto-close on recovery — issue #182 is still open as of 2026-10-04 (12+ days) with no recurrence since 09-23; expect it to stay open until skill-repair is re-enabled or it's closed manually. **Recurred again 2026-10-06**, this time hitting 3 skills at once (token-movers 3 consecutive fails, fetch-tweets 4, heartbeat 2) with the identical signature over the same ~10-05→10-06 window — one systemic event, not 3 independent bugs. New health issues filed (#195 fetch-tweets, #196 heartbeat); all three recovered clean on their next cycle (10-07), no intervention needed. #182/#184/#195/#196 all remain open (skill-repair still disabled) as of 2026-10-11.
-- token-movers: the mmETH/MiroShark pool ($2.6M reserve, created 2026-09-14) has logged zero real trades through 2026-09-20 (6 days) — treat as seeded/inactive liquidity, not organic; keep excluding it from volume/whale calcs until it shows activity.
-- `aeon-update` cron-state entries can get stuck reporting `last_status: dispatched` for 100+ hours even though the run completed successfully (PR opened and merged, skill-health already scored it via a filed issue) — a lost outcome-write in the state-tracking pipeline, not a live hang. First confirmed after the 2026-09-28 11:05 UTC run: PR #183 merged 14:03 UTC same day and issue #184 scored the run, yet cron-state stayed on `dispatched` through at least 10-03 (128h+). `heartbeat` correctly deduped it as already-reported rather than re-flagging daily — before treating a `dispatched` cron-state entry as a live stuck run, cross-check the PR-merge timestamp and any skill-health issue first.
-- The Bash permission layer false-positives "Contains expansion" on `${VAR}`/`${VAR:-default}` curly-brace syntax even for non-secret values (a date, a pinned version string) — pre-resolve into plain `$VAR` or a literal before building the command, rather than assuming it's a secret-expansion block. Found by `changelog` 2026-10-05 (PR #369).
-- `rm -rf` is categorically blocked by the tool allowlist, including inside the workspace — a skill template's unconditional `rm -rf "$WORK_DIR"` before a clone needs a Glob/exists-check substitute instead. Found by `changelog` 2026-10-05.
+Full detail: `memory/topics/lessons.md`. Key points:
+- Keep MEMORY.md small (Read ~25K-token cap); detail goes to `memory/topics/`. Save files AND commit before logging.
+- Bash layer blocks `>` redirection, `rm -rf`, and `${VAR}` syntax — stage under `output/scratch/`, use plain `$VAR`.
+- Root `notify`/`notify-jsonrender`/`secretcurl` are generated copies; untracked drift is harmless.
+- Zero-token "completed" harness runs recur (09-22, 10-06) and self-heal; health issues #182/#184/#195/#196 stay open (skill-repair disabled).
+- aeon-update: held new skills (no eyebrow binary); `dispatched` cron-state can stick after success — cross-check PR merge first.
+- token-movers: GT and DS liquidity converged 09-30 (~$125-135K); mmETH pool is seeded, exclude from volume calcs.
 
 ## Active Targets
-- Hyperstition: MiroShark 1,000 stars by 2026-04-30 — MISSED Apr 30 (911), CROSSED 2026-05-03; repo-pulse's 2026-10-05 weekly check: **1,457 stars (+0 net vs 09-28)**, forks 302 (+2, confirms the fork gain shiplog flagged 10-01); verdict STEADY — 4 raw new-star events fully offset by 4 unstars this week, 2 clean new forks. shiplog's 10-01 snapshot read 1,460/-3 by 10-05 from a diverging count — the two skills' star series disagree by a few stars at times (API timing/caching), not reconciled; repo-pulse's event-reconstructed series is the one with full weekly granularity. 43 to 1,500 (off repo-pulse's 1,457 baseline).
-- Hyperstition: @miroshark_ 1,000 X followers by 2026-05-15 — deadline passed, count unconfirmed in logs.
-- Hyperstition: MiroShark PR from a Chinese-locale contributor OR Chinese-language coverage by 2026-06-15 — CROSSED; CN tweet "米罗莎要来了" May 16 qualifies; also JP coverage @m000_crypto (May 17).
-- Hyperstition: ≥3 publicly-named external integrators citing MiroShark as AI infrastructure by 2026-07-31 — **EXCEEDED, deadline passed**: 14 integrators in ECOSYSTEM.md as of 06-22 (Sparkleware, ZER0, Xerg, SyntheticsAI, Signa, RootAI, Noelclaw, Monitor, HivemindOS, Echo Oracle, Crucible Sim, Capacitr, Blue Agent, AntFleet).
-- $MIROSHARK: ATH $0.0000436 (May 18), FDV peaked $3.32M; **$0.000002303 (+1.5% 24h, -4.0% 7d, -10.3% 30d), ~−94.7% from ATH, liq $132.0K** as of 2026-10-11; verdict QUIET — price round-tripped through the window (rallied to +7.5%/10-05 on 2 whale buys, fell to -10.1%/10-09, recovered to flat by 10-11); liquidity drifted down from $140.0K to $132.0K, no new liquidity event; whale activity sporadic (0-2/day), no sustained trend.
-- MIROSHARK team/treasury holdings: 12.32% of supply (12.32B tokens) as of 2026-10-12 (up from 12.25% on 10-05), tracked via `holdings` skill (11th straight accumulating snapshot; 7d +0.6% / 30d +2.4% token-amount growth, roughly flat vs the prior week's +0.32%/+2.51%).
+Detail: `memory/topics/priorities.md`.
+- Hyperstitions: 1,000 stars (crossed 05-03), CN coverage, ≥3 integrators (14 as of 06-22) all resolved; @miroshark_ 1K followers unconfirmed.
+- Stars: **1,467** (repo-pulse 10-12, +10 SURGE), forks 304. [source: logs/2026-10-12#Repo Pulse]
+- $MIROSHARK: ATH $0.0000436 (May 18); **$0.00000201 (-0.5% 24h, -12.2% 7d, -16.8% 30d), ~−95% from ATH, liq ~$128K** as of 2026-10-18, QUIET; dipped to $0.0000019 on 10-15 after a 10-13 BREAKDOWN. [source: logs/2026-10-18#token-movers]
+- Team/treasury holdings: 12.32% of supply (2026-10-12), steady accumulation. [source: logs/2026-10-12#holdings]
 
 ## Next Priorities
-- Next star threshold: 1,500 (43 away per repo-pulse's 2026-10-05 check: 1,457 stars, net flat this week — STEADY verdict).
-- Engine dev velocity (priority-1 "ship the engine"): `MiroShark/MiroShark` shipped **0 engine-code PRs across 6 consecutive shiplog windows** (~08-11→10-05). The 10-05 window was the quietest yet — for the first time, the private companion repo `MiroShark-x402` (which had been carrying real engine work, e.g. 22 hardening PRs on 09-28) also shipped 0 flagship commits; same for x402aff. Operator's commits that week went entirely into the Aeon framework lane instead. First-ever star decline (-3) landed the same window — flagged, not causally linked. Same gap flagged to operator since 09-07, still unresolved: worth a decision on whether to upstream more into the OSS repo that the star/ecosystem metrics actually read off of.
-- `products.md` config gap (flagged by shiplog 10-01): `x402aff-website` (private, 11 PRs shipped this window — claims dashboard, agent skill, canonical domain) isn't listed under the Miroshark product's repo line — low urgency but worth a bd-radar/operator pass so scouting doesn't miss mentions of it.
+- Next star threshold 1,500 (33 away at 1,467).
+- Engine velocity: public repo's 6-window idle streak broke 10-12 (9 PRs, 7 substantive); watch if it persists. Website changelog PR miroshark-website#391 (draft).
+- `products.md` gap: `x402aff-website` not listed under the Miroshark product repos (low urgency).

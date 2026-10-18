@@ -12,6 +12,12 @@ metadata:
 
 | Date | Title | Topic |
 |------|-------|-------|
+| 2026-06-24 | MiroShark's Engine Reliability Has a Bus Factor of One | dan-and sole external merger; PR #214 |
+| 2026-06-24 | exit codes over webhooks — wait CLI deep-dive | PR #215 async contract |
+| 2026-06-23 | MiroShark Stopped Marketing the $1 and Started Letting You Audit It | cost triad, lower-bound |
+| 2026-06-23 | Mandatory red-teaming misses multi-agent failure modes | project lens |
+| 2026-06-22 | MiroShark's Default Model Is Dead on Arrival | mimo-v2-flash deprecation; PR #204 |
+| 2026-06-22 | The representative agent problem, applied to swarms | project lens |
 | 2026-06-21 | MiroShark Has Fixed the Same Concurrency Bug Four Times | Locale ContextVar lost across ThreadPoolExecutor; 4 per-call-site patches vs one shared wrapper (trace_context.py already ships it) |
 | 2026-06-20 | MiroShark Spent Its Week Teaching the Swarm to Speak German | i18n dominant workstream: 7/20 PRs added DE/FR locales; dan-and drove DE+reliability; swarm core untouched |
 | 2026-06-19 | MiroShark's Engine Failed Quietly Twice This Week | suggest_scenarios 700-token truncation (HTTP 200 + zero results) + Chinese-locale mid-run revert; both found by dan-and on local LLMs |
