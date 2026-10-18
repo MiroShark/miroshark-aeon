@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-17T09:05:08Z",
+  "last_analyzed": "2026-10-18T09:34:03Z",
   "quality_score": 3,
-  "assessment": "Competent, honest price-movement report with internally consistent numbers and disclosed gaps (skipped sentiment check, approximate trend), but the 'RALLYING' headline overstates a thin, mostly negative move, and I can't verify the figures from the transcript.",
+  "assessment": "Clear, well-structured quiet-day token report that cross-checks two sources, discloses the liquidity discrepancy, and avoids advice, but it cites no URLs or fetch timestamps, so the figures can't be verified from the output alone.",
   "flags": [],
-  "avg_score": 3.9,
+  "avg_score": 3.87,
   "history": [
-    {
-      "date": "2026-09-17",
-      "score": 4
-    },
     {
       "date": "2026-09-18",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-17",
+      "score": 3
+    },
+    {
+      "date": "2026-10-18",
       "score": 3
     }
   ]

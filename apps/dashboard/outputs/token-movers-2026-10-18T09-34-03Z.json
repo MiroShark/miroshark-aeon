@@ -1,0 +1,62 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers"
+      },
+      "children": [
+        "line",
+        "status",
+        "stack"
+      ]
+    },
+    "line": {
+      "type": "Text",
+      "props": {
+        "text": "$MIROSHARK quiet — $0.000002012 flat, vol $77.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "status": {
+      "type": "Badge",
+      "props": {
+        "text": "quiet",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "stat_price",
+        "stat_vol"
+      ]
+    },
+    "stat_price": {
+      "type": "Stat",
+      "props": {
+        "label": "$MIROSHARK price",
+        "value": "$0.000002012",
+        "delta": "flat",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "stat_vol": {
+      "type": "Stat",
+      "props": {
+        "label": "Volume",
+        "value": "$77"
+      },
+      "children": []
+    }
+  }
+}
