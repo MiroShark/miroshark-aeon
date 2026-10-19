@@ -147,16 +147,16 @@
   },
   "shiplog": {
     "last_dispatch": "2026-10-19T14:12:47Z",
-    "last_status": "dispatched",
+    "last_status": "failed",
     "last_success": "2026-10-12T09:29:10Z",
-    "total_runs": 28,
+    "total_runs": 29,
     "total_successes": 24,
-    "total_failures": 4,
-    "consecutive_failures": 0,
-    "success_rate": 0.86,
+    "total_failures": 5,
+    "consecutive_failures": 1,
+    "success_rate": 0.83,
     "last_quality_score": 4,
-    "last_failed": "2026-08-31T16:56:12Z",
-    "last_error": "jects.json\",\"description\":\"Extract product-account posts text\"}},{\"tool_name\":\"Bash\",\"tool_use_id\":\"call_ef6495fd8ef7433382b56207\",\"tool_input\":{\"command\":\"cp /tmp/xai-shiplog-projects.json /tmp/xai-s"
+    "last_failed": "2026-10-19T14:43:34Z",
+    "last_error": "[claude-code:unrecognized_model] {\"model\":\"glm-5.3-flash\",\"query_source\":\"sdk\"} error: harness run exceeded --timeout 1800s "
   },
   "operator-scorecard": {
     "last_dispatch": "2026-06-15T10:37:19Z",
