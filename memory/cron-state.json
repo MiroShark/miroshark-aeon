@@ -193,16 +193,16 @@
   },
   "token-movers": {
     "last_dispatch": "2026-10-19T19:56:18Z",
-    "last_status": "dispatched",
+    "last_status": "failed",
     "last_success": "2026-10-18T09:34:12Z",
-    "total_runs": 111,
+    "total_runs": 112,
     "total_successes": 97,
-    "total_failures": 14,
-    "consecutive_failures": 2,
+    "total_failures": 15,
+    "consecutive_failures": 3,
     "success_rate": 0.87,
     "last_quality_score": 3,
-    "last_failed": "2026-10-19T14:43:28Z",
-    "last_error": "[claude-code:unrecognized_model] {\"model\":\"glm-5.3-flash\",\"query_source\":\"sdk\"} error: harness run exceeded --timeout 1800s "
+    "last_failed": "2026-10-19T19:56:53Z",
+    "last_error": "background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safe"
   },
   "fetch-tweets": {
     "last_dispatch": "2026-10-19T19:56:18Z",
