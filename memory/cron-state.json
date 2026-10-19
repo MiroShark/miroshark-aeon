@@ -193,15 +193,15 @@
   },
   "token-movers": {
     "last_dispatch": "2026-10-19T14:12:47Z",
-    "last_status": "dispatched",
+    "last_status": "failed",
     "last_success": "2026-10-18T09:34:12Z",
-    "total_runs": 110,
+    "total_runs": 111,
     "total_successes": 97,
-    "total_failures": 13,
-    "consecutive_failures": 1,
-    "success_rate": 0.88,
+    "total_failures": 14,
+    "consecutive_failures": 2,
+    "success_rate": 0.87,
     "last_quality_score": 3,
-    "last_failed": "2026-10-19T07:20:13Z",
+    "last_failed": "2026-10-19T14:43:28Z",
     "last_error": "[claude-code:unrecognized_model] {\"model\":\"glm-5.3-flash\",\"query_source\":\"sdk\"} error: harness run exceeded --timeout 1800s "
   },
   "fetch-tweets": {
