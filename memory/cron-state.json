@@ -78,8 +78,8 @@
     "last_quality_score": 4
   },
   "repo-pulse": {
-    "last_dispatch": "2026-10-12T10:12:32Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-19T14:12:47Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-12T10:19:57Z",
     "total_runs": 40,
     "total_successes": 36,
@@ -146,8 +146,8 @@
     "success_rate": 1
   },
   "shiplog": {
-    "last_dispatch": "2026-10-12T09:17:55Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-19T14:12:47Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-12T09:29:10Z",
     "total_runs": 28,
     "total_successes": 24,
@@ -192,8 +192,8 @@
     "last_quality_score": 3
   },
   "token-movers": {
-    "last_dispatch": "2026-10-19T06:49:33Z",
-    "last_status": "failed",
+    "last_dispatch": "2026-10-19T14:12:47Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-18T09:34:12Z",
     "total_runs": 110,
     "total_successes": 97,
@@ -218,8 +218,8 @@
     "last_error": "9fb497\",\"total_cost_usd\":0,\"usage\":{\"input_tokens\":0,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"output_tokens\":0,\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"s"
   },
   "changelog": {
-    "last_dispatch": "2026-10-12T08:04:10Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-19T14:12:47Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-12T08:13:04Z",
     "total_runs": 19,
     "total_successes": 16,
@@ -231,7 +231,7 @@
     "last_error": "6efbbd\",\"total_cost_usd\":0,\"usage\":{\"input_tokens\":0,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"output_tokens\":0,\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"s"
   },
   "holdings": {
-    "last_status": "success",
+    "last_status": "dispatched",
     "last_success": "2026-10-12T08:06:47Z",
     "total_runs": 17,
     "total_successes": 14,
@@ -239,13 +239,13 @@
     "consecutive_failures": 0,
     "success_rate": 0.82,
     "last_quality_score": 4,
-    "last_dispatch": "2026-10-12T08:04:10Z",
+    "last_dispatch": "2026-10-19T14:12:47Z",
     "last_failed": "2026-08-31T09:33:01Z",
     "last_error": "879446\",\"total_cost_usd\":0,\"usage\":{\"input_tokens\":0,\"cache_creation_input_tokens\":0,\"cache_read_input_tokens\":0,\"output_tokens\":0,\"server_tool_use\":{\"web_search_requests\":0,\"web_fetch_requests\":0},\"s"
   },
   "aeon-update": {
-    "last_dispatch": "2026-10-12T11:09:47Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-19T14:12:47Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-17T01:50:37Z",
     "total_runs": 14,
     "total_successes": 10,
