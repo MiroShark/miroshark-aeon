@@ -1,0 +1,125 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update",
+        "description": "Skill output"
+      },
+      "children": [
+        "alert",
+        "commit-stats",
+        "commit-range",
+        "baseline",
+        "sep-1",
+        "next-heading",
+        "next-text",
+        "actions"
+      ]
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "title": "aeon-update blocked",
+        "message": "upstream aeonfun/aeon is 15 commits ahead (3a747cd..f27af14, ~60 files), but the permission layer refuses the batch classify script and file redirects, so no sync PR was opened.",
+        "type": "error"
+      },
+      "children": []
+    },
+    "commit-stats": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "stat-commits",
+        "stat-files"
+      ]
+    },
+    "stat-commits": {
+      "type": "Stat",
+      "props": {
+        "label": "Commits ahead",
+        "value": "15"
+      },
+      "children": []
+    },
+    "stat-files": {
+      "type": "Stat",
+      "props": {
+        "label": "Files",
+        "value": "~60"
+      },
+      "children": []
+    },
+    "commit-range": {
+      "type": "Text",
+      "props": {
+        "text": "Commit range: 3a747cd..f27af14",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "baseline": {
+      "type": "Text",
+      "props": {
+        "text": "Baseline unchanged.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "next-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Next steps",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "next-text": {
+      "type": "Text",
+      "props": {
+        "text": "Grant approval for the script run, or re-run with var=report.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "actions": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "btn-approve",
+        "btn-rerun"
+      ]
+    },
+    "btn-approve": {
+      "type": "Button",
+      "props": {
+        "label": "Grant approval for the script run",
+        "variant": "primary"
+      },
+      "children": []
+    },
+    "btn-rerun": {
+      "type": "Button",
+      "props": {
+        "label": "Re-run with var=report",
+        "variant": "secondary"
+      },
+      "children": []
+    }
+  }
+}

@@ -555,3 +555,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-10-21,repo-pulse,claude-sonnet-5-5,20,4120,333609,27606
 2026-10-21,shiplog,claude-sonnet-5-5,30,7894,723211,50185
 2026-10-21,token-movers,claude-sonnet-5-5,20,4969,447816,42286
+2026-10-21,aeon-update,claude-sonnet-5-5,30,5203,659497,41345

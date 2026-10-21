@@ -1,10 +1,10 @@
 {
   "skill": "aeon-update",
-  "last_analyzed": "2026-10-21T00:40:08Z",
+  "last_analyzed": "2026-10-21T14:37:22Z",
   "quality_score": 2,
-  "assessment": "Honest about a blocked run and didn't fabricate results, but the sync never ran: no classification, no branch, no PR, so the core deliverable is missing.",
+  "assessment": "Honest blocked run: the sync never ran and no PR or framework changes were made, but the upstream summary and blocker detail are useful and the output is not empty.",
   "flags": [],
-  "avg_score": 3.82,
+  "avg_score": 3.67,
   "history": [
     {
       "date": "2026-08-24",
@@ -45,6 +45,10 @@
     {
       "date": "2026-10-17",
       "score": 3
+    },
+    {
+      "date": "2026-10-21",
+      "score": 2
     },
     {
       "date": "2026-10-21",

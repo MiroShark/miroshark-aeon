@@ -1,3 +1,1 @@
-⚠️ aeon-update blocked
-
-aeon-update 2026-10-21: upstream aeonfun/aeon is 13 commits ahead (3a747cd..75f3b55, 55 files). The sync was blocked because the 3-way classify script needed a permission approval. No PR opened and the baseline is unchanged. Re-run with approval, or run with var=report for a dry-run delta.
+aeon-update blocked: upstream aeonfun/aeon is 15 commits ahead (3a747cd..f27af14, ~60 files), but the permission layer refuses the batch classify script and file redirects, so no sync PR was opened. Baseline unchanged. Grant approval for the script run, or re-run with var=report.
