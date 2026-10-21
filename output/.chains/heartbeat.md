@@ -1,11 +1,3 @@
-HEARTBEAT_OK · STATUS_PAGE=OK. The fleet is healthy, so I sent no notification.
-
-- **Skills:** all 9 enabled skills last succeeded, none has consecutive failures, and none is stuck or overdue. Success rates range from 71% (aeon-update) to 100% (memory-flush).
-- **Repo and issues:** no open PRs, no urgent issues, and no open health issues in `memory/issues/INDEX.md`.
-- **Token pulse:** the 2026-10-18 report gives MIROSHARK a QUIET verdict. Price is $0.000002012 (−0.5% in 24h), liquidity $128.0K, 24h volume $77.
-- **Memory:** nothing flagged in `memory/MEMORY.md` needs follow-up from this check.
-
-## Summary
-- Rewrote `docs/status.md` (Overall 🟢 OK, updated 2026-10-18 19:05 UTC).
-- Appended the `### heartbeat` entry (`mode: ambient`) to `memory/logs/2026-10-18.md`.
-- No follow-up needed.
+🔴 FAILED (not recovered): token-movers (3 consecutive), fetch-tweets (3), changelog (3, 1800s timeout on glm-5.3-flash), aeon-update, holdings, shiplog, repo-pulse, heartbeat (2 each)
+Most failed together 2026-10-19 ~19:57 UTC with the same zero-token harness error (seen 09-22, 10-06; self-healed before). No successes since 10-18 except memory-flush. Next runs will show whether it clears; if not, check harness/model config (changelog model glm-5.3-flash unrecognized).
+No stalled PRs, no urgent issues.

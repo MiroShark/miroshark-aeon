@@ -1,0 +1,130 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "heartbeat"
+      },
+      "children": [
+        "status_heading",
+        "failed_table",
+        "sep_1",
+        "incident_alert",
+        "success_text",
+        "next_text",
+        "sep_2",
+        "pr_text"
+      ]
+    },
+    "status_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "🔴 FAILED (not recovered)",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "failed_table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "Consecutive failures",
+          "Notes"
+        ],
+        "rows": [
+          [
+            "token-movers",
+            "3 consecutive",
+            ""
+          ],
+          [
+            "fetch-tweets",
+            "3",
+            ""
+          ],
+          [
+            "changelog",
+            "3",
+            "1800s timeout on glm-5.3-flash"
+          ],
+          [
+            "aeon-update",
+            "2",
+            ""
+          ],
+          [
+            "holdings",
+            "2",
+            ""
+          ],
+          [
+            "shiplog",
+            "2",
+            ""
+          ],
+          [
+            "repo-pulse",
+            "2",
+            ""
+          ],
+          [
+            "heartbeat",
+            "2",
+            ""
+          ]
+        ]
+      },
+      "children": []
+    },
+    "sep_1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "incident_alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "Shared failure",
+        "message": "Most failed together 2026-10-19 ~19:57 UTC with the same zero-token harness error (seen 09-22, 10-06; self-healed before)."
+      },
+      "children": []
+    },
+    "success_text": {
+      "type": "Text",
+      "props": {
+        "text": "No successes since 10-18 except memory-flush.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "next_text": {
+      "type": "Text",
+      "props": {
+        "text": "Next runs will show whether it clears; if not, check harness/model config (changelog model glm-5.3-flash unrecognized).",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep_2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "pr_text": {
+      "type": "Text",
+      "props": {
+        "text": "No stalled PRs, no urgent issues.",
+        "variant": "body"
+      },
+      "children": []
+    }
+  }
+}
