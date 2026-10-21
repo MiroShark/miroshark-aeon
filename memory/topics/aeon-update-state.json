@@ -2,7 +2,7 @@
   "baseline_sha": "a0cca777f0a990babab3d8ba00779a0a4de7ef9b",
   "upstream": "aeonfun/aeon",
   "last_run": "2026-10-21",
-  "last_pr": null,
+  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/222",
   "applied": {
     "added": 11,
     "updated": 35,
