@@ -1,0 +1,445 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Repo Pulse",
+        "description": "2026-10-21"
+      },
+      "children": [
+        "header_row",
+        "stats_row",
+        "sep1",
+        "notable_card",
+        "sep2",
+        "other_card",
+        "sep3",
+        "forks_card",
+        "source"
+      ]
+    },
+    "header_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "header_heading",
+        "status_badge"
+      ]
+    },
+    "header_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Repo Pulse — 2026-10-21",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "status_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "STEADY",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "repo_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "MiroShark/MiroShark",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "stars_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Stars",
+        "value": "1,475",
+        "delta": "+8",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "forks_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "Forks",
+        "value": "305",
+        "delta": "+2",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stats_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "lg"
+      },
+      "children": [
+        "repo_heading",
+        "stars_stat",
+        "forks_stat"
+      ]
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "notable_card": {
+      "type": "Card",
+      "props": {
+        "title": "Notable new stargazers"
+      },
+      "children": [
+        "manoel_card",
+        "gurinder_card",
+        "nick_card",
+        "augustus_card"
+      ]
+    },
+    "manoel_card": {
+      "type": "Card",
+      "props": {
+        "title": "Manoel Campos"
+      },
+      "children": [
+        "manoel_gh",
+        "manoel_meta",
+        "manoel_org_row",
+        "manoel_bio",
+        "manoel_site",
+        "manoel_yt",
+        "manoel_x"
+      ]
+    },
+    "manoel_gh": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/manoelcampos",
+        "href": "https://github.com/manoelcampos"
+      },
+      "children": []
+    },
+    "manoel_meta": {
+      "type": "Text",
+      "props": {
+        "text": "📍 Palmas-TO, Brazil · 94 repos · 425 followers",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "manoel_org_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "manoel_org1",
+        "manoel_org2",
+        "manoel_org3"
+      ]
+    },
+    "manoel_org1": {
+      "type": "Badge",
+      "props": {
+        "text": "@iftopalmas",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "manoel_org2": {
+      "type": "Badge",
+      "props": {
+        "text": "@cloudsimplus",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "manoel_org3": {
+      "type": "Badge",
+      "props": {
+        "text": "@saneasoft",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "manoel_bio": {
+      "type": "Text",
+      "props": {
+        "text": "Software Engineer, Computer Engineering Ph.D, CloudSim Plus creator",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "manoel_site": {
+      "type": "Link",
+      "props": {
+        "label": "cloudsimplus.org",
+        "href": "https://cloudsimplus.org"
+      },
+      "children": []
+    },
+    "manoel_yt": {
+      "type": "Link",
+      "props": {
+        "label": "youtube.com/@manoelcamposdev",
+        "href": "https://youtube.com/@manoelcamposdev"
+      },
+      "children": []
+    },
+    "manoel_x": {
+      "type": "Text",
+      "props": {
+        "text": "🐦 @manoelcampos",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "gurinder_card": {
+      "type": "Card",
+      "props": {
+        "title": "Gurinder Singh"
+      },
+      "children": [
+        "gurinder_gh",
+        "gurinder_meta",
+        "gurinder_site"
+      ]
+    },
+    "gurinder_gh": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/Ripnrip",
+        "href": "https://github.com/Ripnrip"
+      },
+      "children": []
+    },
+    "gurinder_meta": {
+      "type": "Text",
+      "props": {
+        "text": "122 repos (also forked)",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "gurinder_site": {
+      "type": "Link",
+      "props": {
+        "label": "www.guriboycodes.com",
+        "href": "https://www.guriboycodes.com"
+      },
+      "children": []
+    },
+    "nick_card": {
+      "type": "Card",
+      "props": {
+        "title": "nicksan2c"
+      },
+      "children": [
+        "nick_gh",
+        "nick_meta"
+      ]
+    },
+    "nick_gh": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/nicksan2c",
+        "href": "https://github.com/nicksan2c"
+      },
+      "children": []
+    },
+    "nick_meta": {
+      "type": "Text",
+      "props": {
+        "text": "109 repos",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "augustus_card": {
+      "type": "Card",
+      "props": {
+        "title": "Augustus Edem"
+      },
+      "children": [
+        "augustus_gh",
+        "augustus_meta",
+        "augustus_org",
+        "augustus_bio"
+      ]
+    },
+    "augustus_gh": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/EmotiveImpact",
+        "href": "https://github.com/EmotiveImpact"
+      },
+      "children": []
+    },
+    "augustus_meta": {
+      "type": "Text",
+      "props": {
+        "text": "📍 London · 32 repos · 11 followers",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "augustus_org": {
+      "type": "Badge",
+      "props": {
+        "text": "🏢 Emotive Impact",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "augustus_bio": {
+      "type": "Text",
+      "props": {
+        "text": "Creative Director, Filmmaker & App Builder | 20 years turning footage into feeling | I ship software solo and scale taste with AI",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "other_card": {
+      "type": "Card",
+      "props": {
+        "title": "Other new stargazers"
+      },
+      "children": [
+        "other_grid"
+      ]
+    },
+    "other_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "sm"
+      },
+      "children": [
+        "other_link1",
+        "other_link2",
+        "other_link3",
+        "other_link4"
+      ]
+    },
+    "other_link1": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/freakey95",
+        "href": "https://github.com/freakey95"
+      },
+      "children": []
+    },
+    "other_link2": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/timothylee1985",
+        "href": "https://github.com/timothylee1985"
+      },
+      "children": []
+    },
+    "other_link3": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/michaelschafferofficial",
+        "href": "https://github.com/michaelschafferofficial"
+      },
+      "children": []
+    },
+    "other_link4": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/jerome666",
+        "href": "https://github.com/jerome666"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "forks_card": {
+      "type": "Card",
+      "props": {
+        "title": "New forks"
+      },
+      "children": [
+        "fork_ripnrip",
+        "fork_ripnrip_site",
+        "fork_kotthoff",
+        "fork_kotthoff_org",
+        "fork_kotthoff_site"
+      ]
+    },
+    "fork_ripnrip": {
+      "type": "StoryLink",
+      "props": {
+        "title": "Ripnrip/MiroShark",
+        "href": "https://github.com/Ripnrip/MiroShark",
+        "source": "Gurinder Singh · 122 repos"
+      },
+      "children": []
+    },
+    "fork_ripnrip_site": {
+      "type": "Link",
+      "props": {
+        "label": "www.guriboycodes.com",
+        "href": "https://www.guriboycodes.com"
+      },
+      "children": []
+    },
+    "fork_kotthoff": {
+      "type": "StoryLink",
+      "props": {
+        "title": "kotthoff/MiroShark",
+        "href": "https://github.com/kotthoff/MiroShark",
+        "source": "Jonathan Kotthoff · 545 repos"
+      },
+      "children": []
+    },
+    "fork_kotthoff_org": {
+      "type": "Badge",
+      "props": {
+        "text": "@migo-IQ-Inc",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "fork_kotthoff_site": {
+      "type": "Link",
+      "props": {
+        "label": "migoiq.app",
+        "href": "https://migoiq.app"
+      },
+      "children": []
+    },
+    "source": {
+      "type": "Text",
+      "props": {
+        "text": "Source: events",
+        "variant": "caption"
+      },
+      "children": []
+    }
+  }
+}

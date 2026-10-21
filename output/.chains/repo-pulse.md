@@ -1,23 +1,21 @@
-✅ Repo Pulse
+ℹ️ Repo Pulse
 
-*Repo Pulse — 2026-10-12* — [SURGE]
-MiroShark/MiroShark — stars 1467 (+10) · forks 304 (+2) · releases +0
+*Repo Pulse — 2026-10-21* — [STEADY]
+MiroShark/MiroShark — stars 1,475 (+8) · forks 305 (+2)
 
 Notable new stargazers:
-github.com/Straffern — Straffern · 📍 Denmark · 24 repos · 13 followers
-github.com/awabsyed1 — Awab Syed · 📍 San Francisco · 🏢 University of Sheffield · 34 repos · 🌐 https://awabsyed1.github.io/index.html · 🐦 @AwabCyberSpace · 22 followers
-  "Roboticists | Control and System"
-github.com/heromiyo — Francis Miyoba · 📍 Nanjing, China · 32 repos · 27 followers
-  "Computer Science Student at Nanjing University of information Science and Technology, China."
-github.com/Yizrael — 508 repos
+github.com/manoelcampos — Manoel Campos · 📍 Palmas-TO, Brazil · 🏢 @iftopalmas @cloudsimplus @saneasoft · 94 repos · 🌐 youtube.com/@manoelcamposdev · 🐦 @manoelcampos · 425 followers
+  "Software Engineer, Computer Engineering Ph.D, CloudSim Plus creator https://cloudsimplus.org"
+github.com/Ripnrip — Gurinder Singh · 122 repos · 🌐 www.guriboycodes.com (also forked)
+github.com/nicksan2c — 109 repos
+github.com/EmotiveImpact — Augustus Edem · 📍 London · 🏢 Emotive Impact · 32 repos · 11 followers
+  "Creative Director, Filmmaker & App Builder | 20 years turning footage into feeling | I ship software solo and scale taste with AI"
 
 Other new stargazers:
-github.com/TNATALI | github.com/peterbaksa | github.com/aconcepcion | github.com/jsingh-sketch | github.com/lafinak | github.com/xuhaoyu002-prog | github.com/bitmoral
+github.com/freakey95 | github.com/timothylee1985 | github.com/michaelschafferofficial | github.com/jerome666
 
 New forks:
-github.com/Aigov-consulting/MiroShark — Aigov.consulting · 📍 Estonia · 39 repos · 🌐 https://aigov.consulting/ · 🐦 @AIgovconsulting
-  "Artificial Intelligence: The Driving Force of Government Efficiency"
-github.com/OpmRain/MiroShark — Edward OPM · 288 repos · 🌐 https://www.linkedin.com/in/edwardopm/
-github.com/Yizrael/MiroShark — 508 repos
+github.com/Ripnrip/MiroShark — Gurinder Singh · 122 repos · 🌐 www.guriboycodes.com
+github.com/kotthoff/MiroShark — Jonathan Kotthoff · 🏢 @migo-IQ-Inc · 545 repos · 🌐 migoiq.app
 
 Source: events
