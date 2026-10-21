@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-18T19:09:29Z",
+  "last_analyzed": "2026-10-21T00:39:57Z",
   "quality_score": 3,
-  "assessment": "Completed the no-op check adequately: it reports a fetch with http=200, a 3-day window, and no new tweets, so no notification was correct. Its specifics (engagement counts, post dates) can't be checked from this output, and the output is mostly run-log rather than substance.",
+  "assessment": "Honest, accurate no-signal digest: it reports the one in-window tweet with a URL and metrics traceable to the fetched JSON, and correctly skips notifying. It is thin, and its suggestion to publish a worked example ties to strategy priority 2.",
   "flags": [],
-  "avg_score": 3.5,
+  "avg_score": 3.47,
   "history": [
-    {
-      "date": "2026-09-17",
-      "score": 4
-    },
     {
       "date": "2026-09-18",
       "score": 3
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-18",
+      "score": 3
+    },
+    {
+      "date": "2026-10-21",
       "score": 3
     }
   ]
