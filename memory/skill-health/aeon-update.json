@@ -1,10 +1,10 @@
 {
   "skill": "aeon-update",
-  "last_analyzed": "2026-10-17T01:50:20Z",
-  "quality_score": 3,
-  "assessment": "Substantive, honest report with a PR reference, commit range, and clear held-items list, but it is upstream framework-sync maintenance rather than engine or growth work, and the merged result was not CI-tested.",
+  "last_analyzed": "2026-10-21T00:40:08Z",
+  "quality_score": 2,
+  "assessment": "Honest about a blocked run and didn't fabricate results, but the sync never ran: no classification, no branch, no PR, so the core deliverable is missing.",
   "flags": [],
-  "avg_score": 4,
+  "avg_score": 3.82,
   "history": [
     {
       "date": "2026-08-24",
@@ -45,6 +45,10 @@
     {
       "date": "2026-10-17",
       "score": 3
+    },
+    {
+      "date": "2026-10-21",
+      "score": 2
     }
   ]
 }

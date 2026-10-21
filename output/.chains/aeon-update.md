@@ -1,7 +1,3 @@
-*aeon-update — 2026-10-17*
-Synced 42 upstream commits → PR #216
+⚠️ aeon-update blocked
 
-Applied ~86 files cleanly: secretcurl now substitutes only declared secrets, push-helper hardening, scheduler warnings, cron-due fix, OpenRouter attribution, memory-flush/pr-triage/vuln-scanner updates.
-Manual: 15 workflows (Blacksmith/bubblewrap overlap), langfuse cluster, harnesses.json, docs, new skill anatomy (not adopted).
-
-PR: https://github.com/MiroShark/miroshark-aeon/pull/216
+aeon-update 2026-10-21: upstream aeonfun/aeon is 13 commits ahead (3a747cd..75f3b55, 55 files). The sync was blocked because the 3-way classify script needed a permission approval. No PR opened and the baseline is unchanged. Re-run with approval, or run with var=report for a dry-run delta.

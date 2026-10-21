@@ -1,0 +1,95 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update"
+      },
+      "children": [
+        "status_text",
+        "stats",
+        "sep1",
+        "alert",
+        "sep2",
+        "next_heading",
+        "next_text"
+      ]
+    },
+    "status_text": {
+      "type": "Text",
+      "props": {
+        "text": "aeon-update 2026-10-21: upstream aeonfun/aeon is 13 commits ahead (3a747cd..75f3b55, 55 files).",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_commits",
+        "stat_files"
+      ]
+    },
+    "stat_commits": {
+      "type": "Stat",
+      "props": {
+        "label": "Commits ahead",
+        "value": "13"
+      },
+      "children": []
+    },
+    "stat_files": {
+      "type": "Stat",
+      "props": {
+        "label": "Files changed",
+        "value": "55"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "aeon-update blocked",
+        "message": "The sync was blocked because the 3-way classify script needed a permission approval. No PR opened and the baseline is unchanged."
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "next_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Next steps",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "next_text": {
+      "type": "Text",
+      "props": {
+        "text": "Re-run with approval, or run with var=report for a dry-run delta.",
+        "variant": "body"
+      },
+      "children": []
+    }
+  }
+}

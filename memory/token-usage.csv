@@ -551,3 +551,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-10-21,holdings,claude-sonnet-5-5,12,1698,175055,22613
 2026-10-21,fetch-tweets,claude-sonnet-5-5,20,2379,449637,40177
 2026-10-21,heartbeat,claude-sonnet-5-5,14,3388,283622,40940
+2026-10-21,aeon-update,claude-sonnet-5-5,20,4065,424232,37781
