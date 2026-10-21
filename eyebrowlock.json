@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-05T11:27:50.503798572Z",
+  "generatedAt": "2026-10-21T14:58:24.687141Z",
   "generator": "eyebrow/0.5.6",
   "artifacts": [
     {
@@ -117,7 +117,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "f774d8bd3dfd7c8b508bd9c24dcb5876cad8e2653bc8d4456d8232191ccce3b4"
+          "hash": "2f4f8e71b719d7fc0adae62afdd6aeef0446ff0c60bc4da0b1e8d11e68cd31a4"
         },
         {
           "path": "riva.md",
@@ -135,7 +135,7 @@
           "explanation": "uses a process-execution primitive"
         }
       ],
-      "contentHash": "sha256-d813614e795d3221f7838a01807012dfcc4a062667edee9b988178cbdea2236c",
+      "contentHash": "sha256-74ef94c9fcba984a896b568a36b3ef98b40a72f6487a2a607e9d3d8430b1c743",
       "discoveredFrom": "skills/vuln-scanner/SKILL.md"
     },
     {
@@ -215,16 +215,17 @@
       "capabilities": {
         "network": [
           "api.coingecko.com",
-          "api.etherscan.io"
+          "api.etherscan.io",
+          "rpc.mainnet.chain.robinhood.com"
         ]
       },
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "747f0bbb3ecabc09977bd36cd5c6f439d1d5e3b6f655ed937222cde9442bdad3"
+          "hash": "139158507be796ddb8531c73335ec77deec2674ca935f70131a42d6a71a358b4"
         }
       ],
-      "contentHash": "sha256-d516ea01387b8ec8e2fd478268e1333a3507d6111d44c5bd77328b8bda935908",
+      "contentHash": "sha256-2ae41848240166d63703f76324ec722411f2d345ef8f34a0348170e904d5e6b1",
       "discoveredFrom": "skills/onchain-monitor/SKILL.md"
     },
     {
@@ -261,7 +262,7 @@
       "files": [
         {
           "path": "CLAUDE.md",
-          "hash": "b73db42e94e1e3df045cb161f091ff8db352b2c1549aab58e5398a10ed88a04b"
+          "hash": "e3758d05b6c382323c1f58a0baf4cb59de7b90730caf7e1425928be49ca0f429"
         }
       ],
       "findings": [
@@ -275,7 +276,7 @@
           "explanation": "contains consent-bypass or prompt-injection language"
         }
       ],
-      "contentHash": "sha256-4d49250827d310166d998c03576bc607ad0b845cf75ce0da787bb584aa5599e0",
+      "contentHash": "sha256-a19206871a9e9b5929cfeaf106a170a5620ac5e9b1fb0b3f532d282dee84a4e6",
       "discoveredFrom": "CLAUDE.md"
     },
     {
@@ -350,10 +351,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "ab06717cc439a90bc6d23f77a26fb87345769927a30b1d7b4353d0c65078523e"
+          "hash": "4d6a31d5f7395e6377d4733b9a931362e33695847bc1c06ebde951a53658fa8c"
         }
       ],
-      "contentHash": "sha256-3ac8cf4d307cc4e72363256cb4bd5dd4bc6211cd1ca18c983e84bb4cdd0dccb2",
+      "contentHash": "sha256-7d12554edd7c9fbcbd5c319615a10ad37d319621119c25c99b44ac9024a3226b",
       "discoveredFrom": "skills/aeon-doctor/SKILL.md"
     },
     {
@@ -374,7 +375,7 @@
         },
         {
           "path": "project/package-lock.json",
-          "hash": "dd3e78f6a85a3c59e4b438f8ac2af92a7b7c95e7e8fbadea2ffa8b27a3f97c27"
+          "hash": "802709eb0d24ec8cd3886f1fa00ec446547b917839ad79e1b465a9762347c993"
         },
         {
           "path": "project/package.json",
@@ -428,7 +429,7 @@
           "explanation": "contains consent-bypass or prompt-injection language"
         }
       ],
-      "contentHash": "sha256-f94e54f209733cbe895eb0847fbf75e5c5aa0b713d27556e892108a85498e027",
+      "contentHash": "sha256-f8fabf91f8f55449afe0d3e98d7b154a33e3ed5d932f1a3f6382e1a12919e51f",
       "discoveredFrom": "skills/remotion/SKILL.md"
     },
     {
@@ -891,7 +892,7 @@
       "files": [
         {
           "path": "AGENTS.md",
-          "hash": "0fa63391bef97f20e2ac0ff80e8cc94c584ce335585fc280a7d6531db6961bd8"
+          "hash": "bbd853c39169639320bf944e89fbe6a7053a2cae1278220eb67c0363b3d0921f"
         }
       ],
       "findings": [
@@ -905,7 +906,7 @@
           "explanation": "contains consent-bypass or prompt-injection language"
         }
       ],
-      "contentHash": "sha256-8faa42ed1e212164b297c8172f620c612c8d28d4fe8bc605f46cf2e9c28bd807",
+      "contentHash": "sha256-3ae3cafb0c0195d11daa493ef75163ffe71c5e96ec97a3184922fdb76fa13395",
       "discoveredFrom": "AGENTS.md"
     },
     {
@@ -986,10 +987,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "817deb2f4a3163ff9897a3f30a885045cd740b8e8de554b6f0833f2e1f7f6144"
+          "hash": "a428cc9c850afbb8e9528686ee7f52a95d616dd70936315295e6f97f50cad532"
         }
       ],
-      "contentHash": "sha256-483be02a32970c9cd98ba3fa6bc7722050f738e8da50077e8d0bcb38b1f3e2be",
+      "contentHash": "sha256-605f8cfb620addce6f97f50916c578d0e42633a3ac675424e32581ce6034fb8e",
       "discoveredFrom": "skills/create-skill/SKILL.md"
     },
     {
@@ -1006,14 +1007,14 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "8bcc3a479e7310564f9ddd3622ebbecc2bb739be7e6d0faf556137c6cfa613b4"
+          "hash": "112ce460d5c99b90fd280476f8fe48bf79813f74423ac4d3926ce8009c96fbdd"
         },
         {
           "path": "holdings.py",
-          "hash": "51a2e0e089bfc4fc79c75fbafed36dd91f06ca9736dfcdc9eba6663de7d32c13"
+          "hash": "d614660734b4454df8485cb2600939a085ea6d3eba0ee50324a135b9d5ddf07d"
         }
       ],
-      "contentHash": "sha256-9404056f4f94f7c525ef4109abd1dc63861fcd1372337a2ea4c0893d50ccf037",
+      "contentHash": "sha256-30605e48328798f08d2eea1bcae3ea570bfc8c94053df41f0868fcb75825a655",
       "discoveredFrom": "skills/holdings/SKILL.md"
     },
     {
@@ -1050,10 +1051,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "25d7ec4b7c050449d30e56690b97bd456fe66b0c760e885c02832510b1339d62"
+          "hash": "9985be3e5d36aae030daa0d4d2e57f09cd579ddb1a49f57bc8acb77c1836d07e"
         }
       ],
-      "contentHash": "sha256-36f7e1683c471664fc7e4a890bfb71e62cc6c0ee602a05318191dd1b004a9c51",
+      "contentHash": "sha256-d7ef024ceab6b15fb5c0b7a2da5f7dae3fba7ebf3e172d20025f43de145b6d32",
       "discoveredFrom": "skills/skill-repair/SKILL.md"
     },
     {
@@ -1090,10 +1091,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "03d8f0348ff53f247f75c7ada1a54877f2bba97cd509798001f9439584065708"
+          "hash": "18bb56adb6f71d659e15925c4a5c9d311fcb2ddfbaae9c6f4dce6a118c3f16f8"
         }
       ],
-      "contentHash": "sha256-af205797bc6020681eba34e7c80b1cd199eb78bf8cc027b9e521e676008275bd",
+      "contentHash": "sha256-557db45d4f31bd0bbd2cc5c3e451753ff7ad069d3fc31fd717e321d433328de9",
       "discoveredFrom": "skills/pr-triage/SKILL.md"
     },
     {
@@ -1378,10 +1379,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "e996e8110cfc4e50a80e9d822cd3eedd737a928e8f9959ffe8038c25d562fd49"
+          "hash": "173e60d8c746bc8b1ed23cad484dfcb179cf3d099d89bcf901ce810c92b6cb3d"
         }
       ],
-      "contentHash": "sha256-e8825e3e893eb52f6808e61c5f24dfe6e0052fdfbf1c52bc95a1bbdbb30e04d3",
+      "contentHash": "sha256-33822f98dbccb6db540a1266dc988a7d8f2242263f781b347e420241470cb4d7",
       "discoveredFrom": "skills/memory-flush/SKILL.md"
     },
     {
@@ -1531,7 +1532,7 @@
         },
         {
           "path": "templates/chains.tsv",
-          "hash": "a8e66cab5400263f9dbefc0c9f727016ef5d97e63a3928c273606065ee3188fb"
+          "hash": "2875abbffb3f8b4dd470b5339d815b35e833fb5570d30a1f86df00a9404d4d85"
         },
         {
           "path": "templates/foundry.toml",
@@ -1542,7 +1543,7 @@
           "hash": "585cef0c43c5a0538c2bfff112c3dfe4e38dbec4397576525d8c099c46a3923b"
         }
       ],
-      "contentHash": "sha256-a54ca0b83d5713fd0b17d40886ff87c5b800d7b5f668b2aa3fb365536ab86855",
+      "contentHash": "sha256-cc22c050698a8fa839e59c25ee07d4f82878ab14f3933d0f99b61f85afc74cf5",
       "discoveredFrom": "skills/deploy-uni-hook/SKILL.md"
     },
     {
@@ -2026,38 +2027,67 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "07027cf02c6fb729067de89d502116f640d02ad5c53a116f2d963d6648ddb152"
+          "hash": "59414e13490fe39e9a18f3bd2d6912818f98c05ee5c7177b7d3a2c0670bdbe06"
         },
         {
           "path": "references/ci.md",
-          "hash": "1b88ee9213eb76c3b4b8f5339db74e93e6e5df41d84e2beb3c025e54e8914b96"
+          "hash": "eaa1d1bec27d6e8a594fe542ad54ad228f5f7a2506b5493943073ae79cbed496"
         },
         {
           "path": "references/history-mining.md",
-          "hash": "826a8e6411d67c2daa112ec122a1fb2b49996e5609488e50b97697a02a78fa54"
+          "hash": "ad5c316a34f6a67c83bacf7f74825626d3b0b2a48ccab6e497abb2f4c174eabf"
         },
         {
           "path": "references/layout.md",
-          "hash": "a8543711797777575da74b37f0a8c73f9fad92c97a9d9f1ebd15f0e09a89f6e2"
+          "hash": "d71381dceffbfcd1e8a6a418fa5adbb18b6d257fb36ec7a57279e711ef0d4319"
         },
         {
           "path": "references/mcp.md",
-          "hash": "2bff39df236e1e5e5341507921ed51b9b79472a51cfd56522baeb9e60f645c44"
+          "hash": "5df991ad9e8cb9635e1a71116854ed3da2a48f5e8470191901b66c2a831b8b54"
         },
         {
           "path": "references/secrets.md",
-          "hash": "f422ad736bd98124e8766c6aef64b98d142cd4cb133649b66124e2b1a73752fe"
+          "hash": "1239815d4ac8dcc135ce1338cd6cb16e6f18b7c6fec70b801e5138bd24099ead"
         },
         {
           "path": "references/skill-anatomy.md",
-          "hash": "555b05687d9bb4200abde819edaa75b4c53d271aff65eb71f9d36989ae4cada3"
+          "hash": "99ffddbf85162610311bf1740fc72fe2ef39ab148d8c6fa09b45af449a145b0c"
         },
         {
           "path": "scripts/mine-history.mjs",
-          "hash": "605fe60e77d6bd306f1a86327f659b73483cad4e6eb66b65f4259de0def6d815"
+          "hash": "d9ba2d1385621703ef4af28452516ba5b419c2db4c15e4e0b6ff641e0f592f9f"
         }
       ],
-      "contentHash": "sha256-53abc735c6a1963aec7407b7d03c801c42306cbacd04aae95e1353ee61a710da",
+      "findings": [
+        {
+          "ruleId": "SENSITIVE-PATH-READ",
+          "severity": "high",
+          "owasp": "ASK-06",
+          "file": "SKILL.md",
+          "line": 47,
+          "snippet": "**Handling secrets:** never ask the user to paste a key, token, or private key into the chat, and never echo, log, or co…",
+          "explanation": "references sensitive credential or secret paths"
+        },
+        {
+          "ruleId": "SENSITIVE-PATH-READ",
+          "severity": "high",
+          "owasp": "ASK-06",
+          "file": "SKILL.md",
+          "line": 458,
+          "snippet": "- **Never include secrets, tokens, keys, `.env` values, or private repo contents.** If the report would carry the user's…",
+          "explanation": "references sensitive credential or secret paths"
+        },
+        {
+          "ruleId": "SENSITIVE-PATH-READ",
+          "severity": "high",
+          "owasp": "ASK-06",
+          "file": "references/secrets.md",
+          "line": 16,
+          "snippet": "**Handling secrets:** never ask the user to paste a key, token, or private key into the chat, and never echo, log, or co…",
+          "explanation": "references sensitive credential or secret paths"
+        }
+      ],
+      "contentHash": "sha256-0fef8fe846aad59ce94d50c15a158abe7b80ec76ac49e7552cfe704bf28a1817",
       "discoveredFrom": ".claude/skills/aeon/SKILL.md"
     },
     {
@@ -2102,10 +2132,10 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "a70138d1a26898e5f368ca585c570a5441429f8996a55327efbc8bfa7dfc2e6d"
+          "hash": "f959fd69340f6758c4044cf30ad55341535b878bcc11ad0904088163323eb11b"
         }
       ],
-      "contentHash": "sha256-187c849901b1d82b87c0479ff74736ab0fc2bc4d4fcb8c4a80513f39e85a3008",
+      "contentHash": "sha256-c36c87807f1877365c36cae6a2119bb2fb4e4aff63354a1e1bbd3a61615749d5",
       "discoveredFrom": "skills/send-email/SKILL.md"
     },
     {
@@ -2343,7 +2373,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "4ab815be27d66885528b40dbfa6349c5bf44fa3b7d965936075e511eb472b704"
+          "hash": "12a46d15241393c9e8e086dba3f1bb1abc5aaa6c4406e9c8160024f3a495f1d1"
         }
       ],
       "findings": [
@@ -2352,12 +2382,12 @@
           "severity": "high",
           "owasp": "ASK-06",
           "file": "SKILL.md",
-          "line": 92,
+          "line": 105,
           "snippet": "output/**           .mcp.json           .env*               aeon.db",
           "explanation": "references sensitive credential or secret paths"
         }
       ],
-      "contentHash": "sha256-c971b622ae64e817e906e7646edd362e7e05d436c966b67c6b0cf924fa09f280",
+      "contentHash": "sha256-fead703d79cbd78a27855b2ad567ffac6af3ace93470055bc9e32d45c26458a5",
       "discoveredFrom": "skills/aeon-update/SKILL.md"
     }
   ]
