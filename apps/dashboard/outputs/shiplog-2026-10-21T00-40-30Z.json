@@ -1,0 +1,170 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "miroshark shiplog 🦈 oct 12 → oct 21"
+      },
+      "children": [
+        "intro",
+        "changes",
+        "sep1",
+        "traction_heading",
+        "traction_grid",
+        "sep2",
+        "closing",
+        "sign",
+        "sep3",
+        "source_link"
+      ]
+    },
+    "intro": {
+      "type": "Text",
+      "props": {
+        "text": "quiet on features, loud on plumbing. the bytes:",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "changes": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "change_1",
+        "change_2",
+        "change_3",
+        "change_4",
+        "change_5"
+      ]
+    },
+    "change_1": {
+      "type": "Text",
+      "props": {
+        "text": "trace data now ships in the shape OpenRouter Broadcast keeps. per-agent cost shows up where it should",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change_2": {
+      "type": "Text",
+      "props": {
+        "text": "one shared OpenRouter attribution header instead of drifting copies",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change_3": {
+      "type": "Text",
+      "props": {
+        "text": "CI trimmed: uv, ruff-action, Blacksmith runners, checks folded into one job",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change_4": {
+      "type": "Text",
+      "props": {
+        "text": "x402: a broken /run body now gets a free 400 before the 402",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "change_5": {
+      "type": "Text",
+      "props": {
+        "text": "docs rebuilt on Fumadocs with a copy-as-markdown button for LLMs",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "traction_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "traction",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "traction_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_miroshark",
+        "stat_x402aff"
+      ]
+    },
+    "stat_miroshark": {
+      "type": "Stat",
+      "props": {
+        "label": "MiroShark ⭐",
+        "value": "1,475",
+        "delta": "+8",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stat_x402aff": {
+      "type": "Stat",
+      "props": {
+        "label": "x402aff ⭐",
+        "value": "8",
+        "delta": "+1",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "closing": {
+      "type": "Text",
+      "props": {
+        "text": "no new worked sim this window. next one is the one that matters.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sign": {
+      "type": "Text",
+      "props": {
+        "text": "🦈",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "source_link": {
+      "type": "Link",
+      "props": {
+        "label": "shiplog-2026-10-21.md",
+        "href": "https://github.com/MiroShark/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-21.md"
+      },
+      "children": []
+    }
+  }
+}
