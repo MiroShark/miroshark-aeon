@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-18T09:34:03Z",
+  "last_analyzed": "2026-10-21T10:31:40Z",
   "quality_score": 3,
-  "assessment": "Clear, well-structured quiet-day token report that cross-checks two sources, discloses the liquidity discrepancy, and avoids advice, but it cites no URLs or fetch timestamps, so the figures can't be verified from the output alone.",
+  "assessment": "Honest, sourced price and volume snapshot with a cross-check and explicit caveats, but thin on strategy alignment: the liquidity baseline date is unconfirmed, the whale count rests on a rate-limited pull, and the summary is mostly process notes.",
   "flags": [],
-  "avg_score": 3.87,
+  "avg_score": 3.83,
   "history": [
-    {
-      "date": "2026-09-18",
-      "score": 4
-    },
     {
       "date": "2026-09-19",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-18",
+      "score": 3
+    },
+    {
+      "date": "2026-10-21",
       "score": 3
     }
   ]

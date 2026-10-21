@@ -1,0 +1,158 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers"
+      },
+      "children": [
+        "heading",
+        "verdict",
+        "sep1",
+        "primaryGrid",
+        "sep2",
+        "secondaryGrid",
+        "sep3",
+        "chartLink"
+      ]
+    },
+    "heading": {
+      "type": "Heading",
+      "props": {
+        "text": "$MIROSHARK — CONSOLIDATING",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "verdict": {
+      "type": "Text",
+      "props": {
+        "text": "Price +7.5% over 24h, but volume is only 0.74× the 7d average and there were no whale trades, so it doesn't count as a rally.",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "primaryGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "price",
+        "liq",
+        "vol"
+      ]
+    },
+    "price": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.000002003",
+        "delta": "+7.5% (24h)",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "liq": {
+      "type": "Stat",
+      "props": {
+        "label": "Liquidity",
+        "value": "$112.1K",
+        "delta": "−12.4% vs last logged",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "vol": {
+      "type": "Stat",
+      "props": {
+        "label": "Volume",
+        "value": "$1.9K",
+        "delta": "0.74× 7d",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "secondaryGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 4,
+        "gap": "md"
+      },
+      "children": [
+        "buysSells",
+        "whales",
+        "change7d",
+        "change30d"
+      ]
+    },
+    "buysSells": {
+      "type": "Stat",
+      "props": {
+        "label": "Buys/Sells",
+        "value": "17/7",
+        "delta": "ratio 2.43",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "whales": {
+      "type": "Stat",
+      "props": {
+        "label": "Whales",
+        "value": "0"
+      },
+      "children": []
+    },
+    "change7d": {
+      "type": "Stat",
+      "props": {
+        "label": "7d",
+        "value": "+2.3%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "change30d": {
+      "type": "Stat",
+      "props": {
+        "label": "30d",
+        "value": "−36.4%",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "chartLink": {
+      "type": "Link",
+      "props": {
+        "label": "Chart",
+        "href": "https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209"
+      },
+      "children": []
+    }
+  }
+}
