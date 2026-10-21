@@ -1,10 +1,10 @@
 {
   "skill": "holdings",
-  "last_analyzed": "2026-10-12T08:06:24Z",
-  "quality_score": 4,
-  "assessment": "Well-executed monitoring with specific, sourced data and historical comparison—substantive and verifiable—but doesn't directly drive core strategy priorities (ship engine, prove sims, grow ecosystem).",
+  "last_analyzed": "2026-10-21T00:39:46Z",
+  "quality_score": 3,
+  "assessment": "Internally consistent: the wallet sum (12.03B + 340.60M) matches the total and the 7d and 30d percentages recompute, and the 9-day baseline gap is disclosed. It is thin, cites no explicit RPC or GeckoTerminal endpoints, and 'the holdings are accumulating' overreads a 0.42% move. Nothing shows the figures were invented.",
   "flags": [],
-  "avg_score": 4,
+  "avg_score": 3.94,
   "history": [
     {
       "date": "2026-07-30",
@@ -65,6 +65,10 @@
     {
       "date": "2026-10-12",
       "score": 4
+    },
+    {
+      "date": "2026-10-21",
+      "score": 3
     }
   ]
 }
