@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-21T10:31:40Z",
+  "last_analyzed": "2026-10-22T14:55:15Z",
   "quality_score": 3,
-  "assessment": "Honest, sourced price and volume snapshot with a cross-check and explicit caveats, but thin on strategy alignment: the liquidity baseline date is unconfirmed, the whale count rests on a rate-limited pull, and the summary is mostly process notes.",
+  "assessment": "Honest, substantive token report with specific metrics, caveats, and disclosed gaps (skipped social pulse and treasury, notify refused). The figures can't be verified from this output, and the 'ACCUMULATING' label edges toward a market call the strategy disallows.",
   "flags": [],
-  "avg_score": 3.83,
+  "avg_score": 3.8,
   "history": [
-    {
-      "date": "2026-09-19",
-      "score": 4
-    },
     {
       "date": "2026-09-20",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-21",
+      "score": 3
+    },
+    {
+      "date": "2026-10-22",
       "score": 3
     }
   ]
