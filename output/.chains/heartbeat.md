@@ -1,11 +1,11 @@
-**Heartbeat (ambient), 2026-10-21 19:41 UTC: status page is 🔴 DEGRADED.** `changelog` is the only problem. It has failed 3 times in a row, last on 2026-10-19 14:43 UTC, and hasn't recovered since. The last error was a 1800s harness timeout with `glm-5.3-flash` flagged as an unrecognized model.
+**Heartbeat (ambient), 2026-10-22 20:51 UTC:** the status page reads 🔴 DEGRADED because `changelog` is still broken. I sent no notification.
 
-- **Notification:** none sent. The `changelog` failure was already reported in today's earlier log, so I deduped it.
-- **Other skills:** all the rest are back to `consecutive_failures` 0. They failed together on 10-19 at about 19:57 UTC with the same zero-token harness error, then recovered.
-- **PRs and issues:** no open PRs, no urgent issues, and 0 open issues in `memory/issues/INDEX.md`.
-- **Token pulse:** $MIROSHARK is at $0.000002003 (+7.5% over 24h), with liquidity of $112.1K and volume of $1.9K. The verdict is CONSOLIDATING.
+- **`changelog`:** it has 3 consecutive failures and hasn't recovered since its last failure on 10-19. It was already reported on 10-21, so I deduped it. It next runs Monday 10-26.
+- **Other enabled skills:** `fetch-tweets`, `token-movers`, `heartbeat`, `aeon-update`, `shiplog`, `repo-pulse`, `holdings` and `memory-flush` are all healthy.
+- **GitHub:** there are no open PRs, no urgent issues, and no open entries in the issue tracker.
+- **Token pulse:** the latest report (10-22) shows MIROSHARK at $0.000002008, +0.2% over 24h, with liquidity of $109.7K and a verdict of ACCUMULATING.
 
 ## Summary
-- Regenerated `docs/status.md` with the overall status, token pulse and the 9-skill table.
-- Appended the `### heartbeat` entry to `memory/logs/2026-10-21.md`.
-- Follow-up: someone needs to look at `changelog` (check the model config and the timeout). It's blocking the weekly cross-repo changelog PR to `miroshark-website`.
+- Rewrote `docs/status.md` with the current health, token pulse and skill table.
+- Appended the `### heartbeat` entry to `memory/logs/2026-10-22.md`.
+- Follow-up: check whether `changelog` recovers on its Monday 10-26 run. It timed out on 10-19, and the log noted an unrecognized model name (`glm-5.3-flash`).
