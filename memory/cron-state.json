@@ -193,16 +193,16 @@
   },
   "token-movers": {
     "last_dispatch": "2026-10-22T06:28:41Z",
-    "last_status": "dispatched",
+    "last_status": "failed",
     "last_success": "2026-10-21T10:31:53Z",
-    "total_runs": 113,
+    "total_runs": 114,
     "total_successes": 98,
-    "total_failures": 15,
-    "consecutive_failures": 0,
-    "success_rate": 0.87,
+    "total_failures": 16,
+    "consecutive_failures": 1,
+    "success_rate": 0.86,
     "last_quality_score": 3,
-    "last_failed": "2026-10-19T19:56:53Z",
-    "last_error": "background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safe"
+    "last_failed": "2026-10-22T06:29:17Z",
+    "last_error": "\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"i"
   },
   "fetch-tweets": {
     "last_dispatch": "2026-10-21T19:40:03Z",
