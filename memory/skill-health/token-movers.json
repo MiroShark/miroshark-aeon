@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-22T14:55:15Z",
+  "last_analyzed": "2026-10-23T12:59:30Z",
   "quality_score": 3,
-  "assessment": "Honest, substantive token report with specific metrics, caveats, and disclosed gaps (skipped social pulse and treasury, notify refused). The figures can't be verified from this output, and the 'ACCUMULATING' label edges toward a market call the strategy disallows.",
+  "assessment": "Substantive, transparent token report with named sources and disclosed caveats (skipped sentiment and treasury, snapshot-based volume ratio), but the headline 4.4× volume metric is weakly grounded, source links are absent, and it says the notification is 'queued' while the summary says it was sent.",
   "flags": [],
-  "avg_score": 3.8,
+  "avg_score": 3.77,
   "history": [
-    {
-      "date": "2026-09-20",
-      "score": 4
-    },
     {
       "date": "2026-09-21",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-22",
+      "score": 3
+    },
+    {
+      "date": "2026-10-23",
       "score": 3
     }
   ]
