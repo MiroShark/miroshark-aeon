@@ -1,14 +1,10 @@
-The tracked-account digest found nothing new, so I sent no notification. `var=account:` has an empty argument, so the run covered every handle in `memory/topics/tracked-accounts.yml`. That file lists only `miroshark_`.
+No notification sent: nothing new in the tracked-accounts digest. `account:` with no handle means every account in `memory/topics/tracked-accounts.yml`, and that file lists only `miroshark_`.
 
-The twitterapi.io timeline call returned `http=200`. It showed two posts in the 3-day window (10-19 onward):
-- **10-19, mid-terms scenario simulation:** already reported and in the dedup set, so it was dropped.
-- **10-21 18:15 UTC, retweet of x.com/aaronjmars on time-series foundation models:** a retweet of another account, so it was dropped per the skill rules.
+The twitterapi.io timeline fetch for `miroshark_` returned HTTP 200. The only post in the last 3 days is a 10-21 retweet of x.com/aaronjmars's thread on time-series foundation models, and the skill drops retweets of others. The 10-19 midterms-simulation post (x.com/miroshark_/status/2112154305914355771) is older than the window and was already reported.
 
-The status is `TWEET_DIGEST_OK`, a clean run.
-
-The only item of note is on the retweeted post: aaronjmars reports that none of 18 forecasting models beat a flat-line baseline over 24-hour horizons. That is a calibration finding, but it is not original `miroshark_` output, so it isn't in a digest.
+I appended the run to `memory/logs/2026-10-23.md` as `TWEET_DIGEST_OK`.
 
 ## Summary
-- Fetched the `miroshark_` timeline via twitterapi.io and deduped against the last 2 days of logs.
-- Modified `memory/logs/2026-10-22.md` by adding a `### fetch-tweets` entry.
+- Ran `fetch-tweets` in all-tracked-accounts mode; `miroshark_` is the only tracked account.
+- Modified `memory/logs/2026-10-23.md` (added the `### fetch-tweets` entry).
 - No follow-up needed.

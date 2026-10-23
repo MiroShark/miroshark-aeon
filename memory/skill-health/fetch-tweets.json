@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-22T17:32:05Z",
-  "quality_score": 3,
-  "assessment": "Clean no-op run that correctly reports the skipped dedup and retweet filtering and explains the empty account argument. The specific post times and the 18-model claim are attributed to a real API call, but nothing here lets me verify them, and the output carries little analysis beyond the dedup decision.",
+  "last_analyzed": "2026-10-23T18:39:29Z",
+  "quality_score": 2,
+  "assessment": "Clean no-op digest: the output correctly reports zero new tracked-account posts, but it is thin and the no-op claim (HTTP 200, one retweet, one older post) cannot be checked from the output alone, and the output lacks the substance the run should carry.",
   "flags": [],
-  "avg_score": 3.43,
+  "avg_score": 3.4,
   "history": [
-    {
-      "date": "2026-09-20",
-      "score": 3
-    },
     {
       "date": "2026-09-21",
       "score": 3
@@ -125,6 +121,10 @@
     {
       "date": "2026-10-22",
       "score": 3
+    },
+    {
+      "date": "2026-10-23",
+      "score": 2
     }
   ]
 }
