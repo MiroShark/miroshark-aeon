@@ -1,13 +1,13 @@
 {
   "heartbeat": {
-    "last_status": "success",
+    "last_status": "dispatched",
     "last_success": "2026-10-23T21:43:31Z",
     "total_runs": 145,
     "total_successes": 139,
     "total_failures": 6,
     "consecutive_failures": 0,
     "success_rate": 0.96,
-    "last_dispatch": "2026-10-23T21:42:23Z",
+    "last_dispatch": "2026-10-24T19:20:00Z",
     "last_failed": "2026-10-19T19:57:16Z",
     "last_error": "background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safe"
   },
@@ -205,8 +205,8 @@
     "last_error": "\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"i"
   },
   "fetch-tweets": {
-    "last_dispatch": "2026-10-23T18:38:03Z",
-    "last_status": "success",
+    "last_dispatch": "2026-10-24T19:20:00Z",
+    "last_status": "dispatched",
     "last_success": "2026-10-23T18:39:31Z",
     "total_runs": 109,
     "total_successes": 99,
