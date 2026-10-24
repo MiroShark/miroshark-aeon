@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-23T12:59:30Z",
+  "last_analyzed": "2026-10-24T09:10:17Z",
   "quality_score": 3,
-  "assessment": "Substantive, transparent token report with named sources and disclosed caveats (skipped sentiment and treasury, snapshot-based volume ratio), but the headline 4.4× volume metric is weakly grounded, source links are absent, and it says the notification is 'queued' while the summary says it was sent.",
+  "assessment": "Concrete, sourced market figures with stated estimates and cross-checks, but the verdict is muddled: the header says CONSOLIDATING while the body says the DISTRIBUTING threshold was met and that QUIET failed, so the reasoning doesn't cleanly support the label.",
   "flags": [],
-  "avg_score": 3.77,
+  "avg_score": 3.73,
   "history": [
-    {
-      "date": "2026-09-21",
-      "score": 4
-    },
     {
       "date": "2026-09-22",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-23",
+      "score": 3
+    },
+    {
+      "date": "2026-10-24",
       "score": 3
     }
   ]
