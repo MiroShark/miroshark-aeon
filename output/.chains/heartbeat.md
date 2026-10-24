@@ -1,10 +1,12 @@
-**Heartbeat (ambient), 2026-10-23: one skill is still failing, and I sent no notification.**
+Heartbeat ran the ambient check. The status page reads 🔴 DEGRADED because of one skill, `changelog`, and I sent no notification.
 
-- **P0:** `changelog` is still at 3 consecutive failures. It last failed on 10-19 and has not recovered since. I reported it on 10-21, so I skipped the alert. Its next run is Monday 10-26. The other enabled skills are healthy.
-- **P1:** The only open PRs are #224 and #225, both Dependabot bumps under a day old. There are no urgent issues and no open fleet issues.
-- **P2/P3:** Nothing new in memory needs follow-up, and no skill is overdue against its schedule.
-- **Status page:** I rewrote `docs/status.md` with an overall status of 🔴 DEGRADED because of `changelog`. The token pulse comes from the 10-23 token report and shows $MIROSHARK at $0.000002113 (+5.2% in 24h, verdict RALLYING).
+**Changelog:** It has failed 3 times in a row and has not recovered since its last failure on 10-19. Its last error was a harness timeout (the run exceeded 1800s). I already reported this on 10-21, so I skipped re-notifying. The next run is Monday 10-26.
+
+**Everything else:** The other enabled skills are healthy. No PRs, urgent issues or open memory issues needed attention.
+
+**Token pulse:** MIROSHARK is at $0.000002116 (+0.2% in 24h). Liquidity is $115.4K and 24h volume is $1.8K. The token report's verdict is CONSOLIDATING.
 
 ## Summary
-- Modified `docs/status.md` and `memory/logs/2026-10-23.md` (appended the `### heartbeat` entry).
+- Rewrote `docs/status.md` with the updated token pulse and skill table.
+- Appended a `### heartbeat` entry to `memory/logs/2026-10-24.md`, ending `STATUS_PAGE=DEGRADED`.
 - Follow-up: check whether `changelog` recovers on its Monday 10-26 run.
