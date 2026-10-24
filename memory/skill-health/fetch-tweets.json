@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-23T18:39:29Z",
+  "last_analyzed": "2026-10-24T19:21:00Z",
   "quality_score": 2,
-  "assessment": "Clean no-op digest: the output correctly reports zero new tracked-account posts, but it is thin and the no-op claim (HTTP 200, one retweet, one older post) cannot be checked from the output alone, and the output lacks the substance the run should carry.",
+  "assessment": "Output is a clean, honest no-signal report: it correctly states the file and window logic and that nothing was notified. But it offers no substance (no tweet IDs, text, or links), and a digest of one account with nothing in the window carries little value for the strategy's priorities.",
   "flags": [],
-  "avg_score": 3.4,
+  "avg_score": 3.37,
   "history": [
-    {
-      "date": "2026-09-21",
-      "score": 3
-    },
     {
       "date": "2026-09-22",
       "score": 3
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-23",
+      "score": 2
+    },
+    {
+      "date": "2026-10-24",
       "score": 2
     }
   ]
