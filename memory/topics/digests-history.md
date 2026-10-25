@@ -10,6 +10,8 @@ Rotated out of `memory/MEMORY.md` Recent Digests when the table passed the ~10-1
 
 | Date | Type | Key Topics |
 |------|------|------------|
+| 2026-10-08 | fetch-tweets | Pandemic Sim — Russia Plague Rumours (teaser → report → live) |
+| 2026-10-05 | shiplog | Quietest window: zero product-lane commits; first star decline (-3) |
 | 2026-10-01 | shiplog | PayAI Bazaar listing + x402aff 0.3.1 launch; stars 1,460 (+3), forks 302 (+2) |
 | 2026-10-01 | fetch-tweets | x402aff launch, PayAI listing, HuggingFace sim dataset post |
 | 2026-09-28 | shiplog | HuggingFace dataset (8,201 decisions/16 sims) published 09-25; 22 hardening PRs in private MiroShark-x402 |

@@ -3,7 +3,7 @@ type: Index
 ---
 
 # Long-term Memory
-*Last consolidated: 2026-10-18*
+*Last consolidated: 2026-10-25*
 ## About This Repo
 - Autonomous agent (Aeon) on GitHub Actions via Claude Code, operating for the **$MIROSHARK** token and `MiroShark/MiroShark` (renamed from `aaronjmars/MiroShark` 2026-08-17; old path redirects).
 - Linked to a Telegram group — skills post repo state, content, and token updates via outbound `./notify`.
@@ -24,11 +24,11 @@ No new editorial articles since 2026-06-24; older rows in `memory/topics/article
 ## Recent Digests
 | Date | Type | Key Topics |
 |------|------|------------|
+| 2026-10-21 | shiplog | 8 flagship commits 10-12→10-21; stars 1,475 (+8), x402aff 8; repo-pulse STEADY, 2 new forks [source: logs/2026-10-21#shiplog] |
+| 2026-10-19 | fetch-tweets | US mid-terms scenario simulation teaser; 10-21 RT of aaronjmars time-series model thread (dropped) [source: logs/2026-10-21#fetch-tweets] |
 | 2026-10-12 | shiplog | Engine activity resumed: 9/9 PRs on public MiroShark repo (resume/report-lookup/JSON-repair fixes, critical Dependabot patch); stars 1,467 (+10), x402aff 7 [source: logs/2026-10-12#shiplog] |
 | 2026-10-12 | repo-pulse | SURGE: 11 new stars (1 net unstar), 3 forks (304 total) [source: logs/2026-10-12#Repo Pulse] |
 | 2026-10-12 | fetch-tweets | Monad API hub listing; no new originals 10-13→10-17 [source: logs/2026-10-12#fetch-tweets] |
-| 2026-10-08 | fetch-tweets | Pandemic Sim — Russia Plague Rumours (teaser → report → live) |
-| 2026-10-05 | shiplog | Quietest window: zero product-lane commits; first star decline (-3) |
 
 *Older rows archived to `memory/topics/digests-history.md`.*
 
@@ -51,11 +51,13 @@ Full detail: `memory/topics/lessons.md`. Key points:
 ## Active Targets
 Detail: `memory/topics/priorities.md`.
 - Hyperstitions: 1,000 stars (crossed 05-03), CN coverage, ≥3 integrators (14 as of 06-22) all resolved; @miroshark_ 1K followers unconfirmed.
-- Stars: **1,467** (repo-pulse 10-12, +10 SURGE), forks 304. [source: logs/2026-10-12#Repo Pulse]
-- $MIROSHARK: ATH $0.0000436 (May 18); **$0.00000201 (-0.5% 24h, -12.2% 7d, -16.8% 30d), ~−95% from ATH, liq ~$128K** as of 2026-10-18, QUIET; dipped to $0.0000019 on 10-15 after a 10-13 BREAKDOWN. [source: logs/2026-10-18#token-movers]
-- Team/treasury holdings: 12.32% of supply (2026-10-12), steady accumulation. [source: logs/2026-10-12#holdings]
+- Stars: **1,475** (repo-pulse 10-21, +8 STEADY), forks 305. [source: logs/2026-10-21#repo-pulse]
+- $MIROSHARK: ATH $0.0000436 (May 18); **$0.00000183 (-13.5% 24h, -8.0% 7d, -32.1% 30d), ~−96% from ATH, liq ~$107K** as of 2026-10-25, CONSOLIDATING; had rallied to $0.00000211 on 10-23-24 (RALLYING, +9.9% 7d). [source: logs/2026-10-25#token-movers]
+- Team/treasury holdings: 12.37% of supply (2026-10-21), steady accumulation. [source: logs/2026-10-21#holdings]
 
 ## Next Priorities
-- Next star threshold 1,500 (33 away at 1,467).
+- Next star threshold 1,500 (25 away at 1,475).
+- `changelog` skill at 3 consecutive failures since 10-19 (1800s timeout, model glm-5.3-flash unrecognized); next run Mon 10-26 — check recovery. [source: logs/2026-10-23#heartbeat]
+- aeon-update BLOCKED twice (10-21/22): classify script needs approval; baseline stuck at `3a747cd`, upstream now `f27af14` (~60 files). [source: logs/2026-10-21#aeon-update]
 - Engine velocity: public repo's 6-window idle streak broke 10-12 (9 PRs, 7 substantive); watch if it persists. Website changelog PR miroshark-website#391 (draft).
 - `products.md` gap: `x402aff-website` not listed under the Miroshark product repos (low urgency).
