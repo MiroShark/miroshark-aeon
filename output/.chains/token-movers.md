@@ -1,8 +1,8 @@
 *$MIROSHARK — CONSOLIDATING*
 
-Price flat (+0.2%) while volume dropped to ~$1.8K and buy/sell slipped to 0.67; one $1.2K whale buy, no whale sells.
+Price −13.5% in 24h, but it's one $4.3K sell on thin books; volume only 1.0× the 7d avg, so it doesn't meet the breakdown threshold.
 
-Price $0.000002116 (+0.2% 24h) | Liq $115.4K (−0.9%) | Vol $1.8K (~0.4× avg)
-Buys/Sells 4/6 (ratio 0.67) | Whales: 1
+Price $0.00000183 (−13.5% 24h) | Liq $107.1K (−7.2%) | Vol $5.4K (1.0× 7d)
+Buys/Sells 6/4 (ratio 1.50) | Whales: 1 (sell) | 7d −8.0% | 30d −32.1%
 
 Chart: https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209

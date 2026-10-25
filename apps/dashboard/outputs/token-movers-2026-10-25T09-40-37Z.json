@@ -1,0 +1,151 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers",
+        "description": "$MIROSHARK — CONSOLIDATING"
+      },
+      "children": [
+        "heading",
+        "summary",
+        "sep1",
+        "statsGrid",
+        "sep2",
+        "flagsRow",
+        "chartLink"
+      ]
+    },
+    "heading": {
+      "type": "Heading",
+      "props": {
+        "text": "$MIROSHARK — CONSOLIDATING",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "summary": {
+      "type": "Text",
+      "props": {
+        "text": "Price −13.5% in 24h, but it's one $4.3K sell on thin books; volume only 1.0× the 7d avg, so it doesn't meet the breakdown threshold.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "statsGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "statPrice",
+        "statLiq",
+        "statVol",
+        "statBuysSells",
+        "stat7d",
+        "stat30d"
+      ]
+    },
+    "statPrice": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.00000183",
+        "delta": "−13.5% (24h)",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statLiq": {
+      "type": "Stat",
+      "props": {
+        "label": "Liq",
+        "value": "$107.1K",
+        "delta": "−7.2%",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statVol": {
+      "type": "Stat",
+      "props": {
+        "label": "Vol",
+        "value": "$5.4K",
+        "delta": "1.0× 7d",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "statBuysSells": {
+      "type": "Stat",
+      "props": {
+        "label": "Buys/Sells",
+        "value": "6/4",
+        "delta": "ratio 1.50",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "stat7d": {
+      "type": "Stat",
+      "props": {
+        "label": "7d",
+        "value": "−8.0%",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "stat30d": {
+      "type": "Stat",
+      "props": {
+        "label": "30d",
+        "value": "−32.1%",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "flagsRow": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "whaleBadge"
+      ]
+    },
+    "whaleBadge": {
+      "type": "Badge",
+      "props": {
+        "text": "Whales: 1 (sell)",
+        "variant": "destructive"
+      },
+      "children": []
+    },
+    "chartLink": {
+      "type": "Link",
+      "props": {
+        "label": "Chart",
+        "href": "https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209"
+      },
+      "children": []
+    }
+  }
+}
