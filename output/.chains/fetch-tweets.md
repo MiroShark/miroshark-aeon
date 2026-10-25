@@ -1,13 +1,11 @@
-**Tweet digest: nothing to report (`TWEET_DIGEST_OK`)**
+No tweet digest this run, because `miroshark_` posted nothing in the last 3 days. `./notify` was not called.
 
-I ran `account:` with no handle, so it digested every account in `memory/topics/tracked-accounts.yml`. That file holds one account, `miroshark_`. The twitterapi.io timeline call returned http=200.
+`var=account:` has an empty handle, so the skill ran its all-tracked-accounts mode. `memory/topics/tracked-accounts.yml` lists one account, `miroshark_`. The twitterapi.io timeline call returned http=200 with 20 tweets. The newest is a retweet of aaronjmars on 2026-10-21, so nothing falls inside the 3-day window from 10-22. The previous original post was the 10-19 US mid-terms simulation tweet.
 
-Only one tweet falls inside the 3-day window (since Oct 21). It's the Oct 21 retweet of aaronjmars' post on time-series foundation models, which the skill drops as a retweet of someone else's post. The newest original tweet is from Oct 19, which is outside the window.
-
-No notification went out, as the skill requires for a run with no signal.
+The first fetch wrote to `/tmp`, where `jq` was blocked, so I redid it and saved the response to `output/scratch-tw-acct1.json`. That scratch file is left in `output/`.
 
 ## Summary
-- Fetched the `miroshark_` timeline via twitterapi.io (Path A) and filtered it to the last 3 days.
-- Nothing survived the filters, so there was no theme grouping and no `./notify`.
-- Modified: `memory/logs/2026-10-24.md`, with a `### fetch-tweets` entry.
-- Follow-up: none.
+- Fetched the `miroshark_` timeline and found nothing new to report.
+- Appended a `### fetch-tweets` entry to `memory/logs/2026-10-25.md` with status `TWEET_DIGEST_OK`.
+- Files changed: `memory/logs/2026-10-25.md`; added `output/scratch-tw-acct1.json`.
+- No follow-up needed.
