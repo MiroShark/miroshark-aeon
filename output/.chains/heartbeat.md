@@ -1,12 +1,13 @@
-Heartbeat ran the ambient check. The status page reads 🔴 DEGRADED because of one skill, `changelog`, and I sent no notification.
+**Heartbeat (ambient), 2026-10-25: the status page reads 🔴 DEGRADED because `changelog` is still broken. I sent no notification.**
 
-**Changelog:** It has failed 3 times in a row and has not recovered since its last failure on 10-19. Its last error was a harness timeout (the run exceeded 1800s). I already reported this on 10-21, so I skipped re-notifying. The next run is Monday 10-26.
+- **`changelog`:** It has failed three times in a row and hasn't recovered since 10-19. Its last error was a harness timeout (`unrecognized_model glm-5.3-flash`, `exceeded --timeout 1800s`). It next runs Monday 10-26. I reported it on 10-21, so I skipped re-sending it under the 48h dedup rule.
+- **Other skills:** They all show success. `heartbeat`'s own row shows as dispatched, which is just this run.
+- **PRs and issues:** No open PRs, no urgent issues, and no open issue-tracker entries.
+- **Memory:** Nothing in `MEMORY.md` needs follow-up.
 
-**Everything else:** The other enabled skills are healthy. No PRs, urgent issues or open memory issues needed attention.
-
-**Token pulse:** MIROSHARK is at $0.000002116 (+0.2% in 24h). Liquidity is $115.4K and 24h volume is $1.8K. The token report's verdict is CONSOLIDATING.
+The status page now carries the 10-25 token figures: $0.00000183, −13.5% in 24h, liquidity $107.1K, verdict CONSOLIDATING. I set the next scheduled run to `token-movers` at 06:00 UTC Monday.
 
 ## Summary
-- Rewrote `docs/status.md` with the updated token pulse and skill table.
-- Appended a `### heartbeat` entry to `memory/logs/2026-10-24.md`, ending `STATUS_PAGE=DEGRADED`.
-- Follow-up: check whether `changelog` recovers on its Monday 10-26 run.
+- Updated `docs/status.md` (🔴 DEGRADED, refreshed token pulse and skill table).
+- Appended the `### heartbeat` entry (`mode: ambient`, `STATUS_PAGE=DEGRADED`) to `memory/logs/2026-10-25.md`.
+- Follow-up: check whether `changelog` recovers on Monday's run. If it fails again, the harness timeout needs a fix.
