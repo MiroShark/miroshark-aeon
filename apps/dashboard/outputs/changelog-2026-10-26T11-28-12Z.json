@@ -1,0 +1,49 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Changelog (push-to) - 2026-10-26"
+      },
+      "children": [
+        "repo",
+        "sep",
+        "entry",
+        "pr_link"
+      ]
+    },
+    "repo": {
+      "type": "Text",
+      "props": {
+        "text": "MiroShark/MiroShark -> MiroShark/miroshark-website",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "entry": {
+      "type": "Text",
+      "props": {
+        "text": "5 new PRs -> changelog entry \"MCP security patch and dependency upkeep\"",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "pr_link": {
+      "type": "Link",
+      "props": {
+        "label": "https://github.com/MiroShark/miroshark-website/pull/416",
+        "href": "https://github.com/MiroShark/miroshark-website/pull/416"
+      },
+      "children": []
+    }
+  }
+}

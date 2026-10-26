@@ -1,4 +1,4 @@
-*Changelog (push-to) — 2026-10-12*
-MiroShark/MiroShark → aaronjmars/miroshark-website
-9 new PRs → changelog entry "Simulation resume and report-lookup fixes, security patch"
-PR: https://github.com/aaronjmars/miroshark-website/pull/391 (draft)
+*Changelog (push-to) - 2026-10-26*
+MiroShark/MiroShark -> MiroShark/miroshark-website
+5 new PRs -> changelog entry "MCP security patch and dependency upkeep"
+https://github.com/MiroShark/miroshark-website/pull/416
