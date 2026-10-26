@@ -1,0 +1,147 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "miroshark shiplog 🦈 oct 21 → 26"
+      },
+      "children": [
+        "lead",
+        "sep1",
+        "h_security",
+        "security_badge",
+        "security_text",
+        "sep2",
+        "h_activity",
+        "activity_text",
+        "sep3",
+        "h_traction",
+        "stat_stars",
+        "stat_x402",
+        "goal_text",
+        "sep4",
+        "article_link"
+      ]
+    },
+    "lead": {
+      "type": "Text",
+      "props": {
+        "text": "quiet week on the engine. patching, not building.",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h_security": {
+      "type": "Heading",
+      "props": {
+        "text": "security",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "security_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "security",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "security_text": {
+      "type": "Text",
+      "props": {
+        "text": "mcp 1.28.1 → 1.30.0, closes a Dependabot advisory (#342). uv + frontend bumps alongside @miroshark_",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h_activity": {
+      "type": "Heading",
+      "props": {
+        "text": "activity",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "activity_text": {
+      "type": "Text",
+      "props": {
+        "text": "4 commits, 4 merged PRs. all maintenance",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h_traction": {
+      "type": "Heading",
+      "props": {
+        "text": "traction",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "stat_stars": {
+      "type": "Stat",
+      "props": {
+        "label": "MiroShark ⭐",
+        "value": "1,480",
+        "delta": "+5",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stat_x402": {
+      "type": "Stat",
+      "props": {
+        "label": "x402aff",
+        "value": "8"
+      },
+      "children": []
+    },
+    "goal_text": {
+      "type": "Text",
+      "props": {
+        "text": "1,500 next 🦈",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "sep4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "article_link": {
+      "type": "Link",
+      "props": {
+        "label": "Read the full shiplog article",
+        "href": "https://github.com/MiroShark/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-26.md"
+      },
+      "children": []
+    }
+  }
+}
