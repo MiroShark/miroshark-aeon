@@ -1,0 +1,141 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update",
+        "description": "2026-10-26"
+      },
+      "children": [
+        "main"
+      ]
+    },
+    "main": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "summary",
+        "detail",
+        "stats",
+        "sep1",
+        "newHeading",
+        "newText",
+        "sep2",
+        "manualAlert",
+        "sep3",
+        "prLink"
+      ]
+    },
+    "summary": {
+      "type": "Text",
+      "props": {
+        "text": "Synced 5 upstream commits → PR",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "detail": {
+      "type": "Text",
+      "props": {
+        "text": "Upstream aeonfun/aeon was 5 commits ahead. Applied 5 files cleanly, 5 need review.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat_commits",
+        "stat_applied",
+        "stat_review"
+      ]
+    },
+    "stat_commits": {
+      "type": "Stat",
+      "props": {
+        "label": "Upstream commits synced",
+        "value": "5"
+      },
+      "children": []
+    },
+    "stat_applied": {
+      "type": "Stat",
+      "props": {
+        "label": "Files applied cleanly",
+        "value": "5"
+      },
+      "children": []
+    },
+    "stat_review": {
+      "type": "Stat",
+      "props": {
+        "label": "Files needing review",
+        "value": "5"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "newHeading": {
+      "type": "Heading",
+      "props": {
+        "text": "New",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "newText": {
+      "type": "Text",
+      "props": {
+        "text": "onchain-monitor reorg-safe evidence replay + offline receipt verification.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "manualAlert": {
+      "type": "Alert",
+      "props": {
+        "title": "Manual",
+        "message": "dashboard and mcp-server package/lock bumps (next 16.4.1, MCP sdk 1.32.1), scripts/tests/ci-lanes.txt.",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "prLink": {
+      "type": "Link",
+      "props": {
+        "label": "https://github.com/MiroShark/miroshark-aeon/pull/232",
+        "href": "https://github.com/MiroShark/miroshark-aeon/pull/232"
+      },
+      "children": []
+    }
+  }
+}
