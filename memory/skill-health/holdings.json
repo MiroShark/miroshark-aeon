@@ -1,10 +1,10 @@
 {
   "skill": "holdings",
-  "last_analyzed": "2026-10-21T00:39:46Z",
+  "last_analyzed": "2026-10-26T11:27:11Z",
   "quality_score": 3,
-  "assessment": "Internally consistent: the wallet sum (12.03B + 340.60M) matches the total and the 7d and 30d percentages recompute, and the 9-day baseline gap is disclosed. It is thin, cites no explicit RPC or GeckoTerminal endpoints, and 'the holdings are accumulating' overreads a 0.42% move. Nothing shows the figures were invented.",
+  "assessment": "Concise, internally consistent holdings report (wallet sums and percentages check out, and the 7d/30d windows and tolerance are disclosed), but it gives no wallet addresses, block references, or RPC sources to verify against, and it adds little beyond raw numbers for the operator's growth priorities.",
   "flags": [],
-  "avg_score": 3.94,
+  "avg_score": 3.88,
   "history": [
     {
       "date": "2026-07-30",
@@ -68,6 +68,10 @@
     },
     {
       "date": "2026-10-21",
+      "score": 3
+    },
+    {
+      "date": "2026-10-26",
       "score": 3
     }
   ]
