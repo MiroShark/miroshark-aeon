@@ -231,13 +231,13 @@
     "last_error": "[claude-code:unrecognized_model] {\"model\":\"glm-5.3-flash\",\"query_source\":\"sdk\"} error: harness run exceeded --timeout 1800s "
   },
   "holdings": {
-    "last_status": "dispatched",
-    "last_success": "2026-10-21T00:39:57Z",
-    "total_runs": 20,
-    "total_successes": 15,
+    "last_status": "success",
+    "last_success": "2026-10-26T11:27:22Z",
+    "total_runs": 21,
+    "total_successes": 16,
     "total_failures": 5,
     "consecutive_failures": 0,
-    "success_rate": 0.75,
+    "success_rate": 0.76,
     "last_quality_score": 3,
     "last_dispatch": "2026-10-26T11:25:46Z",
     "last_failed": "2026-10-19T19:57:04Z",
