@@ -1,15 +1,50 @@
 {
-  "baseline_sha": "a0cca777f0a990babab3d8ba00779a0a4de7ef9b",
+  "baseline_sha": "6eddd851c65286db36b0524298dec3c16cd401a1",
   "upstream": "aeonfun/aeon",
-  "last_run": "2026-10-21",
-  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/222",
+  "last_run": "2026-10-26",
+  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/232",
   "applied": {
-    "added": 11,
-    "updated": 35,
-    "merged": 4,
+    "added": 2,
+    "updated": 3,
+    "merged": 0,
     "deleted": 0
   },
   "pending_conflicts": [
+    {
+      "path": "apps/dashboard/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "b2f58a3"
+      ]
+    },
+    {
+      "path": "apps/dashboard/package.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "b2f58a3"
+      ]
+    },
+    {
+      "path": "apps/mcp-server/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "1e8e7c3"
+      ]
+    },
+    {
+      "path": "apps/mcp-server/package.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "1e8e7c3"
+      ]
+    },
+    {
+      "path": "scripts/tests/ci-lanes.txt",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "6eddd85"
+      ]
+    },
     {
       "path": ".github/workflows/aeon.yml",
       "reason": "operator-customized",
@@ -40,14 +75,6 @@
       "reason": "operator-customized",
       "upstream_commits": [
         "125106d"
-      ]
-    },
-    {
-      "path": "scripts/tests/ci-lanes.txt",
-      "reason": "deleted-locally",
-      "upstream_commits": [
-        "a0cca77",
-        "d13bece"
       ]
     },
     {
@@ -88,20 +115,6 @@
     {
       "path": "apps/dashboard/eslint.config.mjs",
       "reason": "modify/delete \u2014 fork deleted the dashboard eslint config; upstream modified it. Held (keeps fork's deletion)",
-      "upstream_commits": [
-        "4b0ea879"
-      ]
-    },
-    {
-      "path": "apps/dashboard/package-lock.json",
-      "reason": "coupled with apps/dashboard/package.json; lockfile 3-way conflict on the eslint/next bump",
-      "upstream_commits": [
-        "4b0ea879"
-      ]
-    },
-    {
-      "path": "apps/dashboard/package.json",
-      "reason": "eslint/next version-bump held with its lock so npm ci stays consistent; 3-way conflict",
       "upstream_commits": [
         "4b0ea879"
       ]
