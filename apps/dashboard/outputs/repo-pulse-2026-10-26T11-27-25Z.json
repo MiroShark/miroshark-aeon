@@ -1,0 +1,264 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Repo Pulse — 2026-10-26",
+        "description": "Skill: repo-pulse · MiroShark/MiroShark"
+      },
+      "children": [
+        "status",
+        "stats",
+        "sep1",
+        "h_stargazers",
+        "notable",
+        "h_other",
+        "other",
+        "sep2",
+        "h_forks",
+        "forks",
+        "sep3",
+        "h_threshold",
+        "threshold",
+        "aeon",
+        "source"
+      ]
+    },
+    "status": {
+      "type": "Badge",
+      "props": {
+        "text": "STEADY",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "stats": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "stat_stars",
+        "stat_forks",
+        "stat_releases"
+      ]
+    },
+    "stat_stars": {
+      "type": "Stat",
+      "props": {
+        "label": "Stars",
+        "value": "1,480",
+        "delta": "+5 net · 6 new",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stat_forks": {
+      "type": "Stat",
+      "props": {
+        "label": "Forks",
+        "value": "305",
+        "delta": "+0 net · 1 new",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "stat_releases": {
+      "type": "Stat",
+      "props": {
+        "label": "Releases",
+        "value": "0",
+        "delta": "+0",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h_stargazers": {
+      "type": "Heading",
+      "props": {
+        "text": "Notable new stargazers",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "notable": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "sg1",
+        "sg2",
+        "sg3"
+      ]
+    },
+    "sg1": {
+      "type": "StoryLink",
+      "props": {
+        "title": "github.com/nicksan2c",
+        "href": "https://github.com/nicksan2c",
+        "source": "109 repos · 34 followers"
+      },
+      "children": []
+    },
+    "sg2": {
+      "type": "StoryLink",
+      "props": {
+        "title": "github.com/xonack",
+        "href": "https://github.com/xonack",
+        "source": "38 repos · 🐦 @JensHonack"
+      },
+      "children": []
+    },
+    "sg3": {
+      "type": "StoryLink",
+      "props": {
+        "title": "github.com/FloweryScythe13",
+        "href": "https://github.com/FloweryScythe13",
+        "source": "Eric Brichetto · 40 repos"
+      },
+      "children": []
+    },
+    "h_other": {
+      "type": "Heading",
+      "props": {
+        "text": "Other new stargazers",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "other": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "og1",
+        "og2",
+        "og3"
+      ]
+    },
+    "og1": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/w00kster",
+        "href": "https://github.com/w00kster"
+      },
+      "children": []
+    },
+    "og2": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/xploryngDAO",
+        "href": "https://github.com/xploryngDAO"
+      },
+      "children": []
+    },
+    "og3": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/skylarhenry10-stackup",
+        "href": "https://github.com/skylarhenry10-stackup"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h_forks": {
+      "type": "Heading",
+      "props": {
+        "text": "New forks",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "forks": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "fork1"
+      ]
+    },
+    "fork1": {
+      "type": "StoryLink",
+      "props": {
+        "title": "github.com/aiapienthusiast/MiroShark",
+        "href": "https://github.com/aiapienthusiast/MiroShark",
+        "source": "357 repos"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h_threshold": {
+      "type": "Heading",
+      "props": {
+        "text": "Next threshold",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "threshold": {
+      "type": "Progress",
+      "props": {
+        "value": 1480,
+        "max": 1500,
+        "label": "1,480 / 1,500 stars (20 away)"
+      },
+      "children": []
+    },
+    "aeon": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Repo",
+          "Stars",
+          "Forks",
+          "Activity"
+        ],
+        "rows": [
+          [
+            "miroshark-aeon",
+            "18",
+            "2",
+            "No activity"
+          ]
+        ]
+      },
+      "children": []
+    },
+    "source": {
+      "type": "Text",
+      "props": {
+        "text": "Source: events",
+        "variant": "caption"
+      },
+      "children": []
+    }
+  }
+}
