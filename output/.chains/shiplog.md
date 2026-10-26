@@ -1,19 +1,13 @@
-miroshark shiplog 🦈 oct 12 → oct 21
+miroshark shiplog 🦈 oct 21 → 26
 
-quiet on features, loud on plumbing. the bytes:
+quiet week on the engine. patching, not building.
 
-- trace data now ships in the shape OpenRouter Broadcast keeps. per-agent cost shows up where it should
-- one shared OpenRouter attribution header instead of drifting copies
-- CI trimmed: uv, ruff-action, Blacksmith runners, checks folded into one job
-- x402: a broken /run body now gets a free 400 before the 402
-- docs rebuilt on Fumadocs with a copy-as-markdown button for LLMs
+- security: mcp 1.28.1 → 1.30.0, closes a Dependabot advisory (#342). uv + frontend bumps alongside @miroshark_
+- 4 commits, 4 merged PRs. all maintenance
 
 traction:
-- MiroShark 1,475 ⭐ (+8)
-- x402aff 8 ⭐ (+1)
+- MiroShark 1,480 ⭐ (+5), x402aff 8
 
-no new worked sim this window. next one is the one that matters.
+1,500 next 🦈
 
-🦈
-
-https://github.com/MiroShark/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-21.md
+https://github.com/MiroShark/miroshark-aeon/blob/main/output/articles/shiplog-2026-10-26.md
