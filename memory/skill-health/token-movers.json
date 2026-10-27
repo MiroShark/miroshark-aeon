@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-26T11:27:29Z",
+  "last_analyzed": "2026-10-27T06:43:38Z",
   "quality_score": 3,
-  "assessment": "Internally consistent, honestly caveated token-movers report (ratios and divergence check reconcile, skipped sources disclosed), but it is a narrow data dump with little tie to the simulation or ecosystem priorities and its figures can't be verified from the output alone.",
+  "assessment": "Completed, transparent token report: it names its sources, discloses the 6d/26d proxies for 7d/30d, and notes the pool and social-data gaps. Figures can't be verified from the output alone, and the report is thin on what it means for the strategy.",
   "flags": [],
-  "avg_score": 3.67,
+  "avg_score": 3.63,
   "history": [
-    {
-      "date": "2026-09-24",
-      "score": 4
-    },
     {
       "date": "2026-09-25",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-26",
+      "score": 3
+    },
+    {
+      "date": "2026-10-27",
       "score": 3
     }
   ]
