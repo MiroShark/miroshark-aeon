@@ -1,15 +1,13 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-27T06:43:38Z",
-  "quality_score": 3,
-  "assessment": "Completed, transparent token report: it names its sources, discloses the 6d/26d proxies for 7d/30d, and notes the pool and social-data gaps. Figures can't be verified from the output alone, and the report is thin on what it means for the strategy.",
-  "flags": [],
-  "avg_score": 3.63,
+  "last_analyzed": "2026-10-28T08:07:09Z",
+  "quality_score": 2,
+  "assessment": "Output is well-formatted with specific figures, but it reads as fluent-but-unverifiable: its own summary admits the 7-day and 30-day trend figures came from the pool's candles rather than the stated windows, and the run cites sources it does not show. The 'no treasury section' and 'skipped X sentiment' gaps are disclosed, which is honest, but the precise prices and percentages can't be checked from the output alone.",
+  "flags": [
+    "unverifiable_claim"
+  ],
+  "avg_score": 3.57,
   "history": [
-    {
-      "date": "2026-09-25",
-      "score": 4
-    },
     {
       "date": "2026-09-26",
       "score": 4
@@ -125,6 +123,10 @@
     {
       "date": "2026-10-27",
       "score": 3
+    },
+    {
+      "date": "2026-10-28",
+      "score": 2
     }
   ]
 }

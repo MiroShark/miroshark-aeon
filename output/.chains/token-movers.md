@@ -1,8 +1,8 @@
-*$MIROSHARK — CONSOLIDATING*
+*$MIROSHARK — QUIET*
 
-Price +4.8% on only 0.36× average volume; 14 buys vs 5 sells, one $1.9k buy.
+Volume $1.98K is 0.35× the 7-day average and no trade cleared $1K, so the +2.7% move isn't backed by size.
 
-Price $0.000001990 (+4.8% 24h) | Liq $110.7K (+2.8%) | Vol $2.3K (0.36× 7d)
-Buys/Sells 14/5 (ratio 2.80) | Whales: 1
+Price $0.000002043 (+2.7% 24h) | Liq $113.5K (+2.5%) | Vol $1.98K (0.35× 7d)
+Buys/Sells 26/7 (ratio 3.71) | Whales: 0
 
 Chart: https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209

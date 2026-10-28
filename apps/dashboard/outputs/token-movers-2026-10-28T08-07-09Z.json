@@ -1,0 +1,151 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers",
+        "description": "$MIROSHARK"
+      },
+      "children": [
+        "header",
+        "narrative",
+        "sep1",
+        "statsRow1",
+        "statsRow2",
+        "sep2",
+        "chartLink"
+      ]
+    },
+    "header": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "heading",
+        "quietBadge"
+      ]
+    },
+    "heading": {
+      "type": "Heading",
+      "props": {
+        "text": "$MIROSHARK — QUIET",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "quietBadge": {
+      "type": "Badge",
+      "props": {
+        "text": "QUIET",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "narrative": {
+      "type": "Text",
+      "props": {
+        "text": "Volume $1.98K is 0.35× the 7-day average and no trade cleared $1K, so the +2.7% move isn't backed by size.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "statsRow1": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "price",
+        "liq",
+        "vol"
+      ]
+    },
+    "price": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.000002043",
+        "delta": "+2.7% 24h",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "liq": {
+      "type": "Stat",
+      "props": {
+        "label": "Liq",
+        "value": "$113.5K",
+        "delta": "+2.5%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "vol": {
+      "type": "Stat",
+      "props": {
+        "label": "Vol",
+        "value": "$1.98K",
+        "delta": "0.35× 7d",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statsRow2": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "buysells",
+        "whales"
+      ]
+    },
+    "buysells": {
+      "type": "Stat",
+      "props": {
+        "label": "Buys/Sells",
+        "value": "26/7",
+        "delta": "ratio 3.71",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "whales": {
+      "type": "Stat",
+      "props": {
+        "label": "Whales",
+        "value": "0",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "chartLink": {
+      "type": "Link",
+      "props": {
+        "label": "Chart",
+        "href": "https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209"
+      },
+      "children": []
+    }
+  }
+}
