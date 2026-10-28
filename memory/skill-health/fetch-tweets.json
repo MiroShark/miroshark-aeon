@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-27T18:23:41Z",
+  "last_analyzed": "2026-10-28T20:18:56Z",
   "quality_score": 3,
-  "assessment": "Clean, verifiable no-op: it reports the endpoint status, tweet count, the 3-day window and the dates it checked, and correctly sends nothing. It is thin on strategy-relevant substance, since it has no momentum or ecosystem signal beyond 'quiet account'.",
+  "assessment": "Legitimate quiet run: it reports no tweets in the window and sends nothing, which matches the notify-on-signal rule. The fetch details (http=200, Oct 21 newest tweet) are plausible and specific but can't be checked from the output, and the substance is thin.",
   "flags": [],
-  "avg_score": 3.33,
+  "avg_score": 3.3,
   "history": [
-    {
-      "date": "2026-09-25",
-      "score": 4
-    },
     {
       "date": "2026-09-26",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-27",
+      "score": 3
+    },
+    {
+      "date": "2026-10-28",
       "score": 3
     }
   ]

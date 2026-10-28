@@ -1,12 +1,8 @@
-**fetch-tweets (account digest, all tracked accounts): no new tweets, so I sent no notification.**
+No tweets from the only tracked account (`miroshark_`) fell inside the 3-day window, so I sent no notification. The twitterapi.io fetch returned http=200. The newest tweet is from Oct 21, a retweet of aaronjmars's time-series model benchmark. The window starts Oct 25.
 
-- `memory/topics/tracked-accounts.yml` lists one account, `miroshark_`.
-- The twitterapi.io fetch returned HTTP 200 with 20 tweets.
-- None fall inside the 3-day window (Oct 24–27). The newest is a retweet from Oct 21, and the newest original post is from Oct 19.
-- The account has been quiet for about 6 days, so there was nothing to theme or dedup.
+The tracked-accounts file lists only that one account, and `var=account:` with an empty handle means "digest every tracked account". The status is `TWEET_DIGEST_OK`.
 
 ## Summary
-- Fetched the `miroshark_` timeline and filtered it to the last 3 days.
-- Appended a `### fetch-tweets` entry to `memory/logs/2026-10-27.md` with status `TWEET_DIGEST_OK`.
-- Left `output/tw-acct1.json` in the repo as a scratch copy of the response.
-- No follow-up needed.
+- Ran the all-tracked-accounts digest and found nothing new to report.
+- Appended a `### fetch-tweets` entry to `memory/logs/2026-10-28.md`.
+- No other files changed, and no follow-up is needed. If you expected more activity, the account hasn't posted since Oct 21.
