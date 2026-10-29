@@ -1,15 +1,13 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-28T20:18:56Z",
-  "quality_score": 3,
-  "assessment": "Legitimate quiet run: it reports no tweets in the window and sends nothing, which matches the notify-on-signal rule. The fetch details (http=200, Oct 21 newest tweet) are plausible and specific but can't be checked from the output, and the substance is thin.",
-  "flags": [],
-  "avg_score": 3.3,
+  "last_analyzed": "2026-10-29T18:53:23Z",
+  "quality_score": 2,
+  "assessment": "Output is a 'nothing to report' digest with no tweets in window, but it asserts specific post dates, quoted tweet text, and a 'last original post' claim that the skill's own run cannot be verified from the final output; the quote and dates read as plausible-but-unverifiable, and the content-gap advice is generic filler.",
+  "flags": [
+    "unverifiable_claim"
+  ],
+  "avg_score": 3.23,
   "history": [
-    {
-      "date": "2026-09-26",
-      "score": 4
-    },
     {
       "date": "2026-09-27",
       "score": 4
@@ -125,6 +123,10 @@
     {
       "date": "2026-10-28",
       "score": 3
+    },
+    {
+      "date": "2026-10-29",
+      "score": 2
     }
   ]
 }
