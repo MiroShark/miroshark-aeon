@@ -1,11 +1,10 @@
 HEARTBEAT_OK · STATUS_PAGE=OK. Nothing needs attention, so I sent no notification.
 
-- **Skills:** none are failed or stuck, and every skill has 0 consecutive failures. `changelog` recovered with a success on 10-26 after its earlier failures.
-- **GitHub:** there are no open PRs and no urgent issues. The health issue tracker has no open issues.
-- **Token:** MIROSHARK is at $0.000002043 (+2.7% over 24h) with liquidity of $113.5K. The token report's verdict is QUIET, with 24h volume of $1.98K.
-
-I rewrote `docs/status.md` with these figures.
+- **Skills:** all 9 enabled skills show 0 consecutive failures. The `changelog` skill, which had 3 straight failures as of 10-23, succeeded on 10-26. Success rates run from 68% (`aeon-update`) to 100% (`memory-flush`).
+- **GitHub:** there are no open PRs and no urgent issues. The issue tracker is empty.
+- **Token (MIROSHARK):** $0.000001953, −4.4% since yesterday's run. Liquidity is $110.2K and 24h volume is $537 (verdict QUIET).
+- **Status page:** `docs/status.md` is regenerated with the 🟢 OK verdict. I appended the heartbeat entry to `memory/logs/2026-10-29.md`.
 
 ## Summary
-- Modified `docs/status.md` (overall 🟢 OK; token pulse now uses the 10-28 report) and appended a `### heartbeat` entry to `memory/logs/2026-10-28.md`.
-- No follow-up needed.
+- **Modified:** `docs/status.md` and `memory/logs/2026-10-29.md`.
+- **Follow-up:** none. `changelog` next runs Monday 11-02, and `repo-pulse` Monday at 10:00 UTC.
