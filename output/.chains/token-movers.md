@@ -1,8 +1,8 @@
 *$MIROSHARK — QUIET*
 
-Volume $1.98K is 0.35× the 7-day average and no trade cleared $1K, so the +2.7% move isn't backed by size.
+24h volume $537 is 0.11× the 7d average with zero trades ≥$1k.
 
-Price $0.000002043 (+2.7% 24h) | Liq $113.5K (+2.5%) | Vol $1.98K (0.35× 7d)
-Buys/Sells 26/7 (ratio 3.71) | Whales: 0
+Price $0.000001953 (−4.4% vs yesterday's run, pool 24h −1.2%) | Liq $110.2K (−2.9%) | Vol $537 (0.11× 7d)
+Buys/Sells 8/7 (ratio 1.14) | Whales: 0
 
 Chart: https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209

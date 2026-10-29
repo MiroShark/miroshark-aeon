@@ -1,17 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-28T08:07:09Z",
-  "quality_score": 2,
-  "assessment": "Output is well-formatted with specific figures, but it reads as fluent-but-unverifiable: its own summary admits the 7-day and 30-day trend figures came from the pool's candles rather than the stated windows, and the run cites sources it does not show. The 'no treasury section' and 'skipped X sentiment' gaps are disclosed, which is honest, but the precise prices and percentages can't be checked from the output alone.",
-  "flags": [
-    "unverifiable_claim"
-  ],
+  "last_analyzed": "2026-10-29T12:53:34Z",
+  "quality_score": 4,
+  "assessment": "Substantive, internally consistent token report (price, FDV and supply agree; cross-check and rate-limit retry disclosed) with clear gaps noted, though it cites no source URLs and the 'vs yesterday' comparison mixes baselines.",
+  "flags": [],
   "avg_score": 3.57,
   "history": [
-    {
-      "date": "2026-09-26",
-      "score": 4
-    },
     {
       "date": "2026-09-27",
       "score": 4
@@ -127,6 +121,10 @@
     {
       "date": "2026-10-28",
       "score": 2
+    },
+    {
+      "date": "2026-10-29",
+      "score": 4
     }
   ]
 }

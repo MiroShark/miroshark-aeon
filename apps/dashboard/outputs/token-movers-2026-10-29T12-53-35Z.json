@@ -1,0 +1,151 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers",
+        "description": "Skill output: token-movers"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading",
+        "status",
+        "summary",
+        "sep1",
+        "statsGrid",
+        "sep2",
+        "chartLink"
+      ]
+    },
+    "heading": {
+      "type": "Heading",
+      "props": {
+        "text": "$MIROSHARK — QUIET",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "status": {
+      "type": "Badge",
+      "props": {
+        "text": "QUIET",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "summary": {
+      "type": "Text",
+      "props": {
+        "text": "24h volume $537 is 0.11× the 7d average with zero trades ≥$1k.",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "statsGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "statPrice",
+        "statLiq",
+        "statVol",
+        "statPool",
+        "statBuysSells",
+        "statWhales"
+      ]
+    },
+    "statPrice": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.000001953",
+        "delta": "−4.4% vs yesterday's run",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statLiq": {
+      "type": "Stat",
+      "props": {
+        "label": "Liq",
+        "value": "$110.2K",
+        "delta": "−2.9%",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statVol": {
+      "type": "Stat",
+      "props": {
+        "label": "Vol",
+        "value": "$537",
+        "delta": "0.11× 7d",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statPool": {
+      "type": "Stat",
+      "props": {
+        "label": "Pool 24h",
+        "value": "−1.2%",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "statBuysSells": {
+      "type": "Stat",
+      "props": {
+        "label": "Buys/Sells",
+        "value": "8/7",
+        "delta": "ratio 1.14",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "statWhales": {
+      "type": "Stat",
+      "props": {
+        "label": "Whales",
+        "value": "0",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "chartLink": {
+      "type": "Link",
+      "props": {
+        "label": "Chart: GeckoTerminal pool",
+        "href": "https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209"
+      },
+      "children": []
+    }
+  }
+}
