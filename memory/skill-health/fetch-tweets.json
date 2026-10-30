@@ -1,17 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-29T18:53:23Z",
-  "quality_score": 2,
-  "assessment": "Output is a 'nothing to report' digest with no tweets in window, but it asserts specific post dates, quoted tweet text, and a 'last original post' claim that the skill's own run cannot be verified from the final output; the quote and dates read as plausible-but-unverifiable, and the content-gap advice is generic filler.",
-  "flags": [
-    "unverifiable_claim"
-  ],
-  "avg_score": 3.23,
+  "last_analyzed": "2026-10-30T20:41:19Z",
+  "quality_score": 3,
+  "assessment": "Completed a valid no-change digest for the single tracked handle, with a plausible HTTP 200 and a dated newest post. Thin substance, and the specifics can't be verified from the output alone.",
+  "flags": [],
+  "avg_score": 3.2,
   "history": [
-    {
-      "date": "2026-09-27",
-      "score": 4
-    },
     {
       "date": "2026-09-28",
       "score": 3
@@ -127,6 +121,10 @@
     {
       "date": "2026-10-29",
       "score": 2
+    },
+    {
+      "date": "2026-10-30",
+      "score": 3
     }
   ]
 }
