@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-29T12:53:34Z",
-  "quality_score": 4,
-  "assessment": "Substantive, internally consistent token report (price, FDV and supply agree; cross-check and rate-limit retry disclosed) with clear gaps noted, though it cites no source URLs and the 'vs yesterday' comparison mixes baselines.",
+  "last_analyzed": "2026-10-30T09:03:54Z",
+  "quality_score": 3,
+  "assessment": "Substantive, structured, and honest about the skipped social check and unconfigured treasury section, but figures are unlinked and the 7/30-day trend depends on prior logs the reader cannot see.",
   "flags": [],
-  "avg_score": 3.57,
+  "avg_score": 3.53,
   "history": [
-    {
-      "date": "2026-09-27",
-      "score": 4
-    },
     {
       "date": "2026-09-28",
       "score": 4
@@ -125,6 +121,10 @@
     {
       "date": "2026-10-29",
       "score": 4
+    },
+    {
+      "date": "2026-10-30",
+      "score": 3
     }
   ]
 }
