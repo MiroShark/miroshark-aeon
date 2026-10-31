@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-10-30T09:03:54Z",
+  "last_analyzed": "2026-10-31T11:58:20Z",
   "quality_score": 3,
-  "assessment": "Substantive, structured, and honest about the skipped social check and unconfigured treasury section, but figures are unlinked and the 7/30-day trend depends on prior logs the reader cannot see.",
+  "assessment": "Completed and honest about gaps (skipped sentiment and treasury checks, unconfirmed delivery), with plausible, internally consistent figures, but it cites no source URLs or data timestamps, leaves the full report only in a file, and has little link to the simulation or stars priorities.",
   "flags": [],
-  "avg_score": 3.53,
+  "avg_score": 3.5,
   "history": [
-    {
-      "date": "2026-09-28",
-      "score": 4
-    },
     {
       "date": "2026-09-29",
       "score": 5
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-30",
+      "score": 3
+    },
+    {
+      "date": "2026-10-31",
       "score": 3
     }
   ]
