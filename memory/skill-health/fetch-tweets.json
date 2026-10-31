@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-30T20:41:19Z",
+  "last_analyzed": "2026-10-31T17:12:19Z",
   "quality_score": 3,
-  "assessment": "Completed a valid no-change digest for the single tracked handle, with a plausible HTTP 200 and a dated newest post. Thin substance, and the specifics can't be verified from the output alone.",
+  "assessment": "Legitimate quiet run: it fetched the tracked account, reported HTTP 200 with 19 tweets and no items in the 3-day window, and correctly sent no notification. The specifics are plausible and checkable, but the output carries little substance beyond status.",
   "flags": [],
   "avg_score": 3.2,
   "history": [
-    {
-      "date": "2026-09-28",
-      "score": 3
-    },
     {
       "date": "2026-09-29",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-30",
+      "score": 3
+    },
+    {
+      "date": "2026-10-31",
       "score": 3
     }
   ]
