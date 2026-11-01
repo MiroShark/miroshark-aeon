@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-10-31T17:12:19Z",
+  "last_analyzed": "2026-11-01T20:52:01Z",
   "quality_score": 3,
-  "assessment": "Legitimate quiet run: it fetched the tracked account, reported HTTP 200 with 19 tweets and no items in the 3-day window, and correctly sent no notification. The specifics are plausible and checkable, but the output carries little substance beyond status.",
+  "assessment": "Clean no-signal run: it reports a concrete fetch result (http=200, newest tweet dated 2026-10-21, outside the 3-day window) and no notification, which matches the skill's notify-only-on-signal rule. The output is thin, with no tweet content or account metrics, but nothing in it reads as invented.",
   "flags": [],
-  "avg_score": 3.2,
+  "avg_score": 3.17,
   "history": [
-    {
-      "date": "2026-09-29",
-      "score": 4
-    },
     {
       "date": "2026-09-30",
       "score": 3
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-10-31",
+      "score": 3
+    },
+    {
+      "date": "2026-11-01",
       "score": 3
     }
   ]
