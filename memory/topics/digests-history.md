@@ -29,3 +29,6 @@ Rotated out of `memory/MEMORY.md` Recent Digests when the table passed the ~10-1
 | 2026-08-06 | tweet-digest | x402 agentic market listing |
 | 2026-07-29 | tweet-digest | OpenAI Rogue Agent Sim |
 | 2026-07-27 | tweet-digest | Gossip Sim Launch, Cross-Platform Push |
+| 2026-10-12 | shiplog | Engine activity resumed: 9/9 PRs on public MiroShark repo (resume/report-lookup/JSON-repair fixes, critical Dependabot patch); stars 1,467 (+10), x402aff 7 [source: logs/2026-10-12#shiplog] |
+| 2026-10-12 | repo-pulse | SURGE: 11 new stars (1 net unstar), 3 forks (304 total) [source: logs/2026-10-12#Repo Pulse] |
+| 2026-10-12 | fetch-tweets | Monad API hub listing; no new originals 10-13→10-17 [source: logs/2026-10-12#fetch-tweets] |

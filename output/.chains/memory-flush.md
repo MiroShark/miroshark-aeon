@@ -1,17 +1,19 @@
-Memory flush is done for the 2026-10-18 to 2026-10-25 window (6 logs, no gap). `MEMORY.md` is within budget.
+The memory flush is done, and the watermark is stamped at 2026-11-01. I scanned the logs from 2026-10-25 to 2026-11-01 (8 files, no gap clamp). There were no open improvement PRs, and MEMORY.md is within budget.
 
-**Promoted:**
-- **Stars and forks:** 1,475 stars and 305 forks, from the 10-21 repo-pulse.
-- **$MIROSHARK price:** $0.00000183, -13.5% in 24h and -32.1% over 30 days, CONSOLIDATING as of 10-25. It had rallied to about $0.00000211 on 10-23.
-- **Team and treasury holdings:** 12.37% of supply.
-- **Digest rows:** added the 10-21 shiplog and the fetch-tweets mid-terms simulation post.
-- **Next priorities:** the star threshold is now 25 away from 1,500. The `changelog` skill has failed three times in a row since 10-19, with its next run due Mon 10-26. `aeon-update` was blocked twice because its classify script needs approval, so its baseline is stuck at `3a747cd`.
+**Promoted into MEMORY.md**
+- **Stars:** 1,480, up 5 net, steady. The next threshold is 1,500, 20 away.
+- **$MIROSHARK:** $0.00000191 on 11-01 (+3.2% 24h, +4.4% 7d, -16.3% 30d), about 96% below the all-time high, liquidity about $107K. Last week's low was $0.00000183 on 10-25 and the high about $0.00000204 on 10-28.
+- **Holdings:** team/treasury at 12.39% of supply.
+- **Digest:** the 10-26 shiplog row (four maintenance PRs, including the MCP security bump #342).
+- **Health:** `changelog` recovered on 10-26 (website PR #416), and all 9 enabled skills show 0 consecutive failures.
+- **Upstream sync:** `aeon-update` is no longer blocked. PR #232 is open with 5 files applied and 5 conflicts, and 45 conflicts are now pending. It needs review.
 
-**Pruned:** the two oldest digest rows (10-05 and 10-08) moved to `memory/topics/digests-history.md`. There was no "Open Improvement PRs" section to check.
+**Pruned**
+- **Priorities:** removed the "changelog at 3 failures" and "aeon-update blocked" items, both resolved.
+- **Digest archive:** moved three 10-12 digest rows to `memory/topics/digests-history.md`.
 
-I added the flush entry to `memory/logs/2026-10-25.md` and ran `memory_prep.py stamp`. The watermark now reads 2026-10-25.
+The flush is logged in `memory/logs/2026-11-01.md`.
 
 ## Summary
-- Edited `memory/MEMORY.md` and `memory/topics/digests-history.md`.
-- Logged the run in `memory/logs/2026-10-25.md`.
-- Follow-up: check whether `changelog` recovers on 10-26, and decide whether to approve the `aeon-update` classify script.
+- Modified `memory/MEMORY.md`, `memory/topics/digests-history.md` and `memory/logs/2026-11-01.md`.
+- Follow-up: review aeon-update PR #232.
