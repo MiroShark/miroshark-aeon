@@ -1,0 +1,131 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers",
+        "description": "Skill output"
+      },
+      "children": [
+        "heading",
+        "badge",
+        "summary",
+        "sep1",
+        "grid",
+        "sep2",
+        "chart"
+      ]
+    },
+    "heading": {
+      "type": "Heading",
+      "props": {
+        "text": "$MIROSHARK — QUIET",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "badge": {
+      "type": "Badge",
+      "props": {
+        "text": "QUIET",
+        "variant": "secondary"
+      },
+      "children": []
+    },
+    "summary": {
+      "type": "Text",
+      "props": {
+        "text": "24h volume was $81 (0.03× the 7d average) with no whale trades, so the +3.2% drift carries little signal.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "price",
+        "liq",
+        "vol",
+        "buysells",
+        "whales"
+      ]
+    },
+    "price": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.000001914",
+        "delta": "+3.2% 24h",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "liq": {
+      "type": "Stat",
+      "props": {
+        "label": "Liq",
+        "value": "$107.4K",
+        "delta": "+2.4%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "vol": {
+      "type": "Stat",
+      "props": {
+        "label": "Vol",
+        "value": "$81",
+        "delta": "0.03× 7d",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "buysells": {
+      "type": "Stat",
+      "props": {
+        "label": "Buys/Sells",
+        "value": "3/3",
+        "delta": "ratio 1.00",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "whales": {
+      "type": "Stat",
+      "props": {
+        "label": "Whales",
+        "value": "0",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "chart": {
+      "type": "Link",
+      "props": {
+        "label": "Chart (GeckoTerminal)",
+        "href": "https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209"
+      },
+      "children": []
+    }
+  }
+}
