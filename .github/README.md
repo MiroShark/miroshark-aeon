@@ -240,5 +240,3 @@ The deep reference lives in [`docs/`](../docs) - jump in:
 ---
 
 Built by [Aaron Elijah Mars](https://aaronjmars.com), founder of Aeon and MiroShark · [@aaronjmars](https://github.com/aaronjmars)
-
-X skills (`fetch-tweets`, `shiplog`) read X through [TwitterAPI.io](https://twitterapi.io/?ref=wa6is4im). This project uses TwitterAPI.io; if you sign up through the link, the author may receive API credits.
