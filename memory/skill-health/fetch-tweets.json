@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-11-01T20:52:01Z",
+  "last_analyzed": "2026-11-02T22:43:40Z",
   "quality_score": 3,
-  "assessment": "Clean no-signal run: it reports a concrete fetch result (http=200, newest tweet dated 2026-10-21, outside the 3-day window) and no notification, which matches the skill's notify-only-on-signal rule. The output is thin, with no tweet content or account metrics, but nothing in it reads as invented.",
+  "assessment": "Honest no-op digest: one tracked account, no tweets in the 3-day window, and the run was logged. The date arithmetic checks out (Oct 21 to Nov 2 is about 12 days). Thin, and the API claims can't be verified from the output alone.",
   "flags": [],
   "avg_score": 3.17,
   "history": [
-    {
-      "date": "2026-09-30",
-      "score": 3
-    },
     {
       "date": "2026-10-01",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-01",
+      "score": 3
+    },
+    {
+      "date": "2026-11-02",
       "score": 3
     }
   ]
