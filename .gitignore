@@ -78,3 +78,28 @@ output/scratch/
 /xai-*.json
 /.xai-*.json
 /.tmp-xai-*.json
+
+# Run scratch: the sandbox blocks reads of /tmp, so skills stage payloads, parsers
+# and notify bodies repo-locally, and the run's `git add -A` then commits them
+# (aeon-agent#274 removed 340 such files). All root-anchored so real files deeper
+# in the tree are never caught. output/.chains/ (chain artifacts) and
+# output/.attest/ (attestation snapshots) are real run output and stay tracked.
+/.aeon-update-*
+/.tmp*
+/.xai*
+/.notify*
+/output/.*
+!/output/.chains/
+!/output/.attest/
+/output/articles/.*
+!/output/articles/.gitkeep
+/output/*notify*.md
+/output/xai-*.json
+
+# Scratch that lands in output/ under plain names: raw API dumps a skill re-fetched
+# into the workspace (tw-*.json twitterapi.io timelines, tr-*.json token-report
+# payloads, output/tmp/, scratch-* copies). Not run output. Root-anchored.
+/output/tmp/
+/output/tw-*.json
+/output/tr-*.json
+/output/scratch-*
