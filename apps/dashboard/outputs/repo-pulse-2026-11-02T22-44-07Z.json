@@ -1,0 +1,246 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Repo Pulse — 2026-11-02"
+      },
+      "children": [
+        "status",
+        "main-heading",
+        "main-stats",
+        "sep-1",
+        "notable-heading",
+        "notable-stack",
+        "other-heading",
+        "other-grid",
+        "sep-2",
+        "aeon-heading",
+        "aeon-stats",
+        "source"
+      ]
+    },
+    "status": {
+      "type": "Badge",
+      "props": {
+        "text": "STEADY",
+        "variant": "secondary"
+      }
+    },
+    "main-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "MiroShark/MiroShark",
+        "level": "h3"
+      }
+    },
+    "main-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat-stars",
+        "stat-forks",
+        "stat-releases"
+      ]
+    },
+    "stat-stars": {
+      "type": "Stat",
+      "props": {
+        "label": "Stars",
+        "value": "1,487",
+        "delta": "+7 net (9 new)",
+        "trend": "up"
+      }
+    },
+    "stat-forks": {
+      "type": "Stat",
+      "props": {
+        "label": "Forks",
+        "value": "304",
+        "delta": "−1 net (0 new)",
+        "trend": "down"
+      }
+    },
+    "stat-releases": {
+      "type": "Stat",
+      "props": {
+        "label": "Releases",
+        "value": "0",
+        "delta": "+0",
+        "trend": "neutral"
+      }
+    },
+    "sep-1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "notable-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Notable new stargazers",
+        "level": "h4"
+      }
+    },
+    "notable-stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "notable-link",
+        "notable-desc"
+      ]
+    },
+    "notable-link": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/TReinaCOM",
+        "href": "https://github.com/TReinaCOM"
+      }
+    },
+    "notable-desc": {
+      "type": "Text",
+      "props": {
+        "text": "thewolverine · 171 repos (also starred miroshark-aeon)",
+        "variant": "muted"
+      }
+    },
+    "other-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Other new stargazers",
+        "level": "h4"
+      }
+    },
+    "other-grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "sm"
+      },
+      "children": [
+        "other-1",
+        "other-2",
+        "other-3",
+        "other-4",
+        "other-5",
+        "other-6",
+        "other-7",
+        "other-8"
+      ]
+    },
+    "other-1": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/robertoatila",
+        "href": "https://github.com/robertoatila"
+      }
+    },
+    "other-2": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/manafkemo",
+        "href": "https://github.com/manafkemo"
+      }
+    },
+    "other-3": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/gusinistro",
+        "href": "https://github.com/gusinistro"
+      }
+    },
+    "other-4": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/m1ckk3y",
+        "href": "https://github.com/m1ckk3y"
+      }
+    },
+    "other-5": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/Hostagon",
+        "href": "https://github.com/Hostagon"
+      }
+    },
+    "other-6": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/alexterieur-ctrl",
+        "href": "https://github.com/alexterieur-ctrl"
+      }
+    },
+    "other-7": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/Krishna2028",
+        "href": "https://github.com/Krishna2028"
+      }
+    },
+    "other-8": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/deafslap",
+        "href": "https://github.com/deafslap"
+      }
+    },
+    "sep-2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "aeon-heading": {
+      "type": "Heading",
+      "props": {
+        "text": "MiroShark/miroshark-aeon",
+        "level": "h3"
+      }
+    },
+    "aeon-stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "aeon-stars",
+        "aeon-forks"
+      ]
+    },
+    "aeon-stars": {
+      "type": "Stat",
+      "props": {
+        "label": "Stars",
+        "value": "20",
+        "delta": "+2",
+        "trend": "up"
+      }
+    },
+    "aeon-forks": {
+      "type": "Stat",
+      "props": {
+        "label": "Forks",
+        "value": "2",
+        "delta": "+0",
+        "trend": "neutral"
+      }
+    },
+    "source": {
+      "type": "Text",
+      "props": {
+        "text": "Source: events",
+        "variant": "caption"
+      }
+    }
+  }
+}

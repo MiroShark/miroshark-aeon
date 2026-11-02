@@ -1,17 +1,12 @@
-*Repo Pulse — 2026-10-26* — [STEADY]
-MiroShark/MiroShark — stars 1,480 (+5 net, 6 new) · forks 305 (+0 net, 1 new) · releases +0
+*Repo Pulse — 2026-11-02* — [STEADY]
+MiroShark/MiroShark — stars 1,487 (+7 net, 9 new) · forks 304 (−1 net, 0 new) · releases +0
 
 Notable new stargazers:
-github.com/nicksan2c — 109 repos · 34 followers
-github.com/xonack — 38 repos · 🐦 @JensHonack
-github.com/FloweryScythe13 — Eric Brichetto · 40 repos
+github.com/TReinaCOM — thewolverine · 171 repos (also starred miroshark-aeon)
 
 Other new stargazers:
-github.com/w00kster | github.com/xploryngDAO | github.com/skylarhenry10-stackup
+github.com/robertoatila | github.com/manafkemo | github.com/gusinistro | github.com/m1ckk3y | github.com/Hostagon | github.com/alexterieur-ctrl | github.com/Krishna2028 | github.com/deafslap
 
-New forks:
-github.com/aiapienthusiast/MiroShark — 357 repos
-
-Next threshold: 1,500 (20 away). miroshark-aeon: 18 stars, 2 forks, no activity.
+MiroShark/miroshark-aeon — stars 20 (+2) · forks 2 (+0)
 
 Source: events
