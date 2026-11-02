@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-01T09:47:59Z",
-  "quality_score": 3,
-  "assessment": "Honest, structured token-movers snapshot that discloses skipped sources and derived figures, but it is thin on context and strategy relevance, and its 'quiet' label conflicts with the full notification it sent.",
+  "last_analyzed": "2026-11-02T06:43:30Z",
+  "quality_score": 4,
+  "assessment": "Substantive, well-structured token report with named sources, a stated 30-day approximation, and skipped checks disclosed; the artifacts in git status are consistent with it, though the verdict thresholds are asserted without a cited source.",
   "flags": [],
   "avg_score": 3.43,
   "history": [
-    {
-      "date": "2026-09-30",
-      "score": 4
-    },
     {
       "date": "2026-10-01",
       "score": 4
@@ -125,6 +121,10 @@
     {
       "date": "2026-11-01",
       "score": 3
+    },
+    {
+      "date": "2026-11-02",
+      "score": 4
     }
   ]
 }
