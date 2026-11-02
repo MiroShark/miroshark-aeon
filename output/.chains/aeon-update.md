@@ -1,8 +1,8 @@
-*aeon-update — 2026-10-26*
-Synced 5 upstream commits → PR
+*aeon-update — 2026-11-02*
+Synced 32 upstream commits → PR
 
-Upstream `aeonfun/aeon` was 5 commits ahead. Applied 5 files cleanly, 5 need review.
-New: onchain-monitor reorg-safe evidence replay + offline receipt verification.
-Manual: dashboard and mcp-server package/lock bumps (next 16.4.1, MCP sdk 1.32.1), `scripts/tests/ci-lanes.txt`.
+Upstream `aeonfun/aeon` is 32 commits ahead. Applied 49 files cleanly, 31 need review.
+New skills: `flovia`, `github-filing-registry`; deploy-uni-hook v4-core fix; vuln-scanner pinned scanners.
+Manual: CI workflows (cancel/timeouts), X skills (TwitterAPI.io), package.json bumps, README/docs skill-count cluster, pack registry.
 
-PR: https://github.com/MiroShark/miroshark-aeon/pull/232
+PR: https://github.com/MiroShark/miroshark-aeon/pull/238
