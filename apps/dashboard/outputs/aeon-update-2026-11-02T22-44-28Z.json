@@ -1,0 +1,195 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update — 2026-11-02",
+        "description": "Synced 32 upstream commits → PR"
+      },
+      "children": [
+        "sync_heading",
+        "sync_text",
+        "stats_grid",
+        "review_alert",
+        "sep1",
+        "new_heading",
+        "new_badges",
+        "fixes_heading",
+        "fix_deploy",
+        "fix_vuln",
+        "sep2",
+        "manual_heading",
+        "manual_text",
+        "sep3",
+        "pr_link"
+      ]
+    },
+    "sync_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Synced 32 upstream commits → PR",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "sync_text": {
+      "type": "Text",
+      "props": {
+        "text": "Upstream `aeonfun/aeon` is 32 commits ahead. Applied 49 files cleanly, 31 need review.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "stats_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat_upstream",
+        "stat_applied",
+        "stat_review"
+      ]
+    },
+    "stat_upstream": {
+      "type": "Stat",
+      "props": {
+        "label": "Upstream commits ahead",
+        "value": "32"
+      },
+      "children": []
+    },
+    "stat_applied": {
+      "type": "Stat",
+      "props": {
+        "label": "Files applied cleanly",
+        "value": "49"
+      },
+      "children": []
+    },
+    "stat_review": {
+      "type": "Stat",
+      "props": {
+        "label": "Files need review",
+        "value": "31"
+      },
+      "children": []
+    },
+    "review_alert": {
+      "type": "Alert",
+      "props": {
+        "title": "Review required",
+        "message": "31 files need review.",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "new_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "New skills",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "new_badges": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge_flovia",
+        "badge_gfr"
+      ]
+    },
+    "badge_flovia": {
+      "type": "Badge",
+      "props": {
+        "text": "flovia",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "badge_gfr": {
+      "type": "Badge",
+      "props": {
+        "text": "github-filing-registry",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "fixes_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Fixes",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "fix_deploy": {
+      "type": "Text",
+      "props": {
+        "text": "deploy-uni-hook v4-core fix",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "fix_vuln": {
+      "type": "Text",
+      "props": {
+        "text": "vuln-scanner pinned scanners",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "manual_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Manual",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "manual_text": {
+      "type": "Text",
+      "props": {
+        "text": "CI workflows (cancel/timeouts), X skills (TwitterAPI.io), package.json bumps, README/docs skill-count cluster, pack registry.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "pr_link": {
+      "type": "Link",
+      "props": {
+        "label": "PR #238: MiroShark/miroshark-aeon",
+        "href": "https://github.com/MiroShark/miroshark-aeon/pull/238"
+      },
+      "children": []
+    }
+  }
+}
