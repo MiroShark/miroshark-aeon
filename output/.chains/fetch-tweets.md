@@ -1,8 +1,9 @@
-The tracked-accounts digest found nothing new, so I sent no notification.
+No tweet digest this run: the only tracked account, `miroshark_`, hasn't posted in the last 3 days, so I sent no notification.
 
-The only tracked account is `miroshark_`. The twitterapi.io timeline call returned HTTP 200, but the latest tweet is from 2026-10-21. That is outside the 3-day window, so 0 tweets qualified.
+- **Fetch:** twitterapi.io returned HTTP 200 with 20 timeline tweets. The newest is from 2026-10-21, a retweet of an aaronjmars post. The newest original tweet is from 2026-10-19, about the US mid-terms simulation.
+- **Dedup:** the last two days of logs held no x.com URLs, so nothing was excluded as already reported.
 
 ## Summary
-- Ran `fetch-tweets` in account mode with an empty handle, which digests every account in `memory/topics/tracked-accounts.yml`.
-- Appended a `### fetch-tweets` entry to `memory/logs/2026-11-02.md` with status `TWEET_DIGEST_OK`. No files were created.
-- Follow-up: the account has been quiet for about 12 days, which may be worth a look.
+- Ran `fetch-tweets` in `account` mode with an empty handle, which digests every account in `memory/topics/tracked-accounts.yml`.
+- Appended a `### fetch-tweets` entry to `memory/logs/2026-11-03.md` with status `TWEET_DIGEST_OK`.
+- No follow-up needed. `miroshark_` has been quiet since 2026-10-21, so you may want to check why.

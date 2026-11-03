@@ -1,15 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-11-02T22:43:40Z",
+  "last_analyzed": "2026-11-03T18:40:28Z",
   "quality_score": 3,
-  "assessment": "Honest no-op digest: one tracked account, no tweets in the 3-day window, and the run was logged. The date arithmetic checks out (Oct 21 to Nov 2 is about 12 days). Thin, and the API claims can't be verified from the output alone.",
+  "assessment": "Honest no-signal run: it reports a quiet tracked account with specific dates and a 200 response, and sends nothing. The detail is thin and the fetch is not shown, so the claims can't be checked from the output.",
   "flags": [],
-  "avg_score": 3.17,
+  "avg_score": 3.13,
   "history": [
-    {
-      "date": "2026-10-01",
-      "score": 4
-    },
     {
       "date": "2026-10-02",
       "score": 3
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-02",
+      "score": 3
+    },
+    {
+      "date": "2026-11-03",
       "score": 3
     }
   ]
