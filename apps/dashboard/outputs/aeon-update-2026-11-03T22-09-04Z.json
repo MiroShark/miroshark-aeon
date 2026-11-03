@@ -1,0 +1,171 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update — 2026-11-03"
+      },
+      "children": [
+        "sync_heading",
+        "stats",
+        "summary",
+        "sep1",
+        "highlights_heading",
+        "highlights",
+        "sep2",
+        "manual_heading",
+        "manual_alert",
+        "manual_table",
+        "pr_link"
+      ]
+    },
+    "sync_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Synced 6 upstream commits → PR",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "stats": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_applied",
+        "stat_review"
+      ]
+    },
+    "stat_applied": {
+      "type": "Stat",
+      "props": {
+        "label": "Applied cleanly",
+        "value": "22"
+      },
+      "children": []
+    },
+    "stat_review": {
+      "type": "Stat",
+      "props": {
+        "label": "Need review",
+        "value": "2"
+      },
+      "children": []
+    },
+    "summary": {
+      "type": "Text",
+      "props": {
+        "text": "Upstream aeonfun/aeon is 6 commits ahead. Applied 22 cleanly, 2 need review.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "highlights_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Highlights",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "highlights": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "hl_1",
+        "hl_2",
+        "hl_3"
+      ]
+    },
+    "hl_1": {
+      "type": "Text",
+      "props": {
+        "text": "Scheduler catch-up window 12h → 23h (auto-merged)",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "hl_2": {
+      "type": "Text",
+      "props": {
+        "text": "skill-install/aeon-update fixes",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "hl_3": {
+      "type": "Text",
+      "props": {
+        "text": "Scorer now grades articles",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "manual_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Manual",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "manual_alert": {
+      "type": "Alert",
+      "props": {
+        "title": "Manual review needed",
+        "message": "The following files need manual attention.",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "manual_table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "File",
+          "Note"
+        ],
+        "rows": [
+          [
+            ".github/workflows/aeon.yml",
+            "scorer article block"
+          ],
+          [
+            "CHANGELOG.md",
+            ""
+          ]
+        ]
+      },
+      "children": []
+    },
+    "pr_link": {
+      "type": "Link",
+      "props": {
+        "label": "View PR #240",
+        "href": "https://github.com/MiroShark/miroshark-aeon/pull/240"
+      },
+      "children": []
+    }
+  }
+}
