@@ -175,6 +175,23 @@ jobs:
           git config user.name "aeonframework"
           git config user.email "aeonframework@proton.me"
 
+      # fetch-tweets in account mode with no tracked handle having a tweet the skill
+      # would report (none inside its window, or all already in its logs): skip the
+      # model call. scripts/fetch_tweets_idle.py asks twitterapi.io and exits 0 only
+      # then; any doubt or error runs the skill as usual. The skipped run is recorded
+      # as a success so the slot is not retried. (Same gate as canon aeon.yml.)
+      - name: Idle gate (fetch-tweets)
+        id: idle
+        if: steps.work.outputs.mode != '' && steps.skill.outputs.name == 'fetch-tweets'
+        env:
+          SKILL_VAR: ${{ inputs.var }}
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+        run: |
+          if python3 scripts/fetch_tweets_idle.py; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::fetch-tweets skipped: no new tweet from any tracked account"
+          fi
+
       # Egress hardening P1: default-deny outbound to link-local + cloud metadata.
       # No skill has a legitimate reason to reach 169.254.0.0/16. Kills the SSRF /
       # DNS-rebinding-to-metadata class before any skill runs. REJECT (not DROP) so a
@@ -588,7 +605,7 @@ jobs:
 
       - name: Run
         id: run
-        if: steps.work.outputs.mode != ''
+        if: steps.work.outputs.mode != '' && steps.idle.outputs.skip != 'true'
         env:
           # Secrets available to .mcp.json ${NAME} refs + per-skill `requires:`
           # injection. Built from an explicit allowlist of named secrets rather
@@ -1086,8 +1103,10 @@ jobs:
           SKILL:       ${{ steps.skill.outputs.name }}
           RUN_OUTCOME: ${{ steps.run.outcome }}
           AUDIT_REF:   ${{ steps.fleet_preflight.outputs.audit_ref }}
+          IDLE_SKIP:   ${{ steps.idle.outputs.skip }}
         run: |
           set -euo pipefail
+          [ "$IDLE_SKIP" = "true" ] && RUN_OUTCOME="success"
           case "$RUN_OUTCOME" in
             success) STATUS="ok" ;;
             failure) STATUS="error" ;;
@@ -1823,6 +1842,7 @@ jobs:
           LANGFUSE_HOST: ${{ vars.LANGFUSE_HOST }}
           LANGFUSE_TRACING: ${{ vars.LANGFUSE_TRACING }}
           RUN_HARNESS: ${{ steps.run.outputs.HARNESS }}
+          IDLE_SKIP: ${{ steps.idle.outputs.skip }}
         run: |
           SKILL="${{ steps.skill.outputs.name }}"
           RUN_OUTCOME="${{ steps.run.outcome }}"
@@ -1830,8 +1850,8 @@ jobs:
           STATE_FILE="memory/cron-state.json"
           QUALITY_SCORE="${{ steps.analyze.outputs.QUALITY_SCORE }}"
 
-          # Determine status from step outcome
-          if [ "$RUN_OUTCOME" = "success" ]; then
+          # Determine status from step outcome (an idle-gated skip counts as done)
+          if [ "$RUN_OUTCOME" = "success" ] || [ "${IDLE_SKIP:-}" = "true" ]; then
             CRON_STATUS="success"
           else
             CRON_STATUS="failed"
