@@ -307,6 +307,8 @@ Private repos: Free plan = 2,000 min/mo, Pro/Team = 3,000 + $0.008/min overage. 
 
 `memory-flush` skips itself before the model starts when no daily log changed since its last flush and that flush is under 7 days old (the `Idle gate (memory-flush)` step; cron state still records a success). Any doubt means it runs, so the worst case is one extra run. (#1217)
 
+`fetch-tweets` gets a free skip in account mode too (`var: account:` for every handle in `memory/topics/tracked-accounts.yml`, or `account:<handle>` / `@handle`), in the `Idle gate (fetch-tweets)` step: `scripts/fetch_tweets_idle.py` asks twitterapi.io (`TWITTER_API_KEY`) for each handle's latest tweets and skips the model only when none is inside the skill's window (3 days for tracked accounts, 2 for one handle) or every such tweet is already in a `### fetch-tweets` account entry of the last 2 days of logs. Other sources always run. A missing key, an API error, an empty timeline or anything it cannot read means the skill runs as usual; cron state records a skip as a success.
+
 ---
 
 ## Authentication
