@@ -1,80 +1,258 @@
 {
-  "baseline_sha": "6eddd851c65286db36b0524298dec3c16cd401a1",
+  "baseline_sha": "25575a6be3bfab41925964de55654056a2fe0c39",
   "upstream": "aeonfun/aeon",
-  "last_run": "2026-10-26",
-  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/232",
+  "last_run": "2026-11-02",
+  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/238",
   "applied": {
-    "added": 2,
-    "updated": 3,
-    "merged": 0,
+    "added": 8,
+    "updated": 35,
+    "merged": 6,
     "deleted": 0
   },
   "pending_conflicts": [
     {
-      "path": "apps/dashboard/package-lock.json",
+      "path": ".github/README.md",
       "reason": "operator-customized",
       "upstream_commits": [
-        "b2f58a3"
-      ]
-    },
-    {
-      "path": "apps/dashboard/package.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "b2f58a3"
-      ]
-    },
-    {
-      "path": "apps/mcp-server/package-lock.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "1e8e7c3"
-      ]
-    },
-    {
-      "path": "apps/mcp-server/package.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "1e8e7c3"
-      ]
-    },
-    {
-      "path": "scripts/tests/ci-lanes.txt",
-      "reason": "deleted-locally",
-      "upstream_commits": [
-        "6eddd85"
+        "25575a6",
+        "0208afe",
+        "665a0e2",
+        "933fbbd"
       ]
     },
     {
       "path": ".github/workflows/aeon.yml",
       "reason": "operator-customized",
       "upstream_commits": [
-        "125106d",
-        "d13bece"
+        "665a0e2",
+        "1ade386",
+        "fc9fe5c"
       ]
     },
     {
-      "path": ".gitignore",
+      "path": ".github/workflows/ci-aeon-skill-sync.yml",
       "reason": "operator-customized",
       "upstream_commits": [
-        "f27af14"
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-agents-md.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-capabilities-parity.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-harnesses-json.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-packs-json.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-readme-catalog.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skill-category.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skill-integrity.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skill-packs.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/ci-skills-json.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "9b752df"
+      ]
+    },
+    {
+      "path": ".github/workflows/messages.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "665a0e2",
+        "1ade386"
+      ]
+    },
+    {
+      "path": ".github/workflows/scheduler.yml",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "2eaaf1b"
       ]
     },
     {
       "path": "CHANGELOG.md",
       "reason": "operator-customized",
       "upstream_commits": [
-        "a0cca77",
-        "0a1cbd7",
-        "9df7482",
-        "d13bece"
+        "34362db",
+        "82c874f"
+      ]
+    },
+    {
+      "path": "apps/dashboard/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "ec7a50c",
+        "1ade386"
+      ]
+    },
+    {
+      "path": "apps/dashboard/package.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "ec7a50c",
+        "1ade386"
+      ]
+    },
+    {
+      "path": "apps/mcp-server/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "1ade386",
+        "28816c7",
+        "67ccc90"
+      ]
+    },
+    {
+      "path": "apps/mcp-server/package.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "1ade386"
+      ]
+    },
+    {
+      "path": "apps/webhook/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "1ade386",
+        "67ccc90"
+      ]
+    },
+    {
+      "path": "apps/webhook/package.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "1ade386"
+      ]
+    },
+    {
+      "path": "catalog/skill-packs.json",
+      "reason": "skill-packs-unit",
+      "upstream_commits": [
+        "ed698c9",
+        "a69404c",
+        "fd8e3c2",
+        "89db6f8",
+        "e4d9e35",
+        "a3938e3"
+      ]
+    },
+    {
+      "path": "docs/aeon-setup.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "25575a6",
+        "933fbbd",
+        "82c874f"
+      ]
+    },
+    {
+      "path": "docs/assets/hero-animated.svg",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "25575a6",
+        "933fbbd"
+      ]
+    },
+    {
+      "path": "docs/community-skill-packs.md",
+      "reason": "skill-packs-unit",
+      "upstream_commits": [
+        "ed698c9",
+        "a69404c",
+        "fd8e3c2",
+        "89db6f8",
+        "e4d9e35",
+        "a3938e3"
+      ]
+    },
+    {
+      "path": "docs/examples/README.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "25575a6",
+        "933fbbd"
       ]
     },
     {
       "path": "docs/langfuse.md",
       "reason": "operator-customized",
       "upstream_commits": [
-        "125106d"
+        "2eaaf1b"
+      ]
+    },
+    {
+      "path": "docs/skill-packs.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "25575a6",
+        "933fbbd"
+      ]
+    },
+    {
+      "path": "scripts/tests/ci-lanes.txt",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "933fbbd",
+        "fc9fe5c"
+      ]
+    },
+    {
+      "path": "skills/fetch-tweets/SKILL.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "665a0e2"
+      ]
+    },
+    {
+      "path": "skills/shiplog/SKILL.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "665a0e2"
       ]
     },
     {
@@ -82,20 +260,6 @@
       "reason": "operator-customized",
       "upstream_commits": [
         "125106d"
-      ]
-    },
-    {
-      "path": ".github/README.md",
-      "reason": "fork MiroShark branding + skill-count table (82) vs upstream privacy/ecosystem refresh; 3-way overlap",
-      "upstream_commits": [
-        "df013db"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skill-packs.yml",
-      "reason": "operator-customized workflow (env-narrow) vs upstream; 3-way overlap (prior 'coupled validator' note now stale - the validator itself is synced)",
-      "upstream_commits": [
-        "914dfe17"
       ]
     },
     {
@@ -127,52 +291,10 @@
       ]
     },
     {
-      "path": "apps/webhook/package-lock.json",
-      "reason": "coupled with apps/webhook/package.json; lockfile 3-way conflict",
-      "upstream_commits": [
-        "b756109b"
-      ]
-    },
-    {
-      "path": "apps/webhook/package.json",
-      "reason": "wrangler version-bump + test-script change held with its lock; 3-way conflict",
-      "upstream_commits": [
-        "b756109b"
-      ]
-    },
-    {
-      "path": "docs/assets/hero-animated.svg",
-      "reason": "DEFERRED \u2014 hero alt-text carries upstream's skill-count (85); held with the README skill-count cluster",
-      "upstream_commits": [
-        "5030e5d"
-      ]
-    },
-    {
       "path": "docs/assets/proof-aeon.jpg",
       "reason": "binary asset \u2014 fork image vs upstream refresh; cannot 3-way merge",
       "upstream_commits": [
         "5030e5d"
-      ]
-    },
-    {
-      "path": "docs/examples/README.md",
-      "reason": "fork skill-count (82) vs upstream count refresh; 3-way overlap. Held with the README skill-count cluster",
-      "upstream_commits": [
-        "df013db"
-      ]
-    },
-    {
-      "path": "docs/skill-packs.md",
-      "reason": "fork full-catalog pack table (curated, stale counts) vs upstream rewrite; 3-way overlap. Reconcile with the README skill-count cluster",
-      "upstream_commits": [
-        "2eb9682d"
-      ]
-    },
-    {
-      "path": "llms.txt",
-      "reason": "fork-only MiroShark copy vs upstream refresh; 3-way overlap",
-      "upstream_commits": [
-        "df013db"
       ]
     },
     {
@@ -197,101 +319,7 @@
       ]
     },
     {
-      "path": "skills/fetch-tweets/SKILL.md",
-      "reason": "operator-customized (fork) vs upstream xai/grok prose update; 3-way content overlap",
-      "upstream_commits": [
-        "9cb0b6a9"
-      ]
-    },
-    {
-      "path": "skills/shiplog/SKILL.md",
-      "reason": "operator-customized (fork) vs upstream xai/coingecko prose update; 3-way content overlap",
-      "upstream_commits": [
-        "9cb0b6a9"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-aeon-skill-sync.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-agents-md.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-apps.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-capabilities-parity.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
       "path": ".github/workflows/ci-gate.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-harnesses-json.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-packs-json.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-readme-catalog.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skill-category.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skill-integrity.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skills-json.yml",
       "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
       "upstream_commits": [
         "95d7f7d",
@@ -310,20 +338,6 @@
       "reason": "fork-edited vs upstream OpenRouter attribution (#1235); 3-way overlap",
       "upstream_commits": [
         "8aba912"
-      ]
-    },
-    {
-      "path": "apps/dashboard/lib/skill-icons.data.ts",
-      "reason": "derived from catalog; conflicts on anatomy icon. Regenerate with bin/generate-skill-icons if anatomy adopted",
-      "upstream_commits": [
-        "a588d72"
-      ]
-    },
-    {
-      "path": "docs/aeon-setup.md",
-      "reason": "fork-edited vs upstream docs sync; 3-way overlap",
-      "upstream_commits": [
-        "2cd951a"
       ]
     }
   ]

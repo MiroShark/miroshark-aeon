@@ -599,6 +599,7 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-11-01,fetch-tweets,claude-sonnet-5-5,20,1885,439545,39936
 2026-11-01,memory-flush,claude-sonnet-5-5,20,4358,341741,31139
 2026-11-02,token-movers,claude-sonnet-5-5,28,4826,754125,58205
+2026-11-02,aeon-update,claude-sonnet-5-5,38,4926,1054462,57746
 2026-11-02,fetch-tweets,claude-sonnet-5-5,14,1311,283140,37136
 2026-11-02,heartbeat,claude-sonnet-5-5,14,3180,261675,35719
 2026-11-02,repo-pulse,claude-sonnet-5-5,22,4174,369896,25196

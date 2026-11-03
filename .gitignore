@@ -40,6 +40,8 @@ output/.dry-run/
 
 # Skill provenance lock (per-repo, not committed)
 /skills.lock
+# Registry write lock sidecar: filing-registry serializes read-modify-write on $REGISTRY.lock (memory/filing-registry.json.lock)
+memory/*.lock
 
 # Scratch / temp files
 /tmp_*
@@ -103,3 +105,10 @@ output/scratch/
 /output/tw-*.json
 /output/tr-*.json
 /output/scratch-*
+
+# Runtime copies and notify scratch that runs left at the repo root and a run
+# then committed via `git add -A` (secretcurl is copied from scripts/secretcurl.sh
+# at run start; .tm-*.md / notify-body.md are staged notify bodies). Root-anchored.
+/secretcurl
+/.tm-*.md
+/notify-body.md
