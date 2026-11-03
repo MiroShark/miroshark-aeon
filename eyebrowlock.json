@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-02T22:43:40.578541599Z",
+  "generatedAt": "2026-11-03T22:07:46.530523219Z",
   "generator": "eyebrow/0.5.6",
   "artifacts": [
     {
@@ -2047,7 +2047,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "42fda40365cce664d1ca3b31a38793385792a2b106db67ac03619c4175c53d5f"
+          "hash": "9a9bea2de4f00b343315d3f6435c4fc9e4ee26486883bb7e926c9ceebdc39715"
         },
         {
           "path": "references/ci.md",
@@ -2059,11 +2059,11 @@
         },
         {
           "path": "references/layout.md",
-          "hash": "5212a0a5a5bffee397ff84661cd03229747ae7e3e93661e338e048ae01f9266c"
+          "hash": "4804f517c78db3d4c9f4078a4f3bcd54d9b20a17ef2b58fa1f97dbcf26cea01c"
         },
         {
           "path": "references/mcp.md",
-          "hash": "0e3274da18b9165fd5989810bbd867a81eaa0a945e22ded7f2b7050948e07de9"
+          "hash": "39d5d1c141cc2c9b79009834bee477635875b45dc4925ff83719d1aab48439d4"
         },
         {
           "path": "references/secrets.md",
@@ -2071,7 +2071,7 @@
         },
         {
           "path": "references/skill-anatomy.md",
-          "hash": "26488d0fc47db197b5a763a70a0d6772eadeb01c6976d4300a1bb5568a521d0a"
+          "hash": "3cb3da9dfe51093fb149a6cb9d6d2220fe6aaf21aced27e761a15cdb0205b933"
         },
         {
           "path": "scripts/mine-history.mjs",
@@ -2107,7 +2107,7 @@
           "explanation": "references sensitive credential or secret paths"
         }
       ],
-      "contentHash": "sha256-8b30df17e815a22a48606c712ad25ef52c60853bfd1b94fd3700cb59ce35d4f8",
+      "contentHash": "sha256-6edeee53b95fd47ce7e074f51d6ec0ede7151f2441e9f6b217331c694ccede97",
       "discoveredFrom": ".claude/skills/aeon/SKILL.md"
     },
     {
@@ -2393,7 +2393,7 @@
       "files": [
         {
           "path": "SKILL.md",
-          "hash": "12a46d15241393c9e8e086dba3f1bb1abc5aaa6c4406e9c8160024f3a495f1d1"
+          "hash": "e389b5d1bdaaf633635770ce4477da155bb8d7bf692fb88e83018062b8318e0c"
         }
       ],
       "findings": [
@@ -2407,7 +2407,7 @@
           "explanation": "references sensitive credential or secret paths"
         }
       ],
-      "contentHash": "sha256-fead703d79cbd78a27855b2ad567ffac6af3ace93470055bc9e32d45c26458a5",
+      "contentHash": "sha256-1548dd1812e9df36762dd80fb97cff5124890f6c5241965dde0285789e31e489",
       "discoveredFrom": "skills/aeon-update/SKILL.md"
     }
   ]
