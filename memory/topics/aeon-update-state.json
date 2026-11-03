@@ -1,12 +1,12 @@
 {
-  "baseline_sha": "501e21c388c87e16aae1ee1932cf536198b2b6c9",
+  "baseline_sha": "dd4887b97b0a18f90119ed77cb42952c97c82ac2",
   "upstream": "aeonfun/aeon",
   "last_run": "2026-11-03",
-  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/240",
+  "last_pr": null,
   "applied": {
     "added": 0,
-    "updated": 21,
-    "merged": 1,
+    "updated": 14,
+    "merged": 0,
     "deleted": 0
   },
   "pending_conflicts": [
@@ -35,70 +35,7 @@
       ]
     },
     {
-      "path": ".github/workflows/ci-aeon-skill-sync.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-agents-md.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-capabilities-parity.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-harnesses-json.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-packs-json.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-readme-catalog.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skill-category.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skill-integrity.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
       "path": ".github/workflows/ci-skill-packs.yml",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "9b752df"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-skills-json.yml",
       "reason": "operator-customized",
       "upstream_commits": [
         "9b752df"
@@ -160,18 +97,6 @@
       ]
     },
     {
-      "path": "catalog/skill-packs.json",
-      "reason": "skill-packs-unit",
-      "upstream_commits": [
-        "ed698c9",
-        "a69404c",
-        "fd8e3c2",
-        "89db6f8",
-        "e4d9e35",
-        "a3938e3"
-      ]
-    },
-    {
       "path": "docs/aeon-setup.md",
       "reason": "operator-customized",
       "upstream_commits": [
@@ -186,18 +111,6 @@
       "upstream_commits": [
         "25575a6",
         "933fbbd"
-      ]
-    },
-    {
-      "path": "docs/community-skill-packs.md",
-      "reason": "skill-packs-unit",
-      "upstream_commits": [
-        "ed698c9",
-        "a69404c",
-        "fd8e3c2",
-        "89db6f8",
-        "e4d9e35",
-        "a3938e3"
       ]
     },
     {
@@ -267,13 +180,6 @@
       ]
     },
     {
-      "path": "docs/assets/proof-aeon.jpg",
-      "reason": "binary asset \u2014 fork image vs upstream refresh; cannot 3-way merge",
-      "upstream_commits": [
-        "5030e5d"
-      ]
-    },
-    {
       "path": "skills/compute-resell/SKILL.md",
       "reason": "modify/delete \u2014 fork previously removed compute-resell; upstream modified it. Held (respects the operator's removal). Re-adopt manually if wanted (new-skill catalog/eyebrow reconcile needed)",
       "upstream_commits": [
@@ -292,14 +198,6 @@
       "reason": "new upstream skill. NOT adopted: adding it changes the skill count (82) and pack membership, which the fork's held README/docs skill-count tables would then mismatch. Adopt manually: fetch SKILL.md, update README/docs counts + full-catalog table, then eyebrow scan + bin/generate-skills-json/packs-json",
       "upstream_commits": [
         "0da615e"
-      ]
-    },
-    {
-      "path": ".github/workflows/ci-gate.yml",
-      "reason": "operator-customized workflow (env-narrow / runner choice) vs upstream Blacksmith runner/bubblewrap-cache/ci-gate changes; 3-way overlap",
-      "upstream_commits": [
-        "95d7f7d",
-        "ca26beb"
       ]
     },
     {
