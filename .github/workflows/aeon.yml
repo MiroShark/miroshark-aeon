@@ -1373,21 +1373,64 @@ jobs:
             SKILL_NAME="$SKILL" AEON_OTEL_COMPONENT=scorer source "${GITHUB_WORKSPACE}/scripts/langfuse-otel.sh"
           fi
 
-          # Read skill output for analysis. Sample head + tail so the judge sees the
-          # conclusion of long outputs, not just the intro - a flat 3KB head-truncate
-          # graded only the opening and biased the score against skills that build to
-          # their payoff (articles, digests, research compendia routinely exceed a few
-          # KB). `iconv -c` drops any partial UTF-8 char left at a byte cut.
-          OUTPUT=""
-          if [ -f /tmp/skill-result.txt ] && [ -s /tmp/skill-result.txt ]; then
-            BYTES=$(wc -c < /tmp/skill-result.txt)
-            if [ "$BYTES" -le 14000 ]; then
-              OUTPUT=$(iconv -f UTF-8 -t UTF-8 -c < /tmp/skill-result.txt)
-            else
-              OHEAD=$(head -c 10000 /tmp/skill-result.txt | iconv -f UTF-8 -t UTF-8 -c)
-              OTAIL=$(tail -c 4000 /tmp/skill-result.txt | iconv -f UTF-8 -t UTF-8 -c)
-              OUTPUT=$(printf '%s\n\n[... middle truncated ...]\n\n%s' "$OHEAD" "$OTAIL")
+          # Most skills deliver their full output through notify, so prefer the
+          # captured card. Changelog delivers a repository change and only sends
+          # a short card: score its substantive final result alongside that card.
+          # Skills that write an article and send a short card (token-report: a
+          # 420-byte card, the sourced article in output/articles/) get the
+          # article this run wrote scored alongside the card.
+          score_output_sample() {
+            local src="$1" head_bytes="$2" tail_bytes="$3" bytes ohead otail
+            if [ ! -f "$src" ] || [ ! -s "$src" ]; then
+              return
             fi
+            bytes=$(wc -c < "$src")
+            if [ "$bytes" -le "$((head_bytes + tail_bytes))" ]; then
+              iconv -f UTF-8 -t UTF-8 -c < "$src"
+            else
+              ohead=$(head -c "$head_bytes" "$src" | iconv -f UTF-8 -t UTF-8 -c)
+              otail=$(tail -c "$tail_bytes" "$src" | iconv -f UTF-8 -t UTF-8 -c)
+              printf '%s\n\n[... middle truncated ...]\n\n%s' "$ohead" "$otail"
+            fi
+          }
+
+          RESULT=/tmp/skill-result.txt
+          SRC="$RESULT"
+          CHAIN="output/.chains/${SKILL}.md"
+          if [ -f "$CHAIN" ] && [ -s "$CHAIN" ] && [ "$(head -n1 "$CHAIN")" != "_No output captured._" ]; then
+            SRC="$CHAIN"
+          fi
+
+          # The article: an output/articles/*.md this run added or changed (not yet
+          # committed here; one named <skill>-* wins, since token-movers writes
+          # token-report-<date>.md), else today's output/articles/<skill>-<date>.md
+          # for a skill that committed it itself.
+          ARTICLE=""
+          while IFS= read -r f; do
+            [ -n "$f" ] && [ -s "$f" ] || continue
+            case "${f##*/}" in "${SKILL}"-*) ARTICLE="$f"; break ;; esac
+            [ -n "$ARTICLE" ] || ARTICLE="$f"
+          done <<< "$(git ls-files --others --modified --exclude-standard -- 'output/articles/*.md' 2>/dev/null || true)"
+          if [ -z "$ARTICLE" ] && [ -s "output/articles/${SKILL}-$(date -u +%F).md" ]; then
+            ARTICLE="output/articles/${SKILL}-$(date -u +%F).md"
+          fi
+
+          # Head + tail sampling preserves conclusions while bounding judge input.
+          # Keep the same 14KB content budget when a skill needs both artifacts.
+          OUTPUT=""
+          if [ "$SKILL" = "changelog" ] && [ "$SRC" = "$CHAIN" ] && [ -s "$RESULT" ] && ! cmp -s "$SRC" "$RESULT"; then
+            RESULT_SAMPLE=$(score_output_sample "$RESULT" 7000 3000)
+            NOTIFY_SAMPLE=$(score_output_sample "$SRC" 3000 1000)
+            OUTPUT=$(printf 'Repository change result:\n%s\n\nNotification:\n%s' "$RESULT_SAMPLE" "$NOTIFY_SAMPLE")
+          elif [ -n "$ARTICLE" ] && ! cmp -s "$ARTICLE" "$SRC"; then
+            ARTICLE_SAMPLE=$(score_output_sample "$ARTICLE" 7000 3000)
+            CARD_SAMPLE=$(score_output_sample "$SRC" 3000 1000)
+            CARD_LABEL="Notification"
+            [ "$SRC" = "$RESULT" ] && CARD_LABEL="Final result"
+            OUTPUT=$(printf 'Article written this run (%s):\n%s' "$ARTICLE" "$ARTICLE_SAMPLE")
+            [ -n "$CARD_SAMPLE" ] && OUTPUT=$(printf '%s\n\n%s:\n%s' "$OUTPUT" "$CARD_LABEL" "$CARD_SAMPLE")
+          else
+            OUTPUT=$(score_output_sample "$SRC" 10000 4000)
           fi
           [ -z "$OUTPUT" ] && { echo "No output to analyze"; exit 0; }
 
@@ -1418,6 +1461,8 @@ jobs:
           - empty_output: ONLY when the skill produced no usable result (no report, analysis, or draft). A legitimate no-op - an empty inbox, an empty watchlist, 'nothing met the threshold', a clean scan with no findings - is a COMPLETED task, not empty_output. A run that delivered its output is not empty_output even if its log notes an upstream source came back empty.
           - api_error / rate_limited: ONLY when the error blocked the skill's output - not for a sub-call that was retried or fell back cleanly.
           - unverifiable_claim: the output asserts specific facts, IDs, URLs, figures, or quotes that read as invented or that the skill could not plausibly have obtained from a real source. Cap such an output at 2 and set this flag.
+
+          When the output holds an article the run wrote plus its notification or final result, the latter is a short summary of the article: judge sources and verifiability on the article.
 
           Skill: $SKILL
           Output:
