@@ -209,13 +209,6 @@
       ]
     },
     {
-      "path": "docs/langfuse.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "2eaaf1b"
-      ]
-    },
-    {
       "path": "docs/skill-packs.md",
       "reason": "operator-customized",
       "upstream_commits": [
@@ -243,13 +236,6 @@
       "reason": "operator-customized",
       "upstream_commits": [
         "665a0e2"
-      ]
-    },
-    {
-      "path": "scripts/tests/test_langfuse_otel.sh",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "125106d"
       ]
     },
     {
