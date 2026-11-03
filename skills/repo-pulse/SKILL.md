@@ -28,14 +28,15 @@ Read `memory/MEMORY.md` and the last **4 weeks** of `memory/logs/` for previous 
 
 ### 1. Compute the 7-day cutoff FIRST
 
+Run `date` as its own Bash call (see **Shell shape** in the Sandbox note):
 ```bash
-CUTOFF=$(date -u -d '7 days ago' +%Y-%m-%dT%H:%M:%SZ 2>/dev/null || date -u -v-7d +%Y-%m-%dT%H:%M:%SZ)
-export CUTOFF
+date -u -d '7 days ago' +%Y-%m-%dT%H:%M:%SZ
 ```
-All time filtering uses exactly this timestamp — never "today's date" or "since midnight".
+It prints CUTOFF (for example `2026-10-27T09:00:00Z`). Write that value into every later command literally, in place of the `<CUTOFF>` placeholder. All time filtering uses exactly this timestamp — never "today's date" or "since midnight".
 
 ### 2. Fetch current counts (1 call per repo)
 
+One Bash call per repo, with the repo written in literally (never a `for` loop over the repos). Keep the printed `stargazers_count`: the step 4 fallback needs it.
 ```bash
 gh api repos/owner/repo --jq '{stargazers_count, forks_count, subscribers_count}'
 ```
@@ -43,11 +44,11 @@ If this call returns non-2xx (404, 403, rate limit), record `source=fail` with t
 
 ### 3. Fetch recent events — primary input
 
-One call per repo covers stargazers, forks, **and releases** for the last ~90 days, newest-first:
+One call per repo covers stargazers, forks, **and releases** for the last ~90 days, newest-first. Write the repo and CUTOFF in literally:
 
 ```bash
 gh api --paginate "repos/owner/repo/events?per_page=100" \
-  --jq '[.[] | select(.created_at >= env.CUTOFF) | {type, actor: .actor.login, created_at, tag: (.payload.release.tag_name // null), action: (.payload.action // null)}]'
+  --jq '[.[] | select(.created_at >= "<CUTOFF>") | {type, actor: .actor.login, created_at, tag: (.payload.release.tag_name // null), action: (.payload.action // null)}]'
 ```
 
 **Paginate** — a single 100-event page covers ~24h on an active repo but can truncate a 7-day window. Use `--paginate` and stop early once you see an event older than `CUTOFF` (events are newest-first). If the oldest event you retrieved is still **newer** than `CUTOFF`, the window is truncated: record `truncated=true` for that repo and say so in the report — never present a truncated count as complete.
@@ -65,21 +66,21 @@ Record `source=events` for this repo.
 
 If step 3 returns non-2xx, fall back to the stargazers two-last-pages technique (events emptiness is NOT a fallback trigger — empty genuinely means no activity):
 
+Work out the two page numbers yourself from the `stargazers_count` step 2 printed for this repo (STARS): LAST_PAGE = STARS / 100 rounded up, PREV_PAGE = LAST_PAGE - 1, or 1 when LAST_PAGE is 1 (then both are the same page and one call is enough). Then one call per page, with the page number and CUTOFF written in literally:
 ```bash
-STARS=$(gh api repos/owner/repo --jq '.stargazers_count')
-LAST_PAGE=$(( (STARS + 99) / 100 ))
-PREV_PAGE=$(( LAST_PAGE > 1 ? LAST_PAGE - 1 : 1 ))
-gh api "repos/owner/repo/stargazers?per_page=100&page=$PREV_PAGE" \
+gh api "repos/owner/repo/stargazers?per_page=100&page=<PREV_PAGE>" \
   -H "Accept: application/vnd.github.star+json" \
-  --jq '.[] | select(.starred_at >= env.CUTOFF) | {user: .user.login, starred_at}'
-gh api "repos/owner/repo/stargazers?per_page=100&page=$LAST_PAGE" \
-  -H "Accept: application/vnd.github.star+json" \
-  --jq '.[] | select(.starred_at >= env.CUTOFF) | {user: .user.login, starred_at}'
+  --jq '.[] | select(.starred_at >= "<CUTOFF>") | {user: .user.login, starred_at}'
 ```
-Deduplicate by user. Forks in the fallback path come from:
+```bash
+gh api "repos/owner/repo/stargazers?per_page=100&page=<LAST_PAGE>" \
+  -H "Accept: application/vnd.github.star+json" \
+  --jq '.[] | select(.starred_at >= "<CUTOFF>") | {user: .user.login, starred_at}'
+```
+Deduplicate by user. Forks in the fallback path come from one more call, CUTOFF written in literally:
 ```bash
 gh api "repos/owner/repo/forks?sort=newest&per_page=50" \
-  --jq '.[] | select(.created_at >= env.CUTOFF) | {owner: .owner.login, full_name, created_at}'
+  --jq '.[] | select(.created_at >= "<CUTOFF>") | {owner: .owner.login, full_name, created_at}'
 ```
 Record `source=stargazers-fallback` for this repo. Releases are skipped in fallback (not critical).
 
@@ -189,6 +190,7 @@ If the repo lookup failed, log:
 
 ## Sandbox note
 
+- **Shell shape.** Each Bash call is one allowed command (pipes are fine). The run refuses a call that sets a variable (`CUTOFF=$(date ...)`, `STARS=$(gh api ...)`), starts with `export`, uses `if` / `for` / `while`, or joins commands with `;`, `&&` or `||`, and each refusal costs a model turn. So get the cutoff with a bare `date` call and write the printed value into later commands; write each repo, page number and the cutoff into each command literally (the `<CUTOFF>`, `<LAST_PAGE>` style placeholders in the snippets); make one `gh api` call per repo, page or login instead of a loop; filter with `--jq` inside that call (or one `jq` per call), never two commands joined with `;`.
 - `gh api` handles auth internally; prefer it over curl.
 - `gh api users/{login}` (the profile lookups in step 5) is a public endpoint — capped at 15 stargazer + 15 forker lookups per repo to stay well inside the authenticated rate limit. A single failed lookup degrades to a bare handle; it never aborts the run.
 - `/repos/{owner}/{repo}/traffic/*` endpoints require **admin** permission and return 403 for the default workflow `GITHUB_TOKEN`. Do **not** attempt them from this skill.
