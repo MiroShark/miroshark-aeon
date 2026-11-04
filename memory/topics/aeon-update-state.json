@@ -1,12 +1,12 @@
 {
-  "baseline_sha": "dd4887b97b0a18f90119ed77cb42952c97c82ac2",
+  "baseline_sha": "535991ca9cec9cd46e5f326d740a54572755e75a",
   "upstream": "aeonfun/aeon",
-  "last_run": "2026-11-03",
-  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/242",
+  "last_run": "2026-11-04",
+  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/245",
   "applied": {
     "added": 0,
-    "updated": 14,
-    "merged": 0,
+    "updated": 62,
+    "merged": 8,
     "deleted": 0
   },
   "pending_conflicts": [
@@ -14,7 +14,57 @@
       "path": ".github/workflows/aeon.yml",
       "reason": "operator-customized",
       "upstream_commits": [
-        "501e21c"
+        "503dc77"
+      ]
+    },
+    {
+      "path": "apps/dashboard/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "6c4f069"
+      ]
+    },
+    {
+      "path": "apps/webhook/package-lock.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "6c4f069"
+      ]
+    },
+    {
+      "path": "apps/webhook/package.json",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "6c4f069"
+      ]
+    },
+    {
+      "path": "scripts/tests/ci-lanes.txt",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "503dc77"
+      ]
+    },
+    {
+      "path": "scripts/tests/test_anatomy_integration.sh",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "f78d29c"
+      ]
+    },
+    {
+      "path": "skills/anatomy/SKILL.md",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "f78d29c"
+      ]
+    },
+    {
+      "path": "skills/compute-resell/SKILL.md",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "535991c",
+        "f78d29c"
       ]
     },
     {
@@ -50,22 +100,6 @@
       ]
     },
     {
-      "path": "apps/dashboard/package-lock.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "ec7a50c",
-        "1ade386"
-      ]
-    },
-    {
-      "path": "apps/dashboard/package.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "ec7a50c",
-        "1ade386"
-      ]
-    },
-    {
       "path": "apps/mcp-server/package-lock.json",
       "reason": "operator-customized",
       "upstream_commits": [
@@ -76,21 +110,6 @@
     },
     {
       "path": "apps/mcp-server/package.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "1ade386"
-      ]
-    },
-    {
-      "path": "apps/webhook/package-lock.json",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "1ade386",
-        "67ccc90"
-      ]
-    },
-    {
-      "path": "apps/webhook/package.json",
       "reason": "operator-customized",
       "upstream_commits": [
         "1ade386"
@@ -130,28 +149,6 @@
       ]
     },
     {
-      "path": "scripts/tests/ci-lanes.txt",
-      "reason": "deleted-locally",
-      "upstream_commits": [
-        "933fbbd",
-        "fc9fe5c"
-      ]
-    },
-    {
-      "path": "skills/fetch-tweets/SKILL.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "665a0e2"
-      ]
-    },
-    {
-      "path": "skills/shiplog/SKILL.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "665a0e2"
-      ]
-    },
-    {
       "path": ".github/workflows/ci-tests.yml",
       "reason": "operator-customized (fork test list / env-narrow) vs upstream new test steps + biome check; 3-way overlap",
       "upstream_commits": [
@@ -180,13 +177,6 @@
       ]
     },
     {
-      "path": "skills/compute-resell/SKILL.md",
-      "reason": "modify/delete \u2014 fork previously removed compute-resell; upstream modified it. Held (respects the operator's removal). Re-adopt manually if wanted (new-skill catalog/eyebrow reconcile needed)",
-      "upstream_commits": [
-        "3f3509c"
-      ]
-    },
-    {
       "path": "skills/compute-resell/config.example.json",
       "reason": "coupled with skills/compute-resell/SKILL.md modify/delete",
       "upstream_commits": [
@@ -198,13 +188,6 @@
       "reason": "new upstream skill. NOT adopted: adding it changes the skill count (82) and pack membership, which the fork's held README/docs skill-count tables would then mismatch. Adopt manually: fetch SKILL.md, update README/docs counts + full-catalog table, then eyebrow scan + bin/generate-skills-json/packs-json",
       "upstream_commits": [
         "0da615e"
-      ]
-    },
-    {
-      "path": "scripts/tests/test_skill_mode.sh",
-      "reason": "fork-edited test vs upstream CRLF/frontmatter fix (#1203); 3-way overlap. scripts/skill_mode.sh itself applied",
-      "upstream_commits": [
-        "ac3045a"
       ]
     },
     {

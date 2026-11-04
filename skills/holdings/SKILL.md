@@ -101,20 +101,14 @@ from `memory/holdings.json`) — only the wallet is overridden, the token list s
 instance-specific:
 
 ```bash
-ADDR="${var}"
-CHAIN=base; [ "${ADDR#0x}" = "$ADDR" ] && CHAIN=solana
-python3 - "$ADDR" "$CHAIN" > /tmp/holdings-var.json <<'PY'
-import json,sys
-addr,chain=sys.argv[1],sys.argv[2]
-cfg=json.load(open("memory/holdings.json"))
-json.dump({"wallets":[{"address":addr,"label":"var","chain":chain}],
-           "tokens":[t for t in cfg["tokens"] if t["chain"]==chain]},sys.stdout)
-PY
-python3 skills/holdings/holdings.py /tmp/holdings-var.json --no-history
+python3 skills/holdings/holdings.py memory/holdings.json --wallet <ADDRESS>
 ```
 
-A single `${var}` wallet has no snapshot series, so `--no-history` drops `growth`;
-leave the 7d/30d columns out of that report.
+Write the `${var}` address in literally for `<ADDRESS>`: one call, no `ADDR=`
+assignment, `[ ]` test, heredoc or `>` redirect (the run refuses those shapes).
+The helper infers the chain (`0x`-prefixed = base, else solana) and keeps only
+that chain's tokens. A single `${var}` wallet has no snapshot series, so
+`--wallet` also drops `growth`; leave the 7d/30d columns out of that report.
 
 If a row has `"error"`, retry `holdings.py` once. If it still errors on the RPC
 (sandbox block / 403 / timeout), note `rpc=fetch_fail` in the footer for that wallet

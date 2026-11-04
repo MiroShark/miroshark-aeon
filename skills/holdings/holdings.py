@@ -26,6 +26,9 @@ window pick is code, not arithmetic the model does in its head. Flags:
   --logs DIR        where the snapshot lines live (default memory/logs)
   --today YYYY-MM-DD  the run date (default: today, UTC)
   --no-history      skip growth (a one-off ${var} wallet has no series)
+  --wallet ADDR     check only ADDR (chain inferred: 0x-prefixed = base, else
+                    solana) against the config's tokens on that chain; implies
+                    --no-history
 """
 import datetime
 import glob
@@ -278,9 +281,17 @@ def growth(per_symbol, partial, series, today):
     return out
 
 
+def single_wallet(config, addr):
+    """Config for one ad-hoc wallet: its chain's tokens from config, no wallet list."""
+    chain = "base" if addr.startswith("0x") else "solana"
+    return {"wallets": [{"address": addr, "label": "var", "chain": chain}],
+            "tokens": [t for t in config.get("tokens", []) if t.get("chain") == chain]}
+
+
 def main():
     args = sys.argv[1:]
     logs_dir, today, history = "memory/logs", datetime.datetime.now(datetime.timezone.utc).date(), True
+    wallet = None
     pos = []
     while args:
         a = args.pop(0)
@@ -290,11 +301,15 @@ def main():
             today = datetime.date.fromisoformat(args.pop(0))
         elif a == "--no-history":
             history = False
+        elif a == "--wallet" and args:
+            wallet, history = args.pop(0), False
         else:
             pos.append(a)
     path = pos[0] if pos else "memory/holdings.json"
     with open(path) as f:
         config = json.load(f)
+    if wallet:
+        config = single_wallet(config, wallet)
     result = check(config)
     if history:
         partial = {r["symbol"] for r in result["rows"] if "error" in r}
