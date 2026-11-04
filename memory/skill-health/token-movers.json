@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-03T11:25:27Z",
+  "last_analyzed": "2026-11-04T11:31:38Z",
   "quality_score": 3,
-  "assessment": "Honest, specific token-metrics snapshot with disclosed gaps (skipped social and treasury sections, approximate 7-day trend), but it is a thin price-watch with no cited source URLs, and the figures cannot be verified from this output alone.",
+  "assessment": "Substantive, well-sourced token-movers report with timestamped API endpoints; its arithmetic is internally consistent (18/10 = 1.80 ratio, +4.7% price move, 1.53K/1.10K = 1.39x volume). It is a plain market-data readout with little tie to the engine, simulation proof, or stars/ecosystem priorities, and the live figures could not be independently verified here.",
   "flags": [],
-  "avg_score": 3.4,
+  "avg_score": 3.37,
   "history": [
-    {
-      "date": "2026-10-02",
-      "score": 4
-    },
     {
       "date": "2026-10-03",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-03",
+      "score": 3
+    },
+    {
+      "date": "2026-11-04",
       "score": 3
     }
   ]
