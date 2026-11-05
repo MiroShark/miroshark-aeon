@@ -143,7 +143,7 @@ skills:
   posthog-errors: { enabled: false, schedule: "0 15 * * 1", var: "" } # weekly cross-project PostHog error digest (needs PostHog MCP connected). var: empty=all/7d | Nd | project substrings
 
   # --- Fallback (must be last) ---
-  heartbeat: { enabled: true, schedule: "0 19 * * *", var: "" } # ambient fleet-health check (default) — surfaces anything worth attention. var: empty=ambient check | <area>=ambient focused on that area | brief[:<area>]=priority brief (3 things to focus on, why now, what moved; folds in priority-brief)
+  heartbeat: { enabled: true, schedule: "0 19 * * *", var: "", model: "claude-haiku-5-5" } # ambient fleet-health check (default) — surfaces anything worth attention. var: empty=ambient check | <area>=ambient focused on that area | brief[:<area>]=priority brief (3 things to focus on, why now, what moved; folds in priority-brief)
 
 # Reactive triggers — event-driven skill dispatch based on cron-state.json conditions.
 # Skills with schedule: "reactive" are never cron-matched. Instead, the scheduler
