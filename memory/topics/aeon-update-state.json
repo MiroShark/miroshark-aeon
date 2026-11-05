@@ -1,12 +1,12 @@
 {
-  "baseline_sha": "535991ca9cec9cd46e5f326d740a54572755e75a",
+  "baseline_sha": "4d64089c3f4cb2e3f33349cd6a1d789c03a2a899",
   "upstream": "aeonfun/aeon",
-  "last_run": "2026-11-04",
-  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/245",
+  "last_run": "2026-11-05",
+  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/249",
   "applied": {
-    "added": 0,
-    "updated": 62,
-    "merged": 8,
+    "added": 22,
+    "updated": 19,
+    "merged": 3,
     "deleted": 0
   },
   "pending_conflicts": [
@@ -14,7 +14,36 @@
       "path": ".github/workflows/aeon.yml",
       "reason": "operator-customized",
       "upstream_commits": [
-        "503dc77"
+        "f7a239e",
+        "50662a6"
+      ]
+    },
+    {
+      "path": ".gitignore",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "d68e87e"
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "b52deab"
+      ]
+    },
+    {
+      "path": "CHANGELOG.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "fddec05"
+      ]
+    },
+    {
+      "path": "scripts/tests/ci-lanes.txt",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "50662a6"
       ]
     },
     {
@@ -39,13 +68,6 @@
       ]
     },
     {
-      "path": "scripts/tests/ci-lanes.txt",
-      "reason": "deleted-locally",
-      "upstream_commits": [
-        "503dc77"
-      ]
-    },
-    {
       "path": "scripts/tests/test_anatomy_integration.sh",
       "reason": "deleted-locally",
       "upstream_commits": [
@@ -65,23 +87,6 @@
       "upstream_commits": [
         "535991c",
         "f78d29c"
-      ]
-    },
-    {
-      "path": "CHANGELOG.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "e52ee6c"
-      ]
-    },
-    {
-      "path": ".github/README.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "25575a6",
-        "0208afe",
-        "665a0e2",
-        "933fbbd"
       ]
     },
     {
@@ -113,39 +118,6 @@
       "reason": "operator-customized",
       "upstream_commits": [
         "1ade386"
-      ]
-    },
-    {
-      "path": "docs/aeon-setup.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "25575a6",
-        "933fbbd",
-        "82c874f"
-      ]
-    },
-    {
-      "path": "docs/assets/hero-animated.svg",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "25575a6",
-        "933fbbd"
-      ]
-    },
-    {
-      "path": "docs/examples/README.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "25575a6",
-        "933fbbd"
-      ]
-    },
-    {
-      "path": "docs/skill-packs.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "25575a6",
-        "933fbbd"
       ]
     },
     {

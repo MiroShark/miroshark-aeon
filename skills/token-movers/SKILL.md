@@ -411,26 +411,52 @@ Resolve the target token in this order:
 
 `chain` is mapped to a GeckoTerminal **network slug** for the API calls below. Common mappings: `ethereum`→`eth`, `base`→`base`, `solana`→`solana`, `bsc`→`bsc`, `arbitrum`→`arbitrum`, `polygon`→`polygon_pos`, `optimism`→`optimism`, `avalanche`→`avax`. Use the configured `chain` as-is if it already matches a GeckoTerminal slug. Below, `${network}` is the resolved GeckoTerminal slug, `${chain}` the human chain name, and `CONTRACT_ADDRESS` the resolved contract.
 
-Read the last **30 days** of `memory/logs/*.md` for prior `TOKEN_REPORT_STATE:` lines (written in step 8). These are the authoritative source of 1d / 7d / 30d deltas, because a stored price yesterday beats an API window that shifts under you.
+Read the last **30 days** of `memory/logs/*.md` for prior `TOKEN_REPORT_STATE:` lines (written in step 8). They are the source of the 7d / 30d deltas and of the "since last report" figures. The 24h price change is NOT taken from them: runs drift, so the last report can be 19 to 30 hours old. It comes from the hourly candles (step 3).
 
 ### 1. Fetch core market data (GeckoTerminal — primary)
 
-One call per URL (see **Shell shape** in the coingecko step 1), with the network slug written in literally as `<NETWORK>` (the `${network}` value) and the real contract in place of `CONTRACT_ADDRESS`:
+Save every response to a file and read only the fields you need, the same shape as the movers branch: **never print a raw API body** (a whole token, pools, OHLCV or trades response is thousands of tokens that every later turn re-reads) and **fetch each URL once per run** (read a saved file again instead of refetching). Make the work folder first, as its own call (see **Shell shape** in the coingecko step 1):
 ```bash
-curl -s "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/tokens/CONTRACT_ADDRESS"
+mkdir -p /tmp/token-movers-work
+```
+
+The token and pools calls need only the contract: send both in one turn as two parallel calls, with the network slug written in literally as `<NETWORK>` (the `${network}` value) and the real contract in place of `CONTRACT_ADDRESS`:
+```bash
+curl -s --max-time 20 --retry 2 --retry-delay 3 -o /tmp/token-movers-work/token.json -w 'gt token http=%{http_code} bytes=%{size_download}\n' "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/tokens/CONTRACT_ADDRESS"
 ```
 ```bash
-curl -s "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/tokens/CONTRACT_ADDRESS/pools?page=1"
+curl -s --max-time 20 --retry 2 --retry-delay 3 -o /tmp/token-movers-work/pools.json -w 'gt pools http=%{http_code} bytes=%{size_download}\n' "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/tokens/CONTRACT_ADDRESS/pools?page=1"
 ```
-Take the top pool address from the pools response and write it in place of `POOL_ADDRESS`:
+A fetch **failed** when it printed `bytes=0` or an `http=` other than 200. Then read each file with one literal `jq` call:
 ```bash
-curl -s "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/pools/POOL_ADDRESS/ohlcv/day?aggregate=1&limit=30"
-```
-```bash
-curl -s "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/pools/POOL_ADDRESS/ohlcv/hour?aggregate=1&limit=24"
+jq -c '.data.attributes | {symbol, name, price_usd, fdv_usd, market_cap_usd, total_reserve_in_usd, volume_h24: .volume_usd.h24}' /tmp/token-movers-work/token.json
 ```
 ```bash
-curl -s "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/pools/POOL_ADDRESS/trades"
+jq -c '.data[:3][] | .attributes | {address, name, price_usd: .base_token_price_usd, reserve_in_usd, volume_h24: .volume_usd.h24, change_h24: .price_change_percentage.h24, tx_h24: .transactions.h24}' /tmp/token-movers-work/pools.json
+```
+Take the top pool's `address` and write it in place of `POOL_ADDRESS`, then fetch its candles and trades in one turn as three parallel calls:
+```bash
+curl -s --max-time 20 --retry 2 --retry-delay 3 -o /tmp/token-movers-work/ohlcv-day.json -w 'gt ohlcv-day http=%{http_code} bytes=%{size_download}\n' "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/pools/POOL_ADDRESS/ohlcv/day?aggregate=1&limit=30"
+```
+```bash
+curl -s --max-time 20 --retry 2 --retry-delay 3 -o /tmp/token-movers-work/ohlcv-hour.json -w 'gt ohlcv-hour http=%{http_code} bytes=%{size_download}\n' "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/pools/POOL_ADDRESS/ohlcv/hour?aggregate=1&limit=26"
+```
+```bash
+curl -s --max-time 20 --retry 2 --retry-delay 3 -o /tmp/token-movers-work/trades.json -w 'gt trades http=%{http_code} bytes=%{size_download}\n' "https://api.geckoterminal.com/api/v2/networks/<NETWORK>/pools/POOL_ADDRESS/trades"
+```
+Candles come back as `[unix time, open, high, low, close, volume]` rows, newest first, each stamped with the time it opened. Read the daily file as `[unix time, close, volume]`:
+```bash
+jq -c '.data.attributes.ohlcv_list | map([.[0], .[4], .[5]])' /tmp/token-movers-work/ohlcv-day.json
+```
+The price 24 hours ago is the close of the last hourly candle that opened at or before now minus 24 h (an hour with no trades has no candle, and the price did not move in it, so the last earlier candle is right). One literal call:
+```bash
+jq -c '.data.attributes.ohlcv_list | map(select(.[0] <= now - 86400)) | if length == 0 then {price_24h_ago: null} else (max_by(.[0]) | {price_24h_ago: .[4], candle_start: (.[0] | todate)}) end' /tmp/token-movers-work/ohlcv-hour.json
+```
+Also note the run time for the state line, as its own call: `date -u +%Y-%m-%dT%H:%MZ`.
+
+Whale trades (`volume_in_usd >= 1000`), counted by side, with the 3 largest:
+```bash
+jq -c '[.data[].attributes | select((.volume_in_usd | tonumber) >= 1000) | {kind, usd: (.volume_in_usd | tonumber | floor), price_usd: ((select(.kind == "buy") | .price_to_in_usd) // .price_from_in_usd), time: .block_timestamp}] | {whales: length, whale_buys: (map(select(.kind == "buy")) | length), whale_sells: (map(select(.kind == "sell")) | length), top3: (sort_by(-.usd) | .[:3])}' /tmp/token-movers-work/trades.json
 ```
 
 If curl fails, retry each URL with **WebFetch**. If the token endpoint returns no data or 404 after both paths, go to step 9 with `TOKEN_REPORT_NO_DATA` — do not notify, do not write an article.
@@ -440,7 +466,11 @@ If curl fails, retry each URL with **WebFetch**. If the token endpoint returns n
 ### 2. Cross-check with DexScreener (sanity + alt signal)
 
 ```bash
-curl -s "https://api.dexscreener.com/latest/dex/tokens/CONTRACT_ADDRESS"
+curl -s --max-time 20 --retry 2 --retry-delay 3 -o /tmp/token-movers-work/dexscreener.json -w 'ds http=%{http_code} bytes=%{size_download}\n' "https://api.dexscreener.com/latest/dex/tokens/CONTRACT_ADDRESS"
+```
+Send it in the same turn as the token and pools calls (it needs only the contract), then read the 3 deepest pairs:
+```bash
+jq -c '[.pairs[]? | {chainId, dexId, pairAddress, priceUsd, liquidity_usd: (.liquidity.usd // 0), volume_h24: .volume.h24, boosts: .boosts.active}] | sort_by(-.liquidity_usd) | .[:3]' /tmp/token-movers-work/dexscreener.json
 ```
 
 Use DexScreener for two things only:
@@ -480,7 +510,7 @@ For each wallet, query the chain in this fallback order:
 
 Compute, per wallet:
 - `eth_balance` — decimal native-coin balance, 4 decimals.
-- `eth_balance_delta_24h` — diff vs yesterday's `TREASURY_WALLET_STATE:` log line (omit when prior is missing).
+- `eth_balance_delta`: diff vs the last report's `TREASURY_WALLET_STATE:` line for that wallet (omit when prior is missing).
 
 Aggregate:
 - `treasury_eth_total` — sum across **role=treasury** wallets only (deployer wallets are operational, not protocol funds).
@@ -488,8 +518,10 @@ Aggregate:
 
 ### 3. Compute true deltas
 
+**Price 24h (Δprice):** the true 24 hour change, `price_usd` now against `price_24h_ago` from step 1: Δprice = (price_usd / price_24h_ago - 1) x 100. If that call printed `price_24h_ago: null` or the hourly fetch failed, use the top pool's `change_h24` from the pools read instead. Never use the last report's stored price as the 24h figure.
+
 From the `TOKEN_REPORT_STATE:` key=value lines in prior logs, load:
-- **1d-ago price, liquidity, volume_24h, buys, sells, whales** (yesterday's run)
+- **Last report: price, liquidity, volume_24h, buys, sells, whales, ts** (the newest prior line). N = whole hours from its `ts` to this run's time. A line written before `ts` existed has none: use its log date and write `since MM-DD` instead of `Nh`.
 - **7d-ago price**
 - **30d-ago price** (fall back to GT daily OHLCV close if missing)
 
@@ -498,27 +530,30 @@ For each:
 - If prior is missing, compute from OHLCV candles and mark the figure `(~7d)` or `(~30d)` to signal the fallback source.
 
 Derived signals:
-- **Liq Δ 24h:** pct change vs yesterday's stored liquidity.
+- **Price since last report:** pct change vs the last report's stored price, labeled `since last report (Nh)`. A second figure only: it never drives the verdict.
+- **Liq Δ since last report:** pct change vs the last report's stored liquidity, labeled `since last report (Nh)` (no API gives liquidity 24 h ago).
 - **Vol ratio:** today's 24h volume ÷ mean(last 7 days of 24h volume). Report as `Z.Z×`.
-- **Buy/sell shift:** (today_buys/today_sells) vs yesterday's ratio. Report both.
+- **Buy/sell shift:** (today_buys/today_sells) vs the last report's ratio. Report both.
 - **Whale trades 24h:** count of single trades with `volume_in_usd >= 1000` in the trades feed. List the top 3 with direction and size in the "What changed" section if ≥1 exists.
 
 ### 4. Classify the day (one verdict)
 
-Pick exactly one label from the table. Thresholds use *today's true deltas* from step 3. Evaluate top-to-bottom; the first row whose trigger fully matches wins.
+Pick exactly one label from the table. Thresholds use *today's true deltas* from step 3: Δprice is the 24h price change, never the since-last-report figure. Evaluate top-to-bottom; the first row whose trigger fully matches wins.
 
 | Label | Trigger |
 |-------|---------|
 | `BREAKOUT` | Δprice ≥ +10% AND vol ratio ≥ 2.0 |
 | `BREAKDOWN` | Δprice ≤ −10% AND vol ratio ≥ 2.0 |
-| `RALLYING` | +3% ≤ Δprice < +10% AND vol ratio ≥ 1.0 |
-| `SLIDING` | −10% < Δprice ≤ −3% AND vol ratio ≥ 1.0 |
+| `RALLYING` | Δprice ≥ +3% AND (vol ratio ≥ 1.0 OR Δprice ≥ +10%) |
+| `SLIDING` | Δprice ≤ −3% AND (vol ratio ≥ 1.0 OR Δprice ≤ −10%) |
 | `ACCUMULATING` | abs(Δprice) < 3% AND buy/sell ratio ≥ 1.3 AND whale buys ≥ 1 |
 | `DISTRIBUTING` | abs(Δprice) < 3% AND buy/sell ratio ≤ 0.7 AND whale sells ≥ 1 |
 | `QUIET` | vol ratio < 0.5 AND whale trades = 0 |
 | `CONSOLIDATING` | (everything else) |
 
-Do not freelance labels. The verdict drives the lede, the TL;DR, and the notification.
+A move of 10% or more always lands on BREAKOUT/BREAKDOWN (vol ratio 2.0 or more) or RALLYING/SLIDING (any lower vol ratio), never on QUIET or CONSOLIDATING.
+
+Do not freelance labels. The verdict drives the lede, the TL;DR, and the notification. Explain the verdict through its numbers and thresholds (`+12.4% on 1.6x volume`); never mention this table, its steps or a missing row in the article or notification.
 
 ### 5. Compile the report
 
@@ -531,14 +566,16 @@ Save to `output/articles/token-report-${today}.md`:
 
 ## 24h at a glance
 
-| Metric | Now | 24h Δ | vs 7d avg |
-|--------|-----|-------|-----------|
-| Price | $X.XXXX | ±Y.Y% | — |
-| Liquidity | $X.XK | ±Y.Y% | — |
-| Volume (24h) | $X.XK | — | Z.Z× |
-| Buys / Sells | X / Y | ratio Z.ZZ (yest Z.ZZ) | — |
-| Whale trades (≥$1k) | N | — | — |
-| FDV | $X.XM | — | — |
+| Metric | Now | 24h Δ | Since last report (Nh) | vs 7d avg |
+|--------|-----|-------|------------------------|-----------|
+| Price | $X.XXXX | ±Y.Y% | ±Z.Z% | - |
+| Liquidity | $X.XK | - | ±Y.Y% | - |
+| Volume (24h) | $X.XK | - | - | Z.Z× |
+| Buys / Sells | X / Y | - | ratio Z.ZZ (was Z.ZZ) | - |
+| Whale trades (≥$1k) | N | - | - | - |
+| FDV | $X.XM | - | - | - |
+
+Write the real hour count in the header (`Since last report (19h)`). With no prior report, drop that column.
 
 ## Trend
 - **7d:** ±X.X% ([one phrase: rallying, range-bound, rolling over, etc.])
@@ -547,8 +584,8 @@ Save to `output/articles/token-report-${today}.md`:
 ## Treasury
 [Include ONLY if step 2b returned at least one wallet with a real balance. One row per wallet, role-sorted (treasury first, then deployer, then other). If `treasury_low_alert` is true, lead the section with one sentence naming the floor that was crossed.]
 
-| Wallet | Role | Balance | 24h Δ |
-|--------|------|---------|-------|
+| Wallet | Role | Balance | Since last report |
+|--------|------|---------|-------------------|
 | 0x…158e | treasury | X.XXXX | ±Y.YY |
 | 0x…e3a2 | deployer | X.XXXX | ±Y.YY |
 
@@ -568,12 +605,12 @@ Save to `output/articles/token-report-${today}.md`:
 **Sources** (fetched ${today}, times UTC)
 - GeckoTerminal token: https://api.geckoterminal.com/api/v2/networks/${network}/tokens/CONTRACT_ADDRESS (HH:MM)
 - GeckoTerminal pools: https://api.geckoterminal.com/api/v2/networks/${network}/tokens/CONTRACT_ADDRESS/pools?page=1 (HH:MM)
-- GeckoTerminal OHLCV: https://api.geckoterminal.com/api/v2/networks/${network}/pools/POOL_ADDRESS/ohlcv/day?aggregate=1&limit=30 and https://api.geckoterminal.com/api/v2/networks/${network}/pools/POOL_ADDRESS/ohlcv/hour?aggregate=1&limit=24 (HH:MM)
+- GeckoTerminal OHLCV: https://api.geckoterminal.com/api/v2/networks/${network}/pools/POOL_ADDRESS/ohlcv/day?aggregate=1&limit=30 and https://api.geckoterminal.com/api/v2/networks/${network}/pools/POOL_ADDRESS/ohlcv/hour?aggregate=1&limit=26 (HH:MM)
 - GeckoTerminal trades: https://api.geckoterminal.com/api/v2/networks/${network}/pools/POOL_ADDRESS/trades (HH:MM)
 - DexScreener: https://api.dexscreener.com/latest/dex/tokens/CONTRACT_ADDRESS (HH:MM) [price within X.X% of GeckoTerminal | diverged X.X%, deeper pool used]
 - Treasury balances: eth_getBalance on https://RPC_HOST for N wallets (HH:MM)
 - X search: https://api.x.ai/v1/responses (x_search, N tweets kept) (HH:MM)
-- Prior values: TOKEN_REPORT_STATE lines in memory/logs/ (1d: YYYY-MM-DD, 7d: YYYY-MM-DD, 30d: YYYY-MM-DD or daily OHLCV)
+- Prior values: price 24h ago from the hourly candle opened HH:MM UTC (MM-DD) [or the top pool's own 24h change]; TOKEN_REPORT_STATE lines in memory/logs/ (last report: YYYY-MM-DD HH:MM UTC, Nh ago; 7d: YYYY-MM-DD; 30d: YYYY-MM-DD or daily OHLCV)
 - Not used: X search (no key | under 2 tweets cleared the bar | API error) · treasury (not configured | fetch failed) · DexScreener (fetch failed)
 ```
 
@@ -615,7 +652,7 @@ Append to `memory/logs/${today}.md`:
 ### token-movers
 - Mode: single-token | Token: $TOKEN (CONTRACT_ADDRESS on ${chain})
 - Verdict: [LABEL]
-- TOKEN_REPORT_STATE: price=X.XXXX liquidity=XXXX.XX volume_24h=XXXX.XX buys=N sells=N whales=N pool=POOL_ADDRESS
+- TOKEN_REPORT_STATE: price=X.XXXX liquidity=XXXX.XX volume_24h=XXXX.XX buys=N sells=N whales=N pool=POOL_ADDRESS ts=YYYY-MM-DDTHH:MMZ
 - TREASURY_STATE: treasury_eth_total=X.XXXX wallets=N (one TREASURY_WALLET_STATE line per wallet below)
 - TREASURY_WALLET_STATE: addr=0x…158e role=treasury eth=X.XXXX
 - TREASURY_WALLET_STATE: addr=0x…e3a2 role=deployer eth=X.XXXX
@@ -624,7 +661,7 @@ Append to `memory/logs/${today}.md`:
 - Sources: gt=ok ds=[ok|fail|divergent] xai=[ok|skip|fail] treasury=[ok|skip|fetch_fail]
 ```
 
-The `TOKEN_REPORT_STATE:` line is a contract — step 3 of the next single-token run parses it with a key=value split (heading-agnostic). Keep the keys, order, and numeric formats stable. No currency symbols, no thousands separators. The `TREASURY_WALLET_STATE:` lines (one per fetched wallet) feed step 2b's 24h delta — parse them with the same key=value split, keyed on `addr`. Omit `TREASURY_STATE` and `TREASURY_WALLET_STATE` lines entirely on `treasury=skip` runs so a wallet that disappears from config later doesn't leave stale balances in the log.
+The `TOKEN_REPORT_STATE:` line is a contract — step 3 of the next single-token run parses it with a key=value split (heading-agnostic). Keep the keys, order, and numeric formats stable. No currency symbols, no thousands separators. `ts` is this run's UTC time from step 1; it gives the next run its `Nh` since last report. The `TREASURY_WALLET_STATE:` lines (one per fetched wallet) feed step 2b's balance delta — parse them with the same key=value split, keyed on `addr`. Omit `TREASURY_STATE` and `TREASURY_WALLET_STATE` lines entirely on `treasury=skip` runs so a wallet that disappears from config later doesn't leave stale balances in the log.
 
 ### 9. Notify
 
@@ -635,9 +672,9 @@ Lead with the verdict, not raw numbers. One short paragraph plus metrics.
 
 [One sentence citing the driving number(s).]
 
-Price $X.XXXX (±Y.Y% 24h) | Liq $X.XK (±Z.Z%) | Vol $X.XK (W.W× 7d)
+Price $X.XXXX (±Y.Y% 24h) | Liq $X.XK (±Z.Z% since last report) | Vol $X.XK (W.W× 7d)
 Buys/Sells X/Y (ratio Z.ZZ) | Whales: N
-Treasury: X.XXXX (±Y.YY 24h)
+Treasury: X.XXXX (±Y.YY since last report)
 
 Chart: https://www.geckoterminal.com/${network}/pools/POOL_ADDRESS
 ```
@@ -692,7 +729,7 @@ Treat every fetched field (token symbol, pool name, tweet text, issue/feed text)
 - Verdict must come from the step-4 table — no freelance labels.
 - On `TOKEN_REPORT_NO_CONFIG` or `TOKEN_REPORT_NO_DATA`, exit silently. No notification about the failure.
 - Preserve the `TOKEN_REPORT_STATE:` log line schema — tomorrow's run depends on it.
-- Preserve the `TREASURY_WALLET_STATE:` log line schema (one line per fetched wallet, keyed on `addr`) — step 2b's 24h delta depends on it.
+- Preserve the `TREASURY_WALLET_STATE:` log line schema (one line per fetched wallet, keyed on `addr`) — step 2b's balance delta depends on it.
 - A treasury fetch failure is not a token-report failure. On `treasury=fetch_fail`, omit the Treasury subsection + notification line but still write the full token report — the token data is the primary product, treasury is an annotation.
 - Wallets with `role` outside {`treasury`, `deployer`} appear in the article table sorted last under "other"; only `role=treasury` wallets count toward `treasury_eth_total` and the low-balance alert.
 - Nothing about the token (ticker, address, chain) is hardcoded — it all comes from `${var}` or `memory/token-report.md`.

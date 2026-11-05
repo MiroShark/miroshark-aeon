@@ -1,0 +1,233 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update — 2026-11-05"
+      },
+      "children": [
+        "sync_line",
+        "upstream_line",
+        "sep_1",
+        "stats_grid",
+        "sep_2",
+        "new_heading",
+        "new_row",
+        "fixes_heading",
+        "fixes_table",
+        "sep_3",
+        "manual_heading",
+        "manual_stack",
+        "warn_review",
+        "sep_4",
+        "pr_link"
+      ]
+    },
+    "sync_line": {
+      "type": "Heading",
+      "props": {
+        "text": "Synced 10 commits → PR",
+        "level": "h2"
+      }
+    },
+    "upstream_line": {
+      "type": "Text",
+      "props": {
+        "text": "Upstream `aeonfun/aeon` is 10 commits ahead. Applied 44 cleanly, 10 need review.",
+        "variant": "body"
+      }
+    },
+    "sep_1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "stats_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "stat_ahead",
+        "stat_applied",
+        "stat_review"
+      ]
+    },
+    "stat_ahead": {
+      "type": "Stat",
+      "props": {
+        "label": "Commits ahead",
+        "value": "10"
+      }
+    },
+    "stat_applied": {
+      "type": "Stat",
+      "props": {
+        "label": "Applied cleanly",
+        "value": "44"
+      }
+    },
+    "stat_review": {
+      "type": "Stat",
+      "props": {
+        "label": "Need review",
+        "value": "10"
+      }
+    },
+    "sep_2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "new_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "New skill",
+        "level": "h3"
+      }
+    },
+    "new_row": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "new_badge",
+        "new_text"
+      ]
+    },
+    "new_badge": {
+      "type": "Badge",
+      "props": {
+        "text": "canister-audit",
+        "variant": "default"
+      }
+    },
+    "new_text": {
+      "type": "Text",
+      "props": {
+        "text": "New skill: canister-audit",
+        "variant": "body"
+      }
+    },
+    "fixes_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Fixes",
+        "level": "h3"
+      }
+    },
+    "fixes_table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "Skill",
+          "Fix"
+        ],
+        "rows": [
+          [
+            "token-movers",
+            "24h-change fix"
+          ],
+          [
+            "vuln-scanner",
+            "gitlink fix"
+          ],
+          [
+            "heartbeat",
+            "merge"
+          ]
+        ]
+      }
+    },
+    "sep_3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "manual_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Manual changes",
+        "level": "h3"
+      }
+    },
+    "manual_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "manual_readme",
+        "manual_aeon_yml",
+        "manual_gitignore",
+        "manual_changelog",
+        "manual_workflow"
+      ]
+    },
+    "manual_readme": {
+      "type": "Text",
+      "props": {
+        "text": "README/docs: skill-count tables",
+        "variant": "body"
+      }
+    },
+    "manual_aeon_yml": {
+      "type": "Text",
+      "props": {
+        "text": "aeon.yml: canister-audit entry",
+        "variant": "body"
+      }
+    },
+    "manual_gitignore": {
+      "type": "Text",
+      "props": {
+        "text": ".gitignore",
+        "variant": "body"
+      }
+    },
+    "manual_changelog": {
+      "type": "Text",
+      "props": {
+        "text": "CHANGELOG.md",
+        "variant": "body"
+      }
+    },
+    "manual_workflow": {
+      "type": "Text",
+      "props": {
+        "text": ".github/workflows/aeon.yml",
+        "variant": "body"
+      }
+    },
+    "warn_review": {
+      "type": "Alert",
+      "props": {
+        "title": "Needs review",
+        "message": "10 changes need review.",
+        "type": "warning"
+      }
+    },
+    "sep_4": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      }
+    },
+    "pr_link": {
+      "type": "Link",
+      "props": {
+        "label": "PR #249",
+        "href": "https://github.com/MiroShark/miroshark-aeon/pull/249"
+      }
+    }
+  }
+}
