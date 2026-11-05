@@ -963,13 +963,18 @@ jobs:
                 echo "$PROMPT" | bash "$RH" claude --model "$MODEL" "${RH_ARGS[@]}" 2>/tmp/harness-stderr.txt
               ); then
                 USED_GATEWAY="$cand"; CLAUDE_OK=1; break
+              else
+                LAST_RC=$?; LAST_CAND="$cand"
               fi
               echo "::warning::provider '$cand' failed — $(tail -c 160 /tmp/harness-stderr.txt 2>/dev/null | tr '\n' ' ')"
             done
             if [ "$CLAUDE_OK" != "1" ]; then
               echo "::error::All gateway providers failed ($CANDIDATES). Last: $(tail -c 200 /tmp/harness-stderr.txt 2>/dev/null | tr '\n' ' ')"
-              # Save error signature for quality tracking (cron-state step reads this)
-              tail -c 500 /tmp/harness-stderr.txt 2>/dev/null | tr '\n' ' ' | cut -c1-200 > /tmp/skill-error.txt
+              # Save error signature for quality tracking (cron-state step reads this):
+              # the last attempt's reason from scripts/gateway-error.sh (the envelope's
+              # result text), never a byte slice of stderr (that saved cut JSON).
+              SIG=$(bash scripts/gateway-error.sh "${LAST_CAND:-claude}" "${LAST_RC:-1}" /tmp/harness-stderr.txt || echo "${LAST_CAND:-claude}: exit ${LAST_RC:-1}")
+              printf '%s' "${SIG:0:200}" > /tmp/skill-error.txt
               exit 1
             fi
             [ "$USED_GATEWAY" != "${CANDIDATES%% *}" ] && echo "::notice::Skill ran via fallback provider '$USED_GATEWAY'"
@@ -1009,8 +1014,11 @@ jobs:
             # its own cascade above; here it is component=harness. No-op unless
             # telemetry is configured, and `|| true` so it never fails the run.
             AEON_OTEL_COMPONENT=harness source "$LF" >&2 || true
+            RH_RC=0
             if CLAUDE_OUTPUT=$(echo "$PROMPT" | bash "$RH" "$HARNESS" "${RH_MODEL_ARGS[@]}" "${RH_ARGS[@]}" 2>/tmp/harness-stderr.txt); then
               CLAUDE_OK=1
+            else
+              RH_RC=$?
             fi
             # run-harness's diagnostics are the only signal when a harness stalls;
             # surface them in the step log either way, not just on failure.
@@ -1027,7 +1035,9 @@ jobs:
             fi
             if [ "$CLAUDE_OK" != "1" ]; then
               echo "::error::run-harness $HARNESS failed: $(tail -c 200 /tmp/harness-stderr.txt | tr '\n' ' ')"
-              tail -c 500 /tmp/harness-stderr.txt | tr '\n' ' ' | cut -c1-200 > /tmp/skill-error.txt
+              # last_error: the envelope's error text, else the stderr reason
+              printf '%s' "$CLAUDE_OUTPUT" > /tmp/harness-out.json
+              bash scripts/gateway-error.sh "$HARNESS" "$RH_RC" /tmp/harness-stderr.txt /tmp/harness-out.json > /tmp/skill-error.txt || echo "$HARNESS: exit $RH_RC" > /tmp/skill-error.txt
               exit 1
             fi
           fi
@@ -1461,12 +1471,25 @@ jobs:
           fi
           [ -z "$OUTPUT" ] && { echo "No output to analyze"; exit 0; }
 
-          # Ground the rubric in the operator's north-star so the judge grades
-          # strategic alignment and correctness, not just surface polish. STRATEGY.md
-          # is short by design; inject it whole (byte-capped for safety). Absent or
-          # placeholder file leaves the block empty and grading falls back to generic.
+          # Grade a skill on its own job first: the SKILL.md description is the
+          # contract (a price report, digest or check). STRATEGY.md joins the rubric
+          # only for a skill whose SKILL.md tells it to read STRATEGY.md (idea-forge,
+          # bd-radar, shiplog...): a correct routine report was capped at 3 for not
+          # serving product priorities, and each low score feeds a health issue.
+          # STRATEGY.md is short by design; inject it whole (byte-capped for safety).
+          SKILL_JOB=""
           STRATEGY_CTX=""
-          [ -f STRATEGY.md ] && STRATEGY_CTX=$(head -c 4000 STRATEGY.md)
+          STRATEGY_BLOCK=""
+          if [ -f "$SKILL_MD" ]; then
+            SKILL_JOB=$(awk 'NR==1&&/^---/{f=1;next} f&&/^---/{exit} f&&/^description:/{sub(/^description:[[:space:]]*/,"");print;exit}' "$SKILL_MD" | head -c 600)
+            if [ -f STRATEGY.md ] && grep -qiE '(^|[^[:alpha:]])read[^[:alpha:]].*STRATEGY\.md' "$SKILL_MD"; then
+              STRATEGY_CTX=$(head -c 4000 STRATEGY.md)
+            fi
+          fi
+          [ -n "$SKILL_JOB" ] || SKILL_JOB="(no description; infer the job from the output)"
+          if [ -n "$STRATEGY_CTX" ]; then
+            STRATEGY_BLOCK=$(printf 'This skill works from the operator strategy (its SKILL.md reads STRATEGY.md), so also grade how well it serves the stated priorities: reward work that serves them, not work that merely looks finished.\n\nOperator strategy:\n%s' "$STRATEGY_CTX")
+          fi
 
           ANALYSIS_PROMPT="Score this autonomous agent skill output on a 1-5 scale. Respond with ONLY valid JSON.
 
@@ -1477,10 +1500,12 @@ jobs:
           4 = Good - substantive, well-structured, useful, and verifiable
           5 = Excellent - insightful, well-sourced, actionable
 
-          Correctness and verifiability outrank polish: a well-written output that invents specifics scores no higher than 2. Grade alignment to the operator strategy below - reward work that serves the stated priorities, not work that merely looks finished.
+          Correctness and verifiability outrank polish: a well-written output that invents specifics scores no higher than 2.
 
-          Operator strategy:
-          $STRATEGY_CTX
+          Grade the output against the skill's own job first. Skill job (from its SKILL.md): $SKILL_JOB
+          A correct, complete, verifiable output of that job scores 3 or higher on its own merits, and 4 or 5 when it is substantive or insightful. Never score it lower because its topic is not one of the operator's product priorities.
+
+          $STRATEGY_BLOCK
 
           Flag any issues from: api_error, empty_output, low_quality, stale_data, generic_content, rate_limited, unverifiable_claim
 
@@ -1940,10 +1965,14 @@ jobs:
               .[$s].success_rate = $rate
             ')
 
-            # Record error signature on failure
+            # Record error signature on failure; a success clears it, so last_error
+            # only ever describes the run that is failing now (last_failed keeps the
+            # time of the most recent failure).
             if [ "$CRON_STATUS" = "failed" ] && [ -n "$ERROR_SIG" ]; then
               STATE=$(echo "$STATE" | jq --arg s "$SKILL" --arg err "$ERROR_SIG" \
                 '.[$s].last_error = $err')
+            elif [ "$CRON_STATUS" = "success" ]; then
+              STATE=$(echo "$STATE" | jq --arg s "$SKILL" '.[$s].last_error = null')
             fi
 
             # Record quality score on success (from analysis step)
@@ -2019,24 +2048,40 @@ jobs:
         if: always() && steps.skill.outputs.name != '' && github.ref_name == github.event.repository.default_branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Step outputs go through env, never inline ${{ }} in the script: FLAGS is
+          # judge output derived from untrusted skill output, and a quote in it would
+          # break out of the shell string in a step that holds a write token.
+          HEALTH_ISSUES: ${{ vars.HEALTH_ISSUES }}
+          SKILL: ${{ steps.skill.outputs.name }}
+          SCORE_IN: ${{ steps.analyze.outputs.QUALITY_SCORE }}
+          FLAGS_IN: ${{ steps.analyze.outputs.FLAGS }}
+          RUN_OUTCOME: ${{ steps.run.outcome }}
+          IDLE_SKIP: ${{ steps.idle.outputs.skip }}
         run: |
+          # An idle-gated skip (memory-flush or fetch-tweets with nothing new) never ran
+          # the skill, so Run is 'skipped': not a regression. Cron state already records
+          # it as a success; without this it was posted as "score 1, run_failed".
+          if [ "${IDLE_SKIP:-}" = "true" ]; then echo "idle skip for $SKILL; health issue silent"; exit 0; fi
           # §7 is default-ON; disable only with repo var HEALTH_ISSUES=0. The toggle is
           # checked HERE in bash, NOT in the step `if:`. A GitHub Actions `if:` comparison
           # like `vars.HEALTH_ISSUES != '0'` does numeric coercion, and an UNSET var (null)
           # coerces to 0 — so `!= '0'` is FALSE when unset, silently skipping the step by
           # default (the opposite of "default-on"). Bash string comparison has no such trap.
-          if [ "${{ vars.HEALTH_ISSUES }}" = "0" ]; then echo "votable health disabled (HEALTH_ISSUES=0)"; exit 0; fi
-          SKILL="${{ steps.skill.outputs.name }}"
-          SCORE="${{ steps.analyze.outputs.QUALITY_SCORE }}"; [ -z "$SCORE" ] && SCORE=0
-          FLAGS='${{ steps.analyze.outputs.FLAGS }}'; [ -z "$FLAGS" ] && FLAGS='[]'
-          if [ "${{ steps.run.outcome }}" != "success" ]; then SCORE=1; FLAGS='["run_failed"]'; fi
+          if [ "$HEALTH_ISSUES" = "0" ]; then echo "votable health disabled (HEALTH_ISSUES=0)"; exit 0; fi
+          SCORE="$SCORE_IN"; [[ "$SCORE" =~ ^[0-9]+$ ]] || SCORE=0
+          # Accept FLAGS only as a JSON array of strings; anything else is dropped.
+          FLAGS='[]'
+          if [ -n "$FLAGS_IN" ] && printf '%s' "$FLAGS_IN" | jq -e 'type == "array" and all(.[]; type == "string")' >/dev/null 2>&1; then
+            FLAGS=$(printf '%s' "$FLAGS_IN" | jq -c '.')
+          fi
+          if [ "$RUN_OUTCOME" != "success" ]; then SCORE=1; FLAGS='["run_failed"]'; fi
           REC=$(jq -cn --arg s "$SKILL" --argjson sc "$SCORE" --argjson fl "$FLAGS" '{skill:$s,score:$sc,flags:$fl}')
           NEEDS=$(printf '%s' "$REC" | python3 -c "import sys,json; sys.path.insert(0,'scripts'); import health_triage as h; print('yes' if h.needs_comment(json.load(sys.stdin)) else 'no')" 2>/dev/null || echo no)
           if [ "$NEEDS" = "yes" ]; then
             ISSUE=$(GH_REPO="$GITHUB_REPOSITORY" bash scripts/health_issue.sh ensure "$SKILL" 2>/dev/null || true)
             if [ -n "$ISSUE" ]; then
               GH_REPO="$GITHUB_REPOSITORY" bash scripts/health_issue.sh comment "$ISSUE" \
-                "⚠️ Regression — score $SCORE, flags $FLAGS ($(date -u +%FT%TZ)). 👍/👎 to set repair priority." \
+                "⚠️ Regression: score $SCORE, flags $FLAGS ($(date -u +%FT%TZ)). 👍/👎 to set repair priority." \
                 && echo "health regression -> issue #$ISSUE"
             fi
           else
