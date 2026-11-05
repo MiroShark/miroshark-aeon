@@ -85,6 +85,7 @@
     "create-prove": "<path d='M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z'/><path d='m9 12 2 2 4-4'/>",
     "sc-audit": "<path d='M12 2 5 5v6c0 4.5 3 7.5 7 9 4-1.5 7-4.5 7-9V5z'/><path d='M13 10a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0'/><path d='M12.4 11.8 15 14.4'/>",
     "flovia": "<circle cx='12' cy='12' r='2.2' fill='currentColor' stroke='none'/><path d='M7.5 7.5a6.4 6.4 0 0 0 0 9'/><path d='M16.5 7.5a6.4 6.4 0 0 1 0 9'/><path d='M4.6 4.6a10.5 10.5 0 0 0 0 14.8'/><path d='M19.4 4.6a10.5 10.5 0 0 1 0 14.8'/>",
-    "github-filing-registry": "<rect x='4' y='3' width='16' height='18' rx='2'/><path d='M8 8h8'/><path d='M8 12h8'/><path d='M8 16h5'/>"
+    "github-filing-registry": "<rect x='4' y='3' width='16' height='18' rx='2'/><path d='M8 8h8'/><path d='M8 12h8'/><path d='M8 16h5'/>",
+    "canister-audit": "<ellipse cx='9' cy='5' rx='5' ry='2'/><path d='M4 5v9c0 1.1 2.2 2 5 2 .5 0 1 0 1.4-.1'/><path d='M14 5v4'/><circle cx='16' cy='15' r='3.5'/><path d='M18.5 17.5 21 20'/>"
   }
 }
