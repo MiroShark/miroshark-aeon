@@ -11,13 +11,6 @@
   },
   "pending_conflicts": [
     {
-      "path": ".github/README.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "f7a239e"
-      ]
-    },
-    {
       "path": ".github/workflows/aeon.yml",
       "reason": "operator-customized",
       "upstream_commits": [
@@ -44,34 +37,6 @@
       "reason": "operator-customized",
       "upstream_commits": [
         "fddec05"
-      ]
-    },
-    {
-      "path": "docs/aeon-setup.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "f7a239e"
-      ]
-    },
-    {
-      "path": "docs/assets/hero-animated.svg",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "f7a239e"
-      ]
-    },
-    {
-      "path": "docs/examples/README.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "f7a239e"
-      ]
-    },
-    {
-      "path": "docs/skill-packs.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "f7a239e"
       ]
     },
     {
