@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-04T11:31:38Z",
-  "quality_score": 3,
-  "assessment": "Substantive, well-sourced token-movers report with timestamped API endpoints; its arithmetic is internally consistent (18/10 = 1.80 ratio, +4.7% price move, 1.53K/1.10K = 1.39x volume). It is a plain market-data readout with little tie to the engine, simulation proof, or stars/ecosystem priorities, and the live figures could not be independently verified here.",
+  "last_analyzed": "2026-11-05T06:32:22Z",
+  "quality_score": 4,
+  "assessment": "Substantive, internally consistent $MIROSHARK report with cited API endpoints, fetch times, and stored prior snapshots; labels stay descriptive with no buy/sell call, and thin-volume and missing-X-search caveats are disclosed. Fetch times are imprecise (06:2x) and the figures can't be checked from here.",
   "flags": [],
   "avg_score": 3.37,
   "history": [
-    {
-      "date": "2026-10-03",
-      "score": 4
-    },
     {
       "date": "2026-10-04",
       "score": 4
@@ -125,6 +121,10 @@
     {
       "date": "2026-11-04",
       "score": 3
+    },
+    {
+      "date": "2026-11-05",
+      "score": 4
     }
   ]
 }
