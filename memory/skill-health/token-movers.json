@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-05T06:32:22Z",
+  "last_analyzed": "2026-11-06T08:35:22Z",
   "quality_score": 4,
-  "assessment": "Substantive, internally consistent $MIROSHARK report with cited API endpoints, fetch times, and stored prior snapshots; labels stay descriptive with no buy/sell call, and thin-volume and missing-X-search caveats are disclosed. Fetch times are imprecise (06:2x) and the figures can't be checked from here.",
+  "assessment": "Verdict-first $MIROSHARK report with dated, timestamped API sources and a DexScreener cross-check; the derived figures (0.38x volume ratio, -7.5% liquidity, 7/1 buy-sell ratio) recompute correctly. Docked slightly for an undisclosed trade-sample limit behind the 'no whales' claim, a loosely defined 'since last report' baseline with no recorded time, and approximate 7d/30d trend figures.",
   "flags": [],
   "avg_score": 3.37,
   "history": [
-    {
-      "date": "2026-10-04",
-      "score": 4
-    },
     {
       "date": "2026-10-05",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-05",
+      "score": 4
+    },
+    {
+      "date": "2026-11-06",
       "score": 4
     }
   ]

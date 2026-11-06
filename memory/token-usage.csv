@@ -612,3 +612,4 @@ date,skill,model,input_tokens,output_tokens,cache_read,cache_creation
 2026-11-05,token-movers,claude-sonnet-5-5,16,5426,444882,72213
 2026-11-05,aeon-update,claude-sonnet-5-5,48,6196,1215355,49746
 2026-11-05,heartbeat,claude-haiku-5-5,14,6966,320903,54205
+2026-11-06,token-movers,claude-sonnet-5-5,22,7014,544748,50666

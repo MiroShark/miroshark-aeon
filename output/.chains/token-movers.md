@@ -1,9 +1,8 @@
-*$MIROSHARK — CONSOLIDATING*
+*$MIROSHARK - QUIET*
 
-Price +2.2% (inside the ±3% band) on volume 0.99× the 7d average, with no whale trades.
+Volume is 0.38× the 7d average with no whale trades; price -7.2% on just $393 of volume, so it reads as thin-book drift.
 
-Price $0.000001999 (+2.2% 24h) | Liq $114.9K (+4.5%) | Vol $1.09K (0.99× 7d)
-Buys/Sells 10/6 (ratio 1.67) | Whales: 0
-7d +2.4% | 30d −22.4% (~30d)
+Price $0.000001905 (-7.2% 24h) | Liq $106.3K (-7.5% since last report) | Vol $393 (0.38× 7d)
+Buys/Sells 7/1 (ratio 7.00) | Whales: 0
 
 Chart: https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209
