@@ -205,8 +205,8 @@
     "last_error": null
   },
   "fetch-tweets": {
-    "last_dispatch": "2026-11-06T21:36:15Z",
-    "last_status": "success",
+    "last_dispatch": "2026-11-07T18:51:02Z",
+    "last_status": "dispatched",
     "last_success": "2026-11-06T21:36:46Z",
     "total_runs": 123,
     "total_successes": 113,
