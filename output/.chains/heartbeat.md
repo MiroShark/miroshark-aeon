@@ -1,32 +1,31 @@
 HEARTBEAT_OK · STATUS_PAGE=OK
 
-The fleet is healthy and nothing needs attention, so I sent no notification. I ran the ambient check (`var` was empty) and regenerated the public status page.
+Ambient fleet check for 2026-11-07 (22:23 UTC). Nothing needs attention, so I sent no notification.
 
 **Fleet state (from `memory/cron-state.json`)**
-- 9 enabled skills, all with 0 consecutive failures and no failed or stuck dispatches.
-- Heartbeat's last success was 2026-11-05 21:28 UTC, inside the 36h self-check window.
-- No open PRs and no urgent-labelled issues.
-- No skill is past 2× its schedule interval.
+- All 9 enabled skills are at `last_status: success` with 0 consecutive failures.
+- No skill is stuck in `dispatched` and none is in a failed state. No skill has a success rate below 0.5.
+- Heartbeat's own last success is 2026-11-06 21:37 UTC, within the 36h window.
 
-**Watch item (not flagged)**
-- `shiplog`, `changelog`, and `holdings` have had no success since 2026-10-26, which is 11 days. The Monday 11-02 slot did not land for any of them.
-- They are under the 2× threshold, so they are not flagged. If Monday 11-09 also misses, they will cross it.
+**Open items**
+- No open PRs and no issues labelled `urgent`.
+- `memory/issues/INDEX.md` has 0 open issues.
 
-**Discrepancy to check**
-- GitHub lists 8 open `health:` issues (#182, #184, #195, #196, #218–#221).
-- `memory/issues/INDEX.md` has none open, and the status page follows the tracker.
-- Someone should reconcile the two, or close the stale GitHub issues.
+**Watch (not notified)**
+- `shiplog`, `changelog` and `holdings` are weekly Monday skills. Their last success was 2026-10-26, 12 days ago. The 11-02 slot did not land. They are under the 2x-interval flag (14 days), so the page stays 🟢. Next Monday, 11-09, is the test.
 
 **Token pulse**
-- MIROSHARK at $0.000001905, down 7.2% over 24h, liquidity $106.3K.
-- Verdict QUIET, from today's token report.
+- MIROSHARK at $0.000001939, +1.8% over 24h, liquidity $107.7K, volume $659, verdict CONSOLIDATING. Source is `output/articles/token-report-2026-11-07.md`.
 
 **Status page**
-- `docs/status.md` is overwritten with the 9 enabled skills, sorted by last run.
-- Heartbeat's own row shows `⏳ dispatched` because this run is in flight.
-- The next scheduled run is token-movers at 2026-11-07 06:00 UTC.
+- `docs/status.md` was regenerated with Updated 2026-11-07 22:23 UTC. Next scheduled run is token-movers at 2026-11-08 06:00 UTC.
 
 ## Summary
-- **Files modified:** `docs/status.md` (regenerated), `memory/logs/2026-11-06.md` (appended `### heartbeat` entry, `mode: ambient`).
-- **Notifications:** none sent. Nothing new needed attention, and the watch item was already reported in the 11-05 log.
-- **Follow-up:** reconcile the 8 open GitHub `health:` issues with `memory/issues/INDEX.md`. Recheck shiplog, changelog, and holdings after the 11-09 Monday slot.
+
+- **Created or modified:**
+  - `docs/status.md`: overwritten with the current fleet status.
+  - `memory/logs/2026-11-07.md`: appended a `### heartbeat` entry in ambient mode.
+- **Notifications:** none sent, since nothing crossed the threshold.
+- **Follow-up:**
+  - Check whether the `shiplog`, `changelog` and `holdings` Monday runs fire on 11-09. If they miss again, the watch item becomes a real flag.
+  - The 11-06 log mentions eight open GitHub `health:` issues (#182, #184, #195, #196, #218–#221) that are not in `memory/issues/INDEX.md`. I did not re-check them in this run.
