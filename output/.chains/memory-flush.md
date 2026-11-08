@@ -1,19 +1,16 @@
-The memory flush is done, and the watermark is stamped at 2026-11-01. I scanned the logs from 2026-10-25 to 2026-11-01 (8 files, no gap clamp). There were no open improvement PRs, and MEMORY.md is within budget.
+Memory flush finished: I scanned 2026-11-01 through 2026-11-08 (8 logs) and updated `memory/MEMORY.md`. It's still under budget at about 4 KB. No logs were rotated, since 37 files remain against the 45-file threshold. I didn't run the open-PR check from step 3a (`gh pr list`). MEMORY.md has no Open Improvement PRs section, so there was nothing to compare it against.
 
 **Promoted into MEMORY.md**
-- **Stars:** 1,480, up 5 net, steady. The next threshold is 1,500, 20 away.
-- **$MIROSHARK:** $0.00000191 on 11-01 (+3.2% 24h, +4.4% 7d, -16.3% 30d), about 96% below the all-time high, liquidity about $107K. Last week's low was $0.00000183 on 10-25 and the high about $0.00000204 on 10-28.
-- **Holdings:** team/treasury at 12.39% of supply.
-- **Digest:** the 10-26 shiplog row (four maintenance PRs, including the MCP security bump #342).
-- **Health:** `changelog` recovered on 10-26 (website PR #416), and all 9 enabled skills show 0 consecutive failures.
-- **Upstream sync:** `aeon-update` is no longer blocked. PR #232 is open with 5 files applied and 5 conflicts, and 45 conflicts are now pending. It needs review.
+- **Stars:** 1,487 stars and 304 forks (repo-pulse, 11-02). The next threshold, 1,500, is 13 away.
+- **$MIROSHARK:** $0.00000182 on 11-08, down 6.3% in 24h and 24.7% in 30d, with liquidity near $104K, rated SLIDING. The range from 11-02 to 11-08 was $0.00000182 to $0.00000200, with the high on 11-05.
+- **Weekly skills:** shiplog, changelog and holdings have had no success since 10-26, and the 11-02 Monday run didn't land. Heartbeat is watching this, and 11-09 is the test.
+- **aeon-update:** latest is PR #249 (11-05, 10 commits, new skill `canister-audit`). Pending conflicts are down from 47 to 27.
+- **Health issues:** 8 open `health:` issues on GitHub (#182, #184, #195, #196, #218–#221) aren't tracked in `memory/issues/INDEX.md`.
 
-**Pruned**
-- **Priorities:** removed the "changelog at 3 failures" and "aeon-update blocked" items, both resolved.
-- **Digest archive:** moved three 10-12 digest rows to `memory/topics/digests-history.md`.
+**Pruned:** the "changelog recovered" and "PR #232" priorities were stale, and I replaced them with the entries above.
 
-The flush is logged in `memory/logs/2026-11-01.md`.
+The flush is logged in `memory/logs/2026-11-08.md`. I stamped the watermark (`memory/memory-flush-state.json`) with `memory_prep.py stamp`; it now reads 2026-11-08.
 
 ## Summary
-- Modified `memory/MEMORY.md`, `memory/topics/digests-history.md` and `memory/logs/2026-11-01.md`.
-- Follow-up: review aeon-update PR #232.
+- Modified `memory/MEMORY.md`, `memory/logs/2026-11-08.md` and `memory/memory-flush-state.json`.
+- No follow-up needed from this run.
