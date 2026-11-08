@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-07T07:18:58Z",
-  "quality_score": 3,
-  "assessment": "Verdict-first single-token report with timestamped API sources and internally consistent figures (volume 0.88x, buy/sell ratio 3.67), but thin analysis on $659 of volume, a 'since last report' column that duplicates the 24h figure, and unverifiable specifics such as pool and contract addresses.",
+  "last_analyzed": "2026-11-08T08:03:07Z",
+  "quality_score": 4,
+  "assessment": "Substantive single-token report with verdict-first framing, timestamped GeckoTerminal/DexScreener sources, and arithmetic that checks out (−6.3% from 1.939e-6 to 1.817e-6, buy/sell ratio 1.80, 3.67 prior). It discloses skipped sources and gives limited insight beyond the numbers, so it stops short of a 5.",
   "flags": [],
   "avg_score": 3.33,
   "history": [
-    {
-      "date": "2026-10-07",
-      "score": 4
-    },
     {
       "date": "2026-10-08",
       "score": 4
@@ -125,6 +121,10 @@
     {
       "date": "2026-11-07",
       "score": 3
+    },
+    {
+      "date": "2026-11-08",
+      "score": 4
     }
   ]
 }
