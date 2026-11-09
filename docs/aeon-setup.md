@@ -9,7 +9,7 @@ Aeon ships an **[Agent Skill](https://code.claude.com/docs/en/skills)** (`SKILL.
 
 It's a portable skill, not tied to one product: [Claude Code](https://claude.com/claude-code) is the primary host (it auto-loads skills from `.claude/skills/`, so it's zero-install there), but the skill is just a `SKILL.md` in the open Agent Skills format — it works with **Claude Code, Codex, Hermes, or OpenClaw**, and any other agent tool that supports skills.
 
-> **This is not an Aeon skill.** The 85 skills under [`skills/`](../skills) run unattended on GitHub Actions. **This** one runs inside *your* agent session on *your* machine - it's the operator's assistant for configuring the instance, not something that runs on a schedule. It doesn't appear in `aeon.yml`, the packs, or the catalog.
+> **This is not an Aeon skill.** The 92 skills under [`skills/`](../skills) run unattended on GitHub Actions. **This** one runs inside *your* agent session on *your* machine - it's the operator's assistant for configuring the instance, not something that runs on a schedule. It doesn't appear in `aeon.yml`, the packs, or the catalog.
 
 ## What it does
 
@@ -55,6 +55,8 @@ The same plugin installs on **Codex** too - it ships a Codex manifest and a repo
 codex plugin marketplace add aeonfun/aeon
 codex plugin add aeon@aeon
 ```
+
+From version 0.2.0, the plugin also bundles the [hosted Aeon Connect MCP connection](https://www.aeon.fun/connect/mcp) and a `get-started` onboarding skill. Sign in with GitHub and choose your agent repo, then ask it to check setup, run a skill, follow a run or read its output. Onboarding names missing keys without reading their values and offers a first `heartbeat` run. Changes to skills, strategy, soul, packs or instance settings require confirmation. Switching reaches only other Aeon repos you allowed when connecting. See the [plugin README](../plugin/README.md).
 
 ### Option C - install it globally by hand (use it from any folder)
 
