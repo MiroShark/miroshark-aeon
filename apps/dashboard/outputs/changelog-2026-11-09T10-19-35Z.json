@@ -1,0 +1,69 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Changelog (push-to) - 2026-11-09"
+      },
+      "children": [
+        "stack"
+      ]
+    },
+    "stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "repo",
+        "prcount",
+        "sep",
+        "status",
+        "pr"
+      ]
+    },
+    "repo": {
+      "type": "Text",
+      "props": {
+        "text": "MiroShark/MiroShark -> MiroShark/miroshark-website",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "prcount": {
+      "type": "Text",
+      "props": {
+        "text": "3 new PRs -> changelog entry \"CI action pinning and ecosystem link cleanup\"",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "sep": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "status": {
+      "type": "Badge",
+      "props": {
+        "text": "Draft PR",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "pr": {
+      "type": "StoryLink",
+      "props": {
+        "title": "CI action pinning and ecosystem link cleanup",
+        "href": "https://github.com/MiroShark/miroshark-website/pull/429",
+        "source": "MiroShark/miroshark-website"
+      },
+      "children": []
+    }
+  }
+}

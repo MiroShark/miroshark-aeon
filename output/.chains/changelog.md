@@ -1,4 +1,4 @@
-*Changelog (push-to) - 2026-10-26*
+*Changelog (push-to) - 2026-11-09*
 MiroShark/MiroShark -> MiroShark/miroshark-website
-5 new PRs -> changelog entry "MCP security patch and dependency upkeep"
-https://github.com/MiroShark/miroshark-website/pull/416
+3 new PRs -> changelog entry "CI action pinning and ecosystem link cleanup"
+Draft PR: https://github.com/MiroShark/miroshark-website/pull/429
