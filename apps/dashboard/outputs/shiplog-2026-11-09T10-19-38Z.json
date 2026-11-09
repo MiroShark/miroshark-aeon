@@ -1,0 +1,214 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "miroshark shiplog 🦈 oct 26 → nov 9"
+      },
+      "children": [
+        "intro",
+        "hardening_stack",
+        "sep1",
+        "sim_text",
+        "sim_grid",
+        "sim_progress",
+        "sim_alert",
+        "sep2",
+        "traction_heading",
+        "stars_stat",
+        "stars_progress",
+        "next_text",
+        "signoff",
+        "article_link"
+      ]
+    },
+    "intro": {
+      "type": "Text",
+      "props": {
+        "text": "quiet two weeks on the engine. 5 PRs, all hardening:",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "hardening_stack": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "hardening_1",
+        "hardening_2",
+        "hardening_3"
+      ]
+    },
+    "hardening_1": {
+      "type": "Text",
+      "props": {
+        "text": "• ci pinned to commit SHAs + superseded runs cancelled w/ job timeouts",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "hardening_2": {
+      "type": "Text",
+      "props": {
+        "text": "• dependabot bumps: follow-redirects, tornado",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "hardening_3": {
+      "type": "Text",
+      "props": {
+        "text": "• dead ecosystem links pulled",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "sim_text": {
+      "type": "Text",
+      "props": {
+        "text": "but the sim shipped. israel's next 4 weeks, 15 rounds of agents bargaining: odds of a govt in 28 days stayed 50%. odds of a deal with the arab parties went 38% → 55%.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sim_grid": {
+      "type": "Grid",
+      "props": {
+        "columns": 2,
+        "gap": "md"
+      },
+      "children": [
+        "stat_govt",
+        "stat_arab"
+      ]
+    },
+    "stat_govt": {
+      "type": "Stat",
+      "props": {
+        "label": "odds of a govt in 28 days",
+        "value": "50%",
+        "delta": "stayed flat",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "stat_arab": {
+      "type": "Stat",
+      "props": {
+        "label": "odds of a deal with the arab parties",
+        "value": "55%",
+        "delta": "from 38% → 55%",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "sim_progress": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "prog_govt",
+        "prog_arab"
+      ]
+    },
+    "prog_govt": {
+      "type": "Progress",
+      "props": {
+        "value": 50,
+        "max": 100,
+        "label": "govt in 28 days"
+      },
+      "children": []
+    },
+    "prog_arab": {
+      "type": "Progress",
+      "props": {
+        "value": 55,
+        "max": 100,
+        "label": "deal with arab parties"
+      },
+      "children": []
+    },
+    "sim_alert": {
+      "type": "Alert",
+      "props": {
+        "title": "simulated, not a forecast",
+        "message": "we score it dec 6",
+        "type": "info"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "traction_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "traction",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "stars_stat": {
+      "type": "Stat",
+      "props": {
+        "label": "MiroShark ⭐",
+        "value": "1,489",
+        "delta": "+9 this window",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "stars_progress": {
+      "type": "Progress",
+      "props": {
+        "value": 1489,
+        "max": 1500,
+        "label": "1,500 is next"
+      },
+      "children": []
+    },
+    "next_text": {
+      "type": "Text",
+      "props": {
+        "text": "1,500 is next",
+        "variant": "muted"
+      },
+      "children": []
+    },
+    "signoff": {
+      "type": "Text",
+      "props": {
+        "text": "🦈",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "article_link": {
+      "type": "Link",
+      "props": {
+        "label": "full shiplog (shiplog-2026-11-09.md)",
+        "href": "https://github.com/MiroShark/miroshark-aeon/blob/main/output/articles/shiplog-2026-11-09.md"
+      },
+      "children": []
+    }
+  }
+}
