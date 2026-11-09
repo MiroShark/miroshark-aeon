@@ -1,0 +1,163 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Repo Pulse - 2026-11-09"
+      },
+      "children": [
+        "statusRow",
+        "sep1",
+        "repoName",
+        "statGrid",
+        "sep2",
+        "stargazersHeading",
+        "stargazerLinks",
+        "sep3",
+        "source",
+        "engineNote"
+      ]
+    },
+    "statusRow": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "statusBadge"
+      ]
+    },
+    "statusBadge": {
+      "type": "Badge",
+      "props": {
+        "text": "STEADY",
+        "variant": "outline"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "repoName": {
+      "type": "Heading",
+      "props": {
+        "text": "MiroShark/MiroShark",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "statGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 3,
+        "gap": "md"
+      },
+      "children": [
+        "starsStat",
+        "forksStat",
+        "releasesStat"
+      ]
+    },
+    "starsStat": {
+      "type": "Stat",
+      "props": {
+        "label": "Stars",
+        "value": "1489",
+        "delta": "+2",
+        "trend": "up"
+      },
+      "children": []
+    },
+    "forksStat": {
+      "type": "Stat",
+      "props": {
+        "label": "Forks",
+        "value": "303",
+        "delta": "no new forks; net −1 from 304",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "releasesStat": {
+      "type": "Stat",
+      "props": {
+        "label": "Releases",
+        "value": "+0",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "stargazersHeading": {
+      "type": "Heading",
+      "props": {
+        "text": "Other new stargazers",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "stargazerLinks": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "sm"
+      },
+      "children": [
+        "linkNosidak",
+        "linkAndy"
+      ]
+    },
+    "linkNosidak": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/nosidak",
+        "href": "https://github.com/nosidak"
+      },
+      "children": []
+    },
+    "linkAndy": {
+      "type": "Link",
+      "props": {
+        "label": "github.com/Andy260317",
+        "href": "https://github.com/Andy260317"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "source": {
+      "type": "Text",
+      "props": {
+        "text": "Source: events (both new accounts are low-profile: 0 followers, ≤2 repos).",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "engineNote": {
+      "type": "Text",
+      "props": {
+        "text": "Engine repo had only maintenance PRs this week (dependabot, merged by aaronjmars).",
+        "variant": "body"
+      },
+      "children": []
+    }
+  }
+}

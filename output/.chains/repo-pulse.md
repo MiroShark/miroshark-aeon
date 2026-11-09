@@ -1,12 +1,7 @@
-*Repo Pulse — 2026-11-02* — [STEADY]
-MiroShark/MiroShark — stars 1,487 (+7 net, 9 new) · forks 304 (−1 net, 0 new) · releases +0
-
-Notable new stargazers:
-github.com/TReinaCOM — thewolverine · 171 repos (also starred miroshark-aeon)
+*Repo Pulse - 2026-11-09* - [STEADY]
+MiroShark/MiroShark - stars 1489 (+2) · forks 303 (no new forks; net −1 from 304) · releases +0
 
 Other new stargazers:
-github.com/robertoatila | github.com/manafkemo | github.com/gusinistro | github.com/m1ckk3y | github.com/Hostagon | github.com/alexterieur-ctrl | github.com/Krishna2028 | github.com/deafslap
+github.com/nosidak | github.com/Andy260317
 
-MiroShark/miroshark-aeon — stars 20 (+2) · forks 2 (+0)
-
-Source: events
+Source: events (both new accounts are low-profile: 0 followers, ≤2 repos). Engine repo had only maintenance PRs this week (dependabot, merged by aaronjmars).
