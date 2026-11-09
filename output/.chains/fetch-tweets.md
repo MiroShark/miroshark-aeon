@@ -1,9 +1,8 @@
-No tweet digest this run: the only tracked account, `miroshark_`, hasn't posted in the last 3 days, so I sent no notification.
+No digest sent: the only tracked account, `miroshark_`, posted one tweet in the last 3 days. That isn't enough to group into themes, and the skill says to notify only on signal.
 
-- **Fetch:** twitterapi.io returned HTTP 200 with 20 timeline tweets. The newest is from 2026-10-21, a retweet of an aaronjmars post. The newest original tweet is from 2026-10-19, about the US mid-terms simulation.
-- **Dedup:** the last two days of logs held no x.com URLs, so nothing was excluded as already reported.
+The fetch from twitterapi.io worked (http=200). The tweet is [x.com/miroshark_/status/2119725920344826314](https://x.com/miroshark_/status/2119725920344826314), posted 2026-11-09 09:36 UTC. It announces the Israel government-formation simulation: AI agents playing Likud, Shas, Ra'am, Liberman, centrist voters and US officials, run over the next four weeks. It has 5 likes, 1 retweet and 2 replies. The shiplog run earlier today already picked it up.
 
 ## Summary
-- Ran `fetch-tweets` in `account` mode with an empty handle, which digests every account in `memory/topics/tracked-accounts.yml`.
-- Appended a `### fetch-tweets` entry to `memory/logs/2026-11-03.md` with status `TWEET_DIGEST_OK`.
-- No follow-up needed. `miroshark_` has been quiet since 2026-10-21, so you may want to check why.
+- Ran fetch-tweets in account mode with an empty handle, so it used the tracked-accounts list. That list holds only `miroshark_`.
+- Modified `memory/logs/2026-11-09.md`: added a `### fetch-tweets` entry with status `TWEET_DIGEST_OK`.
+- Follow-up: add more handles to `memory/topics/tracked-accounts.yml` if you want real digests. One account posting about once every few days won't produce themes.

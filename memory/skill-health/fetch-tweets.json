@@ -1,15 +1,13 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-11-03T18:40:28Z",
-  "quality_score": 3,
-  "assessment": "Honest no-signal run: it reports a quiet tracked account with specific dates and a 200 response, and sends nothing. The detail is thin and the fetch is not shown, so the claims can't be checked from the output.",
-  "flags": [],
-  "avg_score": 3.13,
+  "last_analyzed": "2026-11-09T20:52:07Z",
+  "quality_score": 2,
+  "assessment": "Honest no-op: the run correctly declined to send a digest for one tweet, and the cited tweet details are plausible, but the output is mostly a status report rather than the curated digest the skill exists to produce.",
+  "flags": [
+    "low_quality"
+  ],
+  "avg_score": 3.1,
   "history": [
-    {
-      "date": "2026-10-02",
-      "score": 3
-    },
     {
       "date": "2026-10-03",
       "score": 4
@@ -125,6 +123,10 @@
     {
       "date": "2026-11-03",
       "score": 3
+    },
+    {
+      "date": "2026-11-09",
+      "score": 2
     }
   ]
 }
