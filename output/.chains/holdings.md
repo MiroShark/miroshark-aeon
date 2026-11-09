@@ -1,5 +1,5 @@
-*Holdings — MiroShark*
+*Holdings - MiroShark*
 
-12.39B · 12.39% of supply
-7d +20.70M (+0.17%) · 30d +184.91M (+1.51%)
-_Balances: public RPC. Supply: GeckoTerminal. Growth: own snapshots (7d vs 2026-10-21). 2026-10-26_
+12.43B · 12.43% of supply
+7d building · 30d +110.82M (+0.90%) · since 10-26: +37.86M (+0.31%)
+_Balances: public RPC. Supply: GeckoTerminal. Growth: own snapshots (30d vs 2026-10-12). 2026-11-09_

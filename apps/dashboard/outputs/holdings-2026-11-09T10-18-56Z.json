@@ -1,0 +1,71 @@
+{
+  "root": "card1",
+  "state": {},
+  "elements": {
+    "card1": {
+      "type": "Card",
+      "props": {
+        "title": "Holdings - MiroShark",
+        "description": "Skill: holdings"
+      },
+      "children": [
+        "stack1"
+      ]
+    },
+    "stack1": {
+      "type": "Stack",
+      "props": {
+        "direction": "vertical",
+        "gap": "md"
+      },
+      "children": [
+        "heading1",
+        "stat1",
+        "text1",
+        "separator1",
+        "text2"
+      ]
+    },
+    "heading1": {
+      "type": "Heading",
+      "props": {
+        "text": "Holdings - MiroShark",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "stat1": {
+      "type": "Stat",
+      "props": {
+        "label": "Holdings",
+        "value": "12.43B",
+        "delta": "12.43% of supply",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "text1": {
+      "type": "Text",
+      "props": {
+        "text": "7d building · 30d +110.82M (+0.90%) · since 10-26: +37.86M (+0.31%)",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "separator1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "text2": {
+      "type": "Text",
+      "props": {
+        "text": "Balances: public RPC. Supply: GeckoTerminal. Growth: own snapshots (30d vs 2026-10-12). 2026-11-09",
+        "variant": "caption"
+      },
+      "children": []
+    }
+  }
+}

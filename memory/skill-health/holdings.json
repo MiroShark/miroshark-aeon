@@ -1,10 +1,10 @@
 {
   "skill": "holdings",
-  "last_analyzed": "2026-10-26T11:27:11Z",
-  "quality_score": 3,
-  "assessment": "Concise, internally consistent holdings report (wallet sums and percentages check out, and the 7d/30d windows and tolerance are disclosed), but it gives no wallet addresses, block references, or RPC sources to verify against, and it adds little beyond raw numbers for the operator's growth priorities.",
+  "last_analyzed": "2026-11-09T10:18:56Z",
+  "quality_score": 4,
+  "assessment": "Covers the job with a per-wallet breakdown, sourced supply and RPC status, and honest 7d 'building' and 30d-baseline disclosures. The arithmetic is internally consistent (wallets sum to 12.43B; 30d % matches the amount change against the prior balance), but the raw RPC and supply values are not shown, so they can't be independently checked.",
   "flags": [],
-  "avg_score": 3.88,
+  "avg_score": 3.89,
   "history": [
     {
       "date": "2026-07-30",
@@ -73,6 +73,10 @@
     {
       "date": "2026-10-26",
       "score": 3
+    },
+    {
+      "date": "2026-11-09",
+      "score": 4
     }
   ]
 }
