@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-08T08:03:07Z",
+  "last_analyzed": "2026-11-09T10:19:27Z",
   "quality_score": 4,
-  "assessment": "Substantive single-token report with verdict-first framing, timestamped GeckoTerminal/DexScreener sources, and arithmetic that checks out (−6.3% from 1.939e-6 to 1.817e-6, buy/sell ratio 1.80, 3.67 prior). It discloses skipped sources and gives limited insight beyond the numbers, so it stops short of a 5.",
+  "assessment": "Substantive, verifiable token report: sources are cited with fetch times, the price, liquidity, and percentage math are internally consistent, and DexScreener cross-checks GeckoTerminal. Minor caveat: the 24h buy/sell counts come from a recent-trades endpoint whose window may not be exactly 24h.",
   "flags": [],
   "avg_score": 3.33,
   "history": [
-    {
-      "date": "2026-10-08",
-      "score": 4
-    },
     {
       "date": "2026-10-09",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-08",
+      "score": 4
+    },
+    {
+      "date": "2026-11-09",
       "score": 4
     }
   ]
