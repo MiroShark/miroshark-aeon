@@ -194,16 +194,16 @@
   },
   "token-movers": {
     "last_dispatch": "2026-11-10T18:37:40Z",
-    "last_status": "dispatched",
-    "last_success": "2026-11-09T10:19:40Z",
-    "total_runs": 135,
-    "total_successes": 117,
+    "last_status": "success",
+    "last_success": "2026-11-10T18:39:47Z",
+    "total_runs": 136,
+    "total_successes": 118,
     "total_failures": 18,
-    "consecutive_failures": 1,
+    "consecutive_failures": 0,
     "success_rate": 0.87,
     "last_quality_score": 4,
     "last_failed": "2026-11-10T11:00:05Z",
-    "last_error": "claude: You've hit your weekly limit · resets 5pm (UTC)"
+    "last_error": null
   },
   "fetch-tweets": {
     "last_dispatch": "2026-11-10T18:37:40Z",
