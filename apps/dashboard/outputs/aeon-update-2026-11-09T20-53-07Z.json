@@ -1,0 +1,219 @@
+{
+  "root": "main",
+  "state": {},
+  "elements": {
+    "main": {
+      "type": "Card",
+      "props": {
+        "title": "aeon-update",
+        "description": "2026-11-09"
+      },
+      "children": [
+        "title_status",
+        "upstream_line",
+        "stats",
+        "sep1",
+        "new_heading",
+        "new_skills_label",
+        "new_badges",
+        "new_text",
+        "sep2",
+        "manual_heading",
+        "manual_table",
+        "manual_alert",
+        "sep3",
+        "pr_link"
+      ]
+    },
+    "title_status": {
+      "type": "Heading",
+      "props": {
+        "text": "Synced 4 upstream commits → PR",
+        "level": "h2"
+      },
+      "children": []
+    },
+    "upstream_line": {
+      "type": "Text",
+      "props": {
+        "text": "Upstream aeonfun/aeon is 4 commits ahead. Applied 88 cleanly, 6 need review.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "stats": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "stat_ahead",
+        "stat_applied",
+        "stat_review"
+      ]
+    },
+    "stat_ahead": {
+      "type": "Stat",
+      "props": {
+        "label": "Upstream commits ahead",
+        "value": "4"
+      },
+      "children": []
+    },
+    "stat_applied": {
+      "type": "Stat",
+      "props": {
+        "label": "Applied cleanly",
+        "value": "88"
+      },
+      "children": []
+    },
+    "stat_review": {
+      "type": "Stat",
+      "props": {
+        "label": "Need review",
+        "value": "6"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "new_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "New skills",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "new_skills_label": {
+      "type": "Text",
+      "props": {
+        "text": "ICP pack",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "new_badges": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "sm"
+      },
+      "children": [
+        "badge_canister_status",
+        "badge_sns_digest",
+        "badge_icp_deploy_check"
+      ]
+    },
+    "badge_canister_status": {
+      "type": "Badge",
+      "props": {
+        "text": "canister-status",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "badge_sns_digest": {
+      "type": "Badge",
+      "props": {
+        "text": "sns-digest",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "badge_icp_deploy_check": {
+      "type": "Badge",
+      "props": {
+        "text": "icp-deploy-check",
+        "variant": "default"
+      },
+      "children": []
+    },
+    "new_text": {
+      "type": "Text",
+      "props": {
+        "text": "Notify dash pass + idle-skip health fixes across ~65 skills.",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "manual_heading": {
+      "type": "Heading",
+      "props": {
+        "text": "Manual changes",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "manual_table": {
+      "type": "Table",
+      "props": {
+        "columns": [
+          "File",
+          "Status"
+        ],
+        "rows": [
+          [
+            ".github/workflows/aeon.yml",
+            "Manual (local edit)"
+          ],
+          [
+            ".github/README.md",
+            "Manual (local edit)"
+          ],
+          [
+            "CHANGELOG.md",
+            "Manual (local edit)"
+          ],
+          [
+            "docs/skill-packs.md",
+            "Manual (local edit)"
+          ],
+          [
+            "aeon.yml",
+            "Needs new ICP entries by hand"
+          ]
+        ]
+      },
+      "children": []
+    },
+    "manual_alert": {
+      "type": "Alert",
+      "props": {
+        "title": "Action required",
+        "message": "aeon.yml needs the new ICP entries by hand.",
+        "type": "warning"
+      },
+      "children": []
+    },
+    "sep3": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "pr_link": {
+      "type": "Link",
+      "props": {
+        "label": "Pull request #251",
+        "href": "https://github.com/MiroShark/miroshark-aeon/pull/251"
+      },
+      "children": []
+    }
+  }
+}

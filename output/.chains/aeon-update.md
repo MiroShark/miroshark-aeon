@@ -1,8 +1,8 @@
-*aeon-update — 2026-11-05*
-Synced 10 commits → PR
+*aeon-update - 2026-11-09*
+Synced 4 upstream commits → PR
 
-Upstream `aeonfun/aeon` is 10 commits ahead. Applied 44 cleanly, 10 need review.
-New skill: `canister-audit`; token-movers 24h-change fix, vuln-scanner gitlink fix, heartbeat merge.
-Manual: README/docs skill-count tables, `aeon.yml` (canister-audit entry), `.gitignore`, `CHANGELOG.md`, `.github/workflows/aeon.yml`.
+Upstream `aeonfun/aeon` is 4 commits ahead. Applied 88 cleanly, 6 need review.
+New skills: `canister-status`, `sns-digest`, `icp-deploy-check` (ICP pack); notify dash pass + idle-skip health fixes across ~65 skills.
+Manual: `.github/workflows/aeon.yml`, `.github/README.md`, `CHANGELOG.md`, `docs/skill-packs.md` (local edits); `aeon.yml` needs the new ICP entries by hand.
 
-PR: https://github.com/MiroShark/miroshark-aeon/pull/249
+PR: https://github.com/MiroShark/miroshark-aeon/pull/251

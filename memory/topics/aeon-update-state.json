@@ -1,21 +1,55 @@
 {
-  "baseline_sha": "4d64089c3f4cb2e3f33349cd6a1d789c03a2a899",
+  "baseline_sha": "5981e1caa880e9bc186e1bf9f27c095b3ba9ef22",
   "upstream": "aeonfun/aeon",
-  "last_run": "2026-11-05",
-  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/249",
+  "last_run": "2026-11-09",
+  "last_pr": "https://github.com/MiroShark/miroshark-aeon/pull/251",
   "applied": {
-    "added": 22,
-    "updated": 19,
-    "merged": 3,
+    "added": 12,
+    "updated": 70,
+    "merged": 6,
     "deleted": 0
   },
   "pending_conflicts": [
     {
+      "path": ".github/README.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "2ff25a3"
+      ]
+    },
+    {
       "path": ".github/workflows/aeon.yml",
       "reason": "operator-customized",
       "upstream_commits": [
-        "f7a239e",
-        "50662a6"
+        "504a21d"
+      ]
+    },
+    {
+      "path": "CHANGELOG.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "c910f9a"
+      ]
+    },
+    {
+      "path": "docs/skill-packs.md",
+      "reason": "operator-customized",
+      "upstream_commits": [
+        "2ff25a3"
+      ]
+    },
+    {
+      "path": "scripts/tests/ci-lanes.txt",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "2ff25a3"
+      ]
+    },
+    {
+      "path": "skills/miroshark-matchday/SKILL.md",
+      "reason": "deleted-locally",
+      "upstream_commits": [
+        "504a21d"
       ]
     },
     {
@@ -30,20 +64,6 @@
       "reason": "deleted-locally",
       "upstream_commits": [
         "b52deab"
-      ]
-    },
-    {
-      "path": "CHANGELOG.md",
-      "reason": "operator-customized",
-      "upstream_commits": [
-        "fddec05"
-      ]
-    },
-    {
-      "path": "scripts/tests/ci-lanes.txt",
-      "reason": "deleted-locally",
-      "upstream_commits": [
-        "50662a6"
       ]
     },
     {
