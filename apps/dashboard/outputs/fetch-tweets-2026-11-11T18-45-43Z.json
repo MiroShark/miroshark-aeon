@@ -1,0 +1,143 @@
+{
+  "root": "card",
+  "state": {},
+  "elements": {
+    "card": {
+      "type": "Card",
+      "props": {
+        "title": "Tweet Digest - 2026-11-11"
+      },
+      "children": [
+        "theme",
+        "sep1",
+        "tweet",
+        "alert",
+        "engagement",
+        "runHeading",
+        "runGrid",
+        "sep2",
+        "link"
+      ]
+    },
+    "theme": {
+      "type": "Text",
+      "props": {
+        "text": "Theme: Simulation showcases",
+        "variant": "lead"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "tweet": {
+      "type": "TweetCard",
+      "props": {
+        "author": "MiroShark",
+        "handle": "miroshark_",
+        "text": "Posted a MiroShark run on Trump's claim the Iran war is \"effectively over\" vs Tehran denying talks: 36 agents, 15 rounds, 199 actions, 2 prediction markets, 6-week horizon, thread attached.",
+        "likes": 1,
+        "retweets": 1
+      },
+      "children": []
+    },
+    "alert": {
+      "type": "Alert",
+      "props": {
+        "type": "warning",
+        "title": "Possible double-post",
+        "message": "Looks double-posted (two near-identical tweets 2s apart)."
+      },
+      "children": []
+    },
+    "engagement": {
+      "type": "Text",
+      "props": {
+        "text": "Engagement: 1 like / 1 RT / 1-2 replies",
+        "variant": "caption"
+      },
+      "children": []
+    },
+    "runHeading": {
+      "type": "Heading",
+      "props": {
+        "text": "Run details",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "runGrid": {
+      "type": "Grid",
+      "props": {
+        "columns": 5,
+        "gap": "sm"
+      },
+      "children": [
+        "agents",
+        "rounds",
+        "actions",
+        "markets",
+        "horizon"
+      ]
+    },
+    "agents": {
+      "type": "Stat",
+      "props": {
+        "label": "Agents",
+        "value": "36"
+      },
+      "children": []
+    },
+    "rounds": {
+      "type": "Stat",
+      "props": {
+        "label": "Rounds",
+        "value": "15"
+      },
+      "children": []
+    },
+    "actions": {
+      "type": "Stat",
+      "props": {
+        "label": "Actions",
+        "value": "199"
+      },
+      "children": []
+    },
+    "markets": {
+      "type": "Stat",
+      "props": {
+        "label": "Prediction markets",
+        "value": "2"
+      },
+      "children": []
+    },
+    "horizon": {
+      "type": "Stat",
+      "props": {
+        "label": "Horizon",
+        "value": "6 weeks"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "link": {
+      "type": "Link",
+      "props": {
+        "label": "View tweet",
+        "href": "https://x.com/miroshark_/status/2120502162471952385"
+      },
+      "children": []
+    }
+  }
+}

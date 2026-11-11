@@ -1,17 +1,13 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-11-09T20:52:07Z",
+  "last_analyzed": "2026-11-11T18:45:43Z",
   "quality_score": 2,
-  "assessment": "Honest no-op: the run correctly declined to send a digest for one tweet, and the cited tweet details are plausible, but the output is mostly a status report rather than the curated digest the skill exists to produce.",
+  "assessment": "Single self-authored post under one theme with no signal scoring or sub-narrative clustering, so it reads as a thin digest rather than a curated sweep; the link and specifics look plausible but are unverified here.",
   "flags": [
     "low_quality"
   ],
-  "avg_score": 3.1,
+  "avg_score": 3.03,
   "history": [
-    {
-      "date": "2026-10-03",
-      "score": 4
-    },
     {
       "date": "2026-10-04",
       "score": 4
@@ -126,6 +122,10 @@
     },
     {
       "date": "2026-11-09",
+      "score": 2
+    },
+    {
+      "date": "2026-11-11",
       "score": 2
     }
   ]
