@@ -1,17 +1,11 @@
 {
   "skill": "fetch-tweets",
-  "last_analyzed": "2026-11-11T18:45:43Z",
-  "quality_score": 2,
-  "assessment": "Single self-authored post under one theme with no signal scoring or sub-narrative clustering, so it reads as a thin digest rather than a curated sweep; the link and specifics look plausible but are unverified here.",
-  "flags": [
-    "low_quality"
-  ],
-  "avg_score": 3.03,
+  "last_analyzed": "2026-11-12T22:41:34Z",
+  "quality_score": 3,
+  "assessment": "Completed the tracked-account digest correctly, and the no-op is justified: one account, four tweets, all duplicates or link-only. Thin on substance and the cited figures can't be verified from the output alone.",
+  "flags": [],
+  "avg_score": 3,
   "history": [
-    {
-      "date": "2026-10-04",
-      "score": 4
-    },
     {
       "date": "2026-10-07",
       "score": 4
@@ -127,6 +121,10 @@
     {
       "date": "2026-11-11",
       "score": 2
+    },
+    {
+      "date": "2026-11-12",
+      "score": 3
     }
   ]
 }
