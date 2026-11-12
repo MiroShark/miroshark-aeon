@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-11T11:12:53Z",
+  "last_analyzed": "2026-11-12T08:14:49Z",
   "quality_score": 4,
-  "assessment": "Verdict-first, sourced, internally consistent $MIROSHARK scan with timestamped API endpoints; the 7d/30d and 24h percentages check out arithmetically, and it gives no buy/sell call. Not 5: the live figures can't be re-fetched from here, and the 'within 1.2%' cross-check is self-reported.",
+  "assessment": "Verdict-first QUIET report with a 24h table, 7d/30d trend, timestamped API sources, and a disclosed not-used list. Derived figures check out (7d -15.7%, 0.43x volume, 5/4 ratio, -0.7% liquidity), but the raw market values are not independently verified and the report is a routine no-signal scan.",
   "flags": [],
   "avg_score": 3.33,
   "history": [
-    {
-      "date": "2026-10-11",
-      "score": 4
-    },
     {
       "date": "2026-10-12",
       "score": 4
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-11",
+      "score": 4
+    },
+    {
+      "date": "2026-11-12",
       "score": 4
     }
   ]
