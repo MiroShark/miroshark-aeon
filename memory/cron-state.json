@@ -1,13 +1,13 @@
 {
   "heartbeat": {
-    "last_status": "success",
+    "last_status": "dispatched",
     "last_success": "2026-11-12T01:05:05Z",
     "total_runs": 165,
     "total_successes": 159,
     "total_failures": 6,
     "consecutive_failures": 0,
     "success_rate": 0.96,
-    "last_dispatch": "2026-11-12T01:03:47Z",
+    "last_dispatch": "2026-11-12T22:40:41Z",
     "last_failed": "2026-10-19T19:57:16Z",
     "last_error": null
   },
@@ -206,8 +206,8 @@
     "last_error": null
   },
   "fetch-tweets": {
-    "last_dispatch": "2026-11-11T18:44:38Z",
-    "last_status": "success",
+    "last_dispatch": "2026-11-12T22:40:41Z",
+    "last_status": "dispatched",
     "last_success": "2026-11-11T18:45:58Z",
     "total_runs": 128,
     "total_successes": 118,
