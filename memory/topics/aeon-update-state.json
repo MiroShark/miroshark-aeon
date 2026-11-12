@@ -189,5 +189,15 @@
         "8aba912"
       ]
     }
+  ],
+  "keep_local": [
+    "AGENTS.md",
+    ".github/README.md",
+    "CHANGELOG.md",
+    "llms.txt",
+    "docs/aeon-setup.md",
+    "docs/assets/hero-animated.svg",
+    "docs/examples/README.md",
+    "docs/skill-packs.md"
   ]
 }
