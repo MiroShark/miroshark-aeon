@@ -1,0 +1,122 @@
+{
+  "root": "card1",
+  "state": {},
+  "elements": {
+    "card1": {
+      "type": "Card",
+      "props": {
+        "title": "token-movers: $MIROSHARK - QUIET",
+        "description": "Thin-book move"
+      },
+      "children": [
+        "s1",
+        "sep1",
+        "h1",
+        "t1",
+        "stack1",
+        "sep2",
+        "link1"
+      ]
+    },
+    "s1": {
+      "type": "Alert",
+      "props": {
+        "title": "Summary",
+        "message": "Volume is 0.24× the 7d average with no whale trades; price drifted -5.1% on $353 of volume, so it is a thin-book move.",
+        "type": "info"
+      },
+      "children": []
+    },
+    "sep1": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "h1": {
+      "type": "Heading",
+      "props": {
+        "text": "Metrics",
+        "level": "h3"
+      },
+      "children": []
+    },
+    "t1": {
+      "type": "Text",
+      "props": {
+        "text": "Price $0.000001599 (-5.1% 24h) | Liq $90.9K (-5.2% since last report, 47h) | Vol $353 (0.24× 7d)",
+        "variant": "body"
+      },
+      "children": []
+    },
+    "stack1": {
+      "type": "Stack",
+      "props": {
+        "direction": "horizontal",
+        "gap": "md"
+      },
+      "children": [
+        "stat1",
+        "stat2",
+        "stat3",
+        "stat4"
+      ]
+    },
+    "stat1": {
+      "type": "Stat",
+      "props": {
+        "label": "Price",
+        "value": "$0.000001599",
+        "delta": "-5.1% (24h)",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "stat2": {
+      "type": "Stat",
+      "props": {
+        "label": "Liquidity",
+        "value": "$90.9K",
+        "delta": "-5.2% (since last report, 47h)",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "stat3": {
+      "type": "Stat",
+      "props": {
+        "label": "Volume",
+        "value": "$353",
+        "delta": "0.24× 7d avg",
+        "trend": "down"
+      },
+      "children": []
+    },
+    "stat4": {
+      "type": "Stat",
+      "props": {
+        "label": "Buys / Sells",
+        "value": "2 / 2",
+        "delta": "ratio 1.00 · Whales: 0",
+        "trend": "neutral"
+      },
+      "children": []
+    },
+    "sep2": {
+      "type": "Separator",
+      "props": {
+        "orientation": "horizontal"
+      },
+      "children": []
+    },
+    "link1": {
+      "type": "Link",
+      "props": {
+        "label": "Chart (GeckoTerminal)",
+        "href": "https://www.geckoterminal.com/base/pools/0x83a29b6619907f80e5a47d40f53d4af239a69980f22a08b10f43d357a9f06209"
+      },
+      "children": []
+    }
+  }
+}

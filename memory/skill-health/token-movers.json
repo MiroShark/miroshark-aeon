@@ -1,15 +1,11 @@
 {
   "skill": "token-movers",
-  "last_analyzed": "2026-11-12T08:14:49Z",
+  "last_analyzed": "2026-11-13T10:52:15Z",
   "quality_score": 4,
-  "assessment": "Verdict-first QUIET report with a 24h table, 7d/30d trend, timestamped API sources, and a disclosed not-used list. Derived figures check out (7d -15.7%, 0.43x volume, 5/4 ratio, -0.7% liquidity), but the raw market values are not independently verified and the report is a routine no-signal scan.",
+  "assessment": "Verdict-first report whose figures reconcile internally (price -5.1%, liquidity -5.2%, volume 0.24x 7d, buy/sell ratio) and cite fetched GeckoTerminal/DexScreener endpoints with timestamps; live values were not independently re-fetched.",
   "flags": [],
   "avg_score": 3.33,
   "history": [
-    {
-      "date": "2026-10-12",
-      "score": 4
-    },
     {
       "date": "2026-10-13",
       "score": 2
@@ -124,6 +120,10 @@
     },
     {
       "date": "2026-11-12",
+      "score": 4
+    },
+    {
+      "date": "2026-11-13",
       "score": 4
     }
   ]
