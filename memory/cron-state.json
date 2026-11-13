@@ -193,8 +193,8 @@
     "last_quality_score": 3
   },
   "token-movers": {
-    "last_dispatch": "2026-11-12T08:12:58Z",
-    "last_status": "success",
+    "last_dispatch": "2026-11-13T10:50:11Z",
+    "last_status": "dispatched",
     "last_success": "2026-11-12T08:15:01Z",
     "total_runs": 138,
     "total_successes": 120,
